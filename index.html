@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Indonesia Explorer</title>
     <link rel='stylesheet' href='style.css'>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
     <div class="container">
@@ -55,8 +56,10 @@
         </div>
     </div>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script>
         let currentLanguage = 'bg';
+        let cityMap = null;
 
         // Translations object
         const translations = {
@@ -71,6 +74,8 @@
                 currency: 'Валута',
                 continent: 'Континент',
                 majorCities: '🏙️ Основни градове',
+                mapTitle: '🗺️ Карта на основните градове',
+                mapHint: 'Щракни на пин за информация за града.',
                 dataNotice: '💡 Щракнете на както град за повече информация и атракции!',
                 errorLoading: '❌ Грешка при зареждане на данни. Моля, опресни страницата.',
                 mostPopulated: '# Най-населения град',
@@ -89,6 +94,8 @@
                 currency: 'Currency',
                 continent: 'Continent',
                 majorCities: '🏙️ Major Cities',
+                mapTitle: '🗺️ Major Cities Map',
+                mapHint: 'Click a pin to view city information.',
                 dataNotice: '💡 Click on any city to view more information and attractions!',
                 errorLoading: '❌ Error loading data. Please try refreshing the page.',
                 mostPopulated: '# Most Populated City',
@@ -262,6 +269,42 @@
             document.body.style.overflow = 'auto';
         }
 
+        function initCityMap() {
+            const mapContainer = document.getElementById('cityMap');
+            if (!mapContainer || typeof L === 'undefined') {
+                return;
+            }
+
+            if (cityMap) {
+                cityMap.remove();
+                cityMap = null;
+            }
+
+            cityMap = L.map('cityMap', {
+                zoomControl: true,
+                scrollWheelZoom: false
+            }).setView([-2.3, 118], 5);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(cityMap);
+
+            indonesiaData.cities.forEach((city, index) => {
+                const popupHtml = `
+                    <div class="map-popup">
+                        <strong>${city.name}</strong><br>
+                        ${getTranslation('populationLabel')}: ${city.population}<br>
+                        <button class="map-popup-btn" onclick="openCityModal(${index})">${getTranslation('mostPopulated').replace('# ', '')}</button>
+                    </div>
+                `;
+
+                L.marker([city.latitude, city.longitude])
+                    .addTo(cityMap)
+                    .bindPopup(popupHtml);
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const savedLang = localStorage.getItem('preferredLanguage') || 'bg';
             if (savedLang !== currentLanguage) {
@@ -334,12 +377,19 @@
                         </div>
                     </div>
 
+                    <div class="card map-card">
+                        <h2>${getTranslation('mapTitle')}</h2>
+                        <p class="map-hint">${getTranslation('mapHint')}</p>
+                        <div id="cityMap" class="city-map"></div>
+                    </div>
+
                     <div class="api-notice">
                         ${getTranslation('dataNotice')}
                     </div>
                 `;
 
                 contentDiv.innerHTML = html;
+                initCityMap();
 
             } catch (error) {
                 console.error('Error loading data:', error);
