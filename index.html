@@ -13,12 +13,14 @@
             <button class="lang-btn" onclick="changeLanguage('en')" id="enBtn">EN</button>
         </div>
 
-        <button class="stadium-info-trigger" onclick="openStadiumModal()" id="stadiumInfoBtn">ℹ️ Инфо за стадиона</button>
-
         <header>
             <h1 id="headerTitle">🇮🇩 Indonesia Explorer</h1>
             <p id="headerSubtitle">Explore detailed information about Indonesia</p>
         </header>
+
+        <div class="stadium-cta-wrap">
+            <button id="stadiumInfoBtn" class="stadium-info-btn" onclick="openStadiumModal()">Инфо за стадиона</button>
+        </div>
 
         <div id="content">
             <div class="loading">
@@ -61,19 +63,23 @@
     <div class="modal-overlay" id="stadiumModal">
         <div class="modal-content stadium-modal-content">
             <button class="modal-close" onclick="closeStadiumModal()">&times;</button>
-            <img id="stadiumModalImage" class="modal-image" src="./assets/images/stadium-interior.png" alt="Gelora Bung Karno Stadium Interior" loading="lazy" decoding="async">
+            <img id="stadiumModalImage" class="modal-image" src="" alt="Gelora Bung Karno interior" loading="lazy" decoding="async">
             <div class="modal-body">
                 <h2 id="stadiumModalTitle" class="modal-title"></h2>
                 <p id="stadiumModalDescription" class="modal-description"></p>
 
-                <div class="modal-info">
+                <div class="modal-info stadium-modal-info">
                     <div class="modal-info-item">
                         <div class="modal-info-label" id="stadiumCapacityLabel"></div>
-                        <div id="stadiumCapacityValue" class="modal-info-value"></div>
+                        <div class="modal-info-value" id="stadiumCapacityValue"></div>
                     </div>
                     <div class="modal-info-item">
                         <div class="modal-info-label" id="stadiumOpenedLabel"></div>
-                        <div id="stadiumOpenedValue" class="modal-info-value"></div>
+                        <div class="modal-info-value" id="stadiumOpenedValue"></div>
+                    </div>
+                    <div class="modal-info-item">
+                        <div class="modal-info-label" id="stadiumUseLabel"></div>
+                        <div class="modal-info-value" id="stadiumUseValue"></div>
                     </div>
                 </div>
             </div>
@@ -96,19 +102,21 @@
                 currency: 'Валута',
                 continent: 'Континент',
                 majorCities: '🏙️ Основни градове',
-                stadiumInfoBtn: 'ℹ️ Инфо за стадиона',
-                stadiumInfoTitle: 'Gelora Bung Karno Stadium',
-                stadiumInfoDescription: 'Националният стадион в Джакарта е сред най-емблематичните спортни арени в Индонезия. Домакин е на международни футболни срещи, церемонии и големи концерти.',
-                stadiumCapacityLabel: 'Капацитет',
-                stadiumCapacityValue: '77,193 места',
-                stadiumOpenedLabel: 'Открит',
-                stadiumOpenedValue: '1962 г.',
                 dataNotice: '💡 Щракнете на както град за повече информация и атракции!',
                 errorLoading: '❌ Грешка при зареждане на данни. Моля, опресни страницата.',
                 mostPopulated: '# Най-населения град',
                 keyAttractions: 'Ключови атракции',
                 coordinates: 'Координати',
-                populationLabel: 'Население'
+                populationLabel: 'Население',
+                stadiumInfoBtn: 'Инфо за стадиона',
+                stadiumTitle: 'Gelora Bung Karno Stadium',
+                stadiumDescription: 'Националният стадион на Индонезия в Джакарта. Известен е с мащабните футболни мачове и международни церемонии.',
+                stadiumCapacityLabel: 'Капацитет',
+                stadiumOpenedLabel: 'Открит',
+                stadiumUseLabel: 'Използва се за',
+                stadiumCapacityValue: 'около 77 000 зрители',
+                stadiumOpenedValue: '1962 (реновиран 2018)',
+                stadiumUseValue: 'футбол и национални събития'
             },
             en: {
                 headerTitle: '🇮🇩 Indonesia Explorer',
@@ -121,20 +129,26 @@
                 currency: 'Currency',
                 continent: 'Continent',
                 majorCities: '🏙️ Major Cities',
-                stadiumInfoBtn: 'ℹ️ Stadium Info',
-                stadiumInfoTitle: 'Gelora Bung Karno Stadium',
-                stadiumInfoDescription: 'Jakarta\'s national stadium is one of Indonesia\'s most iconic venues. It hosts international football matches, opening ceremonies, and major concerts.',
-                stadiumCapacityLabel: 'Capacity',
-                stadiumCapacityValue: '77,193 seats',
-                stadiumOpenedLabel: 'Opened',
-                stadiumOpenedValue: '1962',
                 dataNotice: '💡 Click on any city to view more information and attractions!',
                 errorLoading: '❌ Error loading data. Please try refreshing the page.',
                 mostPopulated: '# Most Populated City',
                 keyAttractions: 'Key Attractions',
                 coordinates: 'Coordinates',
-                populationLabel: 'Population'
+                populationLabel: 'Population',
+                stadiumInfoBtn: 'Stadium Info',
+                stadiumTitle: 'Gelora Bung Karno Stadium',
+                stadiumDescription: 'Indonesia\'s national stadium in Jakarta, famous for major football matches and international ceremonies.',
+                stadiumCapacityLabel: 'Capacity',
+                stadiumOpenedLabel: 'Opened',
+                stadiumUseLabel: 'Used for',
+                stadiumCapacityValue: 'about 77,000 spectators',
+                stadiumOpenedValue: '1962 (renovated in 2018)',
+                stadiumUseValue: 'football and national events'
             }
+        };
+
+        const stadiumData = {
+            image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Gelora%20Bung%20Karno%20Stadium,%20Interior.jpg'
         };
 
         // City data with translations
@@ -264,11 +278,36 @@
             
             document.getElementById('headerTitle').textContent = getTranslation('headerTitle');
             document.getElementById('headerSubtitle').textContent = getTranslation('headerSubtitle');
-            document.getElementById('stadiumInfoBtn').textContent = getTranslation('stadiumInfoBtn');
+            const stadiumBtn = document.getElementById('stadiumInfoBtn');
+            if (stadiumBtn) {
+                stadiumBtn.textContent = getTranslation('stadiumInfoBtn');
+            }
             
             loadData();
             
             localStorage.setItem('preferredLanguage', lang);
+        }
+
+        function openStadiumModal() {
+            const modal = document.getElementById('stadiumModal');
+            document.getElementById('stadiumModalImage').src = stadiumData.image;
+            document.getElementById('stadiumModalTitle').textContent = getTranslation('stadiumTitle');
+            document.getElementById('stadiumModalDescription').textContent = getTranslation('stadiumDescription');
+            document.getElementById('stadiumCapacityLabel').textContent = getTranslation('stadiumCapacityLabel');
+            document.getElementById('stadiumOpenedLabel').textContent = getTranslation('stadiumOpenedLabel');
+            document.getElementById('stadiumUseLabel').textContent = getTranslation('stadiumUseLabel');
+            document.getElementById('stadiumCapacityValue').textContent = getTranslation('stadiumCapacityValue');
+            document.getElementById('stadiumOpenedValue').textContent = getTranslation('stadiumOpenedValue');
+            document.getElementById('stadiumUseValue').textContent = getTranslation('stadiumUseValue');
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeStadiumModal() {
+            const modal = document.getElementById('stadiumModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
 
         function openCityModal(index) {
@@ -298,26 +337,6 @@
 
         function closeModal() {
             const modal = document.getElementById('cityModal');
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        function openStadiumModal() {
-            const modal = document.getElementById('stadiumModal');
-
-            document.getElementById('stadiumModalTitle').textContent = getTranslation('stadiumInfoTitle');
-            document.getElementById('stadiumModalDescription').textContent = getTranslation('stadiumInfoDescription');
-            document.getElementById('stadiumCapacityLabel').textContent = getTranslation('stadiumCapacityLabel');
-            document.getElementById('stadiumCapacityValue').textContent = getTranslation('stadiumCapacityValue');
-            document.getElementById('stadiumOpenedLabel').textContent = getTranslation('stadiumOpenedLabel');
-            document.getElementById('stadiumOpenedValue').textContent = getTranslation('stadiumOpenedValue');
-
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeStadiumModal() {
-            const modal = document.getElementById('stadiumModal');
             modal.classList.remove('active');
             document.body.style.overflow = 'auto';
         }

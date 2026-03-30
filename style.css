@@ -50,6 +50,51 @@ header p {
     opacity: 0.9;
 }
 
+.stadium-cta-wrap {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    pointer-events: none;
+}
+
+.stadium-info-btn {
+    width: 164px;
+    height: 164px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.82);
+    color: #f7fbff;
+    font-size: 1.02rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    pointer-events: auto;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 108, 168, 0.98) 0%, rgba(207, 30, 95, 0.96) 58%, rgba(134, 15, 58, 0.94) 100%);
+    box-shadow: 0 0 0 10px rgba(255, 75, 150, 0.18), 0 12px 28px rgba(0, 0, 0, 0.35);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+    animation: pulseRing 2.2s ease-in-out infinite;
+}
+
+.stadium-info-btn:hover {
+    transform: scale(1.05);
+    filter: brightness(1.06);
+    box-shadow: 0 0 0 14px rgba(255, 75, 150, 0.22), 0 16px 34px rgba(0, 0, 0, 0.42);
+}
+
+@keyframes pulseRing {
+    0% {
+        box-shadow: 0 0 0 8px rgba(255, 75, 150, 0.18), 0 12px 28px rgba(0, 0, 0, 0.35);
+    }
+    50% {
+        box-shadow: 0 0 0 18px rgba(255, 75, 150, 0.08), 0 12px 28px rgba(0, 0, 0, 0.35);
+    }
+    100% {
+        box-shadow: 0 0 0 8px rgba(255, 75, 150, 0.18), 0 12px 28px rgba(0, 0, 0, 0.35);
+    }
+}
+
 .main-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -305,53 +350,6 @@ header p {
     color: #667eea;
 }
 
-.stadium-info-trigger {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 132px;
-    height: 132px;
-    border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.92);
-    background: radial-gradient(circle at 30% 30%, rgba(255, 241, 201, 0.98) 0%, rgba(255, 188, 77, 0.95) 52%, rgba(214, 118, 17, 0.95) 100%);
-    color: #1b1309;
-    font-size: 0.9rem;
-    font-weight: 700;
-    line-height: 1.2;
-    text-align: center;
-    cursor: pointer;
-    box-shadow: 0 0 0 0 rgba(255, 189, 64, 0.55), 0 12px 28px rgba(4, 8, 19, 0.5);
-    z-index: 900;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
-    animation: stadiumPulse 2.2s infinite;
-}
-
-.stadium-info-trigger:hover {
-    transform: translate(-50%, -50%) scale(1.05);
-    filter: brightness(1.05);
-}
-
-.stadium-modal-content {
-    max-width: 760px;
-}
-
-.stadium-modal-content .modal-image {
-    height: 360px;
-}
-
-@keyframes stadiumPulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(255, 189, 64, 0.55), 0 12px 28px rgba(4, 8, 19, 0.5);
-    }
-    70% {
-        box-shadow: 0 0 0 24px rgba(255, 189, 64, 0), 0 16px 30px rgba(4, 8, 19, 0.55);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(255, 189, 64, 0), 0 12px 28px rgba(4, 8, 19, 0.5);
-    }
-}
-
 @media (max-width: 768px) {
     .language-selector {
         top: 10px;
@@ -361,13 +359,6 @@ header p {
     .lang-btn {
         padding: 6px 12px;
         font-size: 0.8em;
-    }
-
-    .stadium-info-trigger {
-        width: 104px;
-        height: 104px;
-        font-size: 0.76rem;
-        top: 52%;
     }
 }
 
@@ -493,6 +484,14 @@ header p {
     position: relative;
 }
 
+.stadium-modal-content {
+    max-width: 760px;
+}
+
+.stadium-modal-info {
+    grid-template-columns: repeat(3, 1fr);
+}
+
 @media (max-width: 768px) {
     body::before {
         background: linear-gradient(135deg, rgba(8, 18, 41, 0.84) 0%, rgba(28, 38, 64, 0.78) 100%);
@@ -533,11 +532,17 @@ header p {
         height: 250px;
     }
 
-    .stadium-modal-content .modal-image {
-        height: 250px;
+    .modal-info {
+        grid-template-columns: 1fr;
     }
 
-    .modal-info {
+    .stadium-info-btn {
+        width: 128px;
+        height: 128px;
+        font-size: 0.9rem;
+    }
+
+    .stadium-modal-info {
         grid-template-columns: 1fr;
     }
 
