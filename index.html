@@ -13,6 +13,8 @@
             <button class="lang-btn" onclick="changeLanguage('en')" id="enBtn">EN</button>
         </div>
 
+        <button class="stadium-info-trigger" onclick="openStadiumModal()" id="stadiumInfoBtn">ℹ️ Инфо за стадиона</button>
+
         <header>
             <h1 id="headerTitle">🇮🇩 Indonesia Explorer</h1>
             <p id="headerSubtitle">Explore detailed information about Indonesia</p>
@@ -55,6 +57,29 @@
         </div>
     </div>
 
+    <!-- Stadium Modal -->
+    <div class="modal-overlay" id="stadiumModal">
+        <div class="modal-content stadium-modal-content">
+            <button class="modal-close" onclick="closeStadiumModal()">&times;</button>
+            <img id="stadiumModalImage" class="modal-image" src="./assets/images/stadium-interior.png" alt="Gelora Bung Karno Stadium Interior" loading="lazy" decoding="async">
+            <div class="modal-body">
+                <h2 id="stadiumModalTitle" class="modal-title"></h2>
+                <p id="stadiumModalDescription" class="modal-description"></p>
+
+                <div class="modal-info">
+                    <div class="modal-info-item">
+                        <div class="modal-info-label" id="stadiumCapacityLabel"></div>
+                        <div id="stadiumCapacityValue" class="modal-info-value"></div>
+                    </div>
+                    <div class="modal-info-item">
+                        <div class="modal-info-label" id="stadiumOpenedLabel"></div>
+                        <div id="stadiumOpenedValue" class="modal-info-value"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         let currentLanguage = 'bg';
 
@@ -71,6 +96,13 @@
                 currency: 'Валута',
                 continent: 'Континент',
                 majorCities: '🏙️ Основни градове',
+                stadiumInfoBtn: 'ℹ️ Инфо за стадиона',
+                stadiumInfoTitle: 'Gelora Bung Karno Stadium',
+                stadiumInfoDescription: 'Националният стадион в Джакарта е сред най-емблематичните спортни арени в Индонезия. Домакин е на международни футболни срещи, церемонии и големи концерти.',
+                stadiumCapacityLabel: 'Капацитет',
+                stadiumCapacityValue: '77,193 места',
+                stadiumOpenedLabel: 'Открит',
+                stadiumOpenedValue: '1962 г.',
                 dataNotice: '💡 Щракнете на както град за повече информация и атракции!',
                 errorLoading: '❌ Грешка при зареждане на данни. Моля, опресни страницата.',
                 mostPopulated: '# Най-населения град',
@@ -89,6 +121,13 @@
                 currency: 'Currency',
                 continent: 'Continent',
                 majorCities: '🏙️ Major Cities',
+                stadiumInfoBtn: 'ℹ️ Stadium Info',
+                stadiumInfoTitle: 'Gelora Bung Karno Stadium',
+                stadiumInfoDescription: 'Jakarta\'s national stadium is one of Indonesia\'s most iconic venues. It hosts international football matches, opening ceremonies, and major concerts.',
+                stadiumCapacityLabel: 'Capacity',
+                stadiumCapacityValue: '77,193 seats',
+                stadiumOpenedLabel: 'Opened',
+                stadiumOpenedValue: '1962',
                 dataNotice: '💡 Click on any city to view more information and attractions!',
                 errorLoading: '❌ Error loading data. Please try refreshing the page.',
                 mostPopulated: '# Most Populated City',
@@ -225,6 +264,7 @@
             
             document.getElementById('headerTitle').textContent = getTranslation('headerTitle');
             document.getElementById('headerSubtitle').textContent = getTranslation('headerSubtitle');
+            document.getElementById('stadiumInfoBtn').textContent = getTranslation('stadiumInfoBtn');
             
             loadData();
             
@@ -262,6 +302,26 @@
             document.body.style.overflow = 'auto';
         }
 
+        function openStadiumModal() {
+            const modal = document.getElementById('stadiumModal');
+
+            document.getElementById('stadiumModalTitle').textContent = getTranslation('stadiumInfoTitle');
+            document.getElementById('stadiumModalDescription').textContent = getTranslation('stadiumInfoDescription');
+            document.getElementById('stadiumCapacityLabel').textContent = getTranslation('stadiumCapacityLabel');
+            document.getElementById('stadiumCapacityValue').textContent = getTranslation('stadiumCapacityValue');
+            document.getElementById('stadiumOpenedLabel').textContent = getTranslation('stadiumOpenedLabel');
+            document.getElementById('stadiumOpenedValue').textContent = getTranslation('stadiumOpenedValue');
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeStadiumModal() {
+            const modal = document.getElementById('stadiumModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const savedLang = localStorage.getItem('preferredLanguage') || 'bg';
             if (savedLang !== currentLanguage) {
@@ -275,9 +335,17 @@
                 }
             });
 
+            const stadiumModal = document.getElementById('stadiumModal');
+            stadiumModal.addEventListener('click', function(e) {
+                if (e.target === stadiumModal) {
+                    closeStadiumModal();
+                }
+            });
+
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     closeModal();
+                    closeStadiumModal();
                 }
             });
 
