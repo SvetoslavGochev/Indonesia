@@ -98,6 +98,18 @@
             color: #667eea;
             margin-bottom: 20px;
             font-size: 2em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .country-info h2::before {
+            content: '';
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #ffd3e4 0%, #ff4b96 40%, #c21456 100%);
+            box-shadow: 0 0 0 3px rgba(255, 75, 150, 0.2), 0 2px 6px rgba(5, 12, 30, 0.35);
         }
 
         .info-grid {
@@ -514,7 +526,7 @@
             bg: {
                 headerTitle: '🇮🇩 Indonesia Explorer',
                 headerSubtitle: 'Разгледайте подробна информация за Индонезия',
-                countryInfo: '📍 Информация за страната',
+                countryInfo: 'Информация за страната',
                 capital: 'Столица',
                 population: 'Население',
                 area: 'Площ',
@@ -532,7 +544,7 @@
             en: {
                 headerTitle: '🇮🇩 Indonesia Explorer',
                 headerSubtitle: 'Explore detailed information about Indonesia',
-                countryInfo: '📍 Country Information',
+                countryInfo: 'Country Information',
                 capital: 'Capital',
                 population: 'Population',
                 area: 'Area',
