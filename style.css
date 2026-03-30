@@ -79,10 +79,11 @@ header p {
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
     transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
     animation: pulseRing 2.2s ease-in-out infinite;
+    transform: translateY(-2px);
 }
 
 .stadium-info-btn:hover {
-    transform: scale(1.05);
+    transform: translateY(-2px) scale(1.05);
     filter: brightness(1.06);
     box-shadow: 0 0 0 10px rgba(255, 75, 150, 0.22), 0 16px 34px rgba(0, 0, 0, 0.42);
 }
@@ -548,6 +549,7 @@ header p {
         width: 68px;
         height: 68px;
         font-size: 0.55rem;
+        transform: translateY(-1px);
     }
 
     .stadium-modal-info {
