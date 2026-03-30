@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0f1f3a url('https://upload.wikimedia.org/wikipedia/commons/7/7a/Asian_Games_2018_GBK_Stadium_10.jpg') center center / cover no-repeat fixed;
+            background: #0f1f3a url('./assets/images/jakarta-stadium.jpg') center center / cover no-repeat fixed;
             min-height: 100vh;
             padding: 20px;
             position: relative;
@@ -468,7 +468,7 @@
     <div class="modal-overlay" id="cityModal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">&times;</button>
-            <img id="modalImage" class="modal-image" src="" alt="City">
+            <img id="modalImage" class="modal-image" src="" alt="City" loading="lazy" decoding="async">
             <div class="modal-body">
                 <div id="modalRank" class="modal-rank"></div>
                 <h2 id="modalTitle" class="modal-title"></h2>
@@ -558,7 +558,7 @@
                     population: '10,556,500',
                     latitude: -6.2088,
                     longitude: 106.8456,
-                    image: 'https://upload.wikimedia.org/wikipedia/commons/2/2d/Bundaran_Hotel_Indonesia_%282025%29.jpg',
+                    image: './assets/images/jakarta.jpg',
                     description_bg: 'Столицата на Индонезия - оживен град с融合 на модерна архитектура и традиционна култура. Известен със своите висок небостъргачи и натъпканите пазари.',
                     description_en: 'The capital of Indonesia - a vibrant city with a blend of modern architecture and traditional culture. Known for its towering skyscrapers and bustling markets.',
                     highlights_bg: ['Национален монумент', 'Древни храмове', 'Оживен нощен живот', 'Световно известна кухня'],
@@ -570,7 +570,7 @@
                     population: '2,853,662',
                     latitude: -7.2504,
                     longitude: 112.7469,
-                    image: 'https://upload.wikimedia.org/wikipedia/commons/0/09/Central_Surabaya_view_taken_from_JW_Marriott_Surabaya.jpg',
+                    image: './assets/images/surabaya.jpg',
                     description_bg: 'Втория по големина град в Индонезия, възпирание като индустриален център. Известен със своята исторически значимост и пристанище.',
                     description_en: 'Indonesia\'s second-largest city, established as an industrial center. Known for its historical significance and port.',
                     highlights_bg: ['Исторически пристанище', 'Храм Йомо', 'Редки артефакти', 'Морски животът'],
@@ -582,7 +582,7 @@
                     population: '2,394,373',
                     latitude: -6.9175,
                     longitude: 107.6062,
-                    image: 'https://upload.wikimedia.org/wikipedia/commons/4/43/Bandung_View_dari_Gedung_Wisma_HSBC_Asia_Afrika_4.jpg',
+                    image: './assets/images/bandung.jpg',
                     description_bg: 'Град в планислинските на Западна Ява, познат със своя прохладен климат и живописни пейзажи. Популярна туристическа дестинация.',
                     description_en: 'A city in the highlands of West Java, known for its cool climate and scenic landscapes. A popular tourist destination.',
                     highlights_bg: ['Чайни плантации', 'Вулкани и термални извори', 'Местни художнини', 'Традиционна архитектура'],
@@ -594,7 +594,7 @@
                     population: '2,097,610',
                     latitude: 2.1949,
                     longitude: 98.6722,
-                    image: 'https://upload.wikimedia.org/wikipedia/commons/2/2d/Great_mosque_in_Medan_cropped.jpg',
+                    image: './assets/images/medan.jpg',
                     description_bg: 'Град на остров Суматра, важен търговски център. Известен с разнообразната си культура и многокултурното наследство.',
                     description_en: 'A city on the island of Sumatra, an important commercial center. Known for its diverse culture and multicultural heritage.',
                     highlights_bg: ['Халал пазари', 'Будистки храмове', 'Колониални сгради', 'Екзотични храни'],
@@ -606,7 +606,7 @@
                     population: '1,555,172',
                     latitude: -6.9667,
                     longitude: 110.4167,
-                    image: 'https://upload.wikimedia.org/wikipedia/commons/7/7e/Lawang_Sewu_in_Semarang_City.jpg',
+                    image: './assets/images/semarang.jpg',
                     description_bg: 'Портова град на Ява, комбинация на старо и ново. Известен със своите исторически сгради и морската кухня.',
                     description_en: 'A port city in Java, a combination of old and new. Known for its historical buildings and seafood cuisine.',
                     highlights_bg: ['Древни форталеззи', 'Колониален дизайн', 'Гарнирен пристанище', 'Местни деликатеси'],
@@ -618,7 +618,7 @@
                     population: '1,429,412',
                     latitude: -5.1477,
                     longitude: 119.4327,
-                    image: 'https://upload.wikimedia.org/wikipedia/commons/a/ae/Makassar%2C_March_2019_%28cropped%29.jpg',
+                    image: './assets/images/makassar.jpg',
                     description_bg: 'Портова град на Сулавеси, известен със своите красиви плажове и подводен свят. Станало туристическо място за водни спортове.',
                     description_en: 'A port city in Sulawesi, known for its beautiful beaches and underwater world. A popular destination for water sports.',
                     highlights_bg: ['Корални рифове', 'Тропични плажи', 'Подводна фауна', 'Водни спортове'],
@@ -630,7 +630,7 @@
                     population: '1,455,284',
                     latitude: -2.9181,
                     longitude: 104.7453,
-                    image: 'https://upload.wikimedia.org/wikipedia/commons/c/c0/LRT_Palembang_Ampera_Bridge.jpg',
+                    image: './assets/images/palembang.jpg',
                     description_bg: 'Град на Суматра с богата история. Известен със своите древни империи и река Мусай, която протича през град.',
                     description_en: 'A city on Sumatra with rich history. Known for its ancient empires and the Musi River flowing through the city.',
                     highlights_bg: ['Древни памятници', 'Историческа река', 'Традиционни кораби', 'Исторически музеи'],
@@ -642,7 +642,7 @@
                     population: '636,660',
                     latitude: -7.8000,
                     longitude: 110.3693,
-                    image: 'https://upload.wikimedia.org/wikipedia/commons/b/b8/Jogja_-_Tugu_Monument_%282025%29_-_img_06.jpg',
+                    image: './assets/images/yogyakarta.jpg',
                     description_bg: 'Град на Ява, духовен и културен център на Индонезия. Известен със своите древни храмове и художествена наследство.',
                     description_en: 'A city in Java, the spiritual and cultural center of Indonesia. Known for its ancient temples and artistic heritage.',
                     highlights_bg: ['Храм Боробудур', 'Древни храмове', 'Художествени гончарства', 'Традиционна танца'],
