@@ -88,12 +88,13 @@ header p {
 }
 
 .country-info h2 {
-    color: #667eea;
+    color: #f2f7ff;
     margin-bottom: 20px;
     font-size: 2em;
     display: flex;
     align-items: center;
     gap: 12px;
+    text-shadow: 0 2px 7px rgba(4, 10, 24, 0.75);
 }
 
 .country-info h2::before {
@@ -102,7 +103,14 @@ header p {
     height: 14px;
     border-radius: 50%;
     background: radial-gradient(circle at 30% 30%, #ffd3e4 0%, #ff4b96 40%, #c21456 100%);
-    box-shadow: 0 0 0 3px rgba(255, 75, 150, 0.2), 0 2px 6px rgba(5, 12, 30, 0.35);
+    box-shadow: 0 0 0 3px rgba(255, 75, 150, 0.28), 0 2px 6px rgba(5, 12, 30, 0.45);
+}
+
+#content .card:not(.country-info) > h2 {
+    color: #f2f7ff;
+    margin-bottom: 20px;
+    font-size: 2em;
+    text-shadow: 0 2px 7px rgba(4, 10, 24, 0.75);
 }
 
 .info-grid {
