@@ -50,28 +50,32 @@ header p {
     opacity: 0.9;
 }
 
-.stadium-cta-wrap {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 20;
-    pointer-events: none;
+
+.country-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.country-title-row h2 {
+    margin-bottom: 0;
 }
 
 .stadium-info-btn {
-    width: 164px;
-    height: 164px;
+    width: 82px;
+    height: 82px;
     border-radius: 50%;
     border: 2px solid rgba(255, 255, 255, 0.82);
     color: #f7fbff;
-    font-size: 1.02rem;
+    font-size: 0.62rem;
     font-weight: 700;
-    letter-spacing: 0.02em;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
     cursor: pointer;
-    pointer-events: auto;
     background: radial-gradient(circle at 30% 30%, rgba(255, 108, 168, 0.98) 0%, rgba(207, 30, 95, 0.96) 58%, rgba(134, 15, 58, 0.94) 100%);
-    box-shadow: 0 0 0 10px rgba(255, 75, 150, 0.18), 0 12px 28px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0 0 6px rgba(255, 75, 150, 0.18), 0 12px 28px rgba(0, 0, 0, 0.35);
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
     transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
     animation: pulseRing 2.2s ease-in-out infinite;
@@ -80,18 +84,18 @@ header p {
 .stadium-info-btn:hover {
     transform: scale(1.05);
     filter: brightness(1.06);
-    box-shadow: 0 0 0 14px rgba(255, 75, 150, 0.22), 0 16px 34px rgba(0, 0, 0, 0.42);
+    box-shadow: 0 0 0 10px rgba(255, 75, 150, 0.22), 0 16px 34px rgba(0, 0, 0, 0.42);
 }
 
 @keyframes pulseRing {
     0% {
-        box-shadow: 0 0 0 8px rgba(255, 75, 150, 0.18), 0 12px 28px rgba(0, 0, 0, 0.35);
+        box-shadow: 0 0 0 5px rgba(255, 75, 150, 0.18), 0 12px 28px rgba(0, 0, 0, 0.35);
     }
     50% {
-        box-shadow: 0 0 0 18px rgba(255, 75, 150, 0.08), 0 12px 28px rgba(0, 0, 0, 0.35);
+        box-shadow: 0 0 0 10px rgba(255, 75, 150, 0.08), 0 12px 28px rgba(0, 0, 0, 0.35);
     }
     100% {
-        box-shadow: 0 0 0 8px rgba(255, 75, 150, 0.18), 0 12px 28px rgba(0, 0, 0, 0.35);
+        box-shadow: 0 0 0 5px rgba(255, 75, 150, 0.18), 0 12px 28px rgba(0, 0, 0, 0.35);
     }
 }
 
@@ -536,10 +540,14 @@ header p {
         grid-template-columns: 1fr;
     }
 
+    .country-title-row {
+        gap: 10px;
+    }
+
     .stadium-info-btn {
-        width: 128px;
-        height: 128px;
-        font-size: 0.9rem;
+        width: 68px;
+        height: 68px;
+        font-size: 0.55rem;
     }
 
     .stadium-modal-info {

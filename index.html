@@ -18,10 +18,6 @@
             <p id="headerSubtitle">Explore detailed information about Indonesia</p>
         </header>
 
-        <div class="stadium-cta-wrap">
-            <button id="stadiumInfoBtn" class="stadium-info-btn" onclick="openStadiumModal()">Инфо за стадиона</button>
-        </div>
-
         <div id="content">
             <div class="loading">
                 <div class="spinner"></div>
@@ -148,7 +144,7 @@
         };
 
         const stadiumData = {
-            image: 'https://commons.wikimedia.org/wiki/Special:FilePath/Gelora%20Bung%20Karno%20Stadium,%20Interior.jpg'
+            image: 'https://commons.wikimedia.org/wiki/Special:FilePath/GBK%20Main%20Stadium%20during%20Athletics%20APG2018%20(5).jpg'
         };
 
         // City data with translations
@@ -278,10 +274,6 @@
             
             document.getElementById('headerTitle').textContent = getTranslation('headerTitle');
             document.getElementById('headerSubtitle').textContent = getTranslation('headerSubtitle');
-            const stadiumBtn = document.getElementById('stadiumInfoBtn');
-            if (stadiumBtn) {
-                stadiumBtn.textContent = getTranslation('stadiumInfoBtn');
-            }
             
             loadData();
             
@@ -379,7 +371,10 @@
                 
                 const html = `
                     <div class="card country-info">
-                        <h2>${getTranslation('countryInfo')}</h2>
+                        <div class="country-title-row">
+                            <h2>${getTranslation('countryInfo')}</h2>
+                            <button id="stadiumInfoBtn" class="stadium-info-btn" onclick="openStadiumModal()">${getTranslation('stadiumInfoBtn')}</button>
+                        </div>
                         <div class="info-grid">
                             <div class="info-item">
                                 <div class="info-label">${getTranslation('capital')}</div>
