@@ -58,7 +58,7 @@ header p {
 }
 
 .card {
-    background: rgba(223, 230, 242, 0.88);
+    background: rgba(223, 230, 242, 0.03);
     border-radius: 15px;
     padding: 30px;
     border: 1px solid rgba(180, 194, 220, 0.45);
