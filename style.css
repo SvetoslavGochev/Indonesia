@@ -488,11 +488,11 @@ header p {
 }
 
 .stadium-modal-content {
-    max-width: 680px;
+    max-width: 640px;
 }
 
 .stadium-modal-image {
-    height: 320px;
+    height: 300px;
     object-fit: cover;
     object-position: center center;
     filter: saturate(1.04) contrast(1.03);
@@ -543,7 +543,7 @@ header p {
     }
 
     .stadium-modal-image {
-        height: 220px;
+        height: 210px;
     }
 
     .modal-info {
