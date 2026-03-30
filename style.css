@@ -491,6 +491,11 @@ header p {
     max-width: 760px;
 }
 
+.stadium-modal-image {
+    object-position: center 42%;
+    filter: saturate(1.04) contrast(1.03);
+}
+
 .stadium-modal-info {
     grid-template-columns: repeat(3, 1fr);
 }
