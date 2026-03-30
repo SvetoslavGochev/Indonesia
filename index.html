@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indonesia Explorer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .country-info {
+            grid-column: 1 / -1;
+        }
+
+        .country-info h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .info-item {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .info-label {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .info-value {
+            color: #333;
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+
+        .cities-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .cities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .city-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .city-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .city-rank {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .city-name {
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .city-population {
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top: 4px solid white;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: #ff6b6b;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .api-notice {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 999;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .lang-btn.active {
+            background: white;
+            color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .language-selector {
+                top: 10px;
+                right: 10px;
+            }
+
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .modal-title {
+            font-size: 2em;
+            color: #667eea;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-rank {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .modal-description {
+            color: #555;
+            font-size: 1.05em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .modal-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .modal-info-item {
+            background: #f5f7fa;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+
+        .modal-info-label {
+            font-size: 0.85em;
+            color: #999;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .modal-info-value {
+            font-size: 1em;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .modal-highlights {
+            margin-bottom: 20px;
+        }
+
+        .highlights-title {
+            font-size: 1em;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .highlights-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .highlight-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            display: inline-block;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .modal-close:hover {
+            background: #667eea;
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .modal-content {
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+            }
+
+            .modal-body {
+                padding: 20px;
+            }
+
+            .modal-image {
+                height: 250px;
+            }
+
+            .modal-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="language-selector">
+            <button class="lang-btn active" onclick="changeLanguage('bg')" id="bgBtn">BG</button>
+            <button class="lang-btn" onclick="changeLanguage('en')" id="enBtn">EN</button>
+        </div>
+
+        <header>
+            <h1 id="headerTitle">🇮🇩 Indonesia Explorer</h1>
+            <p id="headerSubtitle">Explore detailed information about Indonesia</p>
+        </header>
+
+        <div id="content">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p style="margin-top: 20px;">Loading Indonesia data...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- City Modal -->
+    <div class="modal-overlay" id="cityModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <img id="modalImage" class="modal-image" src="" alt="City">
+            <div class="modal-body">
+                <div id="modalRank" class="modal-rank"></div>
+                <h2 id="modalTitle" class="modal-title"></h2>
+                <p id="modalDescription" class="modal-description"></p>
+                
+                <div class="modal-info">
+                    <div class="modal-info-item">
+                        <div class="modal-info-label" id="populationLabel">Population</div>
+                        <div id="modalPopulation" class="modal-info-value"></div>
+                    </div>
+                    <div class="modal-info-item">
+                        <div class="modal-info-label" id="coordinatesLabel">Coordinates</div>
+                        <div id="modalCoordinates" class="modal-info-value"></div>
+                    </div>
+                </div>
+
+                <div class="modal-highlights">
+                    <div class="highlights-title" id="attractionsLabel">Key Attractions</div>
+                    <div id="modalHighlights" class="highlights-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentLanguage = 'bg';
+
+        // Translations object
+        const translations = {
+            bg: {
+                headerTitle: '🇮🇩 Indonesia Explorer',
+                headerSubtitle: 'Разгледайте подробна информация за Индонезия',
+                countryInfo: '📍 Информация за страната',
+                capital: 'Столица',
+                population: 'Население',
+                area: 'Площ',
+                language: 'Официален език',
+                currency: 'Валута',
+                continent: 'Континент',
+                majorCities: '🏙️ Основни градове',
+                dataNotice: '💡 Щракнете на както град за повече информация и атракции!',
+                errorLoading: '❌ Грешка при зареждане на данни. Моля, опресни страницата.',
+                mostPopulated: '# Най-населения град',
+                keyAttractions: 'Ключови атракции',
+                coordinates: 'Координати',
+                populationLabel: 'Население'
+            },
+            en: {
+                headerTitle: '🇮🇩 Indonesia Explorer',
+                headerSubtitle: 'Explore detailed information about Indonesia',
+                countryInfo: '📍 Country Information',
+                capital: 'Capital',
+                population: 'Population',
+                area: 'Area',
+                language: 'Official Language',
+                currency: 'Currency',
+                continent: 'Continent',
+                majorCities: '🏙️ Major Cities',
+                dataNotice: '💡 Click on any city to view more information and attractions!',
+                errorLoading: '❌ Error loading data. Please try refreshing the page.',
+                mostPopulated: '# Most Populated City',
+                keyAttractions: 'Key Attractions',
+                coordinates: 'Coordinates',
+                populationLabel: 'Population'
+            }
+        };
+
+        // City data with translations
+        const indonesiaData = {
+            country: {
+                name: 'Indonesia',
+                capital: 'Jakarta',
+                population: '275,501,339',
+                area: '1,904,569 km²',
+                continent: 'Asia',
+                language: 'Indonesian',
+                currency: 'Indonesian Rupiah (IDR)',
+                timezone: 'WITA (UTC+8)',
+                region: 'Southeast Asia',
+                code: 'ID',
+                flagEmoji: '🇮🇩'
+            },
+            cities: [
+                {
+                    rank: 1,
+                    name: 'Jakarta',
+                    population: '10,556,500',
+                    latitude: -6.2088,
+                    longitude: 106.8456,
+                    image: 'https://picsum.photos/800/600?random=1',
+                    description_bg: 'Столицата на Индонезия - оживен град с融合 на модерна архитектура и традиционна култура. Известен със своите висок небостъргачи и натъпканите пазари.',
+                    description_en: 'The capital of Indonesia - a vibrant city with a blend of modern architecture and traditional culture. Known for its towering skyscrapers and bustling markets.',
+                    highlights_bg: ['Национален монумент', 'Древни храмове', 'Оживен нощен живот', 'Световно известна кухня'],
+                    highlights_en: ['National Monument', 'Ancient Temples', 'Vibrant Nightlife', 'World-Famous Cuisine']
+                },
+                {
+                    rank: 2,
+                    name: 'Surabaya',
+                    population: '2,853,662',
+                    latitude: -7.2504,
+                    longitude: 112.7469,
+                    image: 'https://picsum.photos/800/600?random=2',
+                    description_bg: 'Втория по големина град в Индонезия, възпирание като индустриален център. Известен със своята исторически значимост и пристанище.',
+                    description_en: 'Indonesia\'s second-largest city, established as an industrial center. Known for its historical significance and port.',
+                    highlights_bg: ['Исторически пристанище', 'Храм Йомо', 'Редки артефакти', 'Морски животът'],
+                    highlights_en: ['Historic Port', 'Yomo Temple', 'Rare Artifacts', 'Marine Life']
+                },
+                {
+                    rank: 3,
+                    name: 'Bandung',
+                    population: '2,394,373',
+                    latitude: -6.9175,
+                    longitude: 107.6062,
+                    image: 'https://picsum.photos/800/600?random=3',
+                    description_bg: 'Град в планислинските на Западна Ява, познат със своя прохладен климат и живописни пейзажи. Популярна туристическа дестинация.',
+                    description_en: 'A city in the highlands of West Java, known for its cool climate and scenic landscapes. A popular tourist destination.',
+                    highlights_bg: ['Чайни плантации', 'Вулкани и термални извори', 'Местни художнини', 'Традиционна архитектура'],
+                    highlights_en: ['Tea Plantations', 'Volcanoes & Hot Springs', 'Local Artists', 'Traditional Architecture']
+                },
+                {
+                    rank: 4,
+                    name: 'Medan',
+                    population: '2,097,610',
+                    latitude: 2.1949,
+                    longitude: 98.6722,
+                    image: 'https://picsum.photos/800/600?random=4',
+                    description_bg: 'Град на остров Суматра, важен търговски център. Известен с разнообразната си культура и многокултурното наследство.',
+                    description_en: 'A city on the island of Sumatra, an important commercial center. Known for its diverse culture and multicultural heritage.',
+                    highlights_bg: ['Халал пазари', 'Будистки храмове', 'Колониални сгради', 'Екзотични храни'],
+                    highlights_en: ['Halal Markets', 'Buddhist Temples', 'Colonial Buildings', 'Exotic Cuisine']
+                },
+                {
+                    rank: 5,
+                    name: 'Semarang',
+                    population: '1,555,172',
+                    latitude: -6.9667,
+                    longitude: 110.4167,
+                    image: 'https://picsum.photos/800/600?random=5',
+                    description_bg: 'Портова град на Ява, комбинация на старо и ново. Известен със своите исторически сгради и морската кухня.',
+                    description_en: 'A port city in Java, a combination of old and new. Known for its historical buildings and seafood cuisine.',
+                    highlights_bg: ['Древни форталеззи', 'Колониален дизайн', 'Гарнирен пристанище', 'Местни деликатеси'],
+                    highlights_en: ['Ancient Fortresses', 'Colonial Design', 'Bustling Harbor', 'Local Delicacies']
+                },
+                {
+                    rank: 6,
+                    name: 'Makassar',
+                    population: '1,429,412',
+                    latitude: -5.1477,
+                    longitude: 119.4327,
+                    image: 'https://picsum.photos/800/600?random=6',
+                    description_bg: 'Портова град на Сулавеси, известен със своите красиви плажове и подводен свят. Станало туристическо място за водни спортове.',
+                    description_en: 'A port city in Sulawesi, known for its beautiful beaches and underwater world. A popular destination for water sports.',
+                    highlights_bg: ['Корални рифове', 'Тропични плажи', 'Подводна фауна', 'Водни спортове'],
+                    highlights_en: ['Coral Reefs', 'Tropical Beaches', 'Underwater Fauna', 'Water Sports']
+                },
+                {
+                    rank: 7,
+                    name: 'Palembang',
+                    population: '1,455,284',
+                    latitude: -2.9181,
+                    longitude: 104.7453,
+                    image: 'https://picsum.photos/800/600?random=7',
+                    description_bg: 'Град на Суматра с богата история. Известен със своите древни империи и река Мусай, която протича през град.',
+                    description_en: 'A city on Sumatra with rich history. Known for its ancient empires and the Musi River flowing through the city.',
+                    highlights_bg: ['Древни памятници', 'Историческа река', 'Традиционни кораби', 'Исторически музеи'],
+                    highlights_en: ['Ancient Monuments', 'Historic River', 'Traditional Boats', 'Historical Museums']
+                },
+                {
+                    rank: 8,
+                    name: 'Yogyakarta',
+                    population: '636,660',
+                    latitude: -7.8000,
+                    longitude: 110.3693,
+                    image: 'https://picsum.photos/800/600?random=8',
+                    description_bg: 'Град на Ява, духовен и културен център на Индонезия. Известен със своите древни храмове и художествена наследство.',
+                    description_en: 'A city in Java, the spiritual and cultural center of Indonesia. Known for its ancient temples and artistic heritage.',
+                    highlights_bg: ['Храм Боробудур', 'Древни храмове', 'Художествени гончарства', 'Традиционна танца'],
+                    highlights_en: ['Borobudur Temple', 'Ancient Temples', 'Art Pottery', 'Traditional Dance']
+                }
+            ]
+        };
+
+        function getTranslation(key) {
+            return translations[currentLanguage][key] || key;
+        }
+
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            
+            document.getElementById('bgBtn').classList.toggle('active', lang === 'bg');
+            document.getElementById('enBtn').classList.toggle('active', lang === 'en');
+            
+            document.getElementById('headerTitle').textContent = getTranslation('headerTitle');
+            document.getElementById('headerSubtitle').textContent = getTranslation('headerSubtitle');
+            
+            loadData();
+            
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        function openCityModal(index) {
+            const city = indonesiaData.cities[index];
+            const modal = document.getElementById('cityModal');
+            const descKey = `description_${currentLanguage}`;
+            const highlightsKey = `highlights_${currentLanguage}`;
+
+            document.getElementById('modalRank').innerHTML = `#${city.rank} ${getTranslation('mostPopulated')}`;
+            document.getElementById('modalTitle').textContent = city.name;
+            document.getElementById('modalImage').src = city.image;
+            document.getElementById('modalDescription').textContent = city[descKey];
+            document.getElementById('modalPopulation').textContent = city.population;
+            document.getElementById('modalCoordinates').textContent = `${city.latitude.toFixed(2)}°, ${city.longitude.toFixed(2)}°`;
+            
+            // Update modal labels
+            document.getElementById('populationLabel').textContent = getTranslation('population');
+            document.getElementById('coordinatesLabel').textContent = getTranslation('coordinates');
+            document.getElementById('attractionsLabel').textContent = getTranslation('keyAttractions');
+
+            const highlightsHTML = city[highlightsKey].map(h => `<span class="highlight-badge">${h}</span>`).join('');
+            document.getElementById('modalHighlights').innerHTML = highlightsHTML;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('cityModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'bg';
+            if (savedLang !== currentLanguage) {
+                changeLanguage(savedLang);
+            }
+
+            const modal = document.getElementById('cityModal');
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+
+            loadData();
+        });
+
+        async function loadData() {
+            try {
+                await new Promise(resolve => setTimeout(resolve, 500));
+
+                const contentDiv = document.getElementById('content');
+                
+                const html = `
+                    <div class="card country-info">
+                        <h2>${getTranslation('countryInfo')}</h2>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-label">${getTranslation('capital')}</div>
+                                <div class="info-value">${indonesiaData.country.capital}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">${getTranslation('population')}</div>
+                                <div class="info-value">${indonesiaData.country.population}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">${getTranslation('area')}</div>
+                                <div class="info-value">${indonesiaData.country.area}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">${getTranslation('language')}</div>
+                                <div class="info-value">${indonesiaData.country.language}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">${getTranslation('currency')}</div>
+                                <div class="info-value">${indonesiaData.country.currency}</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">${getTranslation('continent')}</div>
+                                <div class="info-value">${indonesiaData.country.continent}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h2>${getTranslation('majorCities')}</h2>
+                        <div class="cities-grid">
+                            ${indonesiaData.cities.map((city, index) => `
+                                <div class="city-card" onclick="openCityModal(${index})">
+                                    <div class="city-rank">#${city.rank}</div>
+                                    <div class="city-name">${city.name}</div>
+                                    <div class="city-population">${getTranslation('populationLabel')}: ${city.population}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="api-notice">
+                        ${getTranslation('dataNotice')}
+                    </div>
+                `;
+
+                contentDiv.innerHTML = html;
+
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('content').innerHTML = `
+                    <div class="error">
+                        ${getTranslation('errorLoading')}
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
