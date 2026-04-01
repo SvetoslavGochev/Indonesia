@@ -1,185 +1,465 @@
-// Indonesia Data Module
-const INDONESIA_DATA = {
-  country: {
-    name: 'Indonesia',
-    capital: 'Jakarta',
-    population: '275,501,339',
-    area: '1,904,569 km²',
-    continent: 'Asia',
-    language: 'Indonesian',
-    currency: 'Indonesian Rupiah (IDR)',
-    timezone: 'WITA (UTC+8)',
-    region: 'Southeast Asia',
-    code: 'ID',
-    flagEmoji: '🇮🇩'
-  },
-  cities: [
-    {
-      rank: 1,
-      name: 'Jakarta',
-      population: '10,556,500',
-      latitude: -6.2088,
-      longitude: 106.8456,
-      image: 'https://picsum.photos/800/600?random=1',
-      description: 'Столицата на Индонезия - оживен град с融合 на модерна архитектура и традиционна култура. Известен със своите висок небостъргачи и натъпканите пазари.',
-      highlights: ['Национален монумент', 'Древни храмове', 'Оживен нощен живот', 'Световно известна кухня']
+(function () {
+  let currentLanguage = 'bg';
+
+  const translations = {
+    bg: {
+      headerTitle: '🇮🇩 Indonesia Explorer',
+      headerSubtitle: 'Разгледайте подробна информация за Индонезия',
+      countryInfo: 'Информация за страната',
+      capital: 'Столица',
+      population: 'Население',
+      area: 'Площ',
+      language: 'Официален език',
+      currency: 'Валута',
+      continent: 'Континент',
+      majorCities: '🏙️ Основни градове',
+      dataNotice: '💡 Щракнете на всеки град за повече информация и атракции!',
+      errorLoading: '❌ Грешка при зареждане на данни. Моля, опресни страницата.',
+      mostPopulated: '# Най-населения град',
+      keyAttractions: 'Ключови атракции',
+      coordinates: 'Координати',
+      populationLabel: 'Население',
+      stadiumInfoBtn: 'Инфо за стадиона',
+      stadiumTitle: 'Gelora Bung Karno Stadium',
+      stadiumDescription: 'Националният стадион на Индонезия в Джакарта. Известен е с мащабните футболни мачове и международни церемонии.',
+      stadiumCapacityLabel: 'Капацитет',
+      stadiumOpenedLabel: 'Открит',
+      stadiumUseLabel: 'Използва се за',
+      stadiumCapacityValue: 'около 77 000 зрители',
+      stadiumOpenedValue: '1962 (реновиран 2018)',
+      stadiumUseValue: 'футбол и национални събития'
     },
-    {
-      rank: 2,
-      name: 'Surabaya',
-      population: '2,853,662',
-      latitude: -7.2504,
-      longitude: 112.7469,
-      image: 'https://picsum.photos/800/600?random=2',
-      description: 'Втория по големина град в Индонезия, възпирание като индустриален център. Известен със своята исторически значимост и пристанище.',
-      highlights: ['Исторически пристанище', 'Храм Йомо', 'Редки артефакти', 'Морски животът']
-    },
-    {
-      rank: 3,
-      name: 'Bandung',
-      population: '2,394,373',
-      latitude: -6.9175,
-      longitude: 107.6062,
-      image: 'https://picsum.photos/800/600?random=3',
-      description: 'Град в планислинските на Западна Ява, познат със своя прохладен климат и живописни пейзажи. Популярна туристическа дестинация.',
-      highlights: ['Чайни плантации', 'Вулкани и термални извори', 'Местни художнини', 'Традиционна архитектура']
-    },
-    {
-      rank: 4,
-      name: 'Medan',
-      population: '2,097,610',
-      latitude: 2.1949,
-      longitude: 98.6722,
-      image: 'https://picsum.photos/800/600?random=4',
-      description: 'Град на остров Суматра, важен търговски център. Известен с разнообразната си культура и многокултурното наследство.',
-      highlights: ['Халал пазари', 'Будистки храмове', 'Колониални сгради', 'Екзотични храни']
-    },
-    {
-      rank: 5,
-      name: 'Semarang',
-      population: '1,555,172',
-      latitude: -6.9667,
-      longitude: 110.4167,
-      image: 'https://picsum.photos/800/600?random=5',
-      description: 'Портова град на Ява, комбинация на старо и ново. Известен със своите исторически сгради и морската кухня.',
-      highlights: ['Древни форталеззи', 'Колониален дизайн', 'Гарнирен пристанище', 'Местни деликатеси']
-    },
-    {
-      rank: 6,
-      name: 'Makassar',
-      population: '1,429,412',
-      latitude: -5.1477,
-      longitude: 119.4327,
-      image: 'https://picsum.photos/800/600?random=6',
-      description: 'Портова град на Сулавеси, известен със своите красиви плажове и подводен свят. Станало туристическо място за водни спортове.',
-      highlights: ['Корални рифове', 'Тропически плажи', 'Подводна фауна', 'Водни спортове']
-    },
-    {
-      rank: 7,
-      name: 'Palembang',
-      population: '1,455,284',
-      latitude: -2.9181,
-      longitude: 104.7453,
-      image: 'https://picsum.photos/800/600?random=7',
-      description: 'Град на Суматра с богата история. Известен със своите древни империи и река Мусай, която протича през град.',
-      highlights: ['Древни памятници', 'Историческа река', 'Традиционни кораби', 'Исторически музеи']
-    },
-    {
-      rank: 8,
-      name: 'Yogyakarta',
-      population: '636,660',
-      latitude: -7.8000,
-      longitude: 110.3693,
-      image: 'https://picsum.photos/800/600?random=8',
-      description: 'Град на Ява, духовен и културен център на Индонезия. Известен със своите древни храмове и художествена наследство.',
-      highlights: ['Храм Боробудур', 'Древни храмове', 'Художествени гончарства', 'Традиционна танца']
+    en: {
+      headerTitle: '🇮🇩 Indonesia Explorer',
+      headerSubtitle: 'Explore detailed information about Indonesia',
+      countryInfo: 'Country Information',
+      capital: 'Capital',
+      population: 'Population',
+      area: 'Area',
+      language: 'Official Language',
+      currency: 'Currency',
+      continent: 'Continent',
+      majorCities: '🏙️ Major Cities',
+      dataNotice: '💡 Click on any city to view more information and attractions!',
+      errorLoading: '❌ Error loading data. Please try refreshing the page.',
+      mostPopulated: '# Most Populated City',
+      keyAttractions: 'Key Attractions',
+      coordinates: 'Coordinates',
+      populationLabel: 'Population',
+      stadiumInfoBtn: 'Stadium Info',
+      stadiumTitle: 'Gelora Bung Karno Stadium',
+      stadiumDescription: 'Indonesia\'s national stadium in Jakarta, famous for major football matches and international ceremonies.',
+      stadiumCapacityLabel: 'Capacity',
+      stadiumOpenedLabel: 'Opened',
+      stadiumUseLabel: 'Used for',
+      stadiumCapacityValue: 'about 77,000 spectators',
+      stadiumOpenedValue: '1962 (renovated in 2018)',
+      stadiumUseValue: 'football and national events'
     }
-  ]
-};
+  };
 
-/**
- * Fetch Indonesia data from GeoNames API
- * @param {string} apiKey - GeoNames API key
- * @returns {Promise<Object>} Indonesia data
- */
-async function getIndonesiaDataFromAPI(apiKey) {
-  const countryName = 'Indonesia';
+  const stadiumData = {
+    image: './assets/images/jakarta-stadium-aerial.png'
+  };
 
-  try {
-    // Fetch country data
-    const countryResponse = await fetch(`http://api.geonames.org/searchJSON?q=${countryName}&maxRows=1&username=${apiKey}`);
-    const countryData = await countryResponse.json();
+  const indonesiaData = {
+    country: {
+      name: 'Indonesia',
+      capital: 'Jakarta',
+      population: '275,501,339',
+      area: '1,904,569 km²',
+      continent: 'Asia',
+      language: 'Indonesian',
+      currency: 'Indonesian Rupiah (IDR)',
+      timezone: 'WITA (UTC+8)',
+      region: 'Southeast Asia',
+      code: 'ID',
+      flagEmoji: '🇮🇩'
+    },
+    cities: [
+      {
+        rank: 1,
+        name: 'Jakarta',
+        population: '10,556,500',
+        latitude: -6.2088,
+        longitude: 106.8456,
+        image: './assets/images/jakarta.jpg',
+        description_bg: 'Столицата на Индонезия - оживен град със синтез на модерна архитектура и традиционна култура. Известен със своите висок небостъргачи и натъпканите пазари.',
+        description_en: 'The capital of Indonesia - a vibrant city with a blend of modern architecture and traditional culture. Known for its towering skyscrapers and bustling markets.',
+        highlights_bg: ['Национален монумент', 'Древни храмове', 'Оживен нощен живот', 'Световно известна кухня'],
+        highlights_en: ['National Monument', 'Ancient Temples', 'Vibrant Nightlife', 'World-Famous Cuisine']
+      },
+      {
+        rank: 2,
+        name: 'Surabaya',
+        population: '2,853,662',
+        latitude: -7.2504,
+        longitude: 112.7469,
+        image: './assets/images/surabaya.jpg',
+        description_bg: 'Втория по големина град в Индонезия, развил се като индустриален център. Известен със своята исторически значимост и пристанище.',
+        description_en: 'Indonesia\'s second-largest city, established as an industrial center. Known for its historical significance and port.',
+        highlights_bg: ['Исторически пристанище', 'Храм Превели', 'Редки артефакти', 'Морски живот'],
+        highlights_en: ['Historic Port', 'Prambanan Temple', 'Rare Artifacts', 'Marine Life']
+      },
+      {
+        rank: 3,
+        name: 'Bandung',
+        population: '2,394,373',
+        latitude: -6.9175,
+        longitude: 107.6062,
+        image: './assets/images/bandung.jpg',
+        description_bg: 'Град в планините на Западна Ява, познат със своя прохладен климат и живописни пейзажи. Популярна туристическа дестинация.',
+        description_en: 'A city in the highlands of West Java, known for its cool climate and scenic landscapes. A popular tourist destination.',
+        highlights_bg: ['Чайни плантации', 'Вулкани и термални извори', 'Местни художници', 'Традиционна архитектура'],
+        highlights_en: ['Tea Plantations', 'Volcanoes & Hot Springs', 'Local Artists', 'Traditional Architecture']
+      },
+      {
+        rank: 4,
+        name: 'Medan',
+        population: '2,097,610',
+        latitude: 2.1949,
+        longitude: 98.6722,
+        image: './assets/images/medan.jpg',
+        description_bg: 'Град на остров Суматра, важен търговски център. Известен с разнообразната си культура и многокултурното наследство.',
+        description_en: 'A city on the island of Sumatra, an important commercial center. Known for its diverse culture and multicultural heritage.',
+        highlights_bg: ['Халал пазари', 'Будистки храмове', 'Колониални сгради', 'Екзотични храни'],
+        highlights_en: ['Halal Markets', 'Buddhist Temples', 'Colonial Buildings', 'Exotic Cuisine']
+      },
+      {
+        rank: 5,
+        name: 'Semarang',
+        population: '1,555,172',
+        latitude: -6.9667,
+        longitude: 110.4167,
+        image: './assets/images/semarang.jpg',
+        description_bg: 'Портова град на Ява, комбинация на старо и ново. Известен със своите исторически сгради и морската кухня.',
+        description_en: 'A port city in Java, a combination of old and new. Known for its historical buildings and seafood cuisine.',
+        highlights_bg: ['Древни крепости', 'Колониален дизайн', 'Оживен пристанич', 'Местни деликатеси'],
+        highlights_en: ['Ancient Fortresses', 'Colonial Design', 'Bustling Harbor', 'Local Delicacies']
+      },
+      {
+        rank: 6,
+        name: 'Makassar',
+        population: '1,429,412',
+        latitude: -5.1477,
+        longitude: 119.4327,
+        image: './assets/images/makassar.jpg',
+        description_bg: 'Портова град на Сулавеси, известен със своите красиви плажове и подводен свят. Популярна туристическа дестинация за водни спортове.',
+        description_en: 'A port city in Sulawesi, known for its beautiful beaches and underwater world. A popular destination for water sports.',
+        highlights_bg: ['Корални рифове', 'Тропични плажи', 'Подводна фауна', 'Водни спортове'],
+        highlights_en: ['Coral Reefs', 'Tropical Beaches', 'Underwater Fauna', 'Water Sports']
+      },
+      {
+        rank: 7,
+        name: 'Palembang',
+        population: '1,455,284',
+        latitude: -2.9181,
+        longitude: 104.7453,
+        image: './assets/images/palembang.jpg',
+        description_bg: 'Град на Суматра с богата история. Известен със своите древни империи и река Мусай, която протича през град.',
+        description_en: 'A city on Sumatra with rich history. Known for its ancient empires and the Musi River flowing through the city.',
+        highlights_bg: ['Древни памятници', 'Историческа река', 'Традиционни кораби', 'Исторически музеи'],
+        highlights_en: ['Ancient Monuments', 'Historic River', 'Traditional Boats', 'Historical Museums']
+      },
+      {
+        rank: 8,
+        name: 'Yogyakarta',
+        population: '636,660',
+        latitude: -7.8000,
+        longitude: 110.3693,
+        image: './assets/images/yogyakarta.jpg',
+        description_bg: 'Град на Ява, духовен и културен център на Индонезия. Известен със своите древни храмове и художествена наследство.',
+        description_en: 'A city in Java, the spiritual and cultural center of Indonesia. Known for its ancient temples and artistic heritage.',
+        highlights_bg: ['Храм Боробудур', 'Древни храмове', 'Художествена керамика', 'Традиционни танци'],
+        highlights_en: ['Borobudur Temple', 'Ancient Temples', 'Artistic Pottery', 'Traditional Dance']
+      }
+    ]
+  };
 
-    if (countryData.geonames.length === 0) {
-      console.log('Страната не е намерена.');
-      return null;
-    }
+  const countryInfoFields = [
+    { labelKey: 'capital', value: indonesiaData.country.capital, id: 'capitalLabel' },
+    { labelKey: 'population', value: indonesiaData.country.population, id: 'populationInfoLabel' },
+    { labelKey: 'area', value: indonesiaData.country.area, id: 'areaLabel' },
+    { labelKey: 'language', value: indonesiaData.country.language, id: 'languageLabel' },
+    { labelKey: 'currency', value: indonesiaData.country.currency, id: 'currencyLabel' },
+    { labelKey: 'continent', value: indonesiaData.country.continent, id: 'continentLabel' }
+  ];
 
-    const country = countryData.geonames[0];
-    console.log(`Страна: ${country.name}`);
-    console.log(`Столица: ${country.adminCode1}`);
+  const stadiumFieldBindings = [
+    ['stadiumCapacityLabel', 'stadiumCapacityLabel'],
+    ['stadiumOpenedLabel', 'stadiumOpenedLabel'],
+    ['stadiumUseLabel', 'stadiumUseLabel'],
+    ['stadiumCapacityValue', 'stadiumCapacityValue'],
+    ['stadiumOpenedValue', 'stadiumOpenedValue'],
+    ['stadiumUseValue', 'stadiumUseValue']
+  ];
 
-    // Fetch major cities
-    const citiesResponse = await fetch(`http://api.geonames.org/searchJSON?q=${countryName}&maxRows=8&featureClass=P&username=${apiKey}`);
-    const citiesData = await citiesResponse.json();
+  const dom = {};
+  let contentRendered = false;
 
-    if (citiesData.geonames.length === 0) {
-      console.log('Градове не са намерени.');
-      return null;
-    }
+  function cacheDomElements() {
+    dom.bgBtn = document.getElementById('bgBtn');
+    dom.enBtn = document.getElementById('enBtn');
+    dom.headerTitle = document.getElementById('headerTitle');
+    dom.headerSubtitle = document.getElementById('headerSubtitle');
+    dom.content = document.getElementById('content');
+    dom.cityModal = document.getElementById('cityModal');
+    dom.stadiumModal = document.getElementById('stadiumModal');
+    dom.modalImage = document.getElementById('modalImage');
+    dom.modalRank = document.getElementById('modalRank');
+    dom.modalTitle = document.getElementById('modalTitle');
+    dom.modalDescription = document.getElementById('modalDescription');
+    dom.modalPopulation = document.getElementById('modalPopulation');
+    dom.modalCoordinates = document.getElementById('modalCoordinates');
+    dom.populationLabel = document.getElementById('populationLabel');
+    dom.coordinatesLabel = document.getElementById('coordinatesLabel');
+    dom.attractionsLabel = document.getElementById('attractionsLabel');
+    dom.modalHighlights = document.getElementById('modalHighlights');
+    dom.stadiumModalImage = document.getElementById('stadiumModalImage');
+    dom.stadiumModalTitle = document.getElementById('stadiumModalTitle');
+    dom.stadiumModalDescription = document.getElementById('stadiumModalDescription');
+    dom.stadiumCapacityLabel = document.getElementById('stadiumCapacityLabel');
+    dom.stadiumOpenedLabel = document.getElementById('stadiumOpenedLabel');
+    dom.stadiumUseLabel = document.getElementById('stadiumUseLabel');
+    dom.stadiumCapacityValue = document.getElementById('stadiumCapacityValue');
+    dom.stadiumOpenedValue = document.getElementById('stadiumOpenedValue');
+    dom.stadiumUseValue = document.getElementById('stadiumUseValue');
+  }
 
-    console.log('Топ 8 големи градове:');
-    citiesData.geonames.forEach((city, index) => {
-      console.log(`${index + 1}. ${city.name} (Популация: ${city.population})`);
+  function cacheContentElements() {
+    dom.countryInfoTitle = document.getElementById('countryInfoTitle');
+    dom.stadiumInfoBtn = document.getElementById('stadiumInfoBtn');
+    dom.majorCitiesTitle = document.getElementById('majorCitiesTitle');
+    dom.dataNotice = document.getElementById('dataNotice');
+    countryInfoFields.forEach(function (field) {
+      dom[field.id] = document.getElementById(field.id);
+    });
+    dom.cityPopulationTexts = Array.from(document.querySelectorAll('.city-population'));
+  }
+
+  function setBodyScrollLocked(isLocked) {
+    document.body.style.overflow = isLocked ? 'hidden' : 'auto';
+  }
+
+  function toggleModal(modalElement, isOpen) {
+    modalElement.classList.toggle('active', isOpen);
+    setBodyScrollLocked(isOpen);
+  }
+
+  function createCountryInfoItemsHtml() {
+    return countryInfoFields.map(function (field) {
+      return `
+            <div class="info-item">
+              <div class="info-label" id="${field.id}"></div>
+              <div class="info-value">${field.value}</div>
+            </div>
+        `;
+    }).join('');
+  }
+
+  function createCityCardsHtml() {
+    return indonesiaData.cities.map(function (city, index) {
+      return `
+              <button class="city-card" type="button" data-city-index="${index}" aria-label="${city.name}">
+                <div class="city-rank">#${city.rank}</div>
+                <div class="city-name">${city.name}</div>
+                <div class="city-population" data-city-population="${city.population}"></div>
+              </button>
+        `;
+    }).join('');
+  }
+
+  function createErrorHtml() {
+    return `
+          <div class="error">
+            ${getTranslation('errorLoading')}
+          </div>
+        `;
+  }
+
+  function getCityTranslationKeys() {
+    return {
+      description: `description_${currentLanguage}`,
+      highlights: `highlights_${currentLanguage}`
+    };
+  }
+
+  function updateStadiumModalContent() {
+    dom.stadiumModalTitle.textContent = getTranslation('stadiumTitle');
+    dom.stadiumModalDescription.textContent = getTranslation('stadiumDescription');
+
+    stadiumFieldBindings.forEach(function (binding) {
+      const [elementKey, translationKey] = binding;
+      dom[elementKey].textContent = getTranslation(translationKey);
+    });
+  }
+
+  function updateCityModalContent(city) {
+    const keys = getCityTranslationKeys();
+
+    dom.modalRank.innerHTML = `#${city.rank} ${getTranslation('mostPopulated')}`;
+    dom.modalTitle.textContent = city.name;
+    dom.modalDescription.textContent = city[keys.description];
+    dom.modalPopulation.textContent = city.population;
+    dom.modalCoordinates.textContent = `${city.latitude.toFixed(2)}°, ${city.longitude.toFixed(2)}°`;
+    dom.populationLabel.textContent = getTranslation('population');
+    dom.coordinatesLabel.textContent = getTranslation('coordinates');
+    dom.attractionsLabel.textContent = getTranslation('keyAttractions');
+    dom.modalHighlights.innerHTML = city[keys.highlights].map(function (highlight) {
+      return `<span class="highlight-badge">${highlight}</span>`;
+    }).join('');
+  }
+
+  function renderContentShell() {
+    dom.content.innerHTML = `
+        <div class="card country-info">
+          <div class="country-title-row">
+            <h2 id="countryInfoTitle"></h2>
+            <button id="stadiumInfoBtn" class="stadium-info-btn" type="button"></button>
+          </div>
+          <div class="info-grid">
+            ${createCountryInfoItemsHtml()}
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 id="majorCitiesTitle"></h2>
+          <div class="cities-grid">
+            ${createCityCardsHtml()}
+          </div>
+        </div>
+
+        <div class="api-notice" id="dataNotice"></div>
+      `;
+
+    cacheContentElements();
+
+    dom.stadiumInfoBtn.addEventListener('click', openStadiumModal);
+    dom.content.addEventListener('click', function (event) {
+      const cityCard = event.target.closest('.city-card');
+      if (!cityCard) {
+        return;
+      }
+
+      openCityModal(Number(cityCard.dataset.cityIndex));
     });
 
-    return { country, cities: citiesData.geonames };
-  } catch (error) {
-    console.error('Грешка при извличане на данни:', error);
-    return null;
+    contentRendered = true;
   }
-}
 
-/**
- * Get local Indonesia data
- * @returns {Object} Indonesia data
- */
-function getIndonesiaData() {
-  return INDONESIA_DATA;
-}
+  function updateContentTranslations() {
+    dom.countryInfoTitle.textContent = getTranslation('countryInfo');
+    dom.stadiumInfoBtn.textContent = getTranslation('stadiumInfoBtn');
+    countryInfoFields.forEach(function (field) {
+      dom[field.id].textContent = getTranslation(field.labelKey);
+    });
+    dom.majorCitiesTitle.textContent = getTranslation('majorCities');
+    dom.dataNotice.textContent = getTranslation('dataNotice');
 
-/**
- * Print Indonesia data to console
- */
-function printIndonesiaData() {
-  const data = getIndonesiaData();
-  console.log('\n=== ИНФОРМАЦИЯ ЗА ИНДОНЕЗИЯ ===\n');
-  console.log(`Страна: ${data.country.name}`);
-  console.log(`Столица: ${data.country.capital}`);
-  console.log(`Население: ${data.country.population}`);
-  console.log(`Площ: ${data.country.area}`);
-  console.log(`Валута: ${data.country.currency}`);
-  console.log(`Език: ${data.country.language}`);
-  console.log(`\nТоп 8 големи градове:`);
-  data.cities.forEach((city) => {
-    console.log(`  ${city.rank}. ${city.name} - ${city.population} жители`);
+    dom.cityPopulationTexts.forEach(function (populationElement) {
+      populationElement.textContent = `${getTranslation('populationLabel')}: ${populationElement.dataset.cityPopulation}`;
+    });
+  }
+
+  function getTranslation(key) {
+    return translations[currentLanguage][key] || key;
+  }
+
+  function updateLanguageUI() {
+    dom.bgBtn.classList.toggle('active', currentLanguage === 'bg');
+    dom.enBtn.classList.toggle('active', currentLanguage === 'en');
+    dom.headerTitle.textContent = getTranslation('headerTitle');
+    dom.headerSubtitle.textContent = getTranslation('headerSubtitle');
+  }
+
+  function preloadImage(imageElement, src) {
+    if (imageElement.getAttribute('src') === src) {
+      return;
+    }
+
+    const preloadedImage = new Image();
+    preloadedImage.decoding = 'async';
+    preloadedImage.onload = function () {
+      imageElement.src = src;
+    };
+    preloadedImage.src = src;
+  }
+
+  function changeLanguage(lang) {
+    currentLanguage = lang;
+    updateLanguageUI();
+    loadData();
+    localStorage.setItem('preferredLanguage', lang);
+  }
+
+  function openStadiumModal() {
+    preloadImage(dom.stadiumModalImage, stadiumData.image);
+    updateStadiumModalContent();
+    toggleModal(dom.stadiumModal, true);
+  }
+
+  function closeStadiumModal() {
+    toggleModal(dom.stadiumModal, false);
+  }
+
+  function openCityModal(index) {
+    const city = indonesiaData.cities[index];
+    preloadImage(dom.modalImage, city.image);
+    updateCityModalContent(city);
+    toggleModal(dom.cityModal, true);
+  }
+
+  function closeModal() {
+    toggleModal(dom.cityModal, false);
+  }
+
+  function loadData() {
+    try {
+      if (!contentRendered) {
+        renderContentShell();
+      }
+
+      updateContentTranslations();
+    } catch (error) {
+      console.error('Error loading data:', error);
+      dom.content.innerHTML = createErrorHtml();
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    cacheDomElements();
+
+    const savedLang = localStorage.getItem('preferredLanguage') || 'bg';
+    currentLanguage = savedLang;
+    updateLanguageUI();
+
+    dom.cityModal.addEventListener('click', function (event) {
+      if (event.target === dom.cityModal) {
+        closeModal();
+      }
+    });
+
+    dom.stadiumModal.addEventListener('click', function (event) {
+      if (event.target === dom.stadiumModal) {
+        closeStadiumModal();
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        closeModal();
+        closeStadiumModal();
+      }
+    });
+
+    loadData();
   });
-  console.log('\n');
-}
 
-// Export for use in different environments
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    INDONESIA_DATA,
-    getIndonesiaData,
-    getIndonesiaDataFromAPI,
-    printIndonesiaData
-  };
-}
-
-// Run in Node.js environment
-if (typeof window === 'undefined') {
-  printIndonesiaData();
-}
+  window.changeLanguage = changeLanguage;
+  window.openCityModal = openCityModal;
+  window.closeModal = closeModal;
+  window.openStadiumModal = openStadiumModal;
+  window.closeStadiumModal = closeStadiumModal;
+})();
 
 
