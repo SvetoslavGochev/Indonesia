@@ -29,6 +29,7 @@ class Config:
     """Image optimization settings with defaults."""
     PNG_TO_JPG_QUALITY = 85
     JPG_COMPRESSION_QUALITY = 82
+    WEBP_QUALITY = 80
     OPTIMIZE = True
     IMG_DIRECTORY = Path('assets/images')
     PNG_FILES = [
@@ -46,6 +47,8 @@ class Config:
         'yogyakarta.jpg',
         'jakarta-stadium.jpg'
     ]
+
+    WEBP_FILES = PNG_FILES + JPG_FILES
 
 
 def get_file_size_kb(filepath: str) -> float:
@@ -156,13 +159,53 @@ def optimize_jpg(jpg_path: str, quality: int = None) -> Optional[Tuple[float, fl
         return None
 
 
+def convert_to_webp(image_path: str, quality: int = None) -> Optional[Tuple[str, float, float]]:
+    """
+    Convert PNG/JPG image to WebP format with size reporting.
+
+    Args:
+        image_path: Path to source image
+        quality: WebP quality (1-100), uses config default if None
+
+    Returns:
+        Tuple of (webp_path, original_size_kb, new_size_kb) or None if failed
+    """
+    if quality is None:
+        quality = Config.WEBP_QUALITY
+
+    try:
+        if not os.path.exists(image_path):
+            logger.warning(f"Image file not found: {image_path}")
+            return None
+
+        logger.info(f"Converting to WebP: {image_path}")
+        img = Image.open(image_path)
+        img = convert_rgba_to_rgb(img)
+
+        source_path = Path(image_path)
+        webp_path = str(source_path.with_suffix('.webp'))
+        img.save(webp_path, 'WEBP', quality=quality, optimize=Config.OPTIMIZE)
+
+        original_size = get_file_size_kb(image_path)
+        new_size = get_file_size_kb(webp_path)
+        savings = ((original_size - new_size) / original_size * 100) if original_size > 0 else 0
+
+        logger.info(f"  {original_size:.1f} KB -> {new_size:.1f} KB (saved {savings:.1f}%)")
+        return webp_path, original_size, new_size
+
+    except Exception as e:
+        logger.error(f"Failed to convert {image_path} to WebP: {e}")
+        return None
+
+
 def process_images(mode: str = 'full', quality: int = None) -> None:
     """
     Process images based on specified mode.
     
     Args:
-        mode: 'full' (convert PNG and optimize JPG), 'png' (PNG to JPG only), 'jpg' (optimize JPG only)
-        quality: JPEG quality override (1-100)
+          mode: 'full' (PNG->JPG + JPG optimize + WebP), 'png' (PNG->JPG),
+              'jpg' (optimize JPG), 'webp' (generate WebP)
+          quality: quality override (1-100)
     """
     img_dir = Config.IMG_DIRECTORY
     
@@ -192,6 +235,16 @@ def process_images(mode: str = 'full', quality: int = None) -> None:
                 orig_size, new_size = result
                 total_savings += orig_size - new_size
                 processed_count += 1
+
+    # Process WebP generation
+    if mode in ('full', 'webp'):
+        logger.info("\n=== Generating WebP files ===")
+        for image_file in Config.WEBP_FILES:
+            result = convert_to_webp(img_dir / image_file, quality)
+            if result:
+                _, orig_size, new_size = result
+                total_savings += orig_size - new_size
+                processed_count += 1
     
     # Print summary
     logger.info(f"\n{'='*50}")
@@ -203,18 +256,18 @@ def process_images(mode: str = 'full', quality: int = None) -> None:
 def main():
     """Command-line interface entry point."""
     parser = argparse.ArgumentParser(
-        description='Optimize images for web: PNG→JPG conversion and JPEG compression'
+        description='Optimize images for web: PNG->JPG, JPEG compression and WebP generation'
     )
     parser.add_argument(
         '--mode',
-        choices=['full', 'png', 'jpg'],
+        choices=['full', 'png', 'jpg', 'webp'],
         default='full',
-        help='Processing mode (default: full - both PNG conversion and JPG optimization)'
+        help='Processing mode (default: full - JPG pipeline + WebP generation)'
     )
     parser.add_argument(
         '--quality',
         type=int,
-        help='JPEG quality override (1-100, default: 85 for PNG→JPG, 82 for JPG optimization)'
+        help='Quality override (1-100, default: 85 PNG->JPG, 82 JPG optimize, 80 WebP)'
     )
     parser.add_argument(
         '--log',
