@@ -267,6 +267,7 @@
         };
 
         const dom = {};
+        let contentRendered = false;
 
         function cacheDomElements() {
             dom.bgBtn = document.getElementById('bgBtn');
@@ -295,6 +296,104 @@
             dom.stadiumCapacityValue = document.getElementById('stadiumCapacityValue');
             dom.stadiumOpenedValue = document.getElementById('stadiumOpenedValue');
             dom.stadiumUseValue = document.getElementById('stadiumUseValue');
+        }
+
+        function cacheContentElements() {
+            dom.countryInfoTitle = document.getElementById('countryInfoTitle');
+            dom.stadiumInfoBtn = document.getElementById('stadiumInfoBtn');
+            dom.capitalLabel = document.getElementById('capitalLabel');
+            dom.populationInfoLabel = document.getElementById('populationInfoLabel');
+            dom.areaLabel = document.getElementById('areaLabel');
+            dom.languageLabel = document.getElementById('languageLabel');
+            dom.currencyLabel = document.getElementById('currencyLabel');
+            dom.continentLabel = document.getElementById('continentLabel');
+            dom.majorCitiesTitle = document.getElementById('majorCitiesTitle');
+            dom.dataNotice = document.getElementById('dataNotice');
+            dom.cityCards = Array.from(document.querySelectorAll('.city-card'));
+            dom.cityPopulationTexts = Array.from(document.querySelectorAll('.city-population'));
+        }
+
+        function renderContentShell() {
+            dom.content.innerHTML = `
+                <div class="card country-info">
+                    <div class="country-title-row">
+                        <h2 id="countryInfoTitle"></h2>
+                        <button id="stadiumInfoBtn" class="stadium-info-btn" type="button"></button>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label" id="capitalLabel"></div>
+                            <div class="info-value">${indonesiaData.country.capital}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label" id="populationInfoLabel"></div>
+                            <div class="info-value">${indonesiaData.country.population}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label" id="areaLabel"></div>
+                            <div class="info-value">${indonesiaData.country.area}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label" id="languageLabel"></div>
+                            <div class="info-value">${indonesiaData.country.language}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label" id="currencyLabel"></div>
+                            <div class="info-value">${indonesiaData.country.currency}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-label" id="continentLabel"></div>
+                            <div class="info-value">${indonesiaData.country.continent}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2 id="majorCitiesTitle"></h2>
+                    <div class="cities-grid">
+                        ${indonesiaData.cities.map((city, index) => `
+                            <button class="city-card" type="button" data-city-index="${index}" aria-label="${city.name}">
+                                <div class="city-rank">#${city.rank}</div>
+                                <div class="city-name">${city.name}</div>
+                                <div class="city-population" data-city-population="${city.population}"></div>
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="api-notice" id="dataNotice"></div>
+            `;
+
+            cacheContentElements();
+
+            dom.stadiumInfoBtn.addEventListener('click', openStadiumModal);
+            dom.content.addEventListener('click', function(event) {
+                const cityCard = event.target.closest('.city-card');
+                if (!cityCard) {
+                    return;
+                }
+
+                openCityModal(Number(cityCard.dataset.cityIndex));
+            });
+
+            contentRendered = true;
+        }
+
+        function updateContentTranslations() {
+            dom.countryInfoTitle.textContent = getTranslation('countryInfo');
+            dom.stadiumInfoBtn.textContent = getTranslation('stadiumInfoBtn');
+            dom.capitalLabel.textContent = getTranslation('capital');
+            dom.populationInfoLabel.textContent = getTranslation('population');
+            dom.areaLabel.textContent = getTranslation('area');
+            dom.languageLabel.textContent = getTranslation('language');
+            dom.currencyLabel.textContent = getTranslation('currency');
+            dom.continentLabel.textContent = getTranslation('continent');
+            dom.majorCitiesTitle.textContent = getTranslation('majorCities');
+            dom.dataNotice.textContent = getTranslation('dataNotice');
+
+            dom.cityPopulationTexts.forEach(function(populationElement) {
+                populationElement.textContent = `${getTranslation('populationLabel')}: ${populationElement.dataset.cityPopulation}`;
+            });
         }
 
         function getTranslation(key) {
@@ -405,59 +504,11 @@
 
         function loadData() {
             try {
-                const html = `
-                    <div class="card country-info">
-                        <div class="country-title-row">
-                            <h2>${getTranslation('countryInfo')}</h2>
-                            <button id="stadiumInfoBtn" class="stadium-info-btn" onclick="openStadiumModal()">${getTranslation('stadiumInfoBtn')}</button>
-                        </div>
-                        <div class="info-grid">
-                            <div class="info-item">
-                                <div class="info-label">${getTranslation('capital')}</div>
-                                <div class="info-value">${indonesiaData.country.capital}</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-label">${getTranslation('population')}</div>
-                                <div class="info-value">${indonesiaData.country.population}</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-label">${getTranslation('area')}</div>
-                                <div class="info-value">${indonesiaData.country.area}</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-label">${getTranslation('language')}</div>
-                                <div class="info-value">${indonesiaData.country.language}</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-label">${getTranslation('currency')}</div>
-                                <div class="info-value">${indonesiaData.country.currency}</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-label">${getTranslation('continent')}</div>
-                                <div class="info-value">${indonesiaData.country.continent}</div>
-                            </div>
-                        </div>
-                    </div>
+                if (!contentRendered) {
+                    renderContentShell();
+                }
 
-                    <div class="card">
-                        <h2>${getTranslation('majorCities')}</h2>
-                        <div class="cities-grid">
-                            ${indonesiaData.cities.map((city, index) => `
-                                <div class="city-card" onclick="openCityModal(${index})">
-                                    <div class="city-rank">#${city.rank}</div>
-                                    <div class="city-name">${city.name}</div>
-                                    <div class="city-population">${getTranslation('populationLabel')}: ${city.population}</div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-
-                    <div class="api-notice">
-                        ${getTranslation('dataNotice')}
-                    </div>
-                `;
-
-                dom.content.innerHTML = html;
+                updateContentTranslations();
 
             } catch (error) {
                 console.error('Error loading data:', error);
