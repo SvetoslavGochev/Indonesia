@@ -15,7 +15,12 @@ import logging
 import argparse
 from pathlib import Path
 from typing import Tuple, Optional
-from PIL import Image
+from PIL import Image, features
+
+try:
+    import pillow_avif  # noqa: F401
+except ImportError:
+    pillow_avif = None
 
 # Configure logging
 logging.basicConfig(
@@ -30,6 +35,7 @@ class Config:
     PNG_TO_JPG_QUALITY = 85
     JPG_COMPRESSION_QUALITY = 82
     WEBP_QUALITY = 80
+    AVIF_QUALITY = 55
     OPTIMIZE = True
     IMG_DIRECTORY = Path('assets/images')
     PNG_FILES = [
@@ -49,6 +55,7 @@ class Config:
     ]
 
     WEBP_FILES = PNG_FILES + JPG_FILES
+    AVIF_FILES = WEBP_FILES
 
 
 def get_file_size_kb(filepath: str) -> float:
@@ -198,13 +205,56 @@ def convert_to_webp(image_path: str, quality: int = None) -> Optional[Tuple[str,
         return None
 
 
+def convert_to_avif(image_path: str, quality: int = None) -> Optional[Tuple[str, float, float]]:
+    """
+    Convert PNG/JPG image to AVIF format with size reporting.
+
+    Args:
+        image_path: Path to source image
+        quality: AVIF quality (1-100), uses config default if None
+
+    Returns:
+        Tuple of (avif_path, original_size_kb, new_size_kb) or None if failed
+    """
+    if quality is None:
+        quality = Config.AVIF_QUALITY
+
+    if not features.check('avif'):
+        logger.warning('AVIF encoder is not available in this environment. Install pillow-avif-plugin or AVIF-enabled Pillow build.')
+        return None
+
+    try:
+        if not os.path.exists(image_path):
+            logger.warning(f"Image file not found: {image_path}")
+            return None
+
+        logger.info(f"Converting to AVIF: {image_path}")
+        img = Image.open(image_path)
+        img = convert_rgba_to_rgb(img)
+
+        source_path = Path(image_path)
+        avif_path = str(source_path.with_suffix('.avif'))
+        img.save(avif_path, 'AVIF', quality=quality, optimize=Config.OPTIMIZE)
+
+        original_size = get_file_size_kb(image_path)
+        new_size = get_file_size_kb(avif_path)
+        savings = ((original_size - new_size) / original_size * 100) if original_size > 0 else 0
+
+        logger.info(f"  {original_size:.1f} KB -> {new_size:.1f} KB (saved {savings:.1f}%)")
+        return avif_path, original_size, new_size
+
+    except Exception as e:
+        logger.error(f"Failed to convert {image_path} to AVIF: {e}")
+        return None
+
+
 def process_images(mode: str = 'full', quality: int = None) -> None:
     """
     Process images based on specified mode.
     
     Args:
-          mode: 'full' (PNG->JPG + JPG optimize + WebP), 'png' (PNG->JPG),
-              'jpg' (optimize JPG), 'webp' (generate WebP)
+          mode: 'full' (PNG->JPG + JPG optimize + WebP + AVIF), 'png' (PNG->JPG),
+              'jpg' (optimize JPG), 'webp' (generate WebP), 'avif' (generate AVIF)
           quality: quality override (1-100)
     """
     img_dir = Config.IMG_DIRECTORY
@@ -245,6 +295,16 @@ def process_images(mode: str = 'full', quality: int = None) -> None:
                 _, orig_size, new_size = result
                 total_savings += orig_size - new_size
                 processed_count += 1
+
+    # Process AVIF generation
+    if mode in ('full', 'avif'):
+        logger.info("\n=== Generating AVIF files ===")
+        for image_file in Config.AVIF_FILES:
+            result = convert_to_avif(img_dir / image_file, quality)
+            if result:
+                _, orig_size, new_size = result
+                total_savings += orig_size - new_size
+                processed_count += 1
     
     # Print summary
     logger.info(f"\n{'='*50}")
@@ -256,18 +316,18 @@ def process_images(mode: str = 'full', quality: int = None) -> None:
 def main():
     """Command-line interface entry point."""
     parser = argparse.ArgumentParser(
-        description='Optimize images for web: PNG->JPG, JPEG compression and WebP generation'
+        description='Optimize images for web: PNG->JPG, JPEG compression, WebP and AVIF generation'
     )
     parser.add_argument(
         '--mode',
-        choices=['full', 'png', 'jpg', 'webp'],
+        choices=['full', 'png', 'jpg', 'webp', 'avif'],
         default='full',
-        help='Processing mode (default: full - JPG pipeline + WebP generation)'
+        help='Processing mode (default: full - JPG pipeline + WebP + AVIF generation)'
     )
     parser.add_argument(
         '--quality',
         type=int,
-        help='Quality override (1-100, default: 85 PNG->JPG, 82 JPG optimize, 80 WebP)'
+        help='Quality override (1-100, default: 85 PNG->JPG, 82 JPG optimize, 80 WebP, 55 AVIF)'
     )
     parser.add_argument(
         '--log',

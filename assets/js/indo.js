@@ -201,17 +201,53 @@
     dom.headerSubtitle.textContent = getTranslation('headerSubtitle');
   }
 
-  function preloadImage(imageElement, src) {
-    if (imageElement.getAttribute('src') === src) {
-      return;
+  function buildImageCandidates(src) {
+    const match = src.match(/\.(avif|webp|jpe?g|png)(\?.*)?$/i);
+    if (!match) {
+      return [src];
     }
 
-    const preloadedImage = new Image();
-    preloadedImage.decoding = 'async';
-    preloadedImage.onload = function () {
-      imageElement.src = src;
+    const extension = match[1].toLowerCase();
+    const suffix = match[2] || '';
+    const base = src.slice(0, src.length - match[0].length);
+    const fallbackOrder = {
+      avif: ['avif', 'webp', 'jpg', 'png'],
+      webp: ['webp', 'jpg', 'png'],
+      jpg: ['jpg', 'webp', 'png'],
+      jpeg: ['jpeg', 'webp', 'png'],
+      png: ['png', 'webp', 'jpg']
     };
-    preloadedImage.src = src;
+
+    return fallbackOrder[extension].map(function (ext) {
+      return `${base}.${ext}${suffix}`;
+    });
+  }
+
+  function preloadImage(imageElement, src) {
+    const candidates = buildImageCandidates(src);
+
+    function tryCandidate(index) {
+      if (index >= candidates.length) {
+        return;
+      }
+
+      const candidate = candidates[index];
+      if (imageElement.getAttribute('src') === candidate) {
+        return;
+      }
+
+      const preloadedImage = new Image();
+      preloadedImage.decoding = 'async';
+      preloadedImage.onload = function () {
+        imageElement.src = candidate;
+      };
+      preloadedImage.onerror = function () {
+        tryCandidate(index + 1);
+      };
+      preloadedImage.src = candidate;
+    }
+
+    tryCandidate(0);
   }
 
   function changeLanguage(lang) {

@@ -1,5 +1,5 @@
 window.STADIUM_DATA = {
-  image: './assets/images/jakarta-stadium-aerial.webp'
+  image: './assets/images/jakarta-stadium-aerial.avif'
 };
 
 window.INDONESIA_DATA = {
@@ -23,7 +23,7 @@ window.INDONESIA_DATA = {
       population: '10,556,500',
       latitude: -6.2088,
       longitude: 106.8456,
-      image: './assets/images/jakarta.webp',
+      image: './assets/images/jakarta.avif',
       description_bg: 'Столицата на Индонезия - оживен град със синтез на модерна архитектура и традиционна култура. Известен със своите висок небостъргачи и натъпканите пазари.',
       description_en: 'The capital of Indonesia - a vibrant city with a blend of modern architecture and traditional culture. Known for its towering skyscrapers and bustling markets.',
       highlights_bg: ['Национален монумент', 'Древни храмове', 'Оживен нощен живот', 'Световно известна кухня'],
@@ -35,7 +35,7 @@ window.INDONESIA_DATA = {
       population: '2,853,662',
       latitude: -7.2504,
       longitude: 112.7469,
-      image: './assets/images/surabaya.webp',
+      image: './assets/images/surabaya.avif',
       description_bg: 'Втория по големина град в Индонезия, развил се като индустриален център. Известен със своята исторически значимост и пристанище.',
       description_en: 'Indonesia\'s second-largest city, established as an industrial center. Known for its historical significance and port.',
       highlights_bg: ['Исторически пристанище', 'Храм Превели', 'Редки артефакти', 'Морски живот'],
@@ -47,7 +47,7 @@ window.INDONESIA_DATA = {
       population: '2,394,373',
       latitude: -6.9175,
       longitude: 107.6062,
-      image: './assets/images/bandung.webp',
+      image: './assets/images/bandung.avif',
       description_bg: 'Град в планините на Западна Ява, познат със своя прохладен климат и живописни пейзажи. Популярна туристическа дестинация.',
       description_en: 'A city in the highlands of West Java, known for its cool climate and scenic landscapes. A popular tourist destination.',
       highlights_bg: ['Чайни плантации', 'Вулкани и термални извори', 'Местни художници', 'Традиционна архитектура'],
@@ -59,7 +59,7 @@ window.INDONESIA_DATA = {
       population: '2,097,610',
       latitude: 2.1949,
       longitude: 98.6722,
-      image: './assets/images/medan.webp',
+      image: './assets/images/medan.avif',
       description_bg: 'Град на остров Суматра, важен търговски център. Известен с разнообразната си культура и многокултурното наследство.',
       description_en: 'A city on the island of Sumatra, an important commercial center. Known for its diverse culture and multicultural heritage.',
       highlights_bg: ['Халал пазари', 'Будистки храмове', 'Колониални сгради', 'Екзотични храни'],
@@ -71,7 +71,7 @@ window.INDONESIA_DATA = {
       population: '1,555,172',
       latitude: -6.9667,
       longitude: 110.4167,
-      image: './assets/images/semarang.webp',
+      image: './assets/images/semarang.avif',
       description_bg: 'Портова град на Ява, комбинация на старо и ново. Известен със своите исторически сгради и морската кухня.',
       description_en: 'A port city in Java, a combination of old and new. Known for its historical buildings and seafood cuisine.',
       highlights_bg: ['Древни крепости', 'Колониален дизайн', 'Оживен пристанич', 'Местни деликатеси'],
@@ -83,7 +83,7 @@ window.INDONESIA_DATA = {
       population: '1,429,412',
       latitude: -5.1477,
       longitude: 119.4327,
-      image: './assets/images/makassar.webp',
+      image: './assets/images/makassar.avif',
       description_bg: 'Портова град на Сулавеси, известен със своите красиви плажове и подводен свят. Популярна туристическа дестинация за водни спортове.',
       description_en: 'A port city in Sulawesi, known for its beautiful beaches and underwater world. A popular destination for water sports.',
       highlights_bg: ['Корални рифове', 'Тропични плажи', 'Подводна фауна', 'Водни спортове'],
@@ -95,7 +95,7 @@ window.INDONESIA_DATA = {
       population: '1,455,284',
       latitude: -2.9181,
       longitude: 104.7453,
-      image: './assets/images/palembang.webp',
+      image: './assets/images/palembang.avif',
       description_bg: 'Град на Суматра с богата история. Известен със своите древни империи и река Мусай, която протича през град.',
       description_en: 'A city on Sumatra with rich history. Known for its ancient empires and the Musi River flowing through the city.',
       highlights_bg: ['Древни памятници', 'Историческа река', 'Традиционни кораби', 'Исторически музеи'],
@@ -107,7 +107,7 @@ window.INDONESIA_DATA = {
       population: '636,660',
       latitude: -7.8000,
       longitude: 110.3693,
-      image: './assets/images/yogyakarta.webp',
+      image: './assets/images/yogyakarta.avif',
       description_bg: 'Град на Ява, духовен и културен център на Индонезия. Известен със своите древни храмове и художествена наследство.',
       description_en: 'A city in Java, the spiritual and cultural center of Indonesia. Known for its ancient temples and artistic heritage.',
       highlights_bg: ['Храм Боробудур', 'Древни храмове', 'Художествена керамика', 'Традиционни танци'],

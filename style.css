@@ -8,6 +8,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #0f1f3a url('./assets/images/jakarta-stadium.jpg') center center / cover no-repeat fixed;
     background-image: image-set(
+        url('./assets/images/jakarta-stadium.avif') type('image/avif'),
         url('./assets/images/jakarta-stadium.webp') type('image/webp'),
         url('./assets/images/jakarta-stadium.jpg') type('image/jpeg')
     );
