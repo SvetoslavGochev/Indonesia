@@ -290,5 +290,3 @@
   window.openStadiumModal = openStadiumModal;
   window.closeStadiumModal = closeStadiumModal;
 })();
-
-
