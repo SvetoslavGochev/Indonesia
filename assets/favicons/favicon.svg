@@ -1,18 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Indonesia Explorer favicon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Indonesia Explorer tourism favicon">
   <defs>
-    <linearGradient id="ring" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0%" stop-color="#f7f9ff"/>
-      <stop offset="100%" stop-color="#d8e0f3"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1f4d8f"/>
+      <stop offset="55%" stop-color="#2f82c9"/>
+      <stop offset="100%" stop-color="#0d2d57"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#66d8ff"/>
+      <stop offset="100%" stop-color="#1ea6d8"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffe88a"/>
+      <stop offset="100%" stop-color="#ffb347"/>
     </linearGradient>
   </defs>
-  <circle cx="32" cy="32" r="30" fill="#0f1f3a"/>
-  <circle cx="32" cy="32" r="27" fill="none" stroke="url(#ring)" stroke-width="2"/>
-  <clipPath id="disc">
-    <circle cx="32" cy="32" r="18"/>
-  </clipPath>
-  <g clip-path="url(#disc)">
-    <rect x="14" y="14" width="36" height="18" fill="#ce1126"/>
-    <rect x="14" y="32" width="36" height="18" fill="#ffffff"/>
-  </g>
-  <circle cx="32" cy="32" r="18" fill="none" stroke="#f3f5fb" stroke-width="1.5" opacity="0.7"/>
+
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#bg)"/>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="none" stroke="#f2f7ff" stroke-opacity="0.65" stroke-width="2"/>
+
+  <circle cx="45" cy="19" r="7" fill="url(#sun)"/>
+
+  <path d="M8 39 C18 35, 30 35, 40 39 C49 43, 56 43, 62 40 L62 53 L8 53 Z" fill="url(#water)"/>
+  <path d="M7 44 C18 40, 30 40, 41 44 C50 47, 56 47, 62 45" fill="none" stroke="#d9f7ff" stroke-width="1.6" stroke-linecap="round" opacity="0.9"/>
+
+  <path d="M23 41 C26 33, 31 31, 35 35 C37 37, 38 40, 39 43 L18 43 C19 42, 21 42, 23 41 Z" fill="#5fae63"/>
+  <path d="M23 43 L35 43" stroke="#4a9652" stroke-width="1.3"/>
+
+  <path d="M21 45 C20 40, 20 34, 22 28" fill="none" stroke="#3b2e2a" stroke-width="2.1" stroke-linecap="round"/>
+  <path d="M22 30 C26 27, 30 28, 33 31" fill="none" stroke="#2b7b4b" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M22 31 C18 28, 14 29, 11 32" fill="none" stroke="#2b7b4b" stroke-width="1.8" stroke-linecap="round"/>
+
+  <rect x="42" y="33" width="1.8" height="10" fill="#f4f7ff"/>
+  <rect x="43.8" y="33" width="9" height="3.6" fill="#ce1126"/>
+  <rect x="43.8" y="36.6" width="9" height="3.6" fill="#ffffff"/>
 </svg>
