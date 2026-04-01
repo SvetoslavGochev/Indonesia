@@ -24,7 +24,7 @@ window.INDONESIA_DATA = {
       latitude: -6.2088,
       longitude: 106.8456,
       image: './assets/images/jakarta.avif',
-      description_bg: 'Столицата на Индонезия - оживен град със синтез на модерна архитектура и традиционна култура. Известен със своите висок небостъргачи и натъпканите пазари.',
+      description_bg: 'Столицата на Индонезия - оживен град със синтез на модерна архитектура и традиционна култура. Известен със своите високи небостъргачи и натъпканите пазари.',
       description_en: 'The capital of Indonesia - a vibrant city with a blend of modern architecture and traditional culture. Known for its towering skyscrapers and bustling markets.',
       highlights_bg: ['Национален монумент', 'Древни храмове', 'Оживен нощен живот', 'Световно известна кухня'],
       highlights_en: ['National Monument', 'Ancient Temples', 'Vibrant Nightlife', 'World-Famous Cuisine']
@@ -74,7 +74,7 @@ window.INDONESIA_DATA = {
       image: './assets/images/semarang.avif',
       description_bg: 'Портова град на Ява, комбинация на старо и ново. Известен със своите исторически сгради и морската кухня.',
       description_en: 'A port city in Java, a combination of old and new. Known for its historical buildings and seafood cuisine.',
-      highlights_bg: ['Древни крепости', 'Колониален дизайн', 'Оживен пристанич', 'Местни деликатеси'],
+      highlights_bg: ['Древни крепости', 'Колониален дизайн', 'Оживен пристан', 'Местни деликатеси'],
       highlights_en: ['Ancient Fortresses', 'Colonial Design', 'Bustling Harbor', 'Local Delicacies']
     },
     {
