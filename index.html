@@ -266,6 +266,24 @@
             ]
         };
 
+        const countryInfoFields = [
+            { labelKey: 'capital', value: indonesiaData.country.capital, id: 'capitalLabel' },
+            { labelKey: 'population', value: indonesiaData.country.population, id: 'populationInfoLabel' },
+            { labelKey: 'area', value: indonesiaData.country.area, id: 'areaLabel' },
+            { labelKey: 'language', value: indonesiaData.country.language, id: 'languageLabel' },
+            { labelKey: 'currency', value: indonesiaData.country.currency, id: 'currencyLabel' },
+            { labelKey: 'continent', value: indonesiaData.country.continent, id: 'continentLabel' }
+        ];
+
+        const stadiumFieldBindings = [
+            ['stadiumCapacityLabel', 'stadiumCapacityLabel'],
+            ['stadiumOpenedLabel', 'stadiumOpenedLabel'],
+            ['stadiumUseLabel', 'stadiumUseLabel'],
+            ['stadiumCapacityValue', 'stadiumCapacityValue'],
+            ['stadiumOpenedValue', 'stadiumOpenedValue'],
+            ['stadiumUseValue', 'stadiumUseValue']
+        ];
+
         const dom = {};
         let contentRendered = false;
 
@@ -301,16 +319,85 @@
         function cacheContentElements() {
             dom.countryInfoTitle = document.getElementById('countryInfoTitle');
             dom.stadiumInfoBtn = document.getElementById('stadiumInfoBtn');
-            dom.capitalLabel = document.getElementById('capitalLabel');
-            dom.populationInfoLabel = document.getElementById('populationInfoLabel');
-            dom.areaLabel = document.getElementById('areaLabel');
-            dom.languageLabel = document.getElementById('languageLabel');
-            dom.currencyLabel = document.getElementById('currencyLabel');
-            dom.continentLabel = document.getElementById('continentLabel');
             dom.majorCitiesTitle = document.getElementById('majorCitiesTitle');
             dom.dataNotice = document.getElementById('dataNotice');
-            dom.cityCards = Array.from(document.querySelectorAll('.city-card'));
+            countryInfoFields.forEach(function(field) {
+                dom[field.id] = document.getElementById(field.id);
+            });
             dom.cityPopulationTexts = Array.from(document.querySelectorAll('.city-population'));
+        }
+
+        function setBodyScrollLocked(isLocked) {
+            document.body.style.overflow = isLocked ? 'hidden' : 'auto';
+        }
+
+        function toggleModal(modalElement, isOpen) {
+            modalElement.classList.toggle('active', isOpen);
+            setBodyScrollLocked(isOpen);
+        }
+
+        function createCountryInfoItemsHtml() {
+            return countryInfoFields.map(function(field) {
+                return `
+                        <div class="info-item">
+                            <div class="info-label" id="${field.id}"></div>
+                            <div class="info-value">${field.value}</div>
+                        </div>
+                `;
+            }).join('');
+        }
+
+        function createCityCardsHtml() {
+            return indonesiaData.cities.map(function(city, index) {
+                return `
+                            <button class="city-card" type="button" data-city-index="${index}" aria-label="${city.name}">
+                                <div class="city-rank">#${city.rank}</div>
+                                <div class="city-name">${city.name}</div>
+                                <div class="city-population" data-city-population="${city.population}"></div>
+                            </button>
+                `;
+            }).join('');
+        }
+
+        function createErrorHtml() {
+            return `
+                    <div class="error">
+                        ${getTranslation('errorLoading')}
+                    </div>
+                `;
+        }
+
+        function getCityTranslationKeys() {
+            return {
+                description: `description_${currentLanguage}`,
+                highlights: `highlights_${currentLanguage}`
+            };
+        }
+
+        function updateStadiumModalContent() {
+            dom.stadiumModalTitle.textContent = getTranslation('stadiumTitle');
+            dom.stadiumModalDescription.textContent = getTranslation('stadiumDescription');
+
+            stadiumFieldBindings.forEach(function(binding) {
+                const [elementKey, translationKey] = binding;
+                dom[elementKey].textContent = getTranslation(translationKey);
+            });
+        }
+
+        function updateCityModalContent(city) {
+            const keys = getCityTranslationKeys();
+
+            dom.modalRank.innerHTML = `#${city.rank} ${getTranslation('mostPopulated')}`;
+            dom.modalTitle.textContent = city.name;
+            dom.modalDescription.textContent = city[keys.description];
+            dom.modalPopulation.textContent = city.population;
+            dom.modalCoordinates.textContent = `${city.latitude.toFixed(2)}°, ${city.longitude.toFixed(2)}°`;
+            dom.populationLabel.textContent = getTranslation('population');
+            dom.coordinatesLabel.textContent = getTranslation('coordinates');
+            dom.attractionsLabel.textContent = getTranslation('keyAttractions');
+            dom.modalHighlights.innerHTML = city[keys.highlights].map(function(highlight) {
+                return `<span class="highlight-badge">${highlight}</span>`;
+            }).join('');
         }
 
         function renderContentShell() {
@@ -321,43 +408,14 @@
                         <button id="stadiumInfoBtn" class="stadium-info-btn" type="button"></button>
                     </div>
                     <div class="info-grid">
-                        <div class="info-item">
-                            <div class="info-label" id="capitalLabel"></div>
-                            <div class="info-value">${indonesiaData.country.capital}</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label" id="populationInfoLabel"></div>
-                            <div class="info-value">${indonesiaData.country.population}</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label" id="areaLabel"></div>
-                            <div class="info-value">${indonesiaData.country.area}</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label" id="languageLabel"></div>
-                            <div class="info-value">${indonesiaData.country.language}</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label" id="currencyLabel"></div>
-                            <div class="info-value">${indonesiaData.country.currency}</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label" id="continentLabel"></div>
-                            <div class="info-value">${indonesiaData.country.continent}</div>
-                        </div>
+                        ${createCountryInfoItemsHtml()}
                     </div>
                 </div>
 
                 <div class="card">
                     <h2 id="majorCitiesTitle"></h2>
                     <div class="cities-grid">
-                        ${indonesiaData.cities.map((city, index) => `
-                            <button class="city-card" type="button" data-city-index="${index}" aria-label="${city.name}">
-                                <div class="city-rank">#${city.rank}</div>
-                                <div class="city-name">${city.name}</div>
-                                <div class="city-population" data-city-population="${city.population}"></div>
-                            </button>
-                        `).join('')}
+                        ${createCityCardsHtml()}
                     </div>
                 </div>
 
@@ -382,12 +440,9 @@
         function updateContentTranslations() {
             dom.countryInfoTitle.textContent = getTranslation('countryInfo');
             dom.stadiumInfoBtn.textContent = getTranslation('stadiumInfoBtn');
-            dom.capitalLabel.textContent = getTranslation('capital');
-            dom.populationInfoLabel.textContent = getTranslation('population');
-            dom.areaLabel.textContent = getTranslation('area');
-            dom.languageLabel.textContent = getTranslation('language');
-            dom.currencyLabel.textContent = getTranslation('currency');
-            dom.continentLabel.textContent = getTranslation('continent');
+            countryInfoFields.forEach(function(field) {
+                dom[field.id].textContent = getTranslation(field.labelKey);
+            });
             dom.majorCitiesTitle.textContent = getTranslation('majorCities');
             dom.dataNotice.textContent = getTranslation('dataNotice');
 
@@ -429,48 +484,23 @@
 
         function openStadiumModal() {
             preloadImage(dom.stadiumModalImage, stadiumData.image);
-
-            dom.stadiumModalTitle.textContent = getTranslation('stadiumTitle');
-            dom.stadiumModalDescription.textContent = getTranslation('stadiumDescription');
-            dom.stadiumCapacityLabel.textContent = getTranslation('stadiumCapacityLabel');
-            dom.stadiumOpenedLabel.textContent = getTranslation('stadiumOpenedLabel');
-            dom.stadiumUseLabel.textContent = getTranslation('stadiumUseLabel');
-            dom.stadiumCapacityValue.textContent = getTranslation('stadiumCapacityValue');
-            dom.stadiumOpenedValue.textContent = getTranslation('stadiumOpenedValue');
-            dom.stadiumUseValue.textContent = getTranslation('stadiumUseValue');
-
-            dom.stadiumModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            updateStadiumModalContent();
+            toggleModal(dom.stadiumModal, true);
         }
 
         function closeStadiumModal() {
-            dom.stadiumModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
+            toggleModal(dom.stadiumModal, false);
         }
 
         function openCityModal(index) {
             const city = indonesiaData.cities[index];
-            const descKey = `description_${currentLanguage}`;
-            const highlightsKey = `highlights_${currentLanguage}`;
-
-            dom.modalRank.innerHTML = `#${city.rank} ${getTranslation('mostPopulated')}`;
-            dom.modalTitle.textContent = city.name;
             preloadImage(dom.modalImage, city.image);
-            dom.modalDescription.textContent = city[descKey];
-            dom.modalPopulation.textContent = city.population;
-            dom.modalCoordinates.textContent = `${city.latitude.toFixed(2)}°, ${city.longitude.toFixed(2)}°`;
-            dom.populationLabel.textContent = getTranslation('population');
-            dom.coordinatesLabel.textContent = getTranslation('coordinates');
-            dom.attractionsLabel.textContent = getTranslation('keyAttractions');
-            dom.modalHighlights.innerHTML = city[highlightsKey].map(h => `<span class="highlight-badge">${h}</span>`).join('');
-
-            dom.cityModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            updateCityModalContent(city);
+            toggleModal(dom.cityModal, true);
         }
 
         function closeModal() {
-            dom.cityModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
+            toggleModal(dom.cityModal, false);
         }
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -512,11 +542,7 @@
 
             } catch (error) {
                 console.error('Error loading data:', error);
-                dom.content.innerHTML = `
-                    <div class="error">
-                        ${getTranslation('errorLoading')}
-                    </div>
-                `;
+                dom.content.innerHTML = createErrorHtml();
             }
         }
     </script>
