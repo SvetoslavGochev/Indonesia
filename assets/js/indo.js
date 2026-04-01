@@ -255,6 +255,18 @@
     }
   }
 
+  function registerServiceWorker() {
+    if (!('serviceWorker' in navigator)) {
+      return;
+    }
+
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('./sw.js').catch(function (error) {
+        console.warn('Service worker registration failed:', error);
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     cacheDomElements();
 
@@ -282,6 +294,7 @@
     });
 
     loadData();
+    registerServiceWorker();
   });
 
   window.changeLanguage = changeLanguage;
