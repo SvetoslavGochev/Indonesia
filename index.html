@@ -30,7 +30,9 @@
     <div class="modal-overlay" id="cityModal">
         <div class="modal-content">
             <button class="modal-close" onclick="closeModal()">&times;</button>
-            <img id="modalImage" class="modal-image" src="" alt="City" loading="lazy" decoding="async">
+            <div class="image-container">
+                <img id="modalImage" class="modal-image" src="" alt="City" loading="lazy" decoding="async" sizes="(max-width: 768px) 90vw, 600px">
+            </div>
             <div class="modal-body">
                 <div id="modalRank" class="modal-rank"></div>
                 <h2 id="modalTitle" class="modal-title"></h2>
@@ -59,7 +61,9 @@
     <div class="modal-overlay" id="stadiumModal">
         <div class="modal-content stadium-modal-content">
             <button class="modal-close" onclick="closeStadiumModal()">&times;</button>
-            <img id="stadiumModalImage" class="modal-image stadium-modal-image" src="" alt="Gelora Bung Karno football pitch view" loading="lazy" decoding="async">
+            <div class="image-container">
+                <img id="stadiumModalImage" class="modal-image stadium-modal-image" src="" alt="Gelora Bung Karno football pitch view" loading="lazy" decoding="async" sizes="(max-width: 768px) 95vw, 640px" style="background: linear-gradient(45deg, #f0f0f0 25%, #e0e0e0 25%, #e0e0e0 50%, #f0f0f0 50%, #f0f0f0 75%, #e0e0e0 75%, #e0e0e0);">
+            </div>
             <div class="modal-body">
                 <h2 id="stadiumModalTitle" class="modal-title"></h2>
                 <p id="stadiumModalDescription" class="modal-description"></p>
@@ -282,7 +286,14 @@
 
         function openStadiumModal() {
             const modal = document.getElementById('stadiumModal');
-            document.getElementById('stadiumModalImage').src = stadiumData.image;
+            
+            // Preload stadium image
+            const img = new Image();
+            img.onload = function() {
+                document.getElementById('stadiumModalImage').src = stadiumData.image;
+            };
+            img.src = stadiumData.image;
+            
             document.getElementById('stadiumModalTitle').textContent = getTranslation('stadiumTitle');
             document.getElementById('stadiumModalDescription').textContent = getTranslation('stadiumDescription');
             document.getElementById('stadiumCapacityLabel').textContent = getTranslation('stadiumCapacityLabel');
@@ -310,7 +321,14 @@
 
             document.getElementById('modalRank').innerHTML = `#${city.rank} ${getTranslation('mostPopulated')}`;
             document.getElementById('modalTitle').textContent = city.name;
-            document.getElementById('modalImage').src = city.image;
+            
+            // Preload image
+            const img = new Image();
+            img.onload = function() {
+                document.getElementById('modalImage').src = city.image;
+            };
+            img.src = city.image;
+            
             document.getElementById('modalDescription').textContent = city[descKey];
             document.getElementById('modalPopulation').textContent = city.population;
             document.getElementById('modalCoordinates').textContent = `${city.latitude.toFixed(2)}°, ${city.longitude.toFixed(2)}°`;
