@@ -98,7 +98,7 @@ window.INDONESIA_DATA = {
       image: './assets/images/palembang.avif',
       description_bg: 'Град на Суматра с богата история. Известен със своите древни империи и река Мусай, която протича през град.',
       description_en: 'A city on Sumatra with rich history. Known for its ancient empires and the Musi River flowing through the city.',
-      highlights_bg: ['Древни памятници', 'Историческа река', 'Традиционни кораби', 'Исторически музеи'],
+      highlights_bg: ['Древни паметници', 'Историческа река', 'Традиционни кораби', 'Исторически музеи'],
       highlights_en: ['Ancient Monuments', 'Historic River', 'Traditional Boats', 'Historical Museums']
     },
     {
