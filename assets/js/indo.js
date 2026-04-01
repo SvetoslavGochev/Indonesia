@@ -250,6 +250,32 @@
     tryCandidate(0);
   }
 
+  function warmImageCandidates(src) {
+    buildImageCandidates(src).forEach(function (candidate) {
+      const warmupImage = new Image();
+      warmupImage.decoding = 'async';
+      warmupImage.src = candidate;
+    });
+  }
+
+  function warmCriticalImages() {
+    warmImageCandidates('./assets/images/jakarta-stadium.avif');
+    warmImageCandidates(stadiumData.image);
+
+    if (indonesiaData.cities.length > 0) {
+      warmImageCandidates(indonesiaData.cities[0].image);
+    }
+  }
+
+  function scheduleCriticalImageWarmup() {
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(warmCriticalImages, { timeout: 1500 });
+      return;
+    }
+
+    window.setTimeout(warmCriticalImages, 300);
+  }
+
   function changeLanguage(lang) {
     currentLanguage = lang;
     updateLanguageUI();
@@ -330,6 +356,7 @@
     });
 
     loadData();
+    scheduleCriticalImageWarmup();
     registerServiceWorker();
   });
 
