@@ -126,7 +126,7 @@
   function updateCityModalContent(city) {
     const keys = getCityTranslationKeys();
 
-    dom.modalRank.innerHTML = `#${city.rank} ${getTranslation('mostPopulated')}`;
+    dom.modalRank.textContent = `#${city.rank} ${getTranslation('mostPopulated')}`;
     dom.modalTitle.textContent = city.name;
     dom.modalDescription.textContent = city[keys.description];
     dom.modalPopulation.textContent = city.population;
