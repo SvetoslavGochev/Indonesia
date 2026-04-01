@@ -266,107 +266,129 @@
             ]
         };
 
+        const dom = {};
+
+        function cacheDomElements() {
+            dom.bgBtn = document.getElementById('bgBtn');
+            dom.enBtn = document.getElementById('enBtn');
+            dom.headerTitle = document.getElementById('headerTitle');
+            dom.headerSubtitle = document.getElementById('headerSubtitle');
+            dom.content = document.getElementById('content');
+            dom.cityModal = document.getElementById('cityModal');
+            dom.stadiumModal = document.getElementById('stadiumModal');
+            dom.modalImage = document.getElementById('modalImage');
+            dom.modalRank = document.getElementById('modalRank');
+            dom.modalTitle = document.getElementById('modalTitle');
+            dom.modalDescription = document.getElementById('modalDescription');
+            dom.modalPopulation = document.getElementById('modalPopulation');
+            dom.modalCoordinates = document.getElementById('modalCoordinates');
+            dom.populationLabel = document.getElementById('populationLabel');
+            dom.coordinatesLabel = document.getElementById('coordinatesLabel');
+            dom.attractionsLabel = document.getElementById('attractionsLabel');
+            dom.modalHighlights = document.getElementById('modalHighlights');
+            dom.stadiumModalImage = document.getElementById('stadiumModalImage');
+            dom.stadiumModalTitle = document.getElementById('stadiumModalTitle');
+            dom.stadiumModalDescription = document.getElementById('stadiumModalDescription');
+            dom.stadiumCapacityLabel = document.getElementById('stadiumCapacityLabel');
+            dom.stadiumOpenedLabel = document.getElementById('stadiumOpenedLabel');
+            dom.stadiumUseLabel = document.getElementById('stadiumUseLabel');
+            dom.stadiumCapacityValue = document.getElementById('stadiumCapacityValue');
+            dom.stadiumOpenedValue = document.getElementById('stadiumOpenedValue');
+            dom.stadiumUseValue = document.getElementById('stadiumUseValue');
+        }
+
         function getTranslation(key) {
             return translations[currentLanguage][key] || key;
         }
 
+        function updateLanguageUI() {
+            dom.bgBtn.classList.toggle('active', currentLanguage === 'bg');
+            dom.enBtn.classList.toggle('active', currentLanguage === 'en');
+            dom.headerTitle.textContent = getTranslation('headerTitle');
+            dom.headerSubtitle.textContent = getTranslation('headerSubtitle');
+        }
+
+        function preloadImage(imageElement, src) {
+            if (imageElement.getAttribute('src') === src) {
+                return;
+            }
+
+            const preloadedImage = new Image();
+            preloadedImage.decoding = 'async';
+            preloadedImage.onload = function() {
+                imageElement.src = src;
+            };
+            preloadedImage.src = src;
+        }
+
         function changeLanguage(lang) {
             currentLanguage = lang;
-            
-            document.getElementById('bgBtn').classList.toggle('active', lang === 'bg');
-            document.getElementById('enBtn').classList.toggle('active', lang === 'en');
-            
-            document.getElementById('headerTitle').textContent = getTranslation('headerTitle');
-            document.getElementById('headerSubtitle').textContent = getTranslation('headerSubtitle');
-            
+            updateLanguageUI();
             loadData();
-            
             localStorage.setItem('preferredLanguage', lang);
         }
 
         function openStadiumModal() {
-            const modal = document.getElementById('stadiumModal');
-            
-            // Preload stadium image
-            const img = new Image();
-            img.onload = function() {
-                document.getElementById('stadiumModalImage').src = stadiumData.image;
-            };
-            img.src = stadiumData.image;
-            
-            document.getElementById('stadiumModalTitle').textContent = getTranslation('stadiumTitle');
-            document.getElementById('stadiumModalDescription').textContent = getTranslation('stadiumDescription');
-            document.getElementById('stadiumCapacityLabel').textContent = getTranslation('stadiumCapacityLabel');
-            document.getElementById('stadiumOpenedLabel').textContent = getTranslation('stadiumOpenedLabel');
-            document.getElementById('stadiumUseLabel').textContent = getTranslation('stadiumUseLabel');
-            document.getElementById('stadiumCapacityValue').textContent = getTranslation('stadiumCapacityValue');
-            document.getElementById('stadiumOpenedValue').textContent = getTranslation('stadiumOpenedValue');
-            document.getElementById('stadiumUseValue').textContent = getTranslation('stadiumUseValue');
+            preloadImage(dom.stadiumModalImage, stadiumData.image);
 
-            modal.classList.add('active');
+            dom.stadiumModalTitle.textContent = getTranslation('stadiumTitle');
+            dom.stadiumModalDescription.textContent = getTranslation('stadiumDescription');
+            dom.stadiumCapacityLabel.textContent = getTranslation('stadiumCapacityLabel');
+            dom.stadiumOpenedLabel.textContent = getTranslation('stadiumOpenedLabel');
+            dom.stadiumUseLabel.textContent = getTranslation('stadiumUseLabel');
+            dom.stadiumCapacityValue.textContent = getTranslation('stadiumCapacityValue');
+            dom.stadiumOpenedValue.textContent = getTranslation('stadiumOpenedValue');
+            dom.stadiumUseValue.textContent = getTranslation('stadiumUseValue');
+
+            dom.stadiumModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
         function closeStadiumModal() {
-            const modal = document.getElementById('stadiumModal');
-            modal.classList.remove('active');
+            dom.stadiumModal.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
 
         function openCityModal(index) {
             const city = indonesiaData.cities[index];
-            const modal = document.getElementById('cityModal');
             const descKey = `description_${currentLanguage}`;
             const highlightsKey = `highlights_${currentLanguage}`;
 
-            document.getElementById('modalRank').innerHTML = `#${city.rank} ${getTranslation('mostPopulated')}`;
-            document.getElementById('modalTitle').textContent = city.name;
-            
-            // Preload image
-            const img = new Image();
-            img.onload = function() {
-                document.getElementById('modalImage').src = city.image;
-            };
-            img.src = city.image;
-            
-            document.getElementById('modalDescription').textContent = city[descKey];
-            document.getElementById('modalPopulation').textContent = city.population;
-            document.getElementById('modalCoordinates').textContent = `${city.latitude.toFixed(2)}°, ${city.longitude.toFixed(2)}°`;
-            
-            // Update modal labels
-            document.getElementById('populationLabel').textContent = getTranslation('population');
-            document.getElementById('coordinatesLabel').textContent = getTranslation('coordinates');
-            document.getElementById('attractionsLabel').textContent = getTranslation('keyAttractions');
+            dom.modalRank.innerHTML = `#${city.rank} ${getTranslation('mostPopulated')}`;
+            dom.modalTitle.textContent = city.name;
+            preloadImage(dom.modalImage, city.image);
+            dom.modalDescription.textContent = city[descKey];
+            dom.modalPopulation.textContent = city.population;
+            dom.modalCoordinates.textContent = `${city.latitude.toFixed(2)}°, ${city.longitude.toFixed(2)}°`;
+            dom.populationLabel.textContent = getTranslation('population');
+            dom.coordinatesLabel.textContent = getTranslation('coordinates');
+            dom.attractionsLabel.textContent = getTranslation('keyAttractions');
+            dom.modalHighlights.innerHTML = city[highlightsKey].map(h => `<span class="highlight-badge">${h}</span>`).join('');
 
-            const highlightsHTML = city[highlightsKey].map(h => `<span class="highlight-badge">${h}</span>`).join('');
-            document.getElementById('modalHighlights').innerHTML = highlightsHTML;
-
-            modal.classList.add('active');
+            dom.cityModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
-            const modal = document.getElementById('cityModal');
-            modal.classList.remove('active');
+            dom.cityModal.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            const savedLang = localStorage.getItem('preferredLanguage') || 'bg';
-            if (savedLang !== currentLanguage) {
-                changeLanguage(savedLang);
-            }
+            cacheDomElements();
 
-            const modal = document.getElementById('cityModal');
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'bg';
+            currentLanguage = savedLang;
+            updateLanguageUI();
+
+            dom.cityModal.addEventListener('click', function(e) {
+                if (e.target === dom.cityModal) {
                     closeModal();
                 }
             });
 
-            const stadiumModal = document.getElementById('stadiumModal');
-            stadiumModal.addEventListener('click', function(e) {
-                if (e.target === stadiumModal) {
+            dom.stadiumModal.addEventListener('click', function(e) {
+                if (e.target === dom.stadiumModal) {
                     closeStadiumModal();
                 }
             });
@@ -381,12 +403,8 @@
             loadData();
         });
 
-        async function loadData() {
+        function loadData() {
             try {
-                await new Promise(resolve => setTimeout(resolve, 500));
-
-                const contentDiv = document.getElementById('content');
-                
                 const html = `
                     <div class="card country-info">
                         <div class="country-title-row">
@@ -439,11 +457,11 @@
                     </div>
                 `;
 
-                contentDiv.innerHTML = html;
+                dom.content.innerHTML = html;
 
             } catch (error) {
                 console.error('Error loading data:', error);
-                document.getElementById('content').innerHTML = `
+                dom.content.innerHTML = `
                     <div class="error">
                         ${getTranslation('errorLoading')}
                     </div>
