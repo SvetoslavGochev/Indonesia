@@ -24,7 +24,10 @@ window.APP_TRANSLATIONS = {
     stadiumUseLabel: "Използва се за",
     stadiumCapacityValue: "около 77 000 зрители",
     stadiumOpenedValue: "1962 (реновиран 2018)",
-    stadiumUseValue: "футбол и национални събития"
+    stadiumUseValue: "футбол и национални събития",
+    wildlifeInfoBtn: "🦁 Животински свят",
+    wildlifeTitle: "Животински свят на Индонезия",
+    wildlifeDescription: "Индонезия е дом както на редки, така и на екзотични животни. Архипелагът притежава невероятното биологично разнообразие с хиляди видове птици, бозайници и влечуги."
   },
   en: {
     headerTitle: "🇮🇩 Indonesia Explorer",
@@ -51,6 +54,9 @@ window.APP_TRANSLATIONS = {
     stadiumUseLabel: "Used for",
     stadiumCapacityValue: "about 77,000 spectators",
     stadiumOpenedValue: "1962 (renovated in 2018)",
-    stadiumUseValue: "football and national events"
+    stadiumUseValue: "football and national events",
+    wildlifeInfoBtn: "🦁 Animal World",
+    wildlifeTitle: "Indonesian Wildlife",
+    wildlifeDescription: "Indonesia is home to both rare and exotic animals. The archipelago possesses incredible biological diversity with thousands of species of birds, mammals, and reptiles."
   }
 };

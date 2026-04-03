@@ -22,6 +22,7 @@
         <header>
             <h1 id="headerTitle">🇮🇩 Indonesia Explorer</h1>
             <p id="headerSubtitle">Explore detailed information about Indonesia</p>
+            <button id="wildlifeInfoBtn" class="wildlife-info-btn" type="button" style="display: none;"></button>
         </header>
 
         <div id="content">
@@ -88,6 +89,20 @@
                         <div class="modal-info-value" id="stadiumUseValue"></div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wildlife Modal -->
+    <div class="modal-overlay" id="wildlifeModal">
+        <div class="modal-content stadium-modal-content">
+            <button class="modal-close" onclick="closeWildlifeModal()">&times;</button>
+            <div class="image-container">
+                <img id="wildlifeModalImage" class="modal-image stadium-modal-image" src="" alt="Indonesian wildlife" loading="lazy" decoding="async" sizes="(max-width: 768px) 95vw, 640px">
+            </div>
+            <div class="modal-body">
+                <h2 id="wildlifeModalTitle" class="modal-title"></h2>
+                <p id="wildlifeModalDescription" class="modal-description"></p>
             </div>
         </div>
     </div>

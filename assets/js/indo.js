@@ -53,11 +53,18 @@
     dom.stadiumCapacityValue = document.getElementById('stadiumCapacityValue');
     dom.stadiumOpenedValue = document.getElementById('stadiumOpenedValue');
     dom.stadiumUseValue = document.getElementById('stadiumUseValue');
+    dom.wildlifeModal = document.getElementById('wildlifeModal');
+    dom.wildlifeInfoBtn = document.getElementById('wildlifeInfoBtn');
+    dom.wildlifeModalImage = document.getElementById('wildlifeModalImage');
+    dom.wildlifeModalTitle = document.getElementById('wildlifeModalTitle');
+    dom.wildlifeModalDescription = document.getElementById('wildlifeModalDescription');
   }
 
-  function cacheContentElements() {
+function cacheContentElements() {
     dom.countryInfoTitle = document.getElementById('countryInfoTitle');
     dom.stadiumInfoBtn = document.getElementById('stadiumInfoBtn');
+    dom.wildlifeInfoBtn = document.getElementById('wildlifeInfoBtn');
+    dom.wildlifeInfoBtn.style.display = 'inline-block';
     dom.majorCitiesTitle = document.getElementById('majorCitiesTitle');
     dom.dataNotice = document.getElementById('dataNotice');
     countryInfoFields.forEach(function (field) {
@@ -199,6 +206,9 @@
     dom.enBtn.classList.toggle('active', currentLanguage === 'en');
     dom.headerTitle.textContent = getTranslation('headerTitle');
     dom.headerSubtitle.textContent = getTranslation('headerSubtitle');
+    if (dom.wildlifeInfoBtn) {
+      dom.wildlifeInfoBtn.textContent = getTranslation('wildlifeInfoBtn');
+    }
   }
 
   function buildImageCandidates(src) {
@@ -261,6 +271,7 @@
   function warmCriticalImages() {
     warmImageCandidates('./assets/images/jakarta-stadium.avif');
     warmImageCandidates(stadiumData.image);
+    warmImageCandidates('./assets/images/indonesian-animals.avif');
 
     if (indonesiaData.cities.length > 0) {
       warmImageCandidates(indonesiaData.cities[0].image);
@@ -291,6 +302,17 @@
 
   function closeStadiumModal() {
     toggleModal(dom.stadiumModal, false);
+  }
+
+  function openWildlifeModal() {
+    preloadImage(dom.wildlifeModalImage, './assets/images/indonesian-animals.avif');
+    dom.wildlifeModalTitle.textContent = getTranslation('wildlifeTitle');
+    dom.wildlifeModalDescription.textContent = getTranslation('wildlifeDescription');
+    toggleModal(dom.wildlifeModal, true);
+  }
+
+  function closeWildlifeModal() {
+    toggleModal(dom.wildlifeModal, false);
   }
 
   function openCityModal(index) {
@@ -348,10 +370,17 @@
       }
     });
 
+    dom.wildlifeModal.addEventListener('click', function (event) {
+      if (event.target === dom.wildlifeModal) {
+        closeWildlifeModal();
+      }
+    });
+
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') {
         closeModal();
         closeStadiumModal();
+        closeWildlifeModal();
       }
     });
 
@@ -365,4 +394,6 @@
   window.closeModal = closeModal;
   window.openStadiumModal = openStadiumModal;
   window.closeStadiumModal = closeStadiumModal;
+  window.openWildlifeModal = openWildlifeModal;
+  window.closeWildlifeModal = closeWildlifeModal;
 })();
