@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -12,9 +12,21 @@ const CORE_ASSETS = [
   './assets/favicons/favicon.svg'
 ];
 
+const IMAGE_ASSETS = [
+  './assets/images/indonesian-animals.avif',
+  './assets/images/indonesian-animals.webp',
+  './assets/images/indonesian-animals.jpg',
+  './assets/images/jakarta-stadium-aerial.avif',
+  './assets/images/jakarta-stadium-aerial.webp',
+  './assets/images/jakarta-stadium-aerial.jpg'
+];
+
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(STATIC_CACHE).then((cache) => cache.addAll(CORE_ASSETS))
+    Promise.all([
+      caches.open(STATIC_CACHE).then((cache) => cache.addAll(CORE_ASSETS)),
+      caches.open(IMAGE_CACHE).then((cache) => cache.addAll(IMAGE_ASSETS))
+    ])
   );
   self.skipWaiting();
 });

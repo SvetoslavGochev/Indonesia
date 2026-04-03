@@ -260,6 +260,36 @@ function cacheContentElements() {
     tryCandidate(0);
   }
 
+  async function setImageFromCache(imageElement, src) {
+    if (!('caches' in window)) {
+      return false;
+    }
+
+    const candidates = buildImageCandidates(src);
+    for (const candidate of candidates) {
+      try {
+        const cached = await caches.match(candidate);
+        if (!cached) {
+          continue;
+        }
+
+        if (dom.wildlifeObjectUrl) {
+          URL.revokeObjectURL(dom.wildlifeObjectUrl);
+          dom.wildlifeObjectUrl = null;
+        }
+
+        const blob = await cached.blob();
+        dom.wildlifeObjectUrl = URL.createObjectURL(blob);
+        imageElement.src = dom.wildlifeObjectUrl;
+        return true;
+      } catch (error) {
+        // Ignore cache read errors and continue to fallback path.
+      }
+    }
+
+    return false;
+  }
+
   function warmImageCandidates(src) {
     buildImageCandidates(src).forEach(function (candidate) {
       const warmupImage = new Image();
@@ -304,14 +334,23 @@ function cacheContentElements() {
     toggleModal(dom.stadiumModal, false);
   }
 
-  function openWildlifeModal() {
-    preloadImage(dom.wildlifeModalImage, './assets/images/indonesian-animals.avif');
+  async function openWildlifeModal() {
     dom.wildlifeModalTitle.textContent = getTranslation('wildlifeTitle');
     dom.wildlifeModalDescription.textContent = getTranslation('wildlifeDescription');
+
+    const loadedFromCache = await setImageFromCache(dom.wildlifeModalImage, './assets/images/indonesian-animals.avif');
+    if (!loadedFromCache) {
+      preloadImage(dom.wildlifeModalImage, './assets/images/indonesian-animals.avif');
+    }
+
     toggleModal(dom.wildlifeModal, true);
   }
 
   function closeWildlifeModal() {
+    if (dom.wildlifeObjectUrl) {
+      URL.revokeObjectURL(dom.wildlifeObjectUrl);
+      dom.wildlifeObjectUrl = null;
+    }
     toggleModal(dom.wildlifeModal, false);
   }
 
