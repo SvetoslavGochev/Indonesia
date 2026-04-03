@@ -221,11 +221,11 @@ function cacheContentElements() {
     const suffix = match[2] || '';
     const base = src.slice(0, src.length - match[0].length);
     const fallbackOrder = {
-      avif: ['avif', 'webp', 'jpg', 'png'],
-      webp: ['webp', 'jpg', 'png'],
-      jpg: ['jpg', 'webp', 'png'],
-      jpeg: ['jpeg', 'webp', 'png'],
-      png: ['png', 'webp', 'jpg']
+      avif: ['avif', 'webp', 'jpg'],
+      webp: ['webp', 'jpg'],
+      jpg: ['jpg', 'webp'],
+      jpeg: ['jpeg', 'webp'],
+      png: ['webp', 'jpg']
     };
 
     return fallbackOrder[extension].map(function (ext) {
