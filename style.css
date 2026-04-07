@@ -120,7 +120,8 @@ header p {
     transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
     animation: pulseRingGreen 2.2s ease-in-out infinite;
     transform: translateY(-2px);
-    margin-left: 12px;
+    display: block;
+    margin: 0 auto 18px auto;
 }
 
 .wildlife-info-btn:hover {
