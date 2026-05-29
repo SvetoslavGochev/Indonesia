@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Lato', sans-serif;
     background: #0f1f3a url('./assets/images/jakarta-stadium.jpg') center center / cover no-repeat fixed;
     background-image: image-set(
         url('./assets/images/jakarta-stadium.avif') type('image/avif'),
@@ -15,6 +15,13 @@ body {
     min-height: 100vh;
     padding: 20px;
     position: relative;
+}
+
+h1,
+h2,
+h3,
+.modal-title {
+    font-family: Georgia, 'Times New Roman', serif;
 }
 
 body::before {
