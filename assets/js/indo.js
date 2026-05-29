@@ -207,7 +207,10 @@ function cacheContentElements() {
     dom.headerTitle.textContent = getTranslation('headerTitle');
     dom.headerSubtitle.textContent = getTranslation('headerSubtitle');
     if (dom.wildlifeInfoBtn) {
-      dom.wildlifeInfoBtn.textContent = getTranslation('wildlifeInfoBtn');
+      const wildlifeLabel = getTranslation('wildlifeInfoBtn');
+      dom.wildlifeInfoBtn.textContent = '';
+      dom.wildlifeInfoBtn.setAttribute('aria-label', wildlifeLabel);
+      dom.wildlifeInfoBtn.title = wildlifeLabel;
     }
   }
 

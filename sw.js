@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v2';
+const CACHE_VERSION = 'v3';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -16,6 +16,7 @@ const IMAGE_ASSETS = [
   './assets/images/indonesian-animals.avif',
   './assets/images/indonesian-animals.webp',
   './assets/images/indonesian-animals.jpg',
+  './assets/images/Screenshot 2026-05-29 142129.png',
   './assets/images/jakarta-stadium-aerial.avif',
   './assets/images/jakarta-stadium-aerial.webp',
   './assets/images/jakarta-stadium-aerial.jpg'
