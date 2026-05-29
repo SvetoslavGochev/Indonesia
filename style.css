@@ -590,6 +590,10 @@ header p {
     will-change: opacity, filter;
 }
 
+#wildlifeModalImage {
+    object-position: center 36%;
+}
+
 .stadium-modal-info {
     grid-template-columns: repeat(3, 1fr);
 }
@@ -661,6 +665,8 @@ header p {
 
     .modal-content {
         width: 95%;
+        max-height: 92vh;
+        overflow-y: auto;
     }
 
     .modal-body {
@@ -673,6 +679,24 @@ header p {
 
     .stadium-modal-image {
         height: 210px;
+    }
+
+    #stadiumModal .image-container,
+    #wildlifeModal .image-container {
+        aspect-ratio: 16 / 10;
+    }
+
+    #stadiumModalImage,
+    #wildlifeModalImage {
+        height: 100%;
+    }
+
+    #stadiumModalImage {
+        object-position: center 45%;
+    }
+
+    #wildlifeModalImage {
+        object-position: center 32%;
     }
 
     .modal-info {
@@ -782,5 +806,18 @@ header p {
 
     .stadium-modal-image {
         height: 190px;
+    }
+
+    #stadiumModal .image-container,
+    #wildlifeModal .image-container {
+        aspect-ratio: 4 / 3;
+    }
+
+    #stadiumModalImage {
+        object-position: center 46%;
+    }
+
+    #wildlifeModalImage {
+        object-position: center 30%;
     }
 }
