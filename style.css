@@ -66,6 +66,13 @@ header p {
     margin-bottom: 0;
 }
 
+.action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
 .stadium-info-btn {
     width: 82px;
     height: 82px;
@@ -121,7 +128,7 @@ header p {
     animation: pulseRingGreen 2.2s ease-in-out infinite;
     transform: translateY(-2px);
     display: block;
-    margin: 0 auto 18px auto;
+    margin: 0;
 }
 
 .wildlife-info-btn:hover {
@@ -708,7 +715,18 @@ header p {
         gap: 10px;
     }
 
+    .action-buttons {
+        gap: 10px;
+    }
+
     .stadium-info-btn {
+        width: 68px;
+        height: 68px;
+        font-size: 0.55rem;
+        transform: translateY(-1px);
+    }
+
+    .wildlife-info-btn {
         width: 68px;
         height: 68px;
         font-size: 0.55rem;
@@ -761,11 +779,22 @@ header p {
         flex-wrap: wrap;
     }
 
+    .action-buttons {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
     .stadium-info-btn {
         width: 62px;
         height: 62px;
         font-size: 0.5rem;
         margin-left: auto;
+    }
+
+    .wildlife-info-btn {
+        width: 62px;
+        height: 62px;
+        font-size: 0.5rem;
     }
 
     .city-card {

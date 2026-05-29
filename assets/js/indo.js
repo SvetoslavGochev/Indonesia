@@ -64,7 +64,6 @@ function cacheContentElements() {
     dom.countryInfoTitle = document.getElementById('countryInfoTitle');
     dom.stadiumInfoBtn = document.getElementById('stadiumInfoBtn');
     dom.wildlifeInfoBtn = document.getElementById('wildlifeInfoBtn');
-    dom.wildlifeInfoBtn.style.display = 'inline-block';
     dom.majorCitiesTitle = document.getElementById('majorCitiesTitle');
     dom.dataNotice = document.getElementById('dataNotice');
     countryInfoFields.forEach(function (field) {
@@ -151,7 +150,10 @@ function cacheContentElements() {
         <div class="card country-info">
           <div class="country-title-row">
             <h2 id="countryInfoTitle"></h2>
-            <button id="stadiumInfoBtn" class="stadium-info-btn" type="button"></button>
+            <div class="action-buttons">
+              <button id="stadiumInfoBtn" class="stadium-info-btn" type="button"></button>
+              <button id="wildlifeInfoBtn" class="wildlife-info-btn" type="button"></button>
+            </div>
           </div>
           <div class="info-grid">
             ${createCountryInfoItemsHtml()}
@@ -171,6 +173,7 @@ function cacheContentElements() {
     cacheContentElements();
 
     dom.stadiumInfoBtn.addEventListener('click', openStadiumModal);
+    dom.wildlifeInfoBtn.addEventListener('click', openWildlifeModal);
     dom.content.addEventListener('click', function (event) {
       const cityCard = event.target.closest('.city-card');
       if (!cityCard) {
@@ -417,11 +420,6 @@ function cacheContentElements() {
         closeWildlifeModal();
       }
     });
-
-    if (dom.wildlifeInfoBtn) {
-      dom.wildlifeInfoBtn.addEventListener('click', openWildlifeModal);
-    }
-
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') {
         closeModal();
