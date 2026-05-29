@@ -208,7 +208,7 @@ function cacheContentElements() {
     dom.headerSubtitle.textContent = getTranslation('headerSubtitle');
     if (dom.wildlifeInfoBtn) {
       const wildlifeLabel = getTranslation('wildlifeInfoBtn');
-      dom.wildlifeInfoBtn.textContent = '';
+      dom.wildlifeInfoBtn.textContent = wildlifeLabel;
       dom.wildlifeInfoBtn.setAttribute('aria-label', wildlifeLabel);
       dom.wildlifeInfoBtn.title = wildlifeLabel;
     }
@@ -228,7 +228,7 @@ function cacheContentElements() {
       webp: ['webp', 'jpg'],
       jpg: ['jpg', 'webp'],
       jpeg: ['jpeg', 'webp'],
-      png: ['webp', 'jpg']
+      png: ['png', 'webp', 'jpg']
     };
 
     return fallbackOrder[extension].map(function (ext) {
@@ -304,7 +304,7 @@ function cacheContentElements() {
   function warmCriticalImages() {
     warmImageCandidates('./assets/images/jakarta-stadium.avif');
     warmImageCandidates(stadiumData.image);
-    warmImageCandidates('./assets/images/indonesian-animals.avif');
+    warmImageCandidates('./assets/images/Screenshot 2026-05-29 142129.png');
 
     if (indonesiaData.cities.length > 0) {
       warmImageCandidates(indonesiaData.cities[0].image);
@@ -341,9 +341,9 @@ function cacheContentElements() {
     dom.wildlifeModalTitle.textContent = getTranslation('wildlifeTitle');
     dom.wildlifeModalDescription.textContent = getTranslation('wildlifeDescription');
 
-    const loadedFromCache = await setImageFromCache(dom.wildlifeModalImage, './assets/images/indonesian-animals.avif');
+    const loadedFromCache = await setImageFromCache(dom.wildlifeModalImage, './assets/images/Screenshot 2026-05-29 142129.png');
     if (!loadedFromCache) {
-      preloadImage(dom.wildlifeModalImage, './assets/images/indonesian-animals.avif');
+      preloadImage(dom.wildlifeModalImage, './assets/images/Screenshot 2026-05-29 142129.png');
     }
 
     toggleModal(dom.wildlifeModal, true);
@@ -417,6 +417,10 @@ function cacheContentElements() {
         closeWildlifeModal();
       }
     });
+
+    if (dom.wildlifeInfoBtn) {
+      dom.wildlifeInfoBtn.addEventListener('click', openWildlifeModal);
+    }
 
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') {
