@@ -189,6 +189,7 @@ function cacheContentElements() {
   function updateContentTranslations() {
     dom.countryInfoTitle.textContent = getTranslation('countryInfo');
     dom.stadiumInfoBtn.textContent = getTranslation('stadiumInfoBtn');
+    dom.wildlifeInfoBtn.textContent = getTranslation('wildlifeInfoBtn');
     countryInfoFields.forEach(function (field) {
       dom[field.id].textContent = getTranslation(field.labelKey);
     });
