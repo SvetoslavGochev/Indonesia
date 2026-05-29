@@ -821,3 +821,45 @@ header p {
         object-position: center 30%;
     }
 }
+
+@media (max-width: 360px) {
+    body {
+        padding: 8px;
+    }
+
+    .modal-content {
+        width: calc(100% - 8px);
+        border-radius: 14px;
+    }
+
+    .modal-body {
+        padding: 14px 12px;
+    }
+
+    .modal-title {
+        font-size: 1.45em;
+    }
+
+    .modal-description {
+        font-size: 0.96em;
+        line-height: 1.5;
+    }
+
+    #stadiumModal .image-container,
+    #wildlifeModal .image-container {
+        aspect-ratio: 1 / 1;
+    }
+
+    #stadiumModalImage,
+    #wildlifeModalImage {
+        height: 100%;
+    }
+
+    #stadiumModalImage {
+        object-position: center 47%;
+    }
+
+    #wildlifeModalImage {
+        object-position: center 28%;
+    }
+}
