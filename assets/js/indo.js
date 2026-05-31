@@ -113,9 +113,10 @@ function cacheContentElements() {
   }
 
   function getCityTranslationKeys() {
+    const contentLanguage = currentLanguage === 'id' ? 'en' : currentLanguage;
     return {
-      description: `description_${currentLanguage}`,
-      highlights: `highlights_${currentLanguage}`
+      description: `description_${contentLanguage}`,
+      highlights: `highlights_${contentLanguage}`
     };
   }
 
@@ -326,6 +327,7 @@ function cacheContentElements() {
 
   function changeLanguage(lang) {
     currentLanguage = lang;
+    document.documentElement.lang = lang === 'id' ? 'id' : lang;
     updateLanguageUI();
     loadData();
     localStorage.setItem('preferredLanguage', lang);
@@ -402,6 +404,7 @@ function cacheContentElements() {
 
     const savedLang = localStorage.getItem('preferredLanguage') || 'bg';
     currentLanguage = savedLang;
+    document.documentElement.lang = currentLanguage === 'id' ? 'id' : currentLanguage;
     updateLanguageUI();
 
     dom.cityModal.addEventListener('click', function (event) {

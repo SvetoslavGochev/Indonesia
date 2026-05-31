@@ -396,6 +396,7 @@ header p {
     top: 20px;
     right: 20px;
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     z-index: 999;
 }
