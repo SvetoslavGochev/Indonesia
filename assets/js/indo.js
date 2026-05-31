@@ -237,8 +237,8 @@ function cacheContentElements() {
       dom.modalHotelsSection.style.display = 'none';
     } else {
       dom.modalHotelsSection.style.display = 'block';
-      dom.modalHotels.innerHTML = hotels.map(function (hotel) {
-        return `<span class="hotel-item"><a class="hotel-link-badge" href="${hotel.url}" target="_blank" rel="noopener noreferrer">${hotel.name}</a><span class="hotel-price-badge">${getHotelEstimateText(hotel.name)}</span></span>`;
+        dom.modalHotels.innerHTML = hotels.map(function (hotel) {
+          return `<span class="hotel-item"><a class="hotel-link-badge" href="${hotel.url}" target="_blank" rel="noopener noreferrer">🏨 ${hotel.name}</a><span class="hotel-price-badge">${getHotelEstimateText(hotel.name)}</span></span>`;
       }).join('');
     }
   }
