@@ -156,8 +156,16 @@ function cacheContentElements() {
     });
   }
 
+  function getAttractionWikipediaUrl(cityName, attractionQuery) {
+    const searchQuery = encodeURIComponent(`${attractionQuery} ${cityName}`);
+    return `https://en.wikipedia.org/wiki/Special:Search?search=${searchQuery}`;
+  }
+
   function updateCityModalContent(city) {
     const keys = getCityTranslationKeys();
+    const localizedHighlights = Array.isArray(city[keys.highlights]) ? city[keys.highlights] : [];
+    const englishHighlights = Array.isArray(city.highlights_en) ? city.highlights_en : [];
+    const directHighlightLinks = Array.isArray(city.highlightLinks_en) ? city.highlightLinks_en : [];
 
     dom.modalRank.textContent = `#${city.rank} ${getTranslation('mostPopulated')}`;
     dom.modalTitle.textContent = city.name;
@@ -168,8 +176,11 @@ function cacheContentElements() {
     dom.coordinatesLabel.textContent = getTranslation('coordinates');
     dom.attractionsLabel.textContent = getTranslation('keyAttractions');
     dom.hotelsLabel.textContent = getTranslation('topHotels');
-    dom.modalHighlights.innerHTML = city[keys.highlights].map(function (highlight) {
-      return `<span class="highlight-badge">${highlight}</span>`;
+    dom.modalHighlights.innerHTML = localizedHighlights.map(function (highlight, index) {
+      const queryTerm = englishHighlights[index] || highlight;
+      const directUrl = directHighlightLinks[index];
+      const finalUrl = directUrl || getAttractionWikipediaUrl(city.name, queryTerm);
+      return `<a class="attraction-link-badge" href="${finalUrl}" target="_blank" rel="noopener noreferrer">${highlight}</a>`;
     }).join('');
 
     const hotels = Array.isArray(city.hotels) ? city.hotels : [];

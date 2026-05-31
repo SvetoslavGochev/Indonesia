@@ -29,6 +29,12 @@ window.INDONESIA_DATA = {
       description_id: 'Ibu kota Indonesia yang dinamis dengan perpaduan arsitektur modern dan budaya tradisional. Dikenal dengan gedung pencakar langit yang menjulang dan pasar yang ramai.',
       highlights_bg: ['Национален монумент', 'Древни храмове', 'Оживен нощен живот', 'Световно известна кухня'],
       highlights_en: ['National Monument', 'Ancient Temples', 'Vibrant Nightlife', 'World-Famous Cuisine'],
+      highlightLinks_en: [
+        'https://en.wikipedia.org/wiki/National_Monument_(Indonesia)',
+        'https://en.wikipedia.org/wiki/Prambanan',
+        'https://en.wikipedia.org/wiki/Nightlife',
+        'https://en.wikipedia.org/wiki/Indonesian_cuisine'
+      ],
       highlights_id: ['Monumen Nasional', 'Candi Kuno', 'Kehidupan malam yang semarak', 'Kuliner terkenal dunia'],
       hotels: [
         { name: 'Hotel Indonesia Kempinski Jakarta', url: 'https://www.hoteltentrem.com/jakarta/?gad_source=1&gad_campaignid=23439099513&gclid=CjwKCAjwuO_QBhAWEiwAIkVhU3h3Wg-Mt_qIvEeAi841Oqx4tuDo-rqRBsYylP5Mal_xZQAf7YtdZxoCbFAQAvD_BwE' },
@@ -50,6 +56,12 @@ window.INDONESIA_DATA = {
       description_id: 'Kota terbesar kedua di Indonesia, berkembang sebagai pusat industri. Dikenal karena nilai sejarahnya dan pelabuhannya.',
       highlights_bg: ['Исторически пристанище', 'Храм Превели', 'Редки артефакти', 'Морски живот'],
       highlights_en: ['Historic Port', 'Prambanan Temple', 'Rare Artifacts', 'Marine Life'],
+      highlightLinks_en: [
+        'https://en.wikipedia.org/wiki/Port_of_Tanjung_Perak',
+        'https://en.wikipedia.org/wiki/Prambanan',
+        'https://en.wikipedia.org/wiki/Artifact_(archaeology)',
+        'https://en.wikipedia.org/wiki/Marine_life'
+      ],
       highlights_id: ['Pelabuhan Tanjung Perak', 'Tugu Pahlawan', 'Jembatan Suramadu', 'Wisata kuliner'],
       hotels: [
         { name: 'Hotel Majapahit Surabaya', url: 'https://www.booking.com/hotel/id/hotel-majapahit-surabaya.html' },
@@ -71,6 +83,12 @@ window.INDONESIA_DATA = {
       description_id: 'Kota di dataran tinggi Jawa Barat yang dikenal dengan iklim sejuk dan pemandangan alamnya. Tujuan wisata populer.',
       highlights_bg: ['Чайни плантации', 'Вулкани и термални извори', 'Местни художници', 'Традиционна архитектура'],
       highlights_en: ['Tea Plantations', 'Volcanoes & Hot Springs', 'Local Artists', 'Traditional Architecture'],
+      highlightLinks_en: [
+        'https://en.wikipedia.org/wiki/Tea_production_in_Indonesia',
+        'https://en.wikipedia.org/wiki/Volcanism_of_Indonesia',
+        'https://en.wikipedia.org/wiki/Category:Indonesian_artists',
+        'https://en.wikipedia.org/wiki/Architecture_of_Indonesia'
+      ],
       highlights_id: ['Perkebunan teh', 'Gunung berapi dan mata air panas', 'Seniman lokal', 'Arsitektur tradisional'],
       hotels: [
         { name: 'Hilton Bandung', url: 'https://www.booking.com/hotel/id/hilton-bandung.html' },
@@ -92,6 +110,12 @@ window.INDONESIA_DATA = {
       description_id: 'Kota di pulau Sumatra yang menjadi pusat perdagangan penting. Dikenal karena budaya yang beragam dan warisan multikulturalnya.',
       highlights_bg: ['Халал пазари', 'Будистки храмове', 'Колониални сгради', 'Екзотични храни'],
       highlights_en: ['Halal Markets', 'Buddhist Temples', 'Colonial Buildings', 'Exotic Cuisine'],
+      highlightLinks_en: [
+        'https://en.wikipedia.org/wiki/Halal',
+        'https://en.wikipedia.org/wiki/Buddhism_in_Indonesia',
+        'https://en.wikipedia.org/wiki/Dutch_East_Indies',
+        'https://en.wikipedia.org/wiki/Indonesian_cuisine'
+      ],
       highlights_id: ['Pasar halal', 'Kuil Buddha', 'Bangunan kolonial', 'Kuliner eksotis'],
       hotels: [
         { name: 'JW Marriott Hotel Medan', url: 'https://www.booking.com/hotel/id/jw-marriott-medan.html' },
@@ -113,6 +137,12 @@ window.INDONESIA_DATA = {
       description_id: 'Kota pelabuhan di Jawa, perpaduan antara masa lalu dan masa kini. Dikenal dengan bangunan bersejarah dan kuliner lautnya.',
       highlights_bg: ['Древни крепости', 'Колониален дизайн', 'Оживен пристан', 'Местни деликатеси'],
       highlights_en: ['Ancient Fortresses', 'Colonial Design', 'Bustling Harbor', 'Local Delicacies'],
+      highlightLinks_en: [
+        'https://en.wikipedia.org/wiki/Fortification',
+        'https://en.wikipedia.org/wiki/Dutch_East_Indies',
+        'https://en.wikipedia.org/wiki/Tanjung_Emas_Port',
+        'https://en.wikipedia.org/wiki/Indonesian_cuisine'
+      ],
       highlights_id: ['Benteng kuno', 'Desain kolonial', 'Pelabuhan ramai', 'Kuliner khas'],
       hotels: [
         { name: 'PO Hotel Semarang', url: 'https://www.booking.com/hotel/id/po-semarang.html' },
@@ -134,6 +164,12 @@ window.INDONESIA_DATA = {
       description_id: 'Kota pelabuhan di Sulawesi, dikenal dengan pantainya yang indah dan dunia bawah lautnya. Tujuan wisata populer untuk olahraga air.',
       highlights_bg: ['Корални рифове', 'Тропични плажи', 'Подводна фауна', 'Водни спортове'],
       highlights_en: ['Coral Reefs', 'Tropical Beaches', 'Underwater Fauna', 'Water Sports'],
+      highlightLinks_en: [
+        'https://en.wikipedia.org/wiki/Coral_reef',
+        'https://en.wikipedia.org/wiki/Beach',
+        'https://en.wikipedia.org/wiki/Marine_life',
+        'https://en.wikipedia.org/wiki/Water_sport'
+      ],
       highlights_id: ['Terumbu karang', 'Pantai tropis', 'Fauna bawah laut', 'Olahraga air'],
       hotels: [
         { name: 'The Rinra Makassar', url: 'https://www.booking.com/hotel/id/rinra-makassar.html' },
@@ -155,6 +191,12 @@ window.INDONESIA_DATA = {
       description_id: 'Kota di Sumatra dengan sejarah yang kaya. Dikenal dengan kerajaan kuno dan Sungai Musi yang mengalir melalui kota.',
       highlights_bg: ['Древни паметници', 'Историческа река', 'Традиционни кораби', 'Исторически музеи'],
       highlights_en: ['Ancient Monuments', 'Historic River', 'Traditional Boats', 'Historical Museums'],
+      highlightLinks_en: [
+        'https://en.wikipedia.org/wiki/Monument',
+        'https://en.wikipedia.org/wiki/Musi_River',
+        'https://en.wikipedia.org/wiki/Pinisi',
+        'https://en.wikipedia.org/wiki/Museum'
+      ],
       highlights_id: ['Monumen kuno', 'Sungai bersejarah', 'Perahu tradisional', 'Museum sejarah'],
       hotels: [
         { name: 'Aryaduta Palembang', url: 'https://www.booking.com/hotel/id/aryaduta-palembang.html' },
@@ -176,6 +218,12 @@ window.INDONESIA_DATA = {
       description_id: 'Kota di Jawa, pusat spiritual dan budaya Indonesia. Dikenal dengan candi-candi kuno dan warisan seni yang kaya.',
       highlights_bg: ['Храм Боробудур', 'Древни храмове', 'Художествена керамика', 'Традиционни танци'],
       highlights_en: ['Borobudur Temple', 'Ancient Temples', 'Artistic Pottery', 'Traditional Dance'],
+      highlightLinks_en: [
+        'https://en.wikipedia.org/wiki/Borobudur',
+        'https://en.wikipedia.org/wiki/Prambanan',
+        'https://en.wikipedia.org/wiki/Pottery',
+        'https://en.wikipedia.org/wiki/Dance_in_Indonesia'
+      ],
       highlights_id: ['Candi Borobudur', 'Candi kuno', 'Gerabah artistik', 'Tari tradisional'],
       hotels: [
         { name: 'Hotel Tentrem Yogyakarta', url: 'https://www.booking.com/hotel/id/tentrem-yogyakarta.html' },
