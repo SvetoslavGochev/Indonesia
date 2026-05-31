@@ -29,6 +29,7 @@
   function cacheDomElements() {
     dom.bgBtn = document.getElementById('bgBtn');
     dom.enBtn = document.getElementById('enBtn');
+    dom.idBtn = document.getElementById('idBtn');
     dom.headerTitle = document.getElementById('headerTitle');
     dom.headerSubtitle = document.getElementById('headerSubtitle');
     dom.content = document.getElementById('content');
@@ -113,10 +114,9 @@ function cacheContentElements() {
   }
 
   function getCityTranslationKeys() {
-    const contentLanguage = currentLanguage === 'id' ? 'en' : currentLanguage;
     return {
-      description: `description_${contentLanguage}`,
-      highlights: `highlights_${contentLanguage}`
+      description: `description_${currentLanguage}`,
+      highlights: `highlights_${currentLanguage}`
     };
   }
 
@@ -209,6 +209,7 @@ function cacheContentElements() {
   function updateLanguageUI() {
     dom.bgBtn.classList.toggle('active', currentLanguage === 'bg');
     dom.enBtn.classList.toggle('active', currentLanguage === 'en');
+    dom.idBtn.classList.toggle('active', currentLanguage === 'id');
     dom.headerTitle.textContent = getTranslation('headerTitle');
     dom.headerSubtitle.textContent = getTranslation('headerSubtitle');
     if (dom.wildlifeInfoBtn) {

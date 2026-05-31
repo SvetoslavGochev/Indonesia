@@ -26,8 +26,10 @@ window.INDONESIA_DATA = {
       image: './assets/images/jakarta.avif',
       description_bg: 'Столицата на Индонезия - оживен град със синтез на модерна архитектура и традиционна култура. Известен със своите високи небостъргачи и натъпканите пазари.',
       description_en: 'The capital of Indonesia - a vibrant city with a blend of modern architecture and traditional culture. Known for its towering skyscrapers and bustling markets.',
+      description_id: 'Ibu kota Indonesia yang dinamis dengan perpaduan arsitektur modern dan budaya tradisional. Dikenal dengan gedung pencakar langit yang menjulang dan pasar yang ramai.',
       highlights_bg: ['Национален монумент', 'Древни храмове', 'Оживен нощен живот', 'Световно известна кухня'],
-      highlights_en: ['National Monument', 'Ancient Temples', 'Vibrant Nightlife', 'World-Famous Cuisine']
+      highlights_en: ['National Monument', 'Ancient Temples', 'Vibrant Nightlife', 'World-Famous Cuisine'],
+      highlights_id: ['Monumen Nasional', 'Candi Kuno', 'Kehidupan malam yang semarak', 'Kuliner terkenal dunia']
     },
     {
       rank: 2,
@@ -38,8 +40,10 @@ window.INDONESIA_DATA = {
       image: './assets/images/surabaya.avif',
       description_bg: 'Втория по големина град в Индонезия, развил се като индустриален център. Известен със своята исторически значимост и пристанище.',
       description_en: 'Indonesia\'s second-largest city, established as an industrial center. Known for its historical significance and port.',
+      description_id: 'Kota terbesar kedua di Indonesia, berkembang sebagai pusat industri. Dikenal karena nilai sejarahnya dan pelabuhannya.',
       highlights_bg: ['Исторически пристанище', 'Храм Превели', 'Редки артефакти', 'Морски живот'],
-      highlights_en: ['Historic Port', 'Prambanan Temple', 'Rare Artifacts', 'Marine Life']
+      highlights_en: ['Historic Port', 'Prambanan Temple', 'Rare Artifacts', 'Marine Life'],
+      highlights_id: ['Pelabuhan Tanjung Perak', 'Tugu Pahlawan', 'Jembatan Suramadu', 'Wisata kuliner']
     },
     {
       rank: 3,
@@ -50,8 +54,10 @@ window.INDONESIA_DATA = {
       image: './assets/images/bandung.avif',
       description_bg: 'Град в планините на Западна Ява, познат със своя прохладен климат и живописни пейзажи. Популярна туристическа дестинация.',
       description_en: 'A city in the highlands of West Java, known for its cool climate and scenic landscapes. A popular tourist destination.',
+      description_id: 'Kota di dataran tinggi Jawa Barat yang dikenal dengan iklim sejuk dan pemandangan alamnya. Tujuan wisata populer.',
       highlights_bg: ['Чайни плантации', 'Вулкани и термални извори', 'Местни художници', 'Традиционна архитектура'],
-      highlights_en: ['Tea Plantations', 'Volcanoes & Hot Springs', 'Local Artists', 'Traditional Architecture']
+      highlights_en: ['Tea Plantations', 'Volcanoes & Hot Springs', 'Local Artists', 'Traditional Architecture'],
+      highlights_id: ['Perkebunan teh', 'Gunung berapi dan mata air panas', 'Seniman lokal', 'Arsitektur tradisional']
     },
     {
       rank: 4,
@@ -62,8 +68,10 @@ window.INDONESIA_DATA = {
       image: './assets/images/medan.avif',
       description_bg: 'Град на остров Суматра, важен търговски център. Известен с разнообразната си култура и многокултурното наследство.',
       description_en: 'A city on the island of Sumatra, an important commercial center. Known for its diverse culture and multicultural heritage.',
+      description_id: 'Kota di pulau Sumatra yang menjadi pusat perdagangan penting. Dikenal karena budaya yang beragam dan warisan multikulturalnya.',
       highlights_bg: ['Халал пазари', 'Будистки храмове', 'Колониални сгради', 'Екзотични храни'],
-      highlights_en: ['Halal Markets', 'Buddhist Temples', 'Colonial Buildings', 'Exotic Cuisine']
+      highlights_en: ['Halal Markets', 'Buddhist Temples', 'Colonial Buildings', 'Exotic Cuisine'],
+      highlights_id: ['Pasar halal', 'Kuil Buddha', 'Bangunan kolonial', 'Kuliner eksotis']
     },
     {
       rank: 5,
@@ -74,8 +82,10 @@ window.INDONESIA_DATA = {
       image: './assets/images/semarang.avif',
       description_bg: 'Пристанищен град на Ява, съчетание на старо и ново. Известен със своите исторически сгради и морската кухня.',
       description_en: 'A port city in Java, a combination of old and new. Known for its historical buildings and seafood cuisine.',
+      description_id: 'Kota pelabuhan di Jawa, perpaduan antara masa lalu dan masa kini. Dikenal dengan bangunan bersejarah dan kuliner lautnya.',
       highlights_bg: ['Древни крепости', 'Колониален дизайн', 'Оживен пристан', 'Местни деликатеси'],
-      highlights_en: ['Ancient Fortresses', 'Colonial Design', 'Bustling Harbor', 'Local Delicacies']
+      highlights_en: ['Ancient Fortresses', 'Colonial Design', 'Bustling Harbor', 'Local Delicacies'],
+      highlights_id: ['Benteng kuno', 'Desain kolonial', 'Pelabuhan ramai', 'Kuliner khas']
     },
     {
       rank: 6,
@@ -86,8 +96,10 @@ window.INDONESIA_DATA = {
       image: './assets/images/makassar.avif',
       description_bg: 'Пристанищен град на Сулавеси, известен със своите красиви плажове и подводен свят. Популярна туристическа дестинация за водни спортове.',
       description_en: 'A port city in Sulawesi, known for its beautiful beaches and underwater world. A popular destination for water sports.',
+      description_id: 'Kota pelabuhan di Sulawesi, dikenal dengan pantainya yang indah dan dunia bawah lautnya. Tujuan wisata populer untuk olahraga air.',
       highlights_bg: ['Корални рифове', 'Тропични плажи', 'Подводна фауна', 'Водни спортове'],
-      highlights_en: ['Coral Reefs', 'Tropical Beaches', 'Underwater Fauna', 'Water Sports']
+      highlights_en: ['Coral Reefs', 'Tropical Beaches', 'Underwater Fauna', 'Water Sports'],
+      highlights_id: ['Terumbu karang', 'Pantai tropis', 'Fauna bawah laut', 'Olahraga air']
     },
     {
       rank: 7,
@@ -98,8 +110,10 @@ window.INDONESIA_DATA = {
       image: './assets/images/palembang.avif',
       description_bg: 'Град на Суматра с богата история. Известен със своите древни империи и река Мусай, която протича през град.',
       description_en: 'A city on Sumatra with rich history. Known for its ancient empires and the Musi River flowing through the city.',
+      description_id: 'Kota di Sumatra dengan sejarah yang kaya. Dikenal dengan kerajaan kuno dan Sungai Musi yang mengalir melalui kota.',
       highlights_bg: ['Древни паметници', 'Историческа река', 'Традиционни кораби', 'Исторически музеи'],
-      highlights_en: ['Ancient Monuments', 'Historic River', 'Traditional Boats', 'Historical Museums']
+      highlights_en: ['Ancient Monuments', 'Historic River', 'Traditional Boats', 'Historical Museums'],
+      highlights_id: ['Monumen kuno', 'Sungai bersejarah', 'Perahu tradisional', 'Museum sejarah']
     },
     {
       rank: 8,
@@ -110,8 +124,10 @@ window.INDONESIA_DATA = {
       image: './assets/images/yogyakarta.avif',
       description_bg: 'Град на Ява, духовен и културен център на Индонезия. Известен със своите древни храмове и художествена наследство.',
       description_en: 'A city in Java, the spiritual and cultural center of Indonesia. Known for its ancient temples and artistic heritage.',
+      description_id: 'Kota di Jawa, pusat spiritual dan budaya Indonesia. Dikenal dengan candi-candi kuno dan warisan seni yang kaya.',
       highlights_bg: ['Храм Боробудур', 'Древни храмове', 'Художествена керамика', 'Традиционни танци'],
-      highlights_en: ['Borobudur Temple', 'Ancient Temples', 'Artistic Pottery', 'Traditional Dance']
+      highlights_en: ['Borobudur Temple', 'Ancient Temples', 'Artistic Pottery', 'Traditional Dance'],
+      highlights_id: ['Candi Borobudur', 'Candi kuno', 'Gerabah artistik', 'Tari tradisional']
     }
   ]
 };
