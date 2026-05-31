@@ -23,6 +23,49 @@
     ['stadiumUseValue', 'stadiumUseValue']
   ];
 
+  const hotelEstimateBgnByName = {
+    'Hotel Indonesia Kempinski Jakarta': 620,
+    'Mandarin Oriental Jakarta': 560,
+    'The Ritz-Carlton Jakarta, Pacific Place': 690,
+    'Shangri-La Jakarta': 540,
+    'Fairmont Jakarta': 600,
+    'Hotel Majapahit Surabaya': 280,
+    'JW Marriott Hotel Surabaya': 360,
+    'Sheraton Surabaya Hotel & Towers': 330,
+    'Shangri-La Surabaya': 350,
+    'DoubleTree by Hilton Surabaya': 300,
+    'Hilton Bandung': 270,
+    'InterContinental Bandung Dago Pakar': 340,
+    'The Trans Luxury Hotel Bandung': 320,
+    'Padma Hotel Bandung': 360,
+    'Courtyard by Marriott Bandung Dago': 250,
+    'JW Marriott Hotel Medan': 320,
+    'Adimulia Hotel Medan': 250,
+    'Aryaduta Medan': 220,
+    'Cambridge Hotel Medan': 230,
+    'Grand Mercure Medan Angkasa': 240,
+    'PO Hotel Semarang': 230,
+    'Gumaya Tower Hotel': 260,
+    'Hotel Tentrem Semarang': 330,
+    'Padma Hotel Semarang': 310,
+    'Novotel Semarang': 210,
+    'The Rinra Makassar': 230,
+    'Claro Makassar': 200,
+    'Aryaduta Makassar': 210,
+    'Swiss-Belhotel Makassar': 190,
+    'Four Points by Sheraton Makassar': 250,
+    'Aryaduta Palembang': 210,
+    'The Arista Hotel Palembang': 230,
+    'The Alts Hotel Palembang': 220,
+    'Wyndham Opi Hotel Palembang': 260,
+    'Harper Palembang': 180,
+    'Hotel Tentrem Yogyakarta': 330,
+    'Hyatt Regency Yogyakarta': 280,
+    'The Phoenix Hotel Yogyakarta': 220,
+    'Yogyakarta Marriott Hotel': 300,
+    'Melia Purosani Yogyakarta': 260
+  };
+
   const dom = {};
   let contentRendered = false;
 
@@ -161,6 +204,11 @@ function cacheContentElements() {
     return `https://en.wikipedia.org/wiki/Special:Search?search=${searchQuery}`;
   }
 
+  function getHotelEstimateText(hotelName) {
+    const estimateBgn = hotelEstimateBgnByName[hotelName] || 220;
+    return `${getTranslation('estimateLabel')} ~${estimateBgn} ${getTranslation('estimateUnit')}`;
+  }
+
   function updateCityModalContent(city) {
     const keys = getCityTranslationKeys();
     const localizedHighlights = Array.isArray(city[keys.highlights]) ? city[keys.highlights] : [];
@@ -189,7 +237,7 @@ function cacheContentElements() {
     } else {
       dom.modalHotelsSection.style.display = 'block';
       dom.modalHotels.innerHTML = hotels.map(function (hotel) {
-        return `<a class="hotel-link-badge" href="${hotel.url}" target="_blank" rel="noopener noreferrer">${hotel.name}</a>`;
+        return `<span class="hotel-item"><a class="hotel-link-badge" href="${hotel.url}" target="_blank" rel="noopener noreferrer">${hotel.name}</a><span class="hotel-price-badge">${getHotelEstimateText(hotel.name)}</span></span>`;
       }).join('');
     }
   }
