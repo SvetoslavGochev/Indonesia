@@ -204,6 +204,27 @@ function cacheContentElements() {
     return `https://en.wikipedia.org/wiki/Special:Search?search=${searchQuery}`;
   }
 
+  function toBulgarianTranslatedWikipediaUrl(url) {
+    try {
+      const parsedUrl = new URL(url);
+      if (parsedUrl.hostname !== 'en.wikipedia.org') {
+        return url;
+      }
+
+      const translatedUrl = new URL(`https://en-wikipedia-org.translate.goog${parsedUrl.pathname}`);
+      parsedUrl.searchParams.forEach(function (value, key) {
+        translatedUrl.searchParams.set(key, value);
+      });
+      translatedUrl.searchParams.set('_x_tr_sl', 'en');
+      translatedUrl.searchParams.set('_x_tr_tl', 'bg');
+      translatedUrl.searchParams.set('_x_tr_hl', 'bg');
+      translatedUrl.searchParams.set('_x_tr_pto', 'wapp');
+      return translatedUrl.toString();
+    } catch (error) {
+      return url;
+    }
+  }
+
   function getHotelEstimateText(hotelName) {
     const estimateBgn = hotelEstimateBgnByName[hotelName] || 220;
     const estimateEur = Math.round(estimateBgn / 1.95583);
@@ -228,7 +249,7 @@ function cacheContentElements() {
     dom.modalHighlights.innerHTML = localizedHighlights.map(function (highlight, index) {
       const queryTerm = englishHighlights[index] || highlight;
       const directUrl = directHighlightLinks[index];
-      const finalUrl = directUrl || getAttractionWikipediaUrl(city.name, queryTerm);
+      const finalUrl = toBulgarianTranslatedWikipediaUrl(directUrl || getAttractionWikipediaUrl(city.name, queryTerm));
       return `<a class="attraction-link-badge" href="${finalUrl}" target="_blank" rel="noopener noreferrer">${highlight}</a>`;
     }).join('');
 
