@@ -1,7 +1,11 @@
 window.APP_TRANSLATIONS = {
   bg: {
     headerTitle: "🇮🇩 Indonesia Explorer",
-    headerSubtitle: "Разгледайте подробна информация за Индонезия",
+    headerSubtitle: "Интерактивен пътеводител за Индонезия: градове, акценти, резерваций за хотели всичко на едно място.",
+    headerPoint1: "Индонезия на един клик: градове, хотели, билети, почивка.",
+    headerPoint2: "Индонезия по-лесно: виж, избери, запази.",
+    headerPoint3: "От идея до резервация: Индонезия, хотели, билети, почивка.",
+    headerPoint4: "Индонезия: акценти, престой и резервации.",
     countryInfo: "Информация за страната",
     capital: "Столица",
     population: "Население",
@@ -46,7 +50,11 @@ window.APP_TRANSLATIONS = {
   },
   en: {
     headerTitle: "🇮🇩 Indonesia Explorer",
-    headerSubtitle: "Explore detailed information about Indonesia",
+    headerSubtitle: "Discover Indonesia. Book hotels, tickets, and your holiday.",
+    headerPoint1: "Indonesia in one click: cities, hotels, tickets, holidays.",
+    headerPoint2: "Indonesia made easier: see, choose, book.",
+    headerPoint3: "From idea to reservation: Indonesia, hotels, tickets, holidays.",
+    headerPoint4: "Indonesia: highlights, stays, and reservations.",
     countryInfo: "Country Information",
     capital: "Capital",
     population: "Population",
@@ -91,7 +99,11 @@ window.APP_TRANSLATIONS = {
   },
   id: {
     headerTitle: "🇮🇩 Jelajahi Indonesia",
-    headerSubtitle: "Temukan informasi rinci tentang Indonesia",
+    headerSubtitle: "Temukan Indonesia. Pesan hotel, tiket, dan liburan.",
+    headerPoint1: "Indonesia dalam satu klik: kota, hotel, tiket, liburan.",
+    headerPoint2: "Indonesia lebih mudah: lihat, pilih, pesan.",
+    headerPoint3: "Dari ide ke reservasi: Indonesia, hotel, tiket, liburan.",
+    headerPoint4: "Indonesia: sorotan, akomodasi, dan reservasi.",
     countryInfo: "Informasi Negara",
     capital: "Ibu Kota",
     population: "Penduduk",

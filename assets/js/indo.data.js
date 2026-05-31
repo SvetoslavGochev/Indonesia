@@ -31,11 +31,11 @@ window.INDONESIA_DATA = {
       highlights_en: ['National Monument', 'Ancient Temples', 'Vibrant Nightlife', 'World-Famous Cuisine'],
       highlights_id: ['Monumen Nasional', 'Candi Kuno', 'Kehidupan malam yang semarak', 'Kuliner terkenal dunia'],
       hotels: [
-        { name: 'Hotel Indonesia Kempinski Jakarta', url: 'https://www.booking.com/searchresults.html?ss=Hotel+Indonesia+Kempinski+Jakarta' },
-        { name: 'Mandarin Oriental Jakarta', url: 'https://www.booking.com/searchresults.html?ss=Mandarin+Oriental+Jakarta' },
-        { name: 'The Ritz-Carlton Jakarta, Pacific Place', url: 'https://www.booking.com/searchresults.html?ss=The+Ritz-Carlton+Jakarta+Pacific+Place' },
-        { name: 'Shangri-La Jakarta', url: 'https://www.booking.com/searchresults.html?ss=Shangri-La+Jakarta' },
-        { name: 'Fairmont Jakarta', url: 'https://www.booking.com/searchresults.html?ss=Fairmont+Jakarta' }
+        { name: 'Hotel Indonesia Kempinski Jakarta', url: 'https://www.hoteltentrem.com/jakarta/?gad_source=1&gad_campaignid=23439099513&gclid=CjwKCAjwuO_QBhAWEiwAIkVhU3h3Wg-Mt_qIvEeAi841Oqx4tuDo-rqRBsYylP5Mal_xZQAf7YtdZxoCbFAQAvD_BwE' },
+        { name: 'Mandarin Oriental Jakarta', url: 'https://www.booking.com/hotel/id/mandarin-oriental-jakarta.html' },
+        { name: 'The Ritz-Carlton Jakarta, Pacific Place', url: 'https://www.booking.com/hotel/id/ritz-carlton-jakarta-pacific-place.html' },
+        { name: 'Shangri-La Jakarta', url: 'https://www.booking.com/hotel/id/shangri-la-jakarta.html' },
+        { name: 'Fairmont Jakarta', url: 'https://www.booking.com/hotel/id/fairmont-jakarta.html' }
       ]
     },
     {
@@ -52,11 +52,11 @@ window.INDONESIA_DATA = {
       highlights_en: ['Historic Port', 'Prambanan Temple', 'Rare Artifacts', 'Marine Life'],
       highlights_id: ['Pelabuhan Tanjung Perak', 'Tugu Pahlawan', 'Jembatan Suramadu', 'Wisata kuliner'],
       hotels: [
-        { name: 'Hotel Majapahit Surabaya', url: 'https://www.booking.com/searchresults.html?ss=Hotel+Majapahit+Surabaya' },
-        { name: 'JW Marriott Hotel Surabaya', url: 'https://www.booking.com/searchresults.html?ss=JW+Marriott+Hotel+Surabaya' },
-        { name: 'Sheraton Surabaya Hotel & Towers', url: 'https://www.booking.com/searchresults.html?ss=Sheraton+Surabaya+Hotel+%26+Towers' },
-        { name: 'Shangri-La Surabaya', url: 'https://www.booking.com/searchresults.html?ss=Shangri-La+Surabaya' },
-        { name: 'DoubleTree by Hilton Surabaya', url: 'https://www.booking.com/searchresults.html?ss=DoubleTree+by+Hilton+Surabaya' }
+        { name: 'Hotel Majapahit Surabaya', url: 'https://www.booking.com/hotel/id/hotel-majapahit-surabaya.html' },
+        { name: 'JW Marriott Hotel Surabaya', url: 'https://www.booking.com/hotel/id/jw-marriott-surabaya.html' },
+        { name: 'Sheraton Surabaya Hotel & Towers', url: 'https://www.booking.com/hotel/id/sheraton-surabaya.html' },
+        { name: 'Shangri-La Surabaya', url: 'https://www.booking.com/hotel/id/shangri-la-surabaya.html' },
+        { name: 'DoubleTree by Hilton Surabaya', url: 'https://www.booking.com/hotel/id/doubletree-surabaya.html' }
       ]
     },
     {
@@ -73,11 +73,11 @@ window.INDONESIA_DATA = {
       highlights_en: ['Tea Plantations', 'Volcanoes & Hot Springs', 'Local Artists', 'Traditional Architecture'],
       highlights_id: ['Perkebunan teh', 'Gunung berapi dan mata air panas', 'Seniman lokal', 'Arsitektur tradisional'],
       hotels: [
-        { name: 'Hilton Bandung', url: 'https://www.booking.com/searchresults.html?ss=Hilton+Bandung' },
-        { name: 'InterContinental Bandung Dago Pakar', url: 'https://www.booking.com/searchresults.html?ss=InterContinental+Bandung+Dago+Pakar' },
-        { name: 'The Trans Luxury Hotel Bandung', url: 'https://www.booking.com/searchresults.html?ss=The+Trans+Luxury+Hotel+Bandung' },
-        { name: 'Padma Hotel Bandung', url: 'https://www.booking.com/searchresults.html?ss=Padma+Hotel+Bandung' },
-        { name: 'Courtyard by Marriott Bandung Dago', url: 'https://www.booking.com/searchresults.html?ss=Courtyard+by+Marriott+Bandung+Dago' }
+        { name: 'Hilton Bandung', url: 'https://www.booking.com/hotel/id/hilton-bandung.html' },
+        { name: 'InterContinental Bandung Dago Pakar', url: 'https://www.booking.com/hotel/id/intercontinental-bandung-dago-pakar.html' },
+        { name: 'The Trans Luxury Hotel Bandung', url: 'https://www.booking.com/hotel/id/trans-luxury-bandung.html' },
+        { name: 'Padma Hotel Bandung', url: 'https://www.booking.com/hotel/id/padma-bandung.html' },
+        { name: 'Courtyard by Marriott Bandung Dago', url: 'https://www.booking.com/hotel/id/courtyard-bandung-dago.html' }
       ]
     },
     {
@@ -94,11 +94,11 @@ window.INDONESIA_DATA = {
       highlights_en: ['Halal Markets', 'Buddhist Temples', 'Colonial Buildings', 'Exotic Cuisine'],
       highlights_id: ['Pasar halal', 'Kuil Buddha', 'Bangunan kolonial', 'Kuliner eksotis'],
       hotels: [
-        { name: 'JW Marriott Hotel Medan', url: 'https://www.booking.com/searchresults.html?ss=JW+Marriott+Hotel+Medan' },
-        { name: 'Adimulia Hotel Medan', url: 'https://www.booking.com/searchresults.html?ss=Adimulia+Hotel+Medan' },
-        { name: 'Aryaduta Medan', url: 'https://www.booking.com/searchresults.html?ss=Aryaduta+Medan' },
-        { name: 'Cambridge Hotel Medan', url: 'https://www.booking.com/searchresults.html?ss=Cambridge+Hotel+Medan' },
-        { name: 'Grand Mercure Medan Angkasa', url: 'https://www.booking.com/searchresults.html?ss=Grand+Mercure+Medan+Angkasa' }
+        { name: 'JW Marriott Hotel Medan', url: 'https://www.booking.com/hotel/id/jw-marriott-medan.html' },
+        { name: 'Adimulia Hotel Medan', url: 'https://www.booking.com/hotel/id/adimulia-medan.html' },
+        { name: 'Aryaduta Medan', url: 'https://www.booking.com/hotel/id/aryaduta-medan.html' },
+        { name: 'Cambridge Hotel Medan', url: 'https://www.booking.com/hotel/id/cambridge-medan.html' },
+        { name: 'Grand Mercure Medan Angkasa', url: 'https://www.booking.com/hotel/id/grand-mercure-medan-angkasa.html' }
       ]
     },
     {
@@ -115,11 +115,11 @@ window.INDONESIA_DATA = {
       highlights_en: ['Ancient Fortresses', 'Colonial Design', 'Bustling Harbor', 'Local Delicacies'],
       highlights_id: ['Benteng kuno', 'Desain kolonial', 'Pelabuhan ramai', 'Kuliner khas'],
       hotels: [
-        { name: 'PO Hotel Semarang', url: 'https://www.booking.com/searchresults.html?ss=PO+Hotel+Semarang' },
-        { name: 'Gumaya Tower Hotel', url: 'https://www.booking.com/searchresults.html?ss=Gumaya+Tower+Hotel+Semarang' },
-        { name: 'Hotel Tentrem Semarang', url: 'https://www.booking.com/searchresults.html?ss=Hotel+Tentrem+Semarang' },
-        { name: 'Padma Hotel Semarang', url: 'https://www.booking.com/searchresults.html?ss=Padma+Hotel+Semarang' },
-        { name: 'Novotel Semarang', url: 'https://www.booking.com/searchresults.html?ss=Novotel+Semarang' }
+        { name: 'PO Hotel Semarang', url: 'https://www.booking.com/hotel/id/po-semarang.html' },
+        { name: 'Gumaya Tower Hotel', url: 'https://www.booking.com/hotel/id/gumaya-tower-semarang.html' },
+        { name: 'Hotel Tentrem Semarang', url: 'https://www.booking.com/hotel/id/tentrem-semarang.html' },
+        { name: 'Padma Hotel Semarang', url: 'https://www.booking.com/hotel/id/padma-semarang.html' },
+        { name: 'Novotel Semarang', url: 'https://www.booking.com/hotel/id/novotel-semarang.html' }
       ]
     },
     {
@@ -136,11 +136,11 @@ window.INDONESIA_DATA = {
       highlights_en: ['Coral Reefs', 'Tropical Beaches', 'Underwater Fauna', 'Water Sports'],
       highlights_id: ['Terumbu karang', 'Pantai tropis', 'Fauna bawah laut', 'Olahraga air'],
       hotels: [
-        { name: 'The Rinra Makassar', url: 'https://www.booking.com/searchresults.html?ss=The+Rinra+Makassar' },
-        { name: 'Claro Makassar', url: 'https://www.booking.com/searchresults.html?ss=Claro+Makassar' },
-        { name: 'Aryaduta Makassar', url: 'https://www.booking.com/searchresults.html?ss=Aryaduta+Makassar' },
-        { name: 'Swiss-Belhotel Makassar', url: 'https://www.booking.com/searchresults.html?ss=Swiss-Belhotel+Makassar' },
-        { name: 'Four Points by Sheraton Makassar', url: 'https://www.booking.com/searchresults.html?ss=Four+Points+by+Sheraton+Makassar' }
+        { name: 'The Rinra Makassar', url: 'https://www.booking.com/hotel/id/rinra-makassar.html' },
+        { name: 'Claro Makassar', url: 'https://www.booking.com/hotel/id/claro-makassar.html' },
+        { name: 'Aryaduta Makassar', url: 'https://www.booking.com/hotel/id/aryaduta-makassar.html' },
+        { name: 'Swiss-Belhotel Makassar', url: 'https://www.booking.com/hotel/id/swiss-belhotel-makassar.html' },
+        { name: 'Four Points by Sheraton Makassar', url: 'https://www.booking.com/hotel/id/four-points-makassar.html' }
       ]
     },
     {
@@ -157,11 +157,11 @@ window.INDONESIA_DATA = {
       highlights_en: ['Ancient Monuments', 'Historic River', 'Traditional Boats', 'Historical Museums'],
       highlights_id: ['Monumen kuno', 'Sungai bersejarah', 'Perahu tradisional', 'Museum sejarah'],
       hotels: [
-        { name: 'Aryaduta Palembang', url: 'https://www.booking.com/searchresults.html?ss=Aryaduta+Palembang' },
-        { name: 'The Arista Hotel Palembang', url: 'https://www.booking.com/searchresults.html?ss=The+Arista+Hotel+Palembang' },
-        { name: 'The Alts Hotel Palembang', url: 'https://www.booking.com/searchresults.html?ss=The+Alts+Hotel+Palembang' },
-        { name: 'Wyndham Opi Hotel Palembang', url: 'https://www.booking.com/searchresults.html?ss=Wyndham+Opi+Hotel+Palembang' },
-        { name: 'Harper Palembang', url: 'https://www.booking.com/searchresults.html?ss=Harper+Palembang' }
+        { name: 'Aryaduta Palembang', url: 'https://www.booking.com/hotel/id/aryaduta-palembang.html' },
+        { name: 'The Arista Hotel Palembang', url: 'https://www.booking.com/hotel/id/arista-palembang.html' },
+        { name: 'The Alts Hotel Palembang', url: 'https://www.booking.com/hotel/id/alts-palembang.html' },
+        { name: 'Wyndham Opi Hotel Palembang', url: 'https://www.booking.com/hotel/id/wyndham-opi-palembang.html' },
+        { name: 'Harper Palembang', url: 'https://www.booking.com/hotel/id/harper-palembang.html' }
       ]
     },
     {
@@ -178,11 +178,11 @@ window.INDONESIA_DATA = {
       highlights_en: ['Borobudur Temple', 'Ancient Temples', 'Artistic Pottery', 'Traditional Dance'],
       highlights_id: ['Candi Borobudur', 'Candi kuno', 'Gerabah artistik', 'Tari tradisional'],
       hotels: [
-        { name: 'Hotel Tentrem Yogyakarta', url: 'https://www.booking.com/searchresults.html?ss=Hotel+Tentrem+Yogyakarta' },
-        { name: 'Hyatt Regency Yogyakarta', url: 'https://www.booking.com/searchresults.html?ss=Hyatt+Regency+Yogyakarta' },
-        { name: 'The Phoenix Hotel Yogyakarta', url: 'https://www.booking.com/searchresults.html?ss=The+Phoenix+Hotel+Yogyakarta' },
-        { name: 'Yogyakarta Marriott Hotel', url: 'https://www.booking.com/searchresults.html?ss=Yogyakarta+Marriott+Hotel' },
-        { name: 'Melia Purosani Yogyakarta', url: 'https://www.booking.com/searchresults.html?ss=Melia+Purosani+Yogyakarta' }
+        { name: 'Hotel Tentrem Yogyakarta', url: 'https://www.booking.com/hotel/id/tentrem-yogyakarta.html' },
+        { name: 'Hyatt Regency Yogyakarta', url: 'https://www.booking.com/hotel/id/hyatt-regency-yogyakarta.html' },
+        { name: 'The Phoenix Hotel Yogyakarta', url: 'https://www.booking.com/hotel/id/phoenix-yogyakarta.html' },
+        { name: 'Yogyakarta Marriott Hotel', url: 'https://www.booking.com/hotel/id/yogyakarta-marriott.html' },
+        { name: 'Melia Purosani Yogyakarta', url: 'https://www.booking.com/hotel/id/melia-purosani-yogyakarta.html' }
       ]
     }
   ]
