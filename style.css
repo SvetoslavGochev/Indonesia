@@ -654,14 +654,17 @@ header p {
 }
 
 .hotel-price-badge {
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #f7fbff;
+    background: linear-gradient(135deg, #ffe9a8 0%, #ffc86b 100%);
+    border: 1px solid rgba(143, 90, 8, 0.26);
+    color: #3d2500;
     padding: 6px 11px;
     border-radius: 16px;
     font-size: 0.82em;
+    font-weight: 700;
+    letter-spacing: 0.01em;
     line-height: 1;
     white-space: nowrap;
+    box-shadow: 0 6px 14px rgba(107, 64, 6, 0.22);
 }
 
 .modal-close {

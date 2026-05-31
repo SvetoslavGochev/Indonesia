@@ -206,7 +206,8 @@ function cacheContentElements() {
 
   function getHotelEstimateText(hotelName) {
     const estimateBgn = hotelEstimateBgnByName[hotelName] || 220;
-    return `${getTranslation('estimateLabel')} ~${estimateBgn} ${getTranslation('estimateUnit')}`;
+    const estimateEur = Math.round(estimateBgn / 1.95583);
+    return `${getTranslation('estimateLabel')} ~${estimateEur} ${getTranslation('estimateUnit')}`;
   }
 
   function updateCityModalContent(city) {
