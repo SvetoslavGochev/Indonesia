@@ -72,7 +72,7 @@ window.INDONESIA_DATA = {
       latitude: -6.9667,
       longitude: 110.4167,
       image: './assets/images/semarang.avif',
-      description_bg: 'Портова град на Ява, комбинация на старо и ново. Известен със своите исторически сгради и морската кухня.',
+      description_bg: 'Пристанищен град на Ява, съчетание на старо и ново. Известен със своите исторически сгради и морската кухня.',
       description_en: 'A port city in Java, a combination of old and new. Known for its historical buildings and seafood cuisine.',
       highlights_bg: ['Древни крепости', 'Колониален дизайн', 'Оживен пристан', 'Местни деликатеси'],
       highlights_en: ['Ancient Fortresses', 'Colonial Design', 'Bustling Harbor', 'Local Delicacies']
@@ -84,7 +84,7 @@ window.INDONESIA_DATA = {
       latitude: -5.1477,
       longitude: 119.4327,
       image: './assets/images/makassar.avif',
-      description_bg: 'Портова град на Сулавеси, известен със своите красиви плажове и подводен свят. Популярна туристическа дестинация за водни спортове.',
+      description_bg: 'Пристанищен град на Сулавеси, известен със своите красиви плажове и подводен свят. Популярна туристическа дестинация за водни спортове.',
       description_en: 'A port city in Sulawesi, known for its beautiful beaches and underwater world. A popular destination for water sports.',
       highlights_bg: ['Корални рифове', 'Тропични плажи', 'Подводна фауна', 'Водни спортове'],
       highlights_en: ['Coral Reefs', 'Tropical Beaches', 'Underwater Fauna', 'Water Sports']
