@@ -45,7 +45,10 @@
     dom.populationLabel = document.getElementById('populationLabel');
     dom.coordinatesLabel = document.getElementById('coordinatesLabel');
     dom.attractionsLabel = document.getElementById('attractionsLabel');
+    dom.hotelsLabel = document.getElementById('hotelsLabel');
     dom.modalHighlights = document.getElementById('modalHighlights');
+    dom.modalHotels = document.getElementById('modalHotels');
+    dom.modalHotelsSection = document.getElementById('modalHotelsSection');
     dom.stadiumModalImage = document.getElementById('stadiumModalImage');
     dom.stadiumModalTitle = document.getElementById('stadiumModalTitle');
     dom.stadiumModalDescription = document.getElementById('stadiumModalDescription');
@@ -164,9 +167,20 @@ function cacheContentElements() {
     dom.populationLabel.textContent = getTranslation('population');
     dom.coordinatesLabel.textContent = getTranslation('coordinates');
     dom.attractionsLabel.textContent = getTranslation('keyAttractions');
+    dom.hotelsLabel.textContent = getTranslation('topHotels');
     dom.modalHighlights.innerHTML = city[keys.highlights].map(function (highlight) {
       return `<span class="highlight-badge">${highlight}</span>`;
     }).join('');
+
+    const hotels = Array.isArray(city.hotels) ? city.hotels : [];
+    if (hotels.length === 0) {
+      dom.modalHotelsSection.style.display = 'none';
+    } else {
+      dom.modalHotelsSection.style.display = 'block';
+      dom.modalHotels.innerHTML = hotels.map(function (hotel) {
+        return `<a class="hotel-link-badge" href="${hotel.url}" target="_blank" rel="noopener noreferrer">${hotel.name}</a>`;
+      }).join('');
+    }
   }
 
   function renderContentShell() {

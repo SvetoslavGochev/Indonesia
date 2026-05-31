@@ -29,7 +29,14 @@ window.INDONESIA_DATA = {
       description_id: 'Ibu kota Indonesia yang dinamis dengan perpaduan arsitektur modern dan budaya tradisional. Dikenal dengan gedung pencakar langit yang menjulang dan pasar yang ramai.',
       highlights_bg: ['Национален монумент', 'Древни храмове', 'Оживен нощен живот', 'Световно известна кухня'],
       highlights_en: ['National Monument', 'Ancient Temples', 'Vibrant Nightlife', 'World-Famous Cuisine'],
-      highlights_id: ['Monumen Nasional', 'Candi Kuno', 'Kehidupan malam yang semarak', 'Kuliner terkenal dunia']
+      highlights_id: ['Monumen Nasional', 'Candi Kuno', 'Kehidupan malam yang semarak', 'Kuliner terkenal dunia'],
+      hotels: [
+        { name: 'Hotel Indonesia Kempinski Jakarta', url: 'https://www.booking.com/searchresults.html?ss=Hotel+Indonesia+Kempinski+Jakarta' },
+        { name: 'Mandarin Oriental Jakarta', url: 'https://www.booking.com/searchresults.html?ss=Mandarin+Oriental+Jakarta' },
+        { name: 'The Ritz-Carlton Jakarta, Pacific Place', url: 'https://www.booking.com/searchresults.html?ss=The+Ritz-Carlton+Jakarta+Pacific+Place' },
+        { name: 'Shangri-La Jakarta', url: 'https://www.booking.com/searchresults.html?ss=Shangri-La+Jakarta' },
+        { name: 'Fairmont Jakarta', url: 'https://www.booking.com/searchresults.html?ss=Fairmont+Jakarta' }
+      ]
     },
     {
       rank: 2,
@@ -43,7 +50,14 @@ window.INDONESIA_DATA = {
       description_id: 'Kota terbesar kedua di Indonesia, berkembang sebagai pusat industri. Dikenal karena nilai sejarahnya dan pelabuhannya.',
       highlights_bg: ['Исторически пристанище', 'Храм Превели', 'Редки артефакти', 'Морски живот'],
       highlights_en: ['Historic Port', 'Prambanan Temple', 'Rare Artifacts', 'Marine Life'],
-      highlights_id: ['Pelabuhan Tanjung Perak', 'Tugu Pahlawan', 'Jembatan Suramadu', 'Wisata kuliner']
+      highlights_id: ['Pelabuhan Tanjung Perak', 'Tugu Pahlawan', 'Jembatan Suramadu', 'Wisata kuliner'],
+      hotels: [
+        { name: 'Hotel Majapahit Surabaya', url: 'https://www.booking.com/searchresults.html?ss=Hotel+Majapahit+Surabaya' },
+        { name: 'JW Marriott Hotel Surabaya', url: 'https://www.booking.com/searchresults.html?ss=JW+Marriott+Hotel+Surabaya' },
+        { name: 'Sheraton Surabaya Hotel & Towers', url: 'https://www.booking.com/searchresults.html?ss=Sheraton+Surabaya+Hotel+%26+Towers' },
+        { name: 'Shangri-La Surabaya', url: 'https://www.booking.com/searchresults.html?ss=Shangri-La+Surabaya' },
+        { name: 'DoubleTree by Hilton Surabaya', url: 'https://www.booking.com/searchresults.html?ss=DoubleTree+by+Hilton+Surabaya' }
+      ]
     },
     {
       rank: 3,
@@ -57,7 +71,14 @@ window.INDONESIA_DATA = {
       description_id: 'Kota di dataran tinggi Jawa Barat yang dikenal dengan iklim sejuk dan pemandangan alamnya. Tujuan wisata populer.',
       highlights_bg: ['Чайни плантации', 'Вулкани и термални извори', 'Местни художници', 'Традиционна архитектура'],
       highlights_en: ['Tea Plantations', 'Volcanoes & Hot Springs', 'Local Artists', 'Traditional Architecture'],
-      highlights_id: ['Perkebunan teh', 'Gunung berapi dan mata air panas', 'Seniman lokal', 'Arsitektur tradisional']
+      highlights_id: ['Perkebunan teh', 'Gunung berapi dan mata air panas', 'Seniman lokal', 'Arsitektur tradisional'],
+      hotels: [
+        { name: 'Hilton Bandung', url: 'https://www.booking.com/searchresults.html?ss=Hilton+Bandung' },
+        { name: 'InterContinental Bandung Dago Pakar', url: 'https://www.booking.com/searchresults.html?ss=InterContinental+Bandung+Dago+Pakar' },
+        { name: 'The Trans Luxury Hotel Bandung', url: 'https://www.booking.com/searchresults.html?ss=The+Trans+Luxury+Hotel+Bandung' },
+        { name: 'Padma Hotel Bandung', url: 'https://www.booking.com/searchresults.html?ss=Padma+Hotel+Bandung' },
+        { name: 'Courtyard by Marriott Bandung Dago', url: 'https://www.booking.com/searchresults.html?ss=Courtyard+by+Marriott+Bandung+Dago' }
+      ]
     },
     {
       rank: 4,
@@ -71,7 +92,14 @@ window.INDONESIA_DATA = {
       description_id: 'Kota di pulau Sumatra yang menjadi pusat perdagangan penting. Dikenal karena budaya yang beragam dan warisan multikulturalnya.',
       highlights_bg: ['Халал пазари', 'Будистки храмове', 'Колониални сгради', 'Екзотични храни'],
       highlights_en: ['Halal Markets', 'Buddhist Temples', 'Colonial Buildings', 'Exotic Cuisine'],
-      highlights_id: ['Pasar halal', 'Kuil Buddha', 'Bangunan kolonial', 'Kuliner eksotis']
+      highlights_id: ['Pasar halal', 'Kuil Buddha', 'Bangunan kolonial', 'Kuliner eksotis'],
+      hotels: [
+        { name: 'JW Marriott Hotel Medan', url: 'https://www.booking.com/searchresults.html?ss=JW+Marriott+Hotel+Medan' },
+        { name: 'Adimulia Hotel Medan', url: 'https://www.booking.com/searchresults.html?ss=Adimulia+Hotel+Medan' },
+        { name: 'Aryaduta Medan', url: 'https://www.booking.com/searchresults.html?ss=Aryaduta+Medan' },
+        { name: 'Cambridge Hotel Medan', url: 'https://www.booking.com/searchresults.html?ss=Cambridge+Hotel+Medan' },
+        { name: 'Grand Mercure Medan Angkasa', url: 'https://www.booking.com/searchresults.html?ss=Grand+Mercure+Medan+Angkasa' }
+      ]
     },
     {
       rank: 5,
@@ -85,7 +113,14 @@ window.INDONESIA_DATA = {
       description_id: 'Kota pelabuhan di Jawa, perpaduan antara masa lalu dan masa kini. Dikenal dengan bangunan bersejarah dan kuliner lautnya.',
       highlights_bg: ['Древни крепости', 'Колониален дизайн', 'Оживен пристан', 'Местни деликатеси'],
       highlights_en: ['Ancient Fortresses', 'Colonial Design', 'Bustling Harbor', 'Local Delicacies'],
-      highlights_id: ['Benteng kuno', 'Desain kolonial', 'Pelabuhan ramai', 'Kuliner khas']
+      highlights_id: ['Benteng kuno', 'Desain kolonial', 'Pelabuhan ramai', 'Kuliner khas'],
+      hotels: [
+        { name: 'PO Hotel Semarang', url: 'https://www.booking.com/searchresults.html?ss=PO+Hotel+Semarang' },
+        { name: 'Gumaya Tower Hotel', url: 'https://www.booking.com/searchresults.html?ss=Gumaya+Tower+Hotel+Semarang' },
+        { name: 'Hotel Tentrem Semarang', url: 'https://www.booking.com/searchresults.html?ss=Hotel+Tentrem+Semarang' },
+        { name: 'Padma Hotel Semarang', url: 'https://www.booking.com/searchresults.html?ss=Padma+Hotel+Semarang' },
+        { name: 'Novotel Semarang', url: 'https://www.booking.com/searchresults.html?ss=Novotel+Semarang' }
+      ]
     },
     {
       rank: 6,
@@ -99,7 +134,14 @@ window.INDONESIA_DATA = {
       description_id: 'Kota pelabuhan di Sulawesi, dikenal dengan pantainya yang indah dan dunia bawah lautnya. Tujuan wisata populer untuk olahraga air.',
       highlights_bg: ['Корални рифове', 'Тропични плажи', 'Подводна фауна', 'Водни спортове'],
       highlights_en: ['Coral Reefs', 'Tropical Beaches', 'Underwater Fauna', 'Water Sports'],
-      highlights_id: ['Terumbu karang', 'Pantai tropis', 'Fauna bawah laut', 'Olahraga air']
+      highlights_id: ['Terumbu karang', 'Pantai tropis', 'Fauna bawah laut', 'Olahraga air'],
+      hotels: [
+        { name: 'The Rinra Makassar', url: 'https://www.booking.com/searchresults.html?ss=The+Rinra+Makassar' },
+        { name: 'Claro Makassar', url: 'https://www.booking.com/searchresults.html?ss=Claro+Makassar' },
+        { name: 'Aryaduta Makassar', url: 'https://www.booking.com/searchresults.html?ss=Aryaduta+Makassar' },
+        { name: 'Swiss-Belhotel Makassar', url: 'https://www.booking.com/searchresults.html?ss=Swiss-Belhotel+Makassar' },
+        { name: 'Four Points by Sheraton Makassar', url: 'https://www.booking.com/searchresults.html?ss=Four+Points+by+Sheraton+Makassar' }
+      ]
     },
     {
       rank: 7,
@@ -113,7 +155,14 @@ window.INDONESIA_DATA = {
       description_id: 'Kota di Sumatra dengan sejarah yang kaya. Dikenal dengan kerajaan kuno dan Sungai Musi yang mengalir melalui kota.',
       highlights_bg: ['Древни паметници', 'Историческа река', 'Традиционни кораби', 'Исторически музеи'],
       highlights_en: ['Ancient Monuments', 'Historic River', 'Traditional Boats', 'Historical Museums'],
-      highlights_id: ['Monumen kuno', 'Sungai bersejarah', 'Perahu tradisional', 'Museum sejarah']
+      highlights_id: ['Monumen kuno', 'Sungai bersejarah', 'Perahu tradisional', 'Museum sejarah'],
+      hotels: [
+        { name: 'Aryaduta Palembang', url: 'https://www.booking.com/searchresults.html?ss=Aryaduta+Palembang' },
+        { name: 'The Arista Hotel Palembang', url: 'https://www.booking.com/searchresults.html?ss=The+Arista+Hotel+Palembang' },
+        { name: 'The Alts Hotel Palembang', url: 'https://www.booking.com/searchresults.html?ss=The+Alts+Hotel+Palembang' },
+        { name: 'Wyndham Opi Hotel Palembang', url: 'https://www.booking.com/searchresults.html?ss=Wyndham+Opi+Hotel+Palembang' },
+        { name: 'Harper Palembang', url: 'https://www.booking.com/searchresults.html?ss=Harper+Palembang' }
+      ]
     },
     {
       rank: 8,
@@ -127,7 +176,14 @@ window.INDONESIA_DATA = {
       description_id: 'Kota di Jawa, pusat spiritual dan budaya Indonesia. Dikenal dengan candi-candi kuno dan warisan seni yang kaya.',
       highlights_bg: ['Храм Боробудур', 'Древни храмове', 'Художествена керамика', 'Традиционни танци'],
       highlights_en: ['Borobudur Temple', 'Ancient Temples', 'Artistic Pottery', 'Traditional Dance'],
-      highlights_id: ['Candi Borobudur', 'Candi kuno', 'Gerabah artistik', 'Tari tradisional']
+      highlights_id: ['Candi Borobudur', 'Candi kuno', 'Gerabah artistik', 'Tari tradisional'],
+      hotels: [
+        { name: 'Hotel Tentrem Yogyakarta', url: 'https://www.booking.com/searchresults.html?ss=Hotel+Tentrem+Yogyakarta' },
+        { name: 'Hyatt Regency Yogyakarta', url: 'https://www.booking.com/searchresults.html?ss=Hyatt+Regency+Yogyakarta' },
+        { name: 'The Phoenix Hotel Yogyakarta', url: 'https://www.booking.com/searchresults.html?ss=The+Phoenix+Hotel+Yogyakarta' },
+        { name: 'Yogyakarta Marriott Hotel', url: 'https://www.booking.com/searchresults.html?ss=Yogyakarta+Marriott+Hotel' },
+        { name: 'Melia Purosani Yogyakarta', url: 'https://www.booking.com/searchresults.html?ss=Melia+Purosani+Yogyakarta' }
+      ]
     }
   ]
 };
