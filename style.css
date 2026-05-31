@@ -163,6 +163,8 @@ header p {
     transform: translateY(-2px);
     display: block;
     margin: 0;
+    padding: 10px;
+    text-align: center;
 }
 
 .ticket-info-btn:hover {
@@ -638,6 +640,83 @@ header p {
     max-width: 520px;
 }
 
+.ticket-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.ticket-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.ticket-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ticket-field-full {
+    grid-column: 1 / -1;
+}
+
+.ticket-label {
+    font-size: 0.82em;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #51607f;
+}
+
+.ticket-field input,
+.ticket-field select {
+    width: 100%;
+    border: 1px solid rgba(135, 152, 188, 0.45);
+    border-radius: 12px;
+    padding: 12px 14px;
+    background: rgba(246, 248, 252, 0.96);
+    color: #24324f;
+    font: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ticket-field input:focus,
+.ticket-field select:focus {
+    outline: none;
+    border-color: #4b88ff;
+    box-shadow: 0 0 0 4px rgba(75, 136, 255, 0.14);
+}
+
+.ticket-submit-btn {
+    align-self: flex-start;
+    border: none;
+    border-radius: 999px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #4b88ff 0%, #235dd2 100%);
+    color: white;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 12px 24px rgba(35, 93, 210, 0.28);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.ticket-submit-btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.04);
+    box-shadow: 0 14px 28px rgba(35, 93, 210, 0.34);
+}
+
+.ticket-form-status {
+    min-height: 1.4em;
+    color: #235dd2;
+    font-size: 0.96em;
+    line-height: 1.5;
+    margin-top: 14px;
+}
+
 .stadium-modal-image {
     height: 300px;
     object-fit: cover;
@@ -761,6 +840,10 @@ header p {
         grid-template-columns: 1fr;
     }
 
+    .ticket-form-grid {
+        grid-template-columns: 1fr;
+    }
+
     .country-title-row {
         align-items: flex-start;
         gap: 10px;
@@ -859,6 +942,11 @@ header p {
         width: 62px;
         height: 62px;
         font-size: 0.5rem;
+    }
+
+    .ticket-submit-btn {
+        width: 100%;
+        justify-content: center;
     }
 
     .city-card {

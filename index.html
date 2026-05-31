@@ -117,6 +117,40 @@
             <div class="modal-body">
                 <h2 id="ticketModalTitle" class="modal-title"></h2>
                 <p id="ticketModalDescription" class="modal-description"></p>
+                <form id="ticketForm" class="ticket-form">
+                    <div class="ticket-form-grid">
+                        <label class="ticket-field">
+                            <span id="ticketDateLabel" class="ticket-label"></span>
+                            <input id="ticketDateInput" name="travelDate" type="date" required>
+                        </label>
+                        <label class="ticket-field">
+                            <span id="ticketTimeLabel" class="ticket-label"></span>
+                            <input id="ticketTimeInput" name="travelTime" type="time" required>
+                        </label>
+                        <label class="ticket-field">
+                            <span id="ticketDepartureLabel" class="ticket-label"></span>
+                            <input id="ticketDepartureInput" name="departureCity" type="text" required>
+                        </label>
+                        <label class="ticket-field">
+                            <span id="ticketTravelersLabel" class="ticket-label"></span>
+                            <input id="ticketTravelersInput" name="travelers" type="number" min="1" max="12" value="1" required>
+                        </label>
+                        <label class="ticket-field">
+                            <span id="ticketClassLabel" class="ticket-label"></span>
+                            <select id="ticketClassInput" name="ticketClass">
+                                <option value="economy" id="ticketClassEconomy"></option>
+                                <option value="business" id="ticketClassBusiness"></option>
+                                <option value="first" id="ticketClassFirst"></option>
+                            </select>
+                        </label>
+                        <label class="ticket-field ticket-field-full">
+                            <span id="ticketEmailLabel" class="ticket-label"></span>
+                            <input id="ticketEmailInput" name="email" type="email" required>
+                        </label>
+                    </div>
+                    <button id="ticketSubmitBtn" class="ticket-submit-btn" type="submit"></button>
+                </form>
+                <p id="ticketFormStatus" class="ticket-form-status" aria-live="polite"></p>
             </div>
         </div>
     </div>

@@ -57,6 +57,24 @@
     dom.stadiumUseValue = document.getElementById('stadiumUseValue');
     dom.ticketModalTitle = document.getElementById('ticketModalTitle');
     dom.ticketModalDescription = document.getElementById('ticketModalDescription');
+    dom.ticketForm = document.getElementById('ticketForm');
+    dom.ticketFormStatus = document.getElementById('ticketFormStatus');
+    dom.ticketDateLabel = document.getElementById('ticketDateLabel');
+    dom.ticketTimeLabel = document.getElementById('ticketTimeLabel');
+    dom.ticketDepartureLabel = document.getElementById('ticketDepartureLabel');
+    dom.ticketTravelersLabel = document.getElementById('ticketTravelersLabel');
+    dom.ticketClassLabel = document.getElementById('ticketClassLabel');
+    dom.ticketEmailLabel = document.getElementById('ticketEmailLabel');
+    dom.ticketDateInput = document.getElementById('ticketDateInput');
+    dom.ticketTimeInput = document.getElementById('ticketTimeInput');
+    dom.ticketDepartureInput = document.getElementById('ticketDepartureInput');
+    dom.ticketTravelersInput = document.getElementById('ticketTravelersInput');
+    dom.ticketClassInput = document.getElementById('ticketClassInput');
+    dom.ticketEmailInput = document.getElementById('ticketEmailInput');
+    dom.ticketClassEconomy = document.getElementById('ticketClassEconomy');
+    dom.ticketClassBusiness = document.getElementById('ticketClassBusiness');
+    dom.ticketClassFirst = document.getElementById('ticketClassFirst');
+    dom.ticketSubmitBtn = document.getElementById('ticketSubmitBtn');
     dom.wildlifeModal = document.getElementById('wildlifeModal');
     dom.wildlifeInfoBtn = document.getElementById('wildlifeInfoBtn');
     dom.ticketInfoBtn = document.getElementById('ticketInfoBtn');
@@ -199,6 +217,16 @@ function cacheContentElements() {
     dom.stadiumInfoBtn.textContent = getTranslation('stadiumInfoBtn');
     dom.wildlifeInfoBtn.textContent = getTranslation('wildlifeInfoBtn');
     dom.ticketInfoBtn.textContent = getTranslation('ticketInfoBtn');
+    dom.ticketDateLabel.textContent = getTranslation('ticketDateLabel');
+    dom.ticketTimeLabel.textContent = getTranslation('ticketTimeLabel');
+    dom.ticketDepartureLabel.textContent = getTranslation('ticketDepartureLabel');
+    dom.ticketTravelersLabel.textContent = getTranslation('ticketTravelersLabel');
+    dom.ticketClassLabel.textContent = getTranslation('ticketClassLabel');
+    dom.ticketEmailLabel.textContent = getTranslation('ticketEmailLabel');
+    dom.ticketClassEconomy.textContent = getTranslation('ticketClassEconomy');
+    dom.ticketClassBusiness.textContent = getTranslation('ticketClassBusiness');
+    dom.ticketClassFirst.textContent = getTranslation('ticketClassFirst');
+    dom.ticketSubmitBtn.textContent = getTranslation('ticketSubmitBtn');
     countryInfoFields.forEach(function (field) {
       dom[field.id].textContent = getTranslation(field.labelKey);
     });
@@ -355,11 +383,23 @@ function cacheContentElements() {
   function openTicketModal() {
     dom.ticketModalTitle.textContent = getTranslation('ticketModalTitle');
     dom.ticketModalDescription.textContent = getTranslation('ticketModalDescription');
+    dom.ticketFormStatus.textContent = '';
+
+    if (!dom.ticketDateInput.value) {
+      dom.ticketDateInput.value = new Date().toISOString().split('T')[0];
+    }
+
     toggleModal(dom.ticketModal, true);
   }
 
   function closeTicketModal() {
+    dom.ticketFormStatus.textContent = '';
     toggleModal(dom.ticketModal, false);
+  }
+
+  function handleTicketSubmit(event) {
+    event.preventDefault();
+    dom.ticketFormStatus.textContent = getTranslation('ticketStatusMessage');
   }
 
   async function openWildlifeModal() {
@@ -443,6 +483,10 @@ function cacheContentElements() {
         closeTicketModal();
       }
     });
+
+    dom.ticketForm.addEventListener('submit', handleTicketSubmit);
+
+    dom.ticketDateInput.min = new Date().toISOString().split('T')[0];
 
     dom.wildlifeModal.addEventListener('click', function (event) {
       if (event.target === dom.wildlifeModal) {
