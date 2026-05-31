@@ -60,7 +60,7 @@ window.INDONESIA_DATA = {
       latitude: 2.1949,
       longitude: 98.6722,
       image: './assets/images/medan.avif',
-      description_bg: 'Град на остров Суматра, важен търговски център. Известен с разнообразната си культура и многокултурното наследство.',
+      description_bg: 'Град на остров Суматра, важен търговски център. Известен с разнообразната си култура и многокултурното наследство.',
       description_en: 'A city on the island of Sumatra, an important commercial center. Known for its diverse culture and multicultural heritage.',
       highlights_bg: ['Халал пазари', 'Будистки храмове', 'Колониални сгради', 'Екзотични храни'],
       highlights_en: ['Halal Markets', 'Buddhist Temples', 'Colonial Buildings', 'Exotic Cuisine']
