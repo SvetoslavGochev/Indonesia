@@ -35,6 +35,7 @@
     dom.content = document.getElementById('content');
     dom.cityModal = document.getElementById('cityModal');
     dom.stadiumModal = document.getElementById('stadiumModal');
+    dom.ticketModal = document.getElementById('ticketModal');
     dom.modalImage = document.getElementById('modalImage');
     dom.modalRank = document.getElementById('modalRank');
     dom.modalTitle = document.getElementById('modalTitle');
@@ -54,8 +55,11 @@
     dom.stadiumCapacityValue = document.getElementById('stadiumCapacityValue');
     dom.stadiumOpenedValue = document.getElementById('stadiumOpenedValue');
     dom.stadiumUseValue = document.getElementById('stadiumUseValue');
+    dom.ticketModalTitle = document.getElementById('ticketModalTitle');
+    dom.ticketModalDescription = document.getElementById('ticketModalDescription');
     dom.wildlifeModal = document.getElementById('wildlifeModal');
     dom.wildlifeInfoBtn = document.getElementById('wildlifeInfoBtn');
+    dom.ticketInfoBtn = document.getElementById('ticketInfoBtn');
     dom.wildlifeModalImage = document.getElementById('wildlifeModalImage');
     dom.wildlifeModalTitle = document.getElementById('wildlifeModalTitle');
     dom.wildlifeModalDescription = document.getElementById('wildlifeModalDescription');
@@ -65,6 +69,7 @@ function cacheContentElements() {
     dom.countryInfoTitle = document.getElementById('countryInfoTitle');
     dom.stadiumInfoBtn = document.getElementById('stadiumInfoBtn');
     dom.wildlifeInfoBtn = document.getElementById('wildlifeInfoBtn');
+    dom.ticketInfoBtn = document.getElementById('ticketInfoBtn');
     dom.majorCitiesTitle = document.getElementById('majorCitiesTitle');
     dom.dataNotice = document.getElementById('dataNotice');
     countryInfoFields.forEach(function (field) {
@@ -154,6 +159,7 @@ function cacheContentElements() {
             <div class="action-buttons">
               <button id="stadiumInfoBtn" class="stadium-info-btn" type="button"></button>
               <button id="wildlifeInfoBtn" class="wildlife-info-btn" type="button"></button>
+              <button id="ticketInfoBtn" class="ticket-info-btn" type="button"></button>
             </div>
           </div>
           <div class="info-grid">
@@ -175,6 +181,7 @@ function cacheContentElements() {
 
     dom.stadiumInfoBtn.addEventListener('click', openStadiumModal);
     dom.wildlifeInfoBtn.addEventListener('click', openWildlifeModal);
+    dom.ticketInfoBtn.addEventListener('click', openTicketModal);
     dom.content.addEventListener('click', function (event) {
       const cityCard = event.target.closest('.city-card');
       if (!cityCard) {
@@ -191,6 +198,7 @@ function cacheContentElements() {
     dom.countryInfoTitle.textContent = getTranslation('countryInfo');
     dom.stadiumInfoBtn.textContent = getTranslation('stadiumInfoBtn');
     dom.wildlifeInfoBtn.textContent = getTranslation('wildlifeInfoBtn');
+    dom.ticketInfoBtn.textContent = getTranslation('ticketInfoBtn');
     countryInfoFields.forEach(function (field) {
       dom[field.id].textContent = getTranslation(field.labelKey);
     });
@@ -344,6 +352,16 @@ function cacheContentElements() {
     toggleModal(dom.stadiumModal, false);
   }
 
+  function openTicketModal() {
+    dom.ticketModalTitle.textContent = getTranslation('ticketModalTitle');
+    dom.ticketModalDescription.textContent = getTranslation('ticketModalDescription');
+    toggleModal(dom.ticketModal, true);
+  }
+
+  function closeTicketModal() {
+    toggleModal(dom.ticketModal, false);
+  }
+
   async function openWildlifeModal() {
     dom.wildlifeModalTitle.textContent = getTranslation('wildlifeTitle');
     dom.wildlifeModalDescription.textContent = getTranslation('wildlifeDescription');
@@ -420,6 +438,12 @@ function cacheContentElements() {
       }
     });
 
+    dom.ticketModal.addEventListener('click', function (event) {
+      if (event.target === dom.ticketModal) {
+        closeTicketModal();
+      }
+    });
+
     dom.wildlifeModal.addEventListener('click', function (event) {
       if (event.target === dom.wildlifeModal) {
         closeWildlifeModal();
@@ -429,6 +453,7 @@ function cacheContentElements() {
       if (event.key === 'Escape') {
         closeModal();
         closeStadiumModal();
+        closeTicketModal();
         closeWildlifeModal();
       }
     });
@@ -443,6 +468,8 @@ function cacheContentElements() {
   window.closeModal = closeModal;
   window.openStadiumModal = openStadiumModal;
   window.closeStadiumModal = closeStadiumModal;
+  window.openTicketModal = openTicketModal;
+  window.closeTicketModal = closeTicketModal;
   window.openWildlifeModal = openWildlifeModal;
   window.closeWildlifeModal = closeWildlifeModal;
 })();

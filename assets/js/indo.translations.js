@@ -25,6 +25,9 @@ window.APP_TRANSLATIONS = {
     stadiumCapacityValue: "около 77 000 зрители",
     stadiumOpenedValue: "1962 (реновиран 2018)",
     stadiumUseValue: "футбол и национални събития",
+    ticketInfoBtn: "Запази билет",
+    ticketModalTitle: "Запази билет за Индонезия",
+    ticketModalDescription: "Тази секция е подготвена като място за бъдеща резервация на билети до Индонезия. Следващата стъпка е да добавим конкретни оферти и форма за заявка.",
     wildlifeInfoBtn: "🦁 Животински свят",
     wildlifeTitle: "Животински свят на Индонезия",
     wildlifeDescription: "Индонезия е дом както на редки, така и на екзотични животни. Архипелагът притежава невероятното биологично разнообразие с хиляди видове птици, бозайници и влечуги."
@@ -55,6 +58,9 @@ window.APP_TRANSLATIONS = {
     stadiumCapacityValue: "about 77,000 spectators",
     stadiumOpenedValue: "1962 (renovated in 2018)",
     stadiumUseValue: "football and national events",
+    ticketInfoBtn: "Book Ticket",
+    ticketModalTitle: "Book a Ticket to Indonesia",
+    ticketModalDescription: "This section is prepared as a future space for booking tickets to Indonesia. The next step is to add real offers and a booking form.",
     wildlifeInfoBtn: "🦁 Animal World",
     wildlifeTitle: "Indonesian Wildlife",
     wildlifeDescription: "Indonesia is home to both rare and exotic animals. The archipelago possesses incredible biological diversity with thousands of species of birds, mammals, and reptiles."
@@ -85,6 +91,9 @@ window.APP_TRANSLATIONS = {
     stadiumCapacityValue: "sekitar 77.000 penonton",
     stadiumOpenedValue: "1962 (renovasi 2018)",
     stadiumUseValue: "sepak bola dan acara nasional",
+    ticketInfoBtn: "Pesan Tiket",
+    ticketModalTitle: "Pesan Tiket ke Indonesia",
+    ticketModalDescription: "Bagian ini disiapkan sebagai tempat untuk pemesanan tiket ke Indonesia di masa mendatang. Langkah berikutnya adalah menambahkan penawaran nyata dan formulir pemesanan.",
     wildlifeInfoBtn: "🦁 Dunia Hewan",
     wildlifeTitle: "Satwa Indonesia",
     wildlifeDescription: "Indonesia adalah rumah bagi hewan langka dan eksotis. Kepulauan ini memiliki keanekaragaman hayati yang luar biasa dengan ribuan spesies burung, mamalia, dan reptil."
