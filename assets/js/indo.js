@@ -205,6 +205,10 @@ function cacheContentElements() {
   }
 
   function toBulgarianTranslatedWikipediaUrl(url) {
+    if (currentLanguage !== 'bg') {
+      return url;
+    }
+
     try {
       const parsedUrl = new URL(url);
       if (parsedUrl.hostname !== 'en.wikipedia.org') {
