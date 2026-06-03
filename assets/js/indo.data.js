@@ -29,7 +29,7 @@ window.INDONESIA_DATA = {
       description_de: 'Die Hauptstadt Indonesiens - eine lebendige Stadt mit einer Mischung aus moderner Architektur und traditioneller Kultur. Bekannt fur hohe Wolkenkratzer und belebte Markte.',
       description_fr: "Capitale de l'Indonesie, ville dynamique melant architecture moderne et culture traditionnelle. Connue pour ses gratte-ciel et ses marches animes.",
       description_id: 'Ibu kota Indonesia yang dinamis dengan perpaduan arsitektur modern dan budaya tradisional. Dikenal dengan gedung pencakar langit yang menjulang dan pasar yang ramai.',
-      description_es: 'La capital de Indonesia, una ciudad dinamica con mezcla de arquitectura moderna y cultura tradicional. Conocida por sus rascacielos y mercados llenos de vida.',
+      description_es: 'La capital de Indonesia, una ciudad vibrante donde la arquitectura moderna se mezcla con la tradicion. Es famosa por sus rascacielos imponentes y sus mercados llenos de vida.',
       highlights_bg: ['Национален монумент', 'Древни храмове', 'Оживен нощен живот', 'Световно известна кухня'],
       highlights_en: ['National Monument', 'Ancient Temples', 'Vibrant Nightlife', 'World-Famous Cuisine'],
       highlightLinks_en: [
@@ -60,7 +60,7 @@ window.INDONESIA_DATA = {
       description_de: 'Die zweitgrosste Stadt Indonesiens, entwickelt als Industriezentrum. Bekannt fur ihre historische Bedeutung und ihren Hafen.',
       description_fr: 'Deuxieme plus grande ville d\'Indonesie, developpee comme centre industriel. Connue pour son importance historique et son port.',
       description_id: 'Kota terbesar kedua di Indonesia, berkembang sebagai pusat industri. Dikenal karena nilai sejarahnya dan pelabuhannya.',
-      description_es: 'La segunda ciudad mas grande de Indonesia, desarrollada como centro industrial. Conocida por su importancia historica y su puerto.',
+      description_es: 'La segunda ciudad mas grande de Indonesia y un importante centro industrial. Destaca por su valor historico y su gran puerto comercial.',
       highlights_bg: ['Исторически пристанище', 'Храм Превели', 'Редки артефакти', 'Морски живот'],
       highlights_en: ['Historic Port', 'Prambanan Temple', 'Rare Artifacts', 'Marine Life'],
       highlightLinks_en: [
@@ -91,7 +91,7 @@ window.INDONESIA_DATA = {
       description_de: 'Eine Stadt im Hochland von Westjava, bekannt fur ihr kuhleres Klima und malerische Landschaften. Ein beliebtes Reiseziel.',
       description_fr: 'Ville des hauts plateaux de Java occidental, connue pour son climat frais et ses paysages pittoresques. Destination touristique populaire.',
       description_id: 'Kota di dataran tinggi Jawa Barat yang dikenal dengan iklim sejuk dan pemandangan alamnya. Tujuan wisata populer.',
-      description_es: 'Ciudad en las tierras altas de Java Occidental, conocida por su clima fresco y paisajes pintorescos. Un destino turistico muy popular.',
+      description_es: 'Una ciudad en las tierras altas de Java Occidental, conocida por su clima fresco y sus paisajes espectaculares. Es uno de los destinos favoritos para escapadas y turismo.',
       highlights_bg: ['Чайни плантации', 'Вулкани и термални извори', 'Местни художници', 'Традиционна архитектура'],
       highlights_en: ['Tea Plantations', 'Volcanoes & Hot Springs', 'Local Artists', 'Traditional Architecture'],
       highlightLinks_en: [
@@ -122,7 +122,7 @@ window.INDONESIA_DATA = {
       description_de: 'Stadt auf der Insel Sumatra und wichtiges Handelszentrum. Bekannt fur ihre vielfaltige Kultur und ihr multikulturelles Erbe.',
       description_fr: "Ville situee sur l'ile de Sumatra, important centre commercial. Reputee pour sa culture diversifiee et son patrimoine multiculturel.",
       description_id: 'Kota di pulau Sumatra yang menjadi pusat perdagangan penting. Dikenal karena budaya yang beragam dan warisan multikulturalnya.',
-      description_es: 'Ciudad de la isla de Sumatra y un importante centro comercial. Conocida por su cultura diversa y su herencia multicultural.',
+      description_es: 'Ubicada en la isla de Sumatra, Medan es un importante centro de comercio. Sobresale por su diversidad cultural y su rica herencia multicultural.',
       highlights_bg: ['Халал пазари', 'Будистки храмове', 'Колониални сгради', 'Екзотични храни'],
       highlights_en: ['Halal Markets', 'Buddhist Temples', 'Colonial Buildings', 'Exotic Cuisine'],
       highlightLinks_en: [
@@ -153,7 +153,7 @@ window.INDONESIA_DATA = {
       description_de: 'Eine Hafenstadt auf Java, eine Kombination aus Alt und Neu. Bekannt fur historische Gebaude und Meereskuche.',
       description_fr: 'Ville portuaire de Java, melange d\'ancien et de moderne. Connue pour ses batiments historiques et sa cuisine de la mer.',
       description_id: 'Kota pelabuhan di Jawa, perpaduan antara masa lalu dan masa kini. Dikenal dengan bangunan bersejarah dan kuliner lautnya.',
-      description_es: 'Ciudad portuaria de Java, una combinacion de lo antiguo y lo moderno. Conocida por sus edificios historicos y su cocina marina.',
+      description_es: 'Ciudad portuaria de Java que combina encanto historico y desarrollo moderno. Es conocida por su arquitectura tradicional y su excelente cocina de mar.',
       highlights_bg: ['Древни крепости', 'Колониален дизайн', 'Оживен пристан', 'Местни деликатеси'],
       highlights_en: ['Ancient Fortresses', 'Colonial Design', 'Bustling Harbor', 'Local Delicacies'],
       highlightLinks_en: [
@@ -184,7 +184,7 @@ window.INDONESIA_DATA = {
       description_de: 'Eine Hafenstadt auf Sulawesi, bekannt fur schone Strande und eine faszinierende Unterwasserwelt. Beliebt fur Wassersport.',
       description_fr: 'Ville portuaire de Sulawesi, connue pour ses belles plages et son monde sous-marin. Destination tres appreciee pour les sports nautiques.',
       description_id: 'Kota pelabuhan di Sulawesi, dikenal dengan pantainya yang indah dan dunia bawah lautnya. Tujuan wisata populer untuk olahraga air.',
-      description_es: 'Ciudad portuaria de Sulawesi, famosa por sus playas hermosas y su mundo submarino. Un destino popular para deportes acuaticos.',
+      description_es: 'Una ciudad costera de Sulawesi, famosa por sus playas y su increible vida submarina. Es un destino ideal para quienes aman los deportes acuaticos.',
       highlights_bg: ['Корални рифове', 'Тропични плажи', 'Подводна фауна', 'Водни спортове'],
       highlights_en: ['Coral Reefs', 'Tropical Beaches', 'Underwater Fauna', 'Water Sports'],
       highlightLinks_en: [
@@ -215,7 +215,7 @@ window.INDONESIA_DATA = {
       description_de: 'Eine Stadt auf Sumatra mit reicher Geschichte. Bekannt fur alte Reiche und den Musi-Fluss, der durch die Stadt fliesst.',
       description_fr: 'Ville de Sumatra a l\'histoire riche. Connue pour ses anciens empires et le fleuve Musi qui traverse la ville.',
       description_id: 'Kota di Sumatra dengan sejarah yang kaya. Dikenal dengan kerajaan kuno dan Sungai Musi yang mengalir melalui kota.',
-      description_es: 'Ciudad de Sumatra con una historia rica. Conocida por sus antiguos imperios y el rio Musi que atraviesa la ciudad.',
+      description_es: 'Ciudad historica de Sumatra, reconocida por su pasado imperial. El rio Musi atraviesa la ciudad y le da un ambiente unico y autentico.',
       highlights_bg: ['Древни паметници', 'Историческа река', 'Традиционни кораби', 'Исторически музеи'],
       highlights_en: ['Ancient Monuments', 'Historic River', 'Traditional Boats', 'Historical Museums'],
       highlightLinks_en: [
@@ -246,7 +246,7 @@ window.INDONESIA_DATA = {
       description_de: 'Eine Stadt auf Java, geistiges und kulturelles Zentrum Indonesiens. Bekannt fur alte Tempel und kunstlerisches Erbe.',
       description_fr: 'Ville de Java, centre spirituel et culturel de l\'Indonesie. Connue pour ses temples anciens et son heritage artistique.',
       description_id: 'Kota di Jawa, pusat spiritual dan budaya Indonesia. Dikenal dengan candi-candi kuno dan warisan seni yang kaya.',
-      description_es: 'Ciudad de Java y centro espiritual y cultural de Indonesia. Conocida por sus templos antiguos y su herencia artistica.',
+      description_es: 'El corazon cultural y espiritual de Java. Es conocida por sus templos ancestrales, sus tradiciones vivas y su gran riqueza artistica.',
       highlights_bg: ['Храм Боробудур', 'Древни храмове', 'Художествена керамика', 'Традиционни танци'],
       highlights_en: ['Borobudur Temple', 'Ancient Temples', 'Artistic Pottery', 'Traditional Dance'],
       highlightLinks_en: [
