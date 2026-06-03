@@ -201,15 +201,9 @@ function cacheContentElements() {
   }
 
   function getCityTranslationKeys() {
-    const fallbackLanguage = 'en';
-    const hasLanguageSpecificCityText = indonesiaData.cities.some(function (city) {
-      return city[`description_${currentLanguage}`] || city[`highlights_${currentLanguage}`];
-    });
-    const cityLanguage = hasLanguageSpecificCityText ? currentLanguage : fallbackLanguage;
-
     return {
-      description: `description_${cityLanguage}`,
-      highlights: `highlights_${cityLanguage}`
+      description: `description_${currentLanguage}`,
+      highlights: `highlights_${currentLanguage}`
     };
   }
 
@@ -261,8 +255,11 @@ function cacheContentElements() {
 
   function updateCityModalContent(city) {
     const keys = getCityTranslationKeys();
-    const localizedHighlights = Array.isArray(city[keys.highlights]) ? city[keys.highlights] : [];
+    const localizedHighlightsRaw = city[keys.highlights];
     const englishHighlights = Array.isArray(city.highlights_en) ? city.highlights_en : [];
+    const localizedHighlights = Array.isArray(localizedHighlightsRaw) && localizedHighlightsRaw.length > 0
+      ? localizedHighlightsRaw
+      : englishHighlights;
     const directHighlightLinks = Array.isArray(city.highlightLinks_en) ? city.highlightLinks_en : [];
 
     dom.modalRank.textContent = `#${city.rank} ${getTranslation('mostPopulated')}`;
