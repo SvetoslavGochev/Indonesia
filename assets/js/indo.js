@@ -85,6 +85,7 @@
     dom.idBtn = document.getElementById('idBtn');
     dom.headerTitle = document.getElementById('headerTitle');
     dom.headerSubtitle = document.getElementById('headerSubtitle');
+    dom.adBoxLabels = Array.from(document.querySelectorAll('.ad-box-label'));
     dom.content = document.getElementById('content');
     dom.cityModal = document.getElementById('cityModal');
     dom.stadiumModal = document.getElementById('stadiumModal');
@@ -392,6 +393,12 @@ function cacheContentElements() {
     dom.idBtn.classList.toggle('active', currentLanguage === 'id');
     dom.headerTitle.textContent = getTranslation('headerTitle');
     dom.headerSubtitle.textContent = getTranslation('headerSubtitle');
+    if (Array.isArray(dom.adBoxLabels) && dom.adBoxLabels.length > 0) {
+      const adPlaceholderText = getTranslation('adPlaceholder');
+      dom.adBoxLabels.forEach(function (label) {
+        label.textContent = adPlaceholderText;
+      });
+    }
     if (dom.wildlifeInfoBtn) {
       const wildlifeLabel = getTranslation('wildlifeInfoBtn');
       dom.wildlifeInfoBtn.textContent = wildlifeLabel;
