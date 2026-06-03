@@ -4,7 +4,13 @@
   const translations = window.APP_TRANSLATIONS || {};
   const stadiumData = window.STADIUM_DATA || {};
   const indonesiaData = window.INDONESIA_DATA || { country: {}, cities: [] };
-  const BLOG_ARTICLE_URL = './assets/tekst/indotext.txt?v=20260603';
+  const BLOG_ARTICLE_URLS = {
+    bg: './assets/tekst/indotext.txt?v=20260603',
+    en: './assets/tekst/indotext.en.txt?v=20260603',
+    de: './assets/tekst/indotext.de.txt?v=20260603',
+    fr: './assets/tekst/indotext.fr.txt?v=20260603',
+    id: './assets/tekst/indotext.id.txt?v=20260603'
+  };
 
   const countryInfoFields = [
     { labelKey: 'capital', value: indonesiaData.country.capital, id: 'capitalLabel' },
@@ -69,7 +75,7 @@
 
   const dom = {};
   let contentRendered = false;
-  let blogArticleText = '';
+  const blogArticleTextByLanguage = {};
 
   function cacheDomElements() {
     dom.bgBtn = document.getElementById('bgBtn');
@@ -536,27 +542,42 @@ function cacheContentElements() {
     toggleModal(dom.ticketModal, false);
   }
 
-  async function loadBlogArticle() {
-    if (blogArticleText) {
-      return blogArticleText;
+  async function loadBlogArticle(lang) {
+    const requestedLang = BLOG_ARTICLE_URLS[lang] ? lang : 'en';
+    if (blogArticleTextByLanguage[requestedLang]) {
+      return blogArticleTextByLanguage[requestedLang];
     }
 
-    const response = await fetch(BLOG_ARTICLE_URL);
-    if (!response.ok) {
-      throw new Error('blog_load_failed');
+    async function fetchArticleText(languageCode) {
+      const response = await fetch(BLOG_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('blog_load_failed');
+      }
+      return response.text();
     }
 
-    blogArticleText = await response.text();
-    return blogArticleText;
+    try {
+      const articleText = await fetchArticleText(requestedLang);
+      blogArticleTextByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      if (requestedLang !== 'en') {
+        const englishArticle = await fetchArticleText('en');
+        blogArticleTextByLanguage.en = englishArticle;
+        return englishArticle;
+      }
+      throw error;
+    }
   }
 
   async function openBlogModal() {
+    const languageAtOpen = currentLanguage;
     dom.blogModalTitle.textContent = getTranslation('blogModalTitle');
     dom.blogModalContent.textContent = getTranslation('blogLoading');
     toggleModal(dom.blogModal, true);
 
     try {
-      const articleText = await loadBlogArticle();
+      const articleText = await loadBlogArticle(languageAtOpen);
       dom.blogModalContent.textContent = articleText;
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');
