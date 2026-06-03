@@ -16,24 +16,39 @@
     <link rel='stylesheet' href='style.css'>
 </head>
 <body>
-    <div class="container">
-        <div class="language-selector">
-            <button class="lang-btn active" onclick="changeLanguage('bg')" id="bgBtn">BG</button>
-            <button class="lang-btn" onclick="changeLanguage('en')" id="enBtn">EN</button>
-            <button class="lang-btn" onclick="changeLanguage('id')" id="idBtn">IND</button>
-        </div>
+    <div class="page-layout">
+        <aside class="ad-sidebar ad-sidebar-left" aria-label="Left advertisement">
+            <div class="ad-box">
+                <span class="ad-box-label">Място за вашата реклама</span>
+            </div>
+        </aside>
 
-        <header>
-            <h1 id="headerTitle">🇮🇩 Indonesia Explorer</h1>
-            <p id="headerSubtitle">Explore detailed information about Indonesia</p>
-        </header>
+        <div class="container">
+            <header>
+                <h1 id="headerTitle">🇮🇩 Indonesia Explorer</h1>
+                <p id="headerSubtitle">Explore detailed information about Indonesia</p>
+                <div class="language-selector" role="group" aria-label="Language selector">
+                    <button class="lang-btn active" onclick="changeLanguage('bg')" id="bgBtn">BG</button>
+                    <button class="lang-btn" onclick="changeLanguage('en')" id="enBtn">EN</button>
+                    <button class="lang-btn" onclick="changeLanguage('de')" id="deBtn">DE</button>
+                    <button class="lang-btn" onclick="changeLanguage('fr')" id="frBtn">FR</button>
+                    <button class="lang-btn" onclick="changeLanguage('id')" id="idBtn">IND</button>
+                </div>
+            </header>
 
-        <div id="content">
-            <div class="loading">
-                <div class="spinner"></div>
-                <p style="margin-top: 20px;">Loading Indonesia data...</p>
+            <div id="content">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p style="margin-top: 20px;">Loading Indonesia data...</p>
+                </div>
             </div>
         </div>
+
+        <aside class="ad-sidebar ad-sidebar-right" aria-label="Right advertisement">
+            <div class="ad-box">
+                <span class="ad-box-label">Място за вашата реклама</span>
+            </div>
+        </aside>
     </div>
 
     <!-- City Modal -->

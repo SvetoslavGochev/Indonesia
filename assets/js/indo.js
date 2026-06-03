@@ -74,6 +74,8 @@
   function cacheDomElements() {
     dom.bgBtn = document.getElementById('bgBtn');
     dom.enBtn = document.getElementById('enBtn');
+    dom.deBtn = document.getElementById('deBtn');
+    dom.frBtn = document.getElementById('frBtn');
     dom.idBtn = document.getElementById('idBtn');
     dom.headerTitle = document.getElementById('headerTitle');
     dom.headerSubtitle = document.getElementById('headerSubtitle');
@@ -192,9 +194,15 @@ function cacheContentElements() {
   }
 
   function getCityTranslationKeys() {
+    const fallbackLanguage = 'en';
+    const hasLanguageSpecificCityText = indonesiaData.cities.some(function (city) {
+      return city[`description_${currentLanguage}`] || city[`highlights_${currentLanguage}`];
+    });
+    const cityLanguage = hasLanguageSpecificCityText ? currentLanguage : fallbackLanguage;
+
     return {
-      description: `description_${currentLanguage}`,
-      highlights: `highlights_${currentLanguage}`
+      description: `description_${cityLanguage}`,
+      highlights: `highlights_${cityLanguage}`
     };
   }
 
@@ -252,7 +260,7 @@ function cacheContentElements() {
 
     dom.modalRank.textContent = `#${city.rank} ${getTranslation('mostPopulated')}`;
     dom.modalTitle.textContent = city.name;
-    dom.modalDescription.textContent = city[keys.description];
+    dom.modalDescription.textContent = city[keys.description] || city.description_en || city.description_bg || '';
     dom.modalPopulation.textContent = city.population;
     dom.modalCoordinates.textContent = `${city.latitude.toFixed(2)}°, ${city.longitude.toFixed(2)}°`;
     dom.populationLabel.textContent = getTranslation('population');
@@ -361,12 +369,20 @@ function cacheContentElements() {
   }
 
   function getTranslation(key) {
-    return translations[currentLanguage][key] || key;
+    const currentLangPack = translations[currentLanguage] || {};
+    const englishPack = translations.en || {};
+    return currentLangPack[key] || englishPack[key] || key;
   }
 
   function updateLanguageUI() {
     dom.bgBtn.classList.toggle('active', currentLanguage === 'bg');
     dom.enBtn.classList.toggle('active', currentLanguage === 'en');
+    if (dom.deBtn) {
+      dom.deBtn.classList.toggle('active', currentLanguage === 'de');
+    }
+    if (dom.frBtn) {
+      dom.frBtn.classList.toggle('active', currentLanguage === 'fr');
+    }
     dom.idBtn.classList.toggle('active', currentLanguage === 'id');
     dom.headerTitle.textContent = getTranslation('headerTitle');
     dom.headerSubtitle.textContent = getTranslation('headerSubtitle');
@@ -485,11 +501,12 @@ function cacheContentElements() {
   }
 
   function changeLanguage(lang) {
-    currentLanguage = lang;
-    document.documentElement.lang = lang === 'id' ? 'id' : lang;
+    const supportedLanguages = ['bg', 'en', 'de', 'fr', 'id'];
+    currentLanguage = supportedLanguages.includes(lang) ? lang : 'en';
+    document.documentElement.lang = currentLanguage === 'id' ? 'id' : currentLanguage;
     updateLanguageUI();
     loadData();
-    localStorage.setItem('preferredLanguage', lang);
+    localStorage.setItem('preferredLanguage', currentLanguage);
   }
 
   function openStadiumModal() {
@@ -614,8 +631,9 @@ function cacheContentElements() {
   document.addEventListener('DOMContentLoaded', function () {
     cacheDomElements();
 
+    const supportedLanguages = ['bg', 'en', 'de', 'fr', 'id'];
     const savedLang = localStorage.getItem('preferredLanguage') || 'bg';
-    currentLanguage = savedLang;
+    currentLanguage = supportedLanguages.includes(savedLang) ? savedLang : 'bg';
     document.documentElement.lang = currentLanguage === 'id' ? 'id' : currentLanguage;
     updateLanguageUI();
 
