@@ -9,6 +9,7 @@
     en: './assets/tekst/indotext.en.txt?v=20260603',
     de: './assets/tekst/indotext.de.txt?v=20260603',
     fr: './assets/tekst/indotext.fr.txt?v=20260603',
+    es: './assets/tekst/indotext.es.txt?v=20260603',
     id: './assets/tekst/indotext.id.txt?v=20260603'
   };
 
@@ -82,6 +83,7 @@
     dom.enBtn = document.getElementById('enBtn');
     dom.deBtn = document.getElementById('deBtn');
     dom.frBtn = document.getElementById('frBtn');
+    dom.esBtn = document.getElementById('esBtn');
     dom.idBtn = document.getElementById('idBtn');
     dom.headerTitle = document.getElementById('headerTitle');
     dom.headerSubtitle = document.getElementById('headerSubtitle');
@@ -387,6 +389,9 @@ function cacheContentElements() {
     if (dom.frBtn) {
       dom.frBtn.classList.toggle('active', currentLanguage === 'fr');
     }
+    if (dom.esBtn) {
+      dom.esBtn.classList.toggle('active', currentLanguage === 'es');
+    }
     dom.idBtn.classList.toggle('active', currentLanguage === 'id');
     dom.headerTitle.textContent = getTranslation('headerTitle');
     dom.headerSubtitle.textContent = getTranslation('headerSubtitle');
@@ -511,7 +516,7 @@ function cacheContentElements() {
   }
 
   function changeLanguage(lang) {
-    const supportedLanguages = ['bg', 'en', 'de', 'fr', 'id'];
+    const supportedLanguages = ['bg', 'en', 'de', 'fr', 'es', 'id'];
     currentLanguage = supportedLanguages.includes(lang) ? lang : 'en';
     document.documentElement.lang = currentLanguage === 'id' ? 'id' : currentLanguage;
     updateLanguageUI();
@@ -656,7 +661,7 @@ function cacheContentElements() {
   document.addEventListener('DOMContentLoaded', function () {
     cacheDomElements();
 
-    const supportedLanguages = ['bg', 'en', 'de', 'fr', 'id'];
+    const supportedLanguages = ['bg', 'en', 'de', 'fr', 'es', 'id'];
     const savedLang = localStorage.getItem('preferredLanguage') || 'bg';
     currentLanguage = supportedLanguages.includes(savedLang) ? savedLang : 'bg';
     document.documentElement.lang = currentLanguage === 'id' ? 'id' : currentLanguage;
