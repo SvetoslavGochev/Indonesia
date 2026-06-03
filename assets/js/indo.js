@@ -4,6 +4,7 @@
   const translations = window.APP_TRANSLATIONS || {};
   const stadiumData = window.STADIUM_DATA || {};
   const indonesiaData = window.INDONESIA_DATA || { country: {}, cities: [] };
+  const BLOG_ARTICLE_URL = './assets/tekst/indotext.txt?v=20260603';
 
   const countryInfoFields = [
     { labelKey: 'capital', value: indonesiaData.country.capital, id: 'capitalLabel' },
@@ -68,6 +69,7 @@
 
   const dom = {};
   let contentRendered = false;
+  let blogArticleText = '';
 
   function cacheDomElements() {
     dom.bgBtn = document.getElementById('bgBtn');
@@ -79,6 +81,7 @@
     dom.cityModal = document.getElementById('cityModal');
     dom.stadiumModal = document.getElementById('stadiumModal');
     dom.ticketModal = document.getElementById('ticketModal');
+    dom.blogModal = document.getElementById('blogModal');
     dom.modalImage = document.getElementById('modalImage');
     dom.modalRank = document.getElementById('modalRank');
     dom.modalTitle = document.getElementById('modalTitle');
@@ -103,6 +106,8 @@
     dom.stadiumUseValue = document.getElementById('stadiumUseValue');
     dom.ticketModalTitle = document.getElementById('ticketModalTitle');
     dom.ticketModalDescription = document.getElementById('ticketModalDescription');
+    dom.blogModalTitle = document.getElementById('blogModalTitle');
+    dom.blogModalContent = document.getElementById('blogModalContent');
     dom.ticketForm = document.getElementById('ticketForm');
     dom.ticketFormStatus = document.getElementById('ticketFormStatus');
     dom.ticketDateLabel = document.getElementById('ticketDateLabel');
@@ -135,6 +140,10 @@ function cacheContentElements() {
     dom.wildlifeInfoBtn = document.getElementById('wildlifeInfoBtn');
     dom.ticketInfoBtn = document.getElementById('ticketInfoBtn');
     dom.majorCitiesTitle = document.getElementById('majorCitiesTitle');
+    dom.blogSectionTitle = document.getElementById('blogSectionTitle');
+    dom.blogArticleTitle = document.getElementById('blogArticleTitle');
+    dom.blogArticleExcerpt = document.getElementById('blogArticleExcerpt');
+    dom.blogReadBtn = document.getElementById('blogReadBtn');
     dom.dataNotice = document.getElementById('dataNotice');
     countryInfoFields.forEach(function (field) {
       dom[field.id] = document.getElementById(field.id);
@@ -291,6 +300,15 @@ function cacheContentElements() {
           </div>
         </div>
 
+        <div class="card blog-card">
+          <h2 id="blogSectionTitle"></h2>
+          <div class="blog-preview">
+            <h3 id="blogArticleTitle"></h3>
+            <p id="blogArticleExcerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn" class="blog-read-btn" type="button"></button>
+          </div>
+        </div>
+
         <div class="api-notice" id="dataNotice"></div>
       `;
 
@@ -299,6 +317,7 @@ function cacheContentElements() {
     dom.stadiumInfoBtn.addEventListener('click', openStadiumModal);
     dom.wildlifeInfoBtn.addEventListener('click', openWildlifeModal);
     dom.ticketInfoBtn.addEventListener('click', openTicketModal);
+    dom.blogReadBtn.addEventListener('click', openBlogModal);
     dom.content.addEventListener('click', function (event) {
       const cityCard = event.target.closest('.city-card');
       if (!cityCard) {
@@ -330,6 +349,10 @@ function cacheContentElements() {
       dom[field.id].textContent = getTranslation(field.labelKey);
     });
     dom.majorCitiesTitle.textContent = getTranslation('majorCities');
+    dom.blogSectionTitle.textContent = getTranslation('blogSectionTitle');
+    dom.blogArticleTitle.textContent = getTranslation('blogArticleTitle');
+    dom.blogArticleExcerpt.textContent = getTranslation('blogArticleExcerpt');
+    dom.blogReadBtn.textContent = getTranslation('blogReadBtn');
     dom.dataNotice.textContent = getTranslation('dataNotice');
 
     dom.cityPopulationTexts.forEach(function (populationElement) {
@@ -496,6 +519,37 @@ function cacheContentElements() {
     toggleModal(dom.ticketModal, false);
   }
 
+  async function loadBlogArticle() {
+    if (blogArticleText) {
+      return blogArticleText;
+    }
+
+    const response = await fetch(BLOG_ARTICLE_URL);
+    if (!response.ok) {
+      throw new Error('blog_load_failed');
+    }
+
+    blogArticleText = await response.text();
+    return blogArticleText;
+  }
+
+  async function openBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogModalTitle');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadBlogArticle();
+      dom.blogModalContent.textContent = articleText;
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  function closeBlogModal() {
+    toggleModal(dom.blogModal, false);
+  }
+
   function handleTicketSubmit(event) {
     event.preventDefault();
     dom.ticketFormStatus.textContent = getTranslation('ticketStatusMessage');
@@ -583,6 +637,12 @@ function cacheContentElements() {
       }
     });
 
+    dom.blogModal.addEventListener('click', function (event) {
+      if (event.target === dom.blogModal) {
+        closeBlogModal();
+      }
+    });
+
     dom.ticketForm.addEventListener('submit', handleTicketSubmit);
 
     dom.ticketDateInput.min = new Date().toISOString().split('T')[0];
@@ -598,6 +658,7 @@ function cacheContentElements() {
         closeStadiumModal();
         closeTicketModal();
         closeWildlifeModal();
+        closeBlogModal();
       }
     });
 
@@ -615,4 +676,6 @@ function cacheContentElements() {
   window.closeTicketModal = closeTicketModal;
   window.openWildlifeModal = openWildlifeModal;
   window.closeWildlifeModal = closeWildlifeModal;
+  window.openBlogModal = openBlogModal;
+  window.closeBlogModal = closeBlogModal;
 })();

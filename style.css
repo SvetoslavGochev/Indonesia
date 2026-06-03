@@ -383,6 +383,53 @@ header p {
     font-size: 0.9em;
 }
 
+.blog-card .blog-preview {
+    background: linear-gradient(140deg, rgba(245, 249, 255, 0.95) 0%, rgba(233, 240, 254, 0.95) 100%);
+    border: 1px solid rgba(157, 181, 226, 0.45);
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.blog-card .blog-preview h3 {
+    margin: 0 0 10px;
+    color: #324b8f;
+    font-size: 1.2rem;
+}
+
+.blog-excerpt {
+    margin: 0 0 14px;
+    color: #304161;
+    line-height: 1.6;
+}
+
+.blog-read-btn {
+    background: linear-gradient(135deg, #2a78eb 0%, #3559c6 100%);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: filter 0.18s ease, box-shadow 0.18s ease;
+    box-shadow: 0 8px 18px rgba(27, 67, 150, 0.27);
+}
+
+.blog-read-btn:hover {
+    filter: brightness(1.06);
+}
+
+.blog-modal-content {
+    max-width: 760px;
+}
+
+.blog-article-content {
+    margin-top: 6px;
+    color: #2f3f5f;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    font-size: 0.96rem;
+}
+
 .modal-overlay {
     display: none;
     position: fixed;
