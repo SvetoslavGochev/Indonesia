@@ -418,7 +418,7 @@ function cacheContentElements() {
       webp: ['webp', 'jpg'],
       jpg: ['jpg', 'webp'],
       jpeg: ['jpeg', 'webp'],
-      png: ['png', 'webp', 'jpg']
+      png: ['png']
     };
 
     return fallbackOrder[extension].map(function (ext) {

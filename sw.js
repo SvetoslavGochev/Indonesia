@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v10';
+const CACHE_VERSION = 'v11';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -82,8 +82,10 @@ self.addEventListener('fetch', (event) => {
 async function networkFirst(request) {
   try {
     const networkResponse = await fetch(request);
-    const cache = await caches.open(STATIC_CACHE);
-    cache.put(request, networkResponse.clone());
+    if (networkResponse && networkResponse.ok) {
+      const cache = await caches.open(STATIC_CACHE);
+      cache.put(request, networkResponse.clone());
+    }
     return networkResponse;
   } catch (error) {
     const cachedResponse = await caches.match(request);
@@ -97,10 +99,20 @@ async function cacheFirst(request, cacheName) {
     return cachedResponse;
   }
 
-  const networkResponse = await fetch(request);
-  const cache = await caches.open(cacheName);
-  cache.put(request, networkResponse.clone());
-  return networkResponse;
+  try {
+    const networkResponse = await fetch(request);
+    if (networkResponse && networkResponse.ok) {
+      const cache = await caches.open(cacheName);
+      cache.put(request, networkResponse.clone());
+    }
+    return networkResponse;
+  } catch (error) {
+    const fallback = await caches.match(request);
+    if (fallback) {
+      return fallback;
+    }
+    throw error;
+  }
 }
 
 async function staleWhileRevalidate(request, cacheName) {
@@ -109,7 +121,9 @@ async function staleWhileRevalidate(request, cacheName) {
 
   const networkPromise = fetch(request)
     .then((networkResponse) => {
-      cache.put(request, networkResponse.clone());
+      if (networkResponse && networkResponse.ok) {
+        cache.put(request, networkResponse.clone());
+      }
       return networkResponse;
     })
     .catch(() => null);
