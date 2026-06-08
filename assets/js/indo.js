@@ -12,6 +12,7 @@
     es: './assets/tekst/indotext.es.txt?v=20260603',
     id: './assets/tekst/indotext.id.txt?v=20260603'
   };
+  const DOLPHIN_ARTICLE_URL = './assets/tekst/Delfin.txt?v=20260609';
   const WATERWORLD_ARTICLE_URL = './assets/tekst/waterworld.txt?v=20260608';
 
   const marineAnimals = [
@@ -141,6 +142,7 @@
   const dom = {};
   let contentRendered = false;
   const blogArticleTextByLanguage = {};
+  let dolphinArticleText = null;
   let waterworldSections = null;
 
   function cacheDomElements() {
@@ -221,6 +223,9 @@ function cacheContentElements() {
     dom.blogArticleTitle = document.getElementById('blogArticleTitle');
     dom.blogArticleExcerpt = document.getElementById('blogArticleExcerpt');
     dom.blogReadBtn = document.getElementById('blogReadBtn');
+    dom.blogArticle2Title = document.getElementById('blogArticle2Title');
+    dom.blogArticle2Excerpt = document.getElementById('blogArticle2Excerpt');
+    dom.blogReadBtn2 = document.getElementById('blogReadBtn2');
     dom.dataNotice = document.getElementById('dataNotice');
     countryInfoFields.forEach(function (field) {
       dom[field.id] = document.getElementById(field.id);
@@ -415,6 +420,11 @@ function cacheContentElements() {
             <p id="blogArticleExcerpt" class="blog-excerpt"></p>
             <button id="blogReadBtn" class="blog-read-btn" type="button"></button>
           </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle2Title"></h3>
+            <p id="blogArticle2Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn2" class="blog-read-btn" type="button"></button>
+          </div>
         </div>
 
         <div class="api-notice" id="dataNotice"></div>
@@ -426,6 +436,7 @@ function cacheContentElements() {
     dom.wildlifeInfoBtn.addEventListener('click', openWildlifeModal);
     dom.ticketInfoBtn.addEventListener('click', openTicketModal);
     dom.blogReadBtn.addEventListener('click', openBlogModal);
+    dom.blogReadBtn2.addEventListener('click', openDolphinBlogModal);
     dom.content.addEventListener('click', function (event) {
       const marineReadButton = event.target.closest('.marine-read-text');
       if (marineReadButton) {
@@ -468,6 +479,9 @@ function cacheContentElements() {
     dom.blogArticleTitle.textContent = getTranslation('blogArticleTitle');
     dom.blogArticleExcerpt.textContent = getTranslation('blogArticleExcerpt');
     dom.blogReadBtn.textContent = getTranslation('blogReadBtn');
+    dom.blogArticle2Title.textContent = getTranslation('blogArticle2Title');
+    dom.blogArticle2Excerpt.textContent = getTranslation('blogArticle2Excerpt');
+    dom.blogReadBtn2.textContent = getTranslation('blogReadBtn2');
     dom.dataNotice.textContent = getTranslation('dataNotice');
 
     dom.cityPopulationTexts.forEach(function (populationElement) {
@@ -701,6 +715,33 @@ function cacheContentElements() {
 
     try {
       const articleText = await loadBlogArticle(languageAtOpen);
+      dom.blogModalContent.textContent = articleText;
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadDolphinArticle() {
+    if (dolphinArticleText) {
+      return dolphinArticleText;
+    }
+
+    const response = await fetch(DOLPHIN_ARTICLE_URL);
+    if (!response.ok) {
+      throw new Error('dolphin_blog_load_failed');
+    }
+
+    dolphinArticleText = await response.text();
+    return dolphinArticleText;
+  }
+
+  async function openDolphinBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle2Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadDolphinArticle();
       dom.blogModalContent.textContent = articleText;
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');

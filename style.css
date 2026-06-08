@@ -520,6 +520,10 @@ header p {
     padding: 18px;
 }
 
+.blog-card .blog-preview + .blog-preview {
+    margin-top: 14px;
+}
+
 .blog-card .blog-preview h3 {
     margin: 0 0 10px;
     color: #324b8f;

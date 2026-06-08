@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v12';
+const CACHE_VERSION = 'v13';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -15,6 +15,7 @@ const CORE_ASSETS = [
   './assets/tekst/indotext.fr.txt',
   './assets/tekst/indotext.es.txt',
   './assets/tekst/indotext.id.txt',
+  './assets/tekst/Delfin.txt',
   './assets/favicons/favicon.svg'
 ];
 
