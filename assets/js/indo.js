@@ -13,6 +13,63 @@
     id: './assets/tekst/indotext.id.txt?v=20260603'
   };
 
+  const marineAnimals = [
+    {
+      image: 'https://upload.wikimedia.org/wikipedia/commons/1/10/Tursiops_truncatus_01.jpg',
+      name_bg: 'Делфин',
+      name_en: 'Dolphin',
+      name_de: 'Delfin',
+      name_fr: 'Dauphin',
+      name_es: 'Delfin',
+      name_id: 'Lumba-lumba'
+    },
+    {
+      image: 'https://upload.wikimedia.org/wikipedia/commons/6/6e/Chelonia_mydas_is_going_for_the_air_edit.jpg',
+      name_bg: 'Морска костенурка',
+      name_en: 'Sea Turtle',
+      name_de: 'Meeresschildkrote',
+      name_fr: 'Tortue de mer',
+      name_es: 'Tortuga marina',
+      name_id: 'Penyu laut'
+    },
+    {
+      image: 'https://upload.wikimedia.org/wikipedia/commons/3/30/Dharavandhoo_Thila_-_Manata_Black_Pearl.JPG',
+      name_bg: 'Манта',
+      name_en: 'Manta Ray',
+      name_de: 'Manta-Rochen',
+      name_fr: 'Raie manta',
+      name_es: 'Manta raya',
+      name_id: 'Pari manta'
+    },
+    {
+      image: 'https://upload.wikimedia.org/wikipedia/commons/a/ad/Amphiprion_ocellaris_%28Clown_anemonefish%29_by_Nick_Hobgood.jpg',
+      name_bg: 'Корална риба',
+      name_en: 'Coral Fish',
+      name_de: 'Korallenfisch',
+      name_fr: 'Poisson de recif',
+      name_es: 'Pez de coral',
+      name_id: 'Ikan karang'
+    },
+    {
+      image: 'https://upload.wikimedia.org/wikipedia/commons/2/25/Hippocampus_hippocampus_%28on_Ascophyllum_nodosum%29.jpg',
+      name_bg: 'Морско конче',
+      name_en: 'Seahorse',
+      name_de: 'Seepferdchen',
+      name_fr: 'Hippocampe',
+      name_es: 'Caballito de mar',
+      name_id: 'Kuda laut'
+    },
+    {
+      image: 'https://upload.wikimedia.org/wikipedia/commons/f/f6/Similan_Dive_Center_-_great_whale_shark.jpg',
+      name_bg: 'Китова акула',
+      name_en: 'Whale Shark',
+      name_de: 'Walhai',
+      name_fr: 'Requin-baleine',
+      name_es: 'Tiburon ballena',
+      name_id: 'Hiu paus'
+    }
+  ];
+
   const countryInfoFields = [
     { labelKey: 'capital', value: indonesiaData.country.capital, id: 'capitalLabel' },
     { labelKey: 'population', value: indonesiaData.country.population, id: 'populationInfoLabel' },
@@ -151,6 +208,7 @@ function cacheContentElements() {
     dom.wildlifeInfoBtn = document.getElementById('wildlifeInfoBtn');
     dom.ticketInfoBtn = document.getElementById('ticketInfoBtn');
     dom.majorCitiesTitle = document.getElementById('majorCitiesTitle');
+    dom.marineAnimalsTitle = document.getElementById('marineAnimalsTitle');
     dom.blogSectionTitle = document.getElementById('blogSectionTitle');
     dom.blogArticleTitle = document.getElementById('blogArticleTitle');
     dom.blogArticleExcerpt = document.getElementById('blogArticleExcerpt');
@@ -160,6 +218,9 @@ function cacheContentElements() {
       dom[field.id] = document.getElementById(field.id);
     });
     dom.cityPopulationTexts = Array.from(document.querySelectorAll('.city-population'));
+    dom.marineNameTexts = Array.from(document.querySelectorAll('.marine-name'));
+    dom.marineReadTexts = Array.from(document.querySelectorAll('.marine-read-text'));
+    dom.marineImagePlaceholderTexts = Array.from(document.querySelectorAll('.marine-image-placeholder-text'));
   }
 
   function setBodyScrollLocked(isLocked) {
@@ -192,6 +253,26 @@ function cacheContentElements() {
               </button>
         `;
     }).join('');
+  }
+
+  function createMarineAnimalsCardsHtml() {
+    return marineAnimals.map(function (animal, index) {
+      return `
+              <article class="marine-card" aria-label="marine-animal-${index}">
+                <div class="marine-image-placeholder">
+                  <img class="marine-image" src="${animal.image}" alt="${animal.name_en}" loading="lazy" decoding="async">
+                  <span class="marine-image-placeholder-text" data-animal-index="${index}"></span>
+                </div>
+                <div class="marine-name" data-animal-index="${index}"></div>
+                <div class="marine-read-text"></div>
+              </article>
+      `;
+    }).join('');
+  }
+
+  function getMarineAnimalName(animal) {
+    const key = `name_${currentLanguage}`;
+    return animal[key] || animal.name_en || animal.name_bg || '';
   }
 
   function createErrorHtml() {
@@ -314,6 +395,13 @@ function cacheContentElements() {
           </div>
         </div>
 
+        <div class="card">
+          <h2 id="marineAnimalsTitle"></h2>
+          <div class="marine-grid">
+            ${createMarineAnimalsCardsHtml()}
+          </div>
+        </div>
+
         <div class="card blog-card">
           <h2 id="blogSectionTitle"></h2>
           <div class="blog-preview">
@@ -363,6 +451,7 @@ function cacheContentElements() {
       dom[field.id].textContent = getTranslation(field.labelKey);
     });
     dom.majorCitiesTitle.textContent = getTranslation('majorCities');
+    dom.marineAnimalsTitle.textContent = getTranslation('marineAnimalsTitle');
     dom.blogSectionTitle.textContent = getTranslation('blogSectionTitle');
     dom.blogArticleTitle.textContent = getTranslation('blogArticleTitle');
     dom.blogArticleExcerpt.textContent = getTranslation('blogArticleExcerpt');
@@ -371,6 +460,23 @@ function cacheContentElements() {
 
     dom.cityPopulationTexts.forEach(function (populationElement) {
       populationElement.textContent = `${getTranslation('populationLabel')}: ${populationElement.dataset.cityPopulation}`;
+    });
+
+    dom.marineNameTexts.forEach(function (nameElement) {
+      const animalIndex = Number(nameElement.dataset.animalIndex);
+      const animal = marineAnimals[animalIndex];
+      if (!animal) {
+        return;
+      }
+      nameElement.textContent = getMarineAnimalName(animal);
+    });
+
+    dom.marineReadTexts.forEach(function (readElement) {
+      readElement.textContent = getTranslation('marineReadBtn');
+    });
+
+    dom.marineImagePlaceholderTexts.forEach(function (placeholderElement) {
+      placeholderElement.textContent = getTranslation('marineImagePlaceholder');
     });
   }
 
