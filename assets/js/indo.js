@@ -37,7 +37,7 @@
     },
     {
       image: 'https://upload.wikimedia.org/wikipedia/commons/3/30/Dharavandhoo_Thila_-_Manata_Black_Pearl.JPG',
-      waterworldMatchBg: ['гигантската медуза', 'медуза'],
+      waterworldMatchBg: ['гигантската манта', 'манта'],
       name_bg: 'Манта',
       name_en: 'Manta Ray',
       name_de: 'Manta-Rochen',
