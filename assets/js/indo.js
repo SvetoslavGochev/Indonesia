@@ -47,7 +47,7 @@
     },
     {
       image: 'https://upload.wikimedia.org/wikipedia/commons/a/ad/Amphiprion_ocellaris_%28Clown_anemonefish%29_by_Nick_Hobgood.jpg',
-      waterworldMatchBg: ['рибата-луна', 'риба'],
+      waterworldMatchBg: ['коралната риба', 'корална риба', 'клоунска риба'],
       name_bg: 'Корална риба',
       name_en: 'Coral Fish',
       name_de: 'Korallenfisch',
@@ -67,7 +67,7 @@
     },
     {
       image: 'https://upload.wikimedia.org/wikipedia/commons/f/f6/Similan_Dive_Center_-_great_whale_shark.jpg',
-      waterworldMatchBg: ['кашалотът', 'кашалот'],
+      waterworldMatchBg: ['китовата акула', 'китова акула'],
       name_bg: 'Китова акула',
       name_en: 'Whale Shark',
       name_de: 'Walhai',
