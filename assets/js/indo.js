@@ -12,10 +12,12 @@
     es: './assets/tekst/indotext.es.txt?v=20260603',
     id: './assets/tekst/indotext.id.txt?v=20260603'
   };
+  const WATERWORLD_ARTICLE_URL = './assets/tekst/waterworld.txt?v=20260608';
 
   const marineAnimals = [
     {
       image: 'https://upload.wikimedia.org/wikipedia/commons/1/10/Tursiops_truncatus_01.jpg',
+      waterworldMatchBg: ['косатката', 'делфин'],
       name_bg: 'Делфин',
       name_en: 'Dolphin',
       name_de: 'Delfin',
@@ -25,6 +27,7 @@
     },
     {
       image: 'https://upload.wikimedia.org/wikipedia/commons/6/6e/Chelonia_mydas_is_going_for_the_air_edit.jpg',
+      waterworldMatchBg: ['морската костенурка', 'костенурка'],
       name_bg: 'Морска костенурка',
       name_en: 'Sea Turtle',
       name_de: 'Meeresschildkrote',
@@ -34,6 +37,7 @@
     },
     {
       image: 'https://upload.wikimedia.org/wikipedia/commons/3/30/Dharavandhoo_Thila_-_Manata_Black_Pearl.JPG',
+      waterworldMatchBg: ['гигантската медуза', 'медуза'],
       name_bg: 'Манта',
       name_en: 'Manta Ray',
       name_de: 'Manta-Rochen',
@@ -43,6 +47,7 @@
     },
     {
       image: 'https://upload.wikimedia.org/wikipedia/commons/a/ad/Amphiprion_ocellaris_%28Clown_anemonefish%29_by_Nick_Hobgood.jpg',
+      waterworldMatchBg: ['рибата-луна', 'риба'],
       name_bg: 'Корална риба',
       name_en: 'Coral Fish',
       name_de: 'Korallenfisch',
@@ -52,6 +57,7 @@
     },
     {
       image: 'https://upload.wikimedia.org/wikipedia/commons/2/25/Hippocampus_hippocampus_%28on_Ascophyllum_nodosum%29.jpg',
+      waterworldMatchBg: ['морски конче', 'морско конче', 'hippocampus'],
       name_bg: 'Морско конче',
       name_en: 'Seahorse',
       name_de: 'Seepferdchen',
@@ -61,6 +67,7 @@
     },
     {
       image: 'https://upload.wikimedia.org/wikipedia/commons/f/f6/Similan_Dive_Center_-_great_whale_shark.jpg',
+      waterworldMatchBg: ['кашалотът', 'кашалот'],
       name_bg: 'Китова акула',
       name_en: 'Whale Shark',
       name_de: 'Walhai',
@@ -134,6 +141,7 @@
   const dom = {};
   let contentRendered = false;
   const blogArticleTextByLanguage = {};
+  let waterworldSections = null;
 
   function cacheDomElements() {
     dom.bgBtn = document.getElementById('bgBtn');
@@ -220,7 +228,6 @@ function cacheContentElements() {
     dom.cityPopulationTexts = Array.from(document.querySelectorAll('.city-population'));
     dom.marineNameTexts = Array.from(document.querySelectorAll('.marine-name'));
     dom.marineReadTexts = Array.from(document.querySelectorAll('.marine-read-text'));
-    dom.marineImagePlaceholderTexts = Array.from(document.querySelectorAll('.marine-image-placeholder-text'));
   }
 
   function setBodyScrollLocked(isLocked) {
@@ -261,10 +268,9 @@ function cacheContentElements() {
               <article class="marine-card" aria-label="marine-animal-${index}">
                 <div class="marine-image-placeholder">
                   <img class="marine-image" src="${animal.image}" alt="${animal.name_en}" loading="lazy" decoding="async">
-                  <span class="marine-image-placeholder-text" data-animal-index="${index}"></span>
                 </div>
                 <div class="marine-name" data-animal-index="${index}"></div>
-                <div class="marine-read-text"></div>
+                <button class="marine-read-text" type="button" data-marine-index="${index}"></button>
               </article>
       `;
     }).join('');
@@ -421,6 +427,12 @@ function cacheContentElements() {
     dom.ticketInfoBtn.addEventListener('click', openTicketModal);
     dom.blogReadBtn.addEventListener('click', openBlogModal);
     dom.content.addEventListener('click', function (event) {
+      const marineReadButton = event.target.closest('.marine-read-text');
+      if (marineReadButton) {
+        openMarineInfoModal(Number(marineReadButton.dataset.marineIndex));
+        return;
+      }
+
       const cityCard = event.target.closest('.city-card');
       if (!cityCard) {
         return;
@@ -473,10 +485,6 @@ function cacheContentElements() {
 
     dom.marineReadTexts.forEach(function (readElement) {
       readElement.textContent = getTranslation('marineReadBtn');
-    });
-
-    dom.marineImagePlaceholderTexts.forEach(function (placeholderElement) {
-      placeholderElement.textContent = getTranslation('marineImagePlaceholder');
     });
   }
 
@@ -694,6 +702,78 @@ function cacheContentElements() {
     try {
       const articleText = await loadBlogArticle(languageAtOpen);
       dom.blogModalContent.textContent = articleText;
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  function parseWaterworldSections(articleText) {
+    const normalized = articleText.replace(/\r\n/g, '\n').trim();
+    const chunks = normalized.split(/\n(?=\d+\.\s)/);
+
+    return chunks
+      .map(function (chunk) {
+        return chunk.trim();
+      })
+      .filter(function (chunk) {
+        return /^\d+\.\s/.test(chunk);
+      })
+      .map(function (chunk) {
+        const lines = chunk.split('\n');
+        const title = lines[0].replace(/^\d+\.\s*/, '').trim();
+        const content = lines.slice(1).join('\n').trim();
+        return {
+          title: title,
+          content: content,
+          searchable: `${title}\n${content}`.toLowerCase()
+        };
+      });
+  }
+
+  function getWaterworldSectionForAnimal(sections, animal, index) {
+    const keywords = Array.isArray(animal.waterworldMatchBg) ? animal.waterworldMatchBg : [];
+    const matchedSection = sections.find(function (section) {
+      return keywords.some(function (keyword) {
+        return section.searchable.includes(keyword);
+      });
+    });
+
+    return matchedSection || sections[index] || null;
+  }
+
+  async function loadWaterworldSections() {
+    if (Array.isArray(waterworldSections) && waterworldSections.length > 0) {
+      return waterworldSections;
+    }
+
+    const response = await fetch(WATERWORLD_ARTICLE_URL);
+    if (!response.ok) {
+      throw new Error('waterworld_load_failed');
+    }
+
+    const articleText = await response.text();
+    waterworldSections = parseWaterworldSections(articleText);
+    return waterworldSections;
+  }
+
+  async function openMarineInfoModal(index) {
+    const animal = marineAnimals[index];
+    if (!animal) {
+      return;
+    }
+
+    dom.blogModalTitle.textContent = getMarineAnimalName(animal);
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const sections = await loadWaterworldSections();
+      const selected = getWaterworldSectionForAnimal(sections, animal, index);
+      if (selected) {
+        dom.blogModalContent.textContent = `${selected.title}\n\n${selected.content}`;
+      } else {
+        dom.blogModalContent.textContent = getTranslation('blogLoadError');
+      }
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');
     }

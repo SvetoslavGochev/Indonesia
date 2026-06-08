@@ -382,19 +382,6 @@ header p {
     display: block;
 }
 
-.marine-image-placeholder-text {
-    font-size: 0.72em;
-    font-weight: 700;
-    color: #f3f8ff;
-    position: absolute;
-    right: 8px;
-    bottom: 8px;
-    background: rgba(7, 18, 42, 0.65);
-    border: 1px solid rgba(194, 214, 247, 0.45);
-    border-radius: 999px;
-    padding: 4px 8px;
-}
-
 .marine-name {
     margin-top: 12px;
     font-size: 1.1em;
@@ -411,6 +398,14 @@ header p {
     background: rgba(255, 255, 255, 0.15);
     padding: 6px 10px;
     border-radius: 999px;
+    border: 1px solid rgba(221, 236, 255, 0.35);
+    cursor: pointer;
+    font-family: inherit;
+    transition: filter 0.18s ease;
+}
+
+.marine-read-text:hover {
+    filter: brightness(1.08);
 }
 
 .city-card {
