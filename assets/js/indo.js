@@ -12,7 +12,14 @@
     es: './assets/tekst/indotext.es.txt?v=20260603',
     id: './assets/tekst/indotext.id.txt?v=20260603'
   };
-  const DOLPHIN_ARTICLE_URL = './assets/tekst/Delfin.txt?v=20260609';
+  const DOLPHIN_ARTICLE_URLS = {
+    bg: './assets/tekst/Delfin.txt?v=20260609',
+    en: './assets/tekst/Delfin.en.txt?v=20260609',
+    de: './assets/tekst/Delfin.de.txt?v=20260609',
+    fr: './assets/tekst/Delfin.fr.txt?v=20260609',
+    es: './assets/tekst/Delfin.es.txt?v=20260609',
+    id: './assets/tekst/Delfin.id.txt?v=20260609'
+  };
   const WATERWORLD_ARTICLE_URL = './assets/tekst/waterworld.txt?v=20260608';
 
   const marineAnimals = [
@@ -142,7 +149,7 @@
   const dom = {};
   let contentRendered = false;
   const blogArticleTextByLanguage = {};
-  let dolphinArticleText = null;
+  const dolphinArticleTextByLanguage = {};
   let waterworldSections = null;
 
   function cacheDomElements() {
@@ -721,27 +728,42 @@ function cacheContentElements() {
     }
   }
 
-  async function loadDolphinArticle() {
-    if (dolphinArticleText) {
-      return dolphinArticleText;
+  async function loadDolphinArticle(lang) {
+    const requestedLang = DOLPHIN_ARTICLE_URLS[lang] ? lang : 'en';
+    if (dolphinArticleTextByLanguage[requestedLang]) {
+      return dolphinArticleTextByLanguage[requestedLang];
     }
 
-    const response = await fetch(DOLPHIN_ARTICLE_URL);
-    if (!response.ok) {
-      throw new Error('dolphin_blog_load_failed');
+    async function fetchArticleText(languageCode) {
+      const response = await fetch(DOLPHIN_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('dolphin_blog_load_failed');
+      }
+      return response.text();
     }
 
-    dolphinArticleText = await response.text();
-    return dolphinArticleText;
+    try {
+      const articleText = await fetchArticleText(requestedLang);
+      dolphinArticleTextByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      if (requestedLang !== 'en') {
+        const englishArticle = await fetchArticleText('en');
+        dolphinArticleTextByLanguage.en = englishArticle;
+        return englishArticle;
+      }
+      throw error;
+    }
   }
 
   async function openDolphinBlogModal() {
+    const languageAtOpen = currentLanguage;
     dom.blogModalTitle.textContent = getTranslation('blogArticle2Title');
     dom.blogModalContent.textContent = getTranslation('blogLoading');
     toggleModal(dom.blogModal, true);
 
     try {
-      const articleText = await loadDolphinArticle();
+      const articleText = await loadDolphinArticle(languageAtOpen);
       dom.blogModalContent.textContent = articleText;
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');
