@@ -65,7 +65,7 @@ window.APP_TRANSLATIONS = {
   },
   en: {
     headerTitle: "🇮🇩 Indonesia Explorer",
-    headerSubtitle: "Discover Indonesia. Book hotels, tickets, and your holiday.",
+    headerSubtitle: "Interactive guide to Indonesia: wildlife, cities, highlights, and hotel bookings all in one place.",
     headerPoint1: "Indonesia in one click: cities, hotels, tickets, holidays.",
     headerPoint2: "Indonesia made easier: see, choose, book.",
     headerPoint3: "From idea to reservation: Indonesia, hotels, tickets, holidays.",
@@ -129,7 +129,7 @@ window.APP_TRANSLATIONS = {
   },
   id: {
     headerTitle: "🇮🇩 Jelajahi Indonesia",
-    headerSubtitle: "Temukan Indonesia. Pesan hotel, tiket, dan liburan.",
+    headerSubtitle: "Panduan interaktif Indonesia: dunia satwa, kota-kota, sorotan, dan reservasi hotel dalam satu tempat.",
     headerPoint1: "Indonesia dalam satu klik: kota, hotel, tiket, liburan.",
     headerPoint2: "Indonesia lebih mudah: lihat, pilih, pesan.",
     headerPoint3: "Dari ide ke reservasi: Indonesia, hotel, tiket, liburan.",
@@ -193,7 +193,7 @@ window.APP_TRANSLATIONS = {
   },
   de: {
     headerTitle: "🇮🇩 Indonesia Explorer",
-    headerSubtitle: "Entdecke Indonesien. Buche Hotels, Tickets und Urlaub.",
+    headerSubtitle: "Interaktiver Reisefuhrer fur Indonesien: Tierwelt, Stadte, Highlights und Hotelreservierungen an einem Ort.",
     headerPoint1: "Indonesien in einem Klick: Stadte, Hotels, Tickets, Urlaub.",
     headerPoint2: "Indonesien einfacher: ansehen, auswahlen, buchen.",
     headerPoint3: "Von der Idee zur Reservierung: Indonesien, Hotels, Tickets, Urlaub.",
@@ -257,7 +257,7 @@ window.APP_TRANSLATIONS = {
   },
   fr: {
     headerTitle: "🇮🇩 Indonesia Explorer",
-    headerSubtitle: "Decouvrez l'Indonesie. Reservez hotels, billets et vacances.",
+    headerSubtitle: "Guide interactif de l'Indonesie: faune, villes, points forts et reservations d'hotels en un seul endroit.",
     headerPoint1: "L'Indonesie en un clic: villes, hotels, billets, vacances.",
     headerPoint2: "L'Indonesie simplifiee: voir, choisir, reserver.",
     headerPoint3: "De l'idee a la reservation: Indonesie, hotels, billets, vacances.",
@@ -321,7 +321,7 @@ window.APP_TRANSLATIONS = {
   },
   es: {
     headerTitle: "🇮🇩 Indonesia Explorer",
-    headerSubtitle: "Descubre Indonesia. Reserva hoteles, billetes y vacaciones.",
+    headerSubtitle: "Guia interactiva de Indonesia: fauna, ciudades, lugares destacados y reservas de hoteles en un solo lugar.",
     headerPoint1: "Indonesia en un clic: ciudades, hoteles, billetes, vacaciones.",
     headerPoint2: "Indonesia mas facil: ver, elegir, reservar.",
     headerPoint3: "De la idea a la reserva: Indonesia, hoteles, billetes, vacaciones.",
