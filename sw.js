@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v14';
+const CACHE_VERSION = 'v15';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -21,6 +21,12 @@ const CORE_ASSETS = [
   './assets/tekst/Delfin.fr.txt',
   './assets/tekst/Delfin.es.txt',
   './assets/tekst/Delfin.id.txt',
+  './assets/tekst/waterworld.txt',
+  './assets/tekst/waterworld.en.txt',
+  './assets/tekst/waterworld.de.txt',
+  './assets/tekst/waterworld.fr.txt',
+  './assets/tekst/waterworld.es.txt',
+  './assets/tekst/waterworld.id.txt',
   './assets/favicons/favicon.svg'
 ];
 
