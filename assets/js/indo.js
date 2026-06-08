@@ -17,7 +17,7 @@
   const marineAnimals = [
     {
       image: 'https://upload.wikimedia.org/wikipedia/commons/1/10/Tursiops_truncatus_01.jpg',
-      waterworldMatchBg: ['косатката', 'делфин'],
+      waterworldMatchBg: ['делфинът', 'делфин'],
       name_bg: 'Делфин',
       name_en: 'Dolphin',
       name_de: 'Delfin',
