@@ -420,6 +420,15 @@ header p {
     display: block;
 }
 
+/* Fine-tune crop focus so key bird features (heads) stay in frame. */
+.bird-card:nth-child(1) .bird-image {
+    object-position: center 18%;
+}
+
+.bird-card:nth-child(7) .bird-image {
+    object-position: center 20%;
+}
+
 .marine-name {
     margin-top: 12px;
     font-size: 1.1em;
