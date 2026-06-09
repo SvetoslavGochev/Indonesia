@@ -32,7 +32,7 @@
 
   const marineAnimals = [
     {
-      image: 'https://upload.wikimedia.org/wikipedia/commons/1/10/Tursiops_truncatus_01.jpg',
+      image: './assets/images/marine-dolphin.jpg',
       waterworldMatchBg: ['делфинът', 'делфин'],
       waterworldSectionIndex: 1,
       name_bg: 'Делфин',
@@ -43,7 +43,7 @@
       name_id: 'Lumba-lumba'
     },
     {
-      image: 'https://upload.wikimedia.org/wikipedia/commons/6/6e/Chelonia_mydas_is_going_for_the_air_edit.jpg',
+      image: './assets/images/marine-sea-turtle.jpg',
       waterworldMatchBg: ['морската костенурка', 'костенурка'],
       waterworldSectionIndex: 3,
       name_bg: 'Морска костенурка',
@@ -54,7 +54,7 @@
       name_id: 'Penyu laut'
     },
     {
-      image: 'https://upload.wikimedia.org/wikipedia/commons/3/30/Dharavandhoo_Thila_-_Manata_Black_Pearl.JPG',
+      image: './assets/images/marine-manta-ray.jpg',
       waterworldMatchBg: ['гигантската манта', 'манта'],
       waterworldSectionIndex: 2,
       name_bg: 'Манта',
@@ -65,7 +65,7 @@
       name_id: 'Pari manta'
     },
     {
-      image: 'https://upload.wikimedia.org/wikipedia/commons/a/ad/Amphiprion_ocellaris_%28Clown_anemonefish%29_by_Nick_Hobgood.jpg',
+      image: './assets/images/marine-coral-fish.jpg',
       waterworldMatchBg: ['коралната риба', 'корална риба', 'клоунска риба'],
       waterworldSectionIndex: 4,
       name_bg: 'Корална риба',
@@ -76,7 +76,7 @@
       name_id: 'Ikan karang'
     },
     {
-      image: 'https://upload.wikimedia.org/wikipedia/commons/2/25/Hippocampus_hippocampus_%28on_Ascophyllum_nodosum%29.jpg',
+      image: './assets/images/marine-seahorse.jpg',
       waterworldMatchBg: ['морски конче', 'морско конче', 'hippocampus'],
       waterworldSectionIndex: 6,
       name_bg: 'Морско конче',
@@ -87,7 +87,7 @@
       name_id: 'Kuda laut'
     },
     {
-      image: 'https://upload.wikimedia.org/wikipedia/commons/f/f6/Similan_Dive_Center_-_great_whale_shark.jpg',
+      image: './assets/images/marine-whale-shark.jpg',
       waterworldMatchBg: ['китовата акула', 'китова акула'],
       waterworldSectionIndex: 5,
       name_bg: 'Китова акула',

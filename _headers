@@ -1,0 +1,30 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/index.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/sw.js
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/assets/images/*.avif
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/images/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/images/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/images/*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/tekst/*
+  Cache-Control: public, max-age=2592000
+
+/style*.css
+  Cache-Control: public, max-age=31536000, immutable

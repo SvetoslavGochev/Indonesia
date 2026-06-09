@@ -1,0 +1,178 @@
+1. Код за скипт (Skip) – най-бързият скрипт за изтегляне на данни от уебсайтове
+python
+
+
+import requests
+from bs4 import BeautifulSoup
+import time
+
+def scrape_skip(url, max_pages=5):
+    """
+    Изтегля данни от уебсайт със Skip (бърз скрейпинг).
+    Args:
+        url (str): Първична URL за скрейпинг.
+        max_pages (int): Максимален брой страници за обработка.
+    Returns:
+        list: Списък с извлечените данни.
+    """
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    }
+    data = []
+    page = 1
+
+    while page <= max_pages:
+        try:
+            response = requests.get(f"{url}?page={page}", headers=headers)
+            response.raise_for_status()  # Проверка за грешки
+            soup = BeautifulSoup(response.text, "html.parser")
+
+            # Пример: Извличане на заглавия от статии
+            articles = soup.find_all("h2", class_="article-title")
+            for article in articles:
+                data.append(article.get_text(strip=True))
+
+            print(f"Обработена страница {page}")
+            page += 1
+            time.sleep(2)  # Избягване на блокиране
+
+        except Exception as e:
+            print(f"Грешка на страница {page}: {e}")
+            break
+
+    return data
+
+# Пример за използване
+if __name__ == "__main__":
+    target_url = "https://example.com/articles"  # Замени с реална URL
+    scraped_data = scrape_skip(target_url, max_pages=3)
+    print(f"Извлечени данни: {scraped_data[:5]}")  # Показване на първите 5 резултата
+Забележки:
+Инсталирайте библиотеките с:
+bash
+
+
+pip install requests beautifulsoup4
+Променете target_url с реална URL за скрейпинг.
+Правила за етичен скрейпинг:
+Проверявайте robots.txt на сайта (например https://example.com/robots.txt).
+Не претоварвайте сървъра (използвайте time.sleep()).
+2. Код за Medium статия с изображения (Markdown)
+Ако искате да създадете статия за Medium с изображения, използвайте този шаблон:
+
+markdown
+
+
+---
+title: "Заглавие на статията"
+description: "Кратко описание за SEO."
+tags: ["технологии", "скрейпинг", "Python"]
+---
+
+# Заглавие на статията
+
+![Описание на изображението](https://example.com/image.jpg)
+*Фигура 1: Описание на изображението.*
+
+## Увод
+Текст на увода...
+
+## Основна част
+Текст с **удебелен** или *наклонен* текст.
+
+```python
+# Примерен код
+print("Hello, Medium!")
+Заключение
+Текст на заключението.
+
+
+
+
+#### **Как да публикувате:**
+1. Копирайте този шаблон в **Markdown редактор** (например [StackEdit](https://stackedit.io/)).
+2. Качете изображенията в **Medium** или използвайте URL на изображения от интернет.
+3. Публикувайте директно в **Medium** (или използвайте [Medium API](https://github.com/Medium/medium-api-node) за автоматизация).
+
+---
+
+---
+
+### **3. Аквариум с плаваща рибка (Python + Pygame)**
+Ето прост симулатор на аквариум с една рибка, която плува:
+
+```python
+import pygame
+import random
+import sys
+
+# Инициализация на Pygame
+pygame.init()
+
+# Екран
+WIDTH, HEIGHT = 800, 600
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Аквариум с рибка")
+
+# Цветове
+BLUE = (10, 100, 200)
+FISH_COLOR = (255, 100, 50)
+
+# Рибка
+fish_x = WIDTH // 2
+fish_y = HEIGHT // 2
+fish_speed = 5
+
+# Основен цикъл
+clock = pygame.time.Clock()
+running = True
+
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    # Движение на рибката
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_LEFT] and fish_x > 0:
+        fish_x -= fish_speed
+    if keys[pygame.K_RIGHT] and fish_x < WIDTH:
+        fish_x += fish_speed
+    if keys[pygame.K_UP] and fish_y > 0:
+        fish_y -= fish_speed
+    if keys[pygame.K_DOWN] and fish_y < HEIGHT:
+        fish_y += fish_speed
+
+    # Изчистване на екрана
+    screen.fill(BLUE)
+
+    # Рисуване на рибката
+    pygame.draw.ellipse(screen, FISH_COLOR, (fish_x, fish_y, 50, 30))
+    pygame.draw.polygon(screen, FISH_COLOR, [(fish_x + 50, fish_y + 15), (fish_x + 70, fish_y + 15), (fish_x + 60, fish_y + 10)])
+
+    # Обновяване на екрана
+    pygame.display.flip()
+    clock.tick(60)
+
+pygame.quit()
+sys.exit()
+Как да стартирате:
+Инсталирайте Pygame:
+bash
+
+
+pip install pygame
+Копирайте кода в файл (например aquarium.py).
+Стартирайте с:
+bash
+
+
+python aquarium.py
+Управлявайте рибката с стрелките на клавиатурата.
+Разширения:
+Добавете водорасли или други рибки.
+Променете цвета на рибката случайно:
+python
+
+
+FISH_COLOR = (random.randint(50, 255), random.randint(50, 255), random.randint(50, 255))

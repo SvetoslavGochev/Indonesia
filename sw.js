@@ -1,14 +1,14 @@
-const CACHE_VERSION = 'v18';
+const CACHE_VERSION = 'v22';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
 const CORE_ASSETS = [
   './',
   './index.html',
-  './style.css',
+  './style.min.css',
   './assets/js/indo.translations.js',
   './assets/js/indo.data.js',
-  './assets/js/indo.js',
+  './assets/js/indo.min.js',
   './assets/tekst/indotext.txt',
   './assets/tekst/indotext.en.txt',
   './assets/tekst/indotext.de.txt',
@@ -33,12 +33,30 @@ const CORE_ASSETS = [
 
 const IMAGE_ASSETS = [
   './assets/images/indonesian-animals.avif',
-  './assets/images/indonesian-animals.webp',
-  './assets/images/indonesian-animals.jpg',
-  './assets/images/Screenshot 2026-05-29 142129.png',
   './assets/images/jakarta-stadium-aerial.avif',
-  './assets/images/jakarta-stadium-aerial.webp',
-  './assets/images/jakarta-stadium-aerial.jpg'
+  './assets/images/jakarta-stadium.avif',
+  './assets/images/marine-dolphin.jpg',
+  './assets/images/marine-sea-turtle.jpg',
+  './assets/images/marine-manta-ray.jpg',
+  './assets/images/marine-coral-fish.jpg',
+  './assets/images/marine-seahorse.jpg',
+  './assets/images/marine-whale-shark.jpg',
+  './assets/images/bird-javan-ostrich-480.webp',
+  './assets/images/bird-javan-ostrich-960.webp',
+  './assets/images/bird-cockatoo-480.webp',
+  './assets/images/bird-cockatoo-960.webp',
+  './assets/images/bird-harpy-eagle-480.webp',
+  './assets/images/bird-harpy-eagle-960.webp',
+  './assets/images/bird-hornbill-480.webp',
+  './assets/images/bird-hornbill-960.webp',
+  './assets/images/bird-paradise-bird-480.webp',
+  './assets/images/bird-paradise-bird-960.webp',
+  './assets/images/bird-green-parrot-480.webp',
+  './assets/images/bird-green-parrot-960.webp',
+  './assets/images/bird-javan-pheasant-480.webp',
+  './assets/images/bird-javan-pheasant-960.webp',
+  './assets/images/bird-myna-480.webp',
+  './assets/images/bird-myna-960.webp'
 ];
 
 self.addEventListener('install', (event) => {
