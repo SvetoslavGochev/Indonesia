@@ -13,12 +13,12 @@
     id: './assets/tekst/indotext.id.txt?v=20260603'
   };
   const DOLPHIN_ARTICLE_URLS = {
-    bg: './assets/tekst/Delfin.txt?v=20260609',
-    en: './assets/tekst/Delfin.en.txt?v=20260609',
-    de: './assets/tekst/Delfin.de.txt?v=20260609',
-    fr: './assets/tekst/Delfin.fr.txt?v=20260609',
-    es: './assets/tekst/Delfin.es.txt?v=20260609',
-    id: './assets/tekst/Delfin.id.txt?v=20260609'
+    bg: './assets/tekst/Delfin.txt?v=20260610',
+    en: './assets/tekst/Delfin.en.txt?v=20260610',
+    de: './assets/tekst/Delfin.de.txt?v=20260610',
+    fr: './assets/tekst/Delfin.fr.txt?v=20260610',
+    es: './assets/tekst/Delfin.es.txt?v=20260610',
+    id: './assets/tekst/Delfin.id.txt?v=20260610'
   };
   const WATERWORLD_ARTICLE_URLS = {
     bg: './assets/tekst/waterworld.txt?v=20260609',
@@ -101,7 +101,9 @@
 
   const birds = [
     {
-      image: './assets/images/bird-javan-ostrich.png',
+      image: './assets/images/bird-javan-ostrich-960.webp',
+      imageSmall: './assets/images/bird-javan-ostrich-480.webp',
+      imageLarge: './assets/images/bird-javan-ostrich-960.webp',
       sectionIndex: 0,
       name_bg: 'Явански щраус',
       name_en: 'Javan Ostrich',
@@ -111,7 +113,9 @@
       name_id: 'Burung unta Jawa'
     },
     {
-      image: './assets/images/bird-cockatoo.png',
+      image: './assets/images/bird-cockatoo-960.webp',
+      imageSmall: './assets/images/bird-cockatoo-480.webp',
+      imageLarge: './assets/images/bird-cockatoo-960.webp',
       sectionIndex: 1,
       name_bg: 'Какаду',
       name_en: 'Cockatoo',
@@ -121,7 +125,9 @@
       name_id: 'Kakatua'
     },
     {
-      image: './assets/images/bird-harpy-eagle.png',
+      image: './assets/images/bird-harpy-eagle-960.webp',
+      imageSmall: './assets/images/bird-harpy-eagle-480.webp',
+      imageLarge: './assets/images/bird-harpy-eagle-960.webp',
       sectionIndex: 2,
       name_bg: 'Кралски орел',
       name_en: 'Harpy Eagle',
@@ -131,7 +137,9 @@
       name_id: 'Elang harpy'
     },
     {
-      image: './assets/images/bird-hornbill.jpg',
+      image: './assets/images/bird-hornbill-960.webp',
+      imageSmall: './assets/images/bird-hornbill-480.webp',
+      imageLarge: './assets/images/bird-hornbill-960.webp',
       sectionIndex: 3,
       name_bg: 'Птицата-носорог',
       name_en: 'Hornbill',
@@ -141,7 +149,9 @@
       name_id: 'Rangkong'
     },
     {
-      image: './assets/images/bird-paradise-bird.png',
+      image: './assets/images/bird-paradise-bird-960.webp',
+      imageSmall: './assets/images/bird-paradise-bird-480.webp',
+      imageLarge: './assets/images/bird-paradise-bird-960.webp',
       sectionIndex: 4,
       name_bg: 'Райска птица',
       name_en: 'Bird-of-paradise',
@@ -151,7 +161,9 @@
       name_id: 'Cenderawasih'
     },
     {
-      image: './assets/images/bird-green-parrot.png',
+      image: './assets/images/bird-green-parrot-960.webp',
+      imageSmall: './assets/images/bird-green-parrot-480.webp',
+      imageLarge: './assets/images/bird-green-parrot-960.webp',
       sectionIndex: 5,
       name_bg: 'Зелен папагал',
       name_en: 'Green Parrot',
@@ -161,7 +173,9 @@
       name_id: 'Burung nuri hijau'
     },
     {
-      image: './assets/images/bird-javan-pheasant.png',
+      image: './assets/images/bird-javan-pheasant-960.webp',
+      imageSmall: './assets/images/bird-javan-pheasant-480.webp',
+      imageLarge: './assets/images/bird-javan-pheasant-960.webp',
       sectionIndex: 6,
       name_bg: 'Явански фазан',
       name_en: 'Javan Pheasant',
@@ -171,7 +185,9 @@
       name_id: 'Pegar Jawa'
     },
     {
-      image: './assets/images/bird-myna.png',
+      image: './assets/images/bird-myna-960.webp',
+      imageSmall: './assets/images/bird-myna-480.webp',
+      imageLarge: './assets/images/bird-myna-960.webp',
       sectionIndex: 7,
       name_bg: 'Майна',
       name_en: 'Myna',
@@ -396,10 +412,13 @@ function cacheContentElements() {
 
   function createBirdCardsHtml() {
     return birds.map(function (bird, index) {
+      const imageSmall = bird.imageSmall || bird.image;
+      const imageLarge = bird.imageLarge || bird.image;
+      const imageSrcSet = `${imageSmall} 480w, ${imageLarge} 960w`;
       return `
               <article class="bird-card" aria-label="bird-${index}">
                 <div class="bird-image-placeholder">
-                  <img class="bird-image" src="${bird.image}" alt="${bird.name_en}" loading="lazy" decoding="async">
+                  <img class="bird-image" src="${imageSmall}" srcset="${imageSrcSet}" sizes="(max-width: 768px) 92vw, 42vw" alt="${bird.name_en}" loading="lazy" decoding="async" fetchpriority="low" width="960" height="373">
                 </div>
                 <div class="bird-name" data-bird-index="${index}"></div>
                 <button class="bird-read-text" type="button" data-bird-read-index="${index}"></button>
