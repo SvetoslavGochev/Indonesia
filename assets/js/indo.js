@@ -28,7 +28,14 @@
     es: './assets/tekst/waterworld.es.txt?v=20260609',
     id: './assets/tekst/waterworld.id.txt?v=20260609'
   };
-  const BIRDS_ARTICLE_URL = './assets/tekst/птици.txt?v=20260609';
+  const BIRDS_ARTICLE_URLS = {
+    bg: './assets/tekst/птици.txt?v=20260609',
+    en: './assets/tekst/birds.en.txt?v=20260609',
+    de: './assets/tekst/birds.de.txt?v=20260609',
+    fr: './assets/tekst/birds.fr.txt?v=20260609',
+    es: './assets/tekst/birds.es.txt?v=20260609',
+    id: './assets/tekst/birds.id.txt?v=20260609'
+  };
   const CRUISE_ARTICLE_URL = './assets/tekst/круиз.txt?v=20260609';
 
   const marineAnimals = [
@@ -266,7 +273,7 @@
   const dolphinArticleTextByLanguage = {};
   const waterworldSectionsByLanguage = {};
   let cruiseArticleText = null;
-  let birdSections = null;
+  const birdSectionsByLanguage = {};
 
   function cacheDomElements() {
     dom.bgBtn = document.getElementById('bgBtn');
@@ -1069,19 +1076,36 @@ function cacheContentElements() {
     }
   }
 
-  async function loadBirdSections() {
-    if (Array.isArray(birdSections) && birdSections.length > 0) {
-      return birdSections;
+  async function loadBirdSections(lang) {
+    const requestedLang = BIRDS_ARTICLE_URLS[lang] ? lang : 'en';
+    if (Array.isArray(birdSectionsByLanguage[requestedLang]) && birdSectionsByLanguage[requestedLang].length > 0) {
+      return birdSectionsByLanguage[requestedLang];
     }
 
-    const response = await fetch(BIRDS_ARTICLE_URL);
-    if (!response.ok) {
-      throw new Error('birds_load_failed');
+    async function fetchSections(languageCode) {
+      const response = await fetch(BIRDS_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('birds_load_failed');
+      }
+      const articleText = await response.text();
+      return parseWaterworldSections(articleText);
     }
 
-    const articleText = await response.text();
-    birdSections = parseWaterworldSections(articleText);
-    return birdSections;
+    try {
+      const sections = await fetchSections(requestedLang);
+      birdSectionsByLanguage[requestedLang] = sections;
+      return sections;
+    } catch (error) {
+      if (requestedLang !== 'en') {
+        const englishSections = await fetchSections('en');
+        birdSectionsByLanguage.en = englishSections;
+        return englishSections;
+      }
+
+      const bulgarianSections = await fetchSections('bg');
+      birdSectionsByLanguage.bg = bulgarianSections;
+      return bulgarianSections;
+    }
   }
 
   async function openBirdInfoModal(index) {
@@ -1090,12 +1114,14 @@ function cacheContentElements() {
       return;
     }
 
+    const languageAtOpen = currentLanguage;
+
     dom.blogModalTitle.textContent = getBirdName(bird);
     dom.blogModalContent.textContent = getTranslation('blogLoading');
     toggleModal(dom.blogModal, true);
 
     try {
-      const sections = await loadBirdSections();
+      const sections = await loadBirdSections(languageAtOpen);
       const selected = sections[bird.sectionIndex] || sections[index] || null;
       if (selected) {
         dom.blogModalContent.textContent = `${selected.title}\n\n${selected.content}`;

@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v23';
+const CACHE_VERSION = 'v24';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -29,6 +29,11 @@ const CORE_ASSETS = [
   './assets/tekst/waterworld.id.txt',
   './assets/tekst/круиз.txt',
   './assets/tekst/птици.txt',
+  './assets/tekst/birds.en.txt',
+  './assets/tekst/birds.de.txt',
+  './assets/tekst/birds.fr.txt',
+  './assets/tekst/birds.es.txt',
+  './assets/tekst/birds.id.txt',
   './assets/favicons/favicon.svg'
 ];
 
