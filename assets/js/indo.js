@@ -131,7 +131,7 @@
       name_id: 'Elang harpy'
     },
     {
-      image: './assets/images/bird-hornbill.png',
+      image: './assets/images/bird-hornbill.jpg',
       sectionIndex: 3,
       name_bg: 'Птицата-носорог',
       name_en: 'Hornbill',
