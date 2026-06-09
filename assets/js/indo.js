@@ -28,6 +28,7 @@
     es: './assets/tekst/waterworld.es.txt?v=20260609',
     id: './assets/tekst/waterworld.id.txt?v=20260609'
   };
+  const BIRDS_ARTICLE_URL = './assets/tekst/птици.txt?v=20260609';
 
   const marineAnimals = [
     {
@@ -98,6 +99,89 @@
     }
   ];
 
+  const birds = [
+    {
+      image: './assets/images/bird-javan-ostrich.png',
+      sectionIndex: 0,
+      name_bg: 'Явански щраус',
+      name_en: 'Javan Ostrich',
+      name_de: 'Javanischer Strauss',
+      name_fr: 'Autruche de Java',
+      name_es: 'Avestruz de Java',
+      name_id: 'Burung unta Jawa'
+    },
+    {
+      image: './assets/images/bird-cockatoo.png',
+      sectionIndex: 1,
+      name_bg: 'Какаду',
+      name_en: 'Cockatoo',
+      name_de: 'Kakadu',
+      name_fr: 'Cacatoes',
+      name_es: 'Cacatua',
+      name_id: 'Kakatua'
+    },
+    {
+      image: './assets/images/bird-harpy-eagle.png',
+      sectionIndex: 2,
+      name_bg: 'Кралски орел',
+      name_en: 'Harpy Eagle',
+      name_de: 'Kronenadler',
+      name_fr: 'Aigle harpie',
+      name_es: 'Aguila harpía',
+      name_id: 'Elang harpy'
+    },
+    {
+      image: './assets/images/bird-hornbill.png',
+      sectionIndex: 3,
+      name_bg: 'Птицата-носорог',
+      name_en: 'Hornbill',
+      name_de: 'Nashornvogel',
+      name_fr: 'Calao',
+      name_es: 'Calao',
+      name_id: 'Rangkong'
+    },
+    {
+      image: './assets/images/bird-paradise-bird.png',
+      sectionIndex: 4,
+      name_bg: 'Райска птица',
+      name_en: 'Bird-of-paradise',
+      name_de: 'Paradiesvogel',
+      name_fr: 'Oiseau de paradis',
+      name_es: 'Ave del paraiso',
+      name_id: 'Cenderawasih'
+    },
+    {
+      image: './assets/images/bird-green-parrot.png',
+      sectionIndex: 5,
+      name_bg: 'Зелен папагал',
+      name_en: 'Green Parrot',
+      name_de: 'Gruner Papagei',
+      name_fr: 'Perroquet vert',
+      name_es: 'Loro verde',
+      name_id: 'Burung nuri hijau'
+    },
+    {
+      image: './assets/images/bird-javan-pheasant.png',
+      sectionIndex: 6,
+      name_bg: 'Явански фазан',
+      name_en: 'Javan Pheasant',
+      name_de: 'Javanischer Fasan',
+      name_fr: 'Faisan de Java',
+      name_es: 'Faisan de Java',
+      name_id: 'Pegar Jawa'
+    },
+    {
+      image: './assets/images/bird-myna.png',
+      sectionIndex: 7,
+      name_bg: 'Майна',
+      name_en: 'Myna',
+      name_de: 'Maina',
+      name_fr: 'Mainate',
+      name_es: 'Miná',
+      name_id: 'Jalak'
+    }
+  ];
+
   const countryInfoFields = [
     { labelKey: 'capital', value: indonesiaData.country.capital, id: 'capitalLabel' },
     { labelKey: 'population', value: indonesiaData.country.population, id: 'populationInfoLabel' },
@@ -164,6 +248,7 @@
   const blogArticleTextByLanguage = {};
   const dolphinArticleTextByLanguage = {};
   const waterworldSectionsByLanguage = {};
+  let birdSections = null;
 
   function cacheDomElements() {
     dom.bgBtn = document.getElementById('bgBtn');
@@ -239,6 +324,7 @@ function cacheContentElements() {
     dom.ticketInfoBtn = document.getElementById('ticketInfoBtn');
     dom.majorCitiesTitle = document.getElementById('majorCitiesTitle');
     dom.marineAnimalsTitle = document.getElementById('marineAnimalsTitle');
+    dom.birdsTitle = document.getElementById('birdsTitle');
     dom.blogSectionTitle = document.getElementById('blogSectionTitle');
     dom.blogArticleTitle = document.getElementById('blogArticleTitle');
     dom.blogArticleExcerpt = document.getElementById('blogArticleExcerpt');
@@ -253,6 +339,8 @@ function cacheContentElements() {
     dom.cityPopulationTexts = Array.from(document.querySelectorAll('.city-population'));
     dom.marineNameTexts = Array.from(document.querySelectorAll('.marine-name'));
     dom.marineReadTexts = Array.from(document.querySelectorAll('.marine-read-text'));
+    dom.birdNameTexts = Array.from(document.querySelectorAll('.bird-name'));
+    dom.birdReadTexts = Array.from(document.querySelectorAll('.bird-read-text'));
   }
 
   function setBodyScrollLocked(isLocked) {
@@ -304,6 +392,25 @@ function cacheContentElements() {
   function getMarineAnimalName(animal) {
     const key = `name_${currentLanguage}`;
     return animal[key] || animal.name_en || animal.name_bg || '';
+  }
+
+  function createBirdCardsHtml() {
+    return birds.map(function (bird, index) {
+      return `
+              <article class="bird-card" aria-label="bird-${index}">
+                <div class="bird-image-placeholder">
+                  <img class="bird-image" src="${bird.image}" alt="${bird.name_en}" loading="lazy" decoding="async">
+                </div>
+                <div class="bird-name" data-bird-index="${index}"></div>
+                <button class="bird-read-text" type="button" data-bird-read-index="${index}"></button>
+              </article>
+      `;
+    }).join('');
+  }
+
+  function getBirdName(bird) {
+    const key = `name_${currentLanguage}`;
+    return bird[key] || bird.name_en || bird.name_bg || '';
   }
 
   function createErrorHtml() {
@@ -433,6 +540,13 @@ function cacheContentElements() {
           </div>
         </div>
 
+        <div class="card">
+          <h2 id="birdsTitle"></h2>
+          <div class="bird-grid">
+            ${createBirdCardsHtml()}
+          </div>
+        </div>
+
         <div class="card blog-card">
           <h2 id="blogSectionTitle"></h2>
           <div class="blog-preview">
@@ -461,6 +575,12 @@ function cacheContentElements() {
       const marineReadButton = event.target.closest('.marine-read-text');
       if (marineReadButton) {
         openMarineInfoModal(Number(marineReadButton.dataset.marineIndex));
+        return;
+      }
+
+      const birdReadButton = event.target.closest('.bird-read-text');
+      if (birdReadButton) {
+        openBirdInfoModal(Number(birdReadButton.dataset.birdReadIndex));
         return;
       }
 
@@ -495,6 +615,7 @@ function cacheContentElements() {
     });
     dom.majorCitiesTitle.textContent = getTranslation('majorCities');
     dom.marineAnimalsTitle.textContent = getTranslation('marineAnimalsTitle');
+    dom.birdsTitle.textContent = getTranslation('birdsTitle');
     dom.blogSectionTitle.textContent = getTranslation('blogSectionTitle');
     dom.blogArticleTitle.textContent = getTranslation('blogArticleTitle');
     dom.blogArticleExcerpt.textContent = getTranslation('blogArticleExcerpt');
@@ -519,6 +640,19 @@ function cacheContentElements() {
 
     dom.marineReadTexts.forEach(function (readElement) {
       readElement.textContent = getTranslation('marineReadBtn');
+    });
+
+    dom.birdNameTexts.forEach(function (nameElement) {
+      const birdIndex = Number(nameElement.dataset.birdIndex);
+      const bird = birds[birdIndex];
+      if (!bird) {
+        return;
+      }
+      nameElement.textContent = getBirdName(bird);
+    });
+
+    dom.birdReadTexts.forEach(function (readElement) {
+      readElement.textContent = getTranslation('birdsReadBtn');
     });
   }
 
@@ -865,6 +999,44 @@ function cacheContentElements() {
     try {
       const sections = await loadWaterworldSections(languageAtOpen);
       const selected = getWaterworldSectionForAnimal(sections, animal, index);
+      if (selected) {
+        dom.blogModalContent.textContent = `${selected.title}\n\n${selected.content}`;
+      } else {
+        dom.blogModalContent.textContent = getTranslation('blogLoadError');
+      }
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadBirdSections() {
+    if (Array.isArray(birdSections) && birdSections.length > 0) {
+      return birdSections;
+    }
+
+    const response = await fetch(BIRDS_ARTICLE_URL);
+    if (!response.ok) {
+      throw new Error('birds_load_failed');
+    }
+
+    const articleText = await response.text();
+    birdSections = parseWaterworldSections(articleText);
+    return birdSections;
+  }
+
+  async function openBirdInfoModal(index) {
+    const bird = birds[index];
+    if (!bird) {
+      return;
+    }
+
+    dom.blogModalTitle.textContent = getBirdName(bird);
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const sections = await loadBirdSections();
+      const selected = sections[bird.sectionIndex] || sections[index] || null;
       if (selected) {
         dom.blogModalContent.textContent = `${selected.title}\n\n${selected.content}`;
       } else {

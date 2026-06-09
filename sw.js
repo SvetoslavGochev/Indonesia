@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v15';
+const CACHE_VERSION = 'v16';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -27,6 +27,7 @@ const CORE_ASSETS = [
   './assets/tekst/waterworld.fr.txt',
   './assets/tekst/waterworld.es.txt',
   './assets/tekst/waterworld.id.txt',
+  './assets/tekst/птици.txt',
   './assets/favicons/favicon.svg'
 ];
 
