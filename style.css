@@ -15,6 +15,7 @@ body {
     min-height: 100vh;
     padding: 20px;
     position: relative;
+    overflow-x: hidden;
 }
 
 h1,
@@ -46,6 +47,7 @@ body::before {
 
 .page-layout {
     max-width: 1380px;
+    width: 100%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: minmax(150px, 190px) minmax(0, 1fr) minmax(150px, 190px);
@@ -1091,17 +1093,35 @@ header p {
 }
 
 @media (max-width: 768px) {
+    html,
+    body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
     body {
         padding: 14px;
     }
 
     .container {
         width: 100%;
+        max-width: 100%;
     }
 
     .page-layout {
+        width: 100%;
+        max-width: 100%;
         grid-template-columns: 1fr;
         gap: 14px;
+    }
+
+    #content,
+    .card,
+    header,
+    .ad-box,
+    .ad-box-label,
+    .language-selector {
+        max-width: 100%;
     }
 
     .ad-sidebar {
