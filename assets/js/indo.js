@@ -37,6 +37,14 @@
     id: './assets/tekst/birds.id.txt?v=20260609'
   };
   const CRUISE_ARTICLE_URL = './assets/tekst/круиз.txt?v=20260609';
+  const LOMBOK_ARTICLE_URLS = {
+    bg: './assets/tekst/ламбо.txt?v=20260617',
+    en: './assets/tekst/ламбо.en.txt?v=20260617',
+    de: './assets/tekst/ламбо.de.txt?v=20260617',
+    fr: './assets/tekst/ламбо.fr.txt?v=20260617',
+    es: './assets/tekst/ламбо.es.txt?v=20260617',
+    id: './assets/tekst/ламбо.id.txt?v=20260617'
+  };
 
   const marineAnimals = [
     {
@@ -274,6 +282,7 @@
   const waterworldSectionsByLanguage = {};
   let cruiseArticleText = null;
   const birdSectionsByLanguage = {};
+  const lombokArticleTextByLanguage = {};
 
   function cacheDomElements() {
     dom.bgBtn = document.getElementById('bgBtn');
@@ -360,6 +369,9 @@ function cacheContentElements() {
     dom.blogArticle3Title = document.getElementById('blogArticle3Title');
     dom.blogArticle3Excerpt = document.getElementById('blogArticle3Excerpt');
     dom.blogReadBtn3 = document.getElementById('blogReadBtn3');
+    dom.blogArticle4Title = document.getElementById('blogArticle4Title');
+    dom.blogArticle4Excerpt = document.getElementById('blogArticle4Excerpt');
+    dom.blogReadBtn4 = document.getElementById('blogReadBtn4');
     dom.dataNotice = document.getElementById('dataNotice');
     countryInfoFields.forEach(function (field) {
       dom[field.id] = document.getElementById(field.id);
@@ -595,6 +607,11 @@ function cacheContentElements() {
             <p id="blogArticle3Excerpt" class="blog-excerpt"></p>
             <button id="blogReadBtn3" class="blog-read-btn" type="button"></button>
           </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle4Title"></h3>
+            <p id="blogArticle4Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn4" class="blog-read-btn" type="button"></button>
+          </div>
         </div>
 
         <div class="api-notice" id="dataNotice"></div>
@@ -608,6 +625,7 @@ function cacheContentElements() {
     dom.blogReadBtn.addEventListener('click', openBlogModal);
     dom.blogReadBtn2.addEventListener('click', openDolphinBlogModal);
     dom.blogReadBtn3.addEventListener('click', openCruiseBlogModal);
+    dom.blogReadBtn4.addEventListener('click', openLombokBlogModal);
     dom.content.addEventListener('click', function (event) {
       const marineReadButton = event.target.closest('.marine-read-text');
       if (marineReadButton) {
@@ -663,6 +681,9 @@ function cacheContentElements() {
     dom.blogArticle3Title.textContent = getTranslation('blogArticle3Title');
     dom.blogArticle3Excerpt.textContent = getTranslation('blogArticle3Excerpt');
     dom.blogReadBtn3.textContent = getTranslation('blogReadBtn3');
+    dom.blogArticle4Title.textContent = getTranslation('blogArticle4Title');
+    dom.blogArticle4Excerpt.textContent = getTranslation('blogArticle4Excerpt');
+    dom.blogReadBtn4.textContent = getTranslation('blogReadBtn4');
     dom.dataNotice.textContent = getTranslation('dataNotice');
 
     dom.cityPopulationTexts.forEach(function (populationElement) {
@@ -978,6 +999,51 @@ function cacheContentElements() {
 
     try {
       const articleText = await loadCruiseArticle();
+      dom.blogModalContent.textContent = articleText;
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadLombokArticle(lang) {
+    const requestedLang = LOMBOK_ARTICLE_URLS[lang] ? lang : 'en';
+    if (lombokArticleTextByLanguage[requestedLang]) {
+      return lombokArticleTextByLanguage[requestedLang];
+    }
+
+    async function fetchArticleText(languageCode) {
+      const response = await fetch(LOMBOK_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('lombok_blog_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticleText(requestedLang);
+      lombokArticleTextByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      if (requestedLang !== 'en') {
+        const englishArticle = await fetchArticleText('en');
+        lombokArticleTextByLanguage.en = englishArticle;
+        return englishArticle;
+      }
+
+      const bulgarianArticle = await fetchArticleText('bg');
+      lombokArticleTextByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openLombokBlogModal() {
+    const languageAtOpen = currentLanguage;
+    dom.blogModalTitle.textContent = getTranslation('blogArticle4Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadLombokArticle(languageAtOpen);
       dom.blogModalContent.textContent = articleText;
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');
