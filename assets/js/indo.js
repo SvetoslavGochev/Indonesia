@@ -283,8 +283,7 @@
   let cruiseArticleText = null;
   const birdSectionsByLanguage = {};
   const lombokArticleTextByLanguage = {};
-  let visitCountValue = null;
-  let visitCounterState = 'loading';
+  let visitCountValue = 0;
 
   function cacheDomElements() {
     dom.bgBtn = document.getElementById('bgBtn');
@@ -756,18 +755,7 @@ function cacheContentElements() {
     }
   }
 
-  function getGoatCounterEndpoint() {
-    if (window.goatcounter && typeof window.goatcounter.endpoint === 'string' && window.goatcounter.endpoint.trim()) {
-      return window.goatcounter.endpoint.trim();
-    }
 
-    const goatScript = document.getElementById('goatcounter-script');
-    if (goatScript && goatScript.dataset && typeof goatScript.dataset.goatcounter === 'string') {
-      return goatScript.dataset.goatcounter.trim();
-    }
-
-    return '';
-  }
 
   function updateVisitCounterUI() {
     if (!dom.visitCounter) {
@@ -775,47 +763,15 @@ function cacheContentElements() {
     }
 
     const label = getTranslation('visitCounterLabel');
-    if (visitCounterState === 'ready' && visitCountValue) {
-      dom.visitCounter.textContent = `${label}: ${visitCountValue}`;
-      return;
-    }
-
-    if (visitCounterState === 'loading') {
-      dom.visitCounter.textContent = `${label}: ${getTranslation('visitCounterLoading')}`;
-      return;
-    }
-
-    dom.visitCounter.textContent = `${label}: ${getTranslation('visitCounterUnavailable')}`;
+    dom.visitCounter.textContent = `${label}: ${visitCountValue}`;
   }
 
-  async function loadVisitCounter() {
-    visitCounterState = 'loading';
-    updateVisitCounterUI();
-
-    const endpoint = getGoatCounterEndpoint();
-    if (!endpoint || endpoint.includes('YOURCODE')) {
-      visitCounterState = 'unavailable';
-      updateVisitCounterUI();
-      return;
-    }
-
-    const counterBase = endpoint.replace(/\/count\/?$/, '');
-    const pagePath = `${window.location.pathname || '/'}${window.location.search || ''}`;
-    const counterUrl = `${counterBase}/counter/${encodeURIComponent(pagePath)}.json`;
-
-    try {
-      const response = await fetch(counterUrl, { headers: { Accept: 'application/json' } });
-      if (!response.ok) {
-        throw new Error('counter_not_available');
-      }
-
-      const data = await response.json();
-      visitCountValue = data && (data.count || data.count_unique) ? String(data.count || data.count_unique) : null;
-      visitCounterState = visitCountValue ? 'ready' : 'unavailable';
-    } catch (error) {
-      visitCounterState = 'unavailable';
-    }
-
+  function loadVisitCounter() {
+    const STORAGE_KEY = 'indonesia_explorer_visits';
+    const storedCount = localStorage.getItem(STORAGE_KEY);
+    visitCountValue = storedCount ? parseInt(storedCount, 10) : 0;
+    visitCountValue += 1;
+    localStorage.setItem(STORAGE_KEY, String(visitCountValue));
     updateVisitCounterUI();
   }
 
