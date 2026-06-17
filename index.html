@@ -26,6 +26,7 @@
             <header>
                 <h1 id="headerTitle">🇮🇩 Indonesia Explorer</h1>
                 <p id="headerSubtitle">Explore detailed information about Indonesia</p>
+                <p id="visitCounter" class="visit-counter">Посещения: ...</p>
                 <div class="language-selector" role="group" aria-label="Language selector">
                     <button class="lang-btn active" onclick="changeLanguage('bg')" id="bgBtn">BG</button>
                     <button class="lang-btn" onclick="changeLanguage('en')" id="enBtn">EN</button>
@@ -186,9 +187,15 @@
         </div>
     </div>
 
-    <script src="./assets/js/indo.translations.js?v=20260603" defer></script>
+    <script>
+        window.goatcounter = window.goatcounter || {};
+        window.goatcounter.endpoint = 'https://YOURCODE.goatcounter.com/count';
+    </script>
+    <script id="goatcounter-script" data-goatcounter="https://YOURCODE.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+
+    <script src="./assets/js/indo.translations.js?v=20260617" defer></script>
     <script src="./assets/js/indo.data.js?v=20260603" defer></script>
-    <script src="./assets/js/indo.min.js?v=20260610" defer></script>
+    <script src="./assets/js/indo.min.js?v=20260617" defer></script>
 </body>
 </html>
 

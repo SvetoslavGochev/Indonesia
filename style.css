@@ -107,6 +107,19 @@ header p {
     opacity: 0.9;
 }
 
+.visit-counter {
+    margin-top: 10px;
+    display: inline-block;
+    padding: 7px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(209, 224, 249, 0.38);
+    background: rgba(20, 34, 62, 0.62);
+    color: #f2f7ff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
 
 .country-title-row {
     display: flex;

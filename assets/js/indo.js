@@ -283,6 +283,8 @@
   let cruiseArticleText = null;
   const birdSectionsByLanguage = {};
   const lombokArticleTextByLanguage = {};
+  let visitCountValue = null;
+  let visitCounterState = 'loading';
 
   function cacheDomElements() {
     dom.bgBtn = document.getElementById('bgBtn');
@@ -293,6 +295,7 @@
     dom.idBtn = document.getElementById('idBtn');
     dom.headerTitle = document.getElementById('headerTitle');
     dom.headerSubtitle = document.getElementById('headerSubtitle');
+    dom.visitCounter = document.getElementById('visitCounter');
     dom.adBoxLabels = Array.from(document.querySelectorAll('.ad-box-label'));
     dom.content = document.getElementById('content');
     dom.cityModal = document.getElementById('cityModal');
@@ -738,6 +741,7 @@ function cacheContentElements() {
     dom.idBtn.classList.toggle('active', currentLanguage === 'id');
     dom.headerTitle.textContent = getTranslation('headerTitle');
     dom.headerSubtitle.textContent = getTranslation('headerSubtitle');
+    updateVisitCounterUI();
     if (Array.isArray(dom.adBoxLabels) && dom.adBoxLabels.length > 0) {
       const adPlaceholderText = getTranslation('adPlaceholder');
       dom.adBoxLabels.forEach(function (label) {
@@ -750,6 +754,69 @@ function cacheContentElements() {
       dom.wildlifeInfoBtn.setAttribute('aria-label', wildlifeLabel);
       dom.wildlifeInfoBtn.title = wildlifeLabel;
     }
+  }
+
+  function getGoatCounterEndpoint() {
+    if (window.goatcounter && typeof window.goatcounter.endpoint === 'string' && window.goatcounter.endpoint.trim()) {
+      return window.goatcounter.endpoint.trim();
+    }
+
+    const goatScript = document.getElementById('goatcounter-script');
+    if (goatScript && goatScript.dataset && typeof goatScript.dataset.goatcounter === 'string') {
+      return goatScript.dataset.goatcounter.trim();
+    }
+
+    return '';
+  }
+
+  function updateVisitCounterUI() {
+    if (!dom.visitCounter) {
+      return;
+    }
+
+    const label = getTranslation('visitCounterLabel');
+    if (visitCounterState === 'ready' && visitCountValue) {
+      dom.visitCounter.textContent = `${label}: ${visitCountValue}`;
+      return;
+    }
+
+    if (visitCounterState === 'loading') {
+      dom.visitCounter.textContent = `${label}: ${getTranslation('visitCounterLoading')}`;
+      return;
+    }
+
+    dom.visitCounter.textContent = `${label}: ${getTranslation('visitCounterUnavailable')}`;
+  }
+
+  async function loadVisitCounter() {
+    visitCounterState = 'loading';
+    updateVisitCounterUI();
+
+    const endpoint = getGoatCounterEndpoint();
+    if (!endpoint || endpoint.includes('YOURCODE')) {
+      visitCounterState = 'unavailable';
+      updateVisitCounterUI();
+      return;
+    }
+
+    const counterBase = endpoint.replace(/\/count\/?$/, '');
+    const pagePath = `${window.location.pathname || '/'}${window.location.search || ''}`;
+    const counterUrl = `${counterBase}/counter/${encodeURIComponent(pagePath)}.json`;
+
+    try {
+      const response = await fetch(counterUrl, { headers: { Accept: 'application/json' } });
+      if (!response.ok) {
+        throw new Error('counter_not_available');
+      }
+
+      const data = await response.json();
+      visitCountValue = data && (data.count || data.count_unique) ? String(data.count || data.count_unique) : null;
+      visitCounterState = visitCountValue ? 'ready' : 'unavailable';
+    } catch (error) {
+      visitCounterState = 'unavailable';
+    }
+
+    updateVisitCounterUI();
   }
 
   function buildImageCandidates(src) {
@@ -1317,6 +1384,7 @@ function cacheContentElements() {
     });
 
     loadData();
+    loadVisitCounter();
     scheduleCriticalImageWarmup();
     registerServiceWorker();
   });
