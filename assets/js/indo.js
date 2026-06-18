@@ -38,12 +38,12 @@
   };
   const CRUISE_ARTICLE_URL = './assets/tekst/круиз.txt?v=20260618';
   const LOMBOK_ARTICLE_URLS = {
-    bg: './assets/tekst/ламбо.txt?v=20260617',
-    en: './assets/tekst/ламбо.en.txt?v=20260617',
-    de: './assets/tekst/ламбо.de.txt?v=20260617',
-    fr: './assets/tekst/ламбо.fr.txt?v=20260617',
-    es: './assets/tekst/ламбо.es.txt?v=20260617',
-    id: './assets/tekst/ламбо.id.txt?v=20260617'
+    bg: './assets/tekst/ламбо.txt?v=20260618',
+    en: './assets/tekst/ламбо.en.txt?v=20260618',
+    de: './assets/tekst/ламбо.de.txt?v=20260618',
+    fr: './assets/tekst/ламбо.fr.txt?v=20260618',
+    es: './assets/tekst/ламбо.es.txt?v=20260618',
+    id: './assets/tekst/ламбо.id.txt?v=20260618'
   };
 
   const marineAnimals = [
@@ -735,6 +735,18 @@ function cacheContentElements() {
     return currentLangPack[key] || englishPack[key] || key;
   }
 
+  function renderBlogArticleText(articleText) {
+    const escaped = articleText
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+
+    const withBold = escaped.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    return withBold.replace(/\r?\n/g, '<br>');
+  }
+
   function updateLanguageUI() {
     dom.bgBtn.classList.toggle('active', currentLanguage === 'bg');
     dom.enBtn.classList.toggle('active', currentLanguage === 'en');
@@ -1032,7 +1044,7 @@ function cacheContentElements() {
 
     try {
       const articleText = await loadBlogArticle(languageAtOpen);
-      dom.blogModalContent.textContent = articleText;
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');
     }
@@ -1074,7 +1086,7 @@ function cacheContentElements() {
 
     try {
       const articleText = await loadDolphinArticle(languageAtOpen);
-      dom.blogModalContent.textContent = articleText;
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');
     }
@@ -1101,7 +1113,7 @@ function cacheContentElements() {
 
     try {
       const articleText = await loadCruiseArticle();
-      dom.blogModalContent.textContent = articleText;
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');
     }
@@ -1146,7 +1158,7 @@ function cacheContentElements() {
 
     try {
       const articleText = await loadLombokArticle(languageAtOpen);
-      dom.blogModalContent.textContent = articleText;
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');
     }
