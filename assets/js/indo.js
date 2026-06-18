@@ -36,7 +36,7 @@
     es: './assets/tekst/birds.es.txt?v=20260609',
     id: './assets/tekst/birds.id.txt?v=20260609'
   };
-  const CRUISE_ARTICLE_URL = './assets/tekst/круиз.txt?v=20260609';
+  const CRUISE_ARTICLE_URL = './assets/tekst/круиз.txt?v=20260618';
   const LOMBOK_ARTICLE_URLS = {
     bg: './assets/tekst/ламбо.txt?v=20260617',
     en: './assets/tekst/ламбо.en.txt?v=20260617',
