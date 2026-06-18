@@ -283,7 +283,7 @@
   let cruiseArticleText = null;
   const birdSectionsByLanguage = {};
   const lombokArticleTextByLanguage = {};
-  let visitCountValue = 0;
+    let visitCountValue = null;
 
   function cacheDomElements() {
     dom.bgBtn = document.getElementById('bgBtn');
@@ -621,6 +621,16 @@ function cacheContentElements() {
 
     cacheContentElements();
 
+    const loadingElement = document.querySelector('.loading');
+    if (loadingElement) {
+      loadingElement.classList.add('fade-out');
+      setTimeout(function () {
+        if (loadingElement.parentNode) {
+          loadingElement.remove();
+        }
+      }, 600);
+    }
+
     dom.stadiumInfoBtn.addEventListener('click', openStadiumModal);
     dom.wildlifeInfoBtn.addEventListener('click', openWildlifeModal);
     dom.ticketInfoBtn.addEventListener('click', openTicketModal);
@@ -763,15 +773,84 @@ function cacheContentElements() {
     }
 
     const label = getTranslation('visitCounterLabel');
+    if (visitCountValue === null) {
+      dom.visitCounter.textContent = `${label}: ${getTranslation('visitCounterLoading')}`;
+      return;
+    }
+
     dom.visitCounter.textContent = `${label}: ${visitCountValue}`;
   }
 
-  function loadVisitCounter() {
+  function incrementLocalVisitCounter() {
     const STORAGE_KEY = 'indonesia_explorer_visits';
     const storedCount = localStorage.getItem(STORAGE_KEY);
-    visitCountValue = storedCount ? parseInt(storedCount, 10) : 0;
-    visitCountValue += 1;
-    localStorage.setItem(STORAGE_KEY, String(visitCountValue));
+    const parsedCount = storedCount ? parseInt(storedCount, 10) : 0;
+    const nextCount = Number.isFinite(parsedCount) ? parsedCount + 1 : 1;
+    localStorage.setItem(STORAGE_KEY, String(nextCount));
+    return nextCount;
+  }
+
+  function getFirebaseCounterConfig() {
+    const config = window.INDO_FIREBASE_CONFIG;
+    if (!config) {
+      return null;
+    }
+
+    if (!config.apiKey || !config.projectId || !config.appId || !config.databaseURL) {
+      return null;
+    }
+
+    return config;
+  }
+
+  function getFirebaseDatabase() {
+    const config = getFirebaseCounterConfig();
+    if (!config || !window.firebase || !window.firebase.database) {
+      return null;
+    }
+
+    if (!window.firebase.apps.length) {
+      window.firebase.initializeApp(config);
+    }
+
+    return window.firebase.database();
+  }
+
+  async function incrementFirebaseVisitCounter() {
+    const database = getFirebaseDatabase();
+    if (!database) {
+      return null;
+    }
+
+    const counterPath = window.INDO_FIREBASE_COUNTER_PATH || 'siteCounters/indonesiaExplorer/visits';
+    const counterRef = database.ref(counterPath);
+    const result = await counterRef.transaction(function (currentValue) {
+      const safeValue = typeof currentValue === 'number' && Number.isFinite(currentValue) ? currentValue : 0;
+      return safeValue + 1;
+    });
+
+    if (!result.committed || !result.snapshot) {
+      throw new Error('Firebase counter transaction failed.');
+    }
+
+    return result.snapshot.val();
+  }
+
+  async function loadVisitCounter() {
+    updateVisitCounterUI();
+
+    try {
+      const firebaseCount = await incrementFirebaseVisitCounter();
+      if (typeof firebaseCount === 'number' && Number.isFinite(firebaseCount)) {
+        visitCountValue = firebaseCount;
+        updateVisitCounterUI();
+        return;
+      }
+    } catch (error) {
+      console.warn('Firebase visit counter unavailable, falling back to local counter.', error);
+    }
+
+    visitCountValue = incrementLocalVisitCounter();
     updateVisitCounterUI();
   }
 
