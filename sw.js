@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v35';
+const CACHE_VERSION = 'v36';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
