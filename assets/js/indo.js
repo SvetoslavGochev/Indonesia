@@ -45,6 +45,9 @@
     es: './assets/tekst/ламбо.es.txt?v=20260618',
     id: './assets/tekst/ламбо.id.txt?v=20260618'
   };
+  const SPORTS_ARTICLE_URLS = {
+    bg: './assets/tekst/sportstot7.txt?v=20260619'
+  };
 
   const marineAnimals = [
     {
@@ -283,7 +286,8 @@
   let cruiseArticleText = null;
   const birdSectionsByLanguage = {};
   const lombokArticleTextByLanguage = {};
-    let visitCountValue = null;
+  const sportsArticleTextByLanguage = {};
+  let visitCountValue = null;
 
   function cacheDomElements() {
     dom.bgBtn = document.getElementById('bgBtn');
@@ -374,6 +378,9 @@ function cacheContentElements() {
     dom.blogArticle4Title = document.getElementById('blogArticle4Title');
     dom.blogArticle4Excerpt = document.getElementById('blogArticle4Excerpt');
     dom.blogReadBtn4 = document.getElementById('blogReadBtn4');
+    dom.blogArticle5Title = document.getElementById('blogArticle5Title');
+    dom.blogArticle5Excerpt = document.getElementById('blogArticle5Excerpt');
+    dom.blogReadBtn5 = document.getElementById('blogReadBtn5');
     dom.dataNotice = document.getElementById('dataNotice');
     countryInfoFields.forEach(function (field) {
       dom[field.id] = document.getElementById(field.id);
@@ -614,6 +621,11 @@ function cacheContentElements() {
             <p id="blogArticle4Excerpt" class="blog-excerpt"></p>
             <button id="blogReadBtn4" class="blog-read-btn" type="button"></button>
           </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle5Title"></h3>
+            <p id="blogArticle5Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn5" class="blog-read-btn" type="button"></button>
+          </div>
         </div>
 
         <div class="api-notice" id="dataNotice"></div>
@@ -638,6 +650,7 @@ function cacheContentElements() {
     dom.blogReadBtn2.addEventListener('click', openDolphinBlogModal);
     dom.blogReadBtn3.addEventListener('click', openCruiseBlogModal);
     dom.blogReadBtn4.addEventListener('click', openLombokBlogModal);
+    dom.blogReadBtn5.addEventListener('click', openSportsBlogModal);
     dom.content.addEventListener('click', function (event) {
       const marineReadButton = event.target.closest('.marine-read-text');
       if (marineReadButton) {
@@ -696,6 +709,9 @@ function cacheContentElements() {
     dom.blogArticle4Title.textContent = getTranslation('blogArticle4Title');
     dom.blogArticle4Excerpt.textContent = getTranslation('blogArticle4Excerpt');
     dom.blogReadBtn4.textContent = getTranslation('blogReadBtn4');
+    dom.blogArticle5Title.textContent = getTranslation('blogArticle5Title');
+    dom.blogArticle5Excerpt.textContent = getTranslation('blogArticle5Excerpt');
+    dom.blogReadBtn5.textContent = getTranslation('blogReadBtn5');
     dom.dataNotice.textContent = getTranslation('dataNotice');
 
     dom.cityPopulationTexts.forEach(function (populationElement) {
@@ -1158,6 +1174,45 @@ function cacheContentElements() {
 
     try {
       const articleText = await loadLombokArticle(languageAtOpen);
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadSportsArticle(lang) {
+    const requestedLang = SPORTS_ARTICLE_URLS[lang] ? lang : 'bg';
+    if (sportsArticleTextByLanguage[requestedLang]) {
+      return sportsArticleTextByLanguage[requestedLang];
+    }
+
+    async function fetchArticleText(languageCode) {
+      const response = await fetch(SPORTS_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('sports_blog_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticleText(requestedLang);
+      sportsArticleTextByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticleText('bg');
+      sportsArticleTextByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openSportsBlogModal() {
+    const languageAtOpen = currentLanguage;
+    dom.blogModalTitle.textContent = getTranslation('blogArticle5Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadSportsArticle(languageAtOpen);
       dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');
