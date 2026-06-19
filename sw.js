@@ -1,10 +1,12 @@
-const CACHE_VERSION = 'v36';
+const CACHE_VERSION = 'v37';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
 const CORE_ASSETS = [
   './',
   './index.html',
+  './robots.txt',
+  './sitemap.xml',
   './style.min.css',
   './assets/js/firebase-config.js',
   './assets/js/indo.translations.js',
