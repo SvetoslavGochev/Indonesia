@@ -189,14 +189,17 @@
 
     <script>
         (function () {
-            var isLocalHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-            if (isLocalHost) {
+            var host = window.location.hostname;
+            var path = window.location.pathname;
+            var isLocalHost = host === 'localhost' || host === '127.0.0.1';
+            var isIndonesiaPath = path === '/Indonesia' || path === '/Indonesia/' || path.indexOf('/Indonesia/') === 0;
+            if (isLocalHost || host !== 'svetoslavgochev.github.io' || !isIndonesiaPath) {
                 return;
             }
 
             var plausibleScript = document.createElement('script');
             plausibleScript.defer = true;
-            plausibleScript.setAttribute('data-domain', window.location.hostname);
+            plausibleScript.setAttribute('data-domain', 'svetoslavgochev.github.io');
             plausibleScript.src = 'https://plausible.io/js/script.js';
             document.head.appendChild(plausibleScript);
         })();
@@ -204,10 +207,10 @@
 
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js" defer></script>
-    <script src="./assets/js/firebase-config.js?v=20260623" defer></script>
-    <script src="./assets/js/indo.translations.js?v=20260623" defer></script>
-    <script src="./assets/js/indo.data.js?v=20260623" defer></script>
-    <script src="./assets/js/indo.min.js?v=20260623" defer></script>
+    <script src="./assets/js/firebase-config.js?v=20260624" defer></script>
+    <script src="./assets/js/indo.translations.js?v=20260624" defer></script>
+    <script src="./assets/js/indo.data.js?v=20260624" defer></script>
+    <script src="./assets/js/indo.min.js?v=20260624" defer></script>
 </body>
 </html>
 
