@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v38';
+const CACHE_VERSION = 'v39';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -38,6 +38,11 @@ const CORE_ASSETS = [
   './assets/tekst/ламбо.es.txt',
   './assets/tekst/ламбо.id.txt',
   './assets/tekst/sportstot7.txt',
+  './assets/tekst/sportstot7.en.txt',
+  './assets/tekst/sportstot7.de.txt',
+  './assets/tekst/sportstot7.fr.txt',
+  './assets/tekst/sportstot7.es.txt',
+  './assets/tekst/sportstot7.id.txt',
   './assets/tekst/птици.txt',
   './assets/tekst/birds.en.txt',
   './assets/tekst/birds.de.txt',

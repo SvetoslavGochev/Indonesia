@@ -46,7 +46,12 @@
     id: './assets/tekst/ламбо.id.txt?v=20260618'
   };
   const SPORTS_ARTICLE_URLS = {
-    bg: './assets/tekst/sportstot7.txt?v=20260619'
+    bg: './assets/tekst/sportstot7.txt?v=20260620',
+    en: './assets/tekst/sportstot7.en.txt?v=20260620',
+    de: './assets/tekst/sportstot7.de.txt?v=20260620',
+    fr: './assets/tekst/sportstot7.fr.txt?v=20260620',
+    es: './assets/tekst/sportstot7.es.txt?v=20260620',
+    id: './assets/tekst/sportstot7.id.txt?v=20260620'
   };
 
   const marineAnimals = [
