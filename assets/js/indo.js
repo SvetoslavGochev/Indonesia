@@ -36,7 +36,14 @@
     es: './assets/tekst/birds.es.txt?v=20260609',
     id: './assets/tekst/birds.id.txt?v=20260609'
   };
-  const CRUISE_ARTICLE_URL = './assets/tekst/круиз.txt?v=20260618';
+  const CRUISE_ARTICLE_URLS = {
+    bg: './assets/tekst/круиз.txt?v=20260621',
+    en: './assets/tekst/круиз.en.txt?v=20260621',
+    de: './assets/tekst/круиз.de.txt?v=20260621',
+    fr: './assets/tekst/круиз.fr.txt?v=20260621',
+    es: './assets/tekst/круиз.es.txt?v=20260621',
+    id: './assets/tekst/круиз.id.txt?v=20260621'
+  };
   const LOMBOK_ARTICLE_URLS = {
     bg: './assets/tekst/ламбо.txt?v=20260618',
     en: './assets/tekst/ламбо.en.txt?v=20260618',
@@ -288,7 +295,7 @@
   const blogArticleTextByLanguage = {};
   const dolphinArticleTextByLanguage = {};
   const waterworldSectionsByLanguage = {};
-  let cruiseArticleText = null;
+  const cruiseArticleTextByLanguage = {};
   const birdSectionsByLanguage = {};
   const lombokArticleTextByLanguage = {};
   const sportsArticleTextByLanguage = {};
@@ -1113,27 +1120,45 @@ function cacheContentElements() {
     }
   }
 
-  async function loadCruiseArticle() {
-    if (cruiseArticleText) {
-      return cruiseArticleText;
+  async function loadCruiseArticle(lang) {
+    const requestedLang = CRUISE_ARTICLE_URLS[lang] ? lang : 'en';
+    if (cruiseArticleTextByLanguage[requestedLang]) {
+      return cruiseArticleTextByLanguage[requestedLang];
     }
 
-    const response = await fetch(CRUISE_ARTICLE_URL);
-    if (!response.ok) {
-      throw new Error('cruise_blog_load_failed');
+    async function fetchArticleText(languageCode) {
+      const response = await fetch(CRUISE_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('cruise_blog_load_failed');
+      }
+      return response.text();
     }
 
-    cruiseArticleText = await response.text();
-    return cruiseArticleText;
+    try {
+      const articleText = await fetchArticleText(requestedLang);
+      cruiseArticleTextByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      if (requestedLang !== 'en') {
+        const englishArticle = await fetchArticleText('en');
+        cruiseArticleTextByLanguage.en = englishArticle;
+        return englishArticle;
+      }
+
+      const bulgarianArticle = await fetchArticleText('bg');
+      cruiseArticleTextByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
   }
 
   async function openCruiseBlogModal() {
+    const languageAtOpen = currentLanguage;
     dom.blogModalTitle.textContent = getTranslation('blogArticle3Title');
     dom.blogModalContent.textContent = getTranslation('blogLoading');
     toggleModal(dom.blogModal, true);
 
     try {
-      const articleText = await loadCruiseArticle();
+      const articleText = await loadCruiseArticle(languageAtOpen);
       dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');

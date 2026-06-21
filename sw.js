@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v39';
+const CACHE_VERSION = 'v40';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -31,6 +31,11 @@ const CORE_ASSETS = [
   './assets/tekst/waterworld.es.txt',
   './assets/tekst/waterworld.id.txt',
   './assets/tekst/круиз.txt',
+  './assets/tekst/круиз.en.txt',
+  './assets/tekst/круиз.de.txt',
+  './assets/tekst/круиз.fr.txt',
+  './assets/tekst/круиз.es.txt',
+  './assets/tekst/круиз.id.txt',
   './assets/tekst/ламбо.txt',
   './assets/tekst/ламбо.en.txt',
   './assets/tekst/ламбо.de.txt',
