@@ -717,6 +717,36 @@ header p {
     font-size: 0.96rem;
 }
 
+.blog-article-content .blog-line {
+    display: inline;
+}
+
+.blog-article-content .blog-line-section,
+.blog-article-content .blog-line-recipe {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-weight: 700;
+    color: #243d7a;
+}
+
+.blog-article-content .blog-line-recipe {
+    color: #2d4b90;
+}
+
+.blog-article-content .blog-line-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(53, 101, 196, 0.14);
+    font-size: 0.75rem;
+    line-height: 1;
+}
+
 .modal-overlay {
     display: none;
     position: fixed;

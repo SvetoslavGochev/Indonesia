@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v40';
+const CACHE_VERSION = 'v43';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -7,6 +7,7 @@ const CORE_ASSETS = [
   './index.html',
   './robots.txt',
   './sitemap.xml',
+  './style.css',
   './style.min.css',
   './assets/js/firebase-config.js',
   './assets/js/indo.translations.js',
@@ -48,6 +49,12 @@ const CORE_ASSETS = [
   './assets/tekst/sportstot7.fr.txt',
   './assets/tekst/sportstot7.es.txt',
   './assets/tekst/sportstot7.id.txt',
+  './assets/tekst/top3hranaInd.txt',
+  './assets/tekst/top3hranaInd.en.txt',
+  './assets/tekst/top3hranaInd.de.txt',
+  './assets/tekst/top3hranaInd.fr.txt',
+  './assets/tekst/top3hranaInd.es.txt',
+  './assets/tekst/top3hranaInd.id.txt',
   './assets/tekst/птици.txt',
   './assets/tekst/birds.en.txt',
   './assets/tekst/birds.de.txt',

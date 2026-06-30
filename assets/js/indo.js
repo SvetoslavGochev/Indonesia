@@ -60,6 +60,14 @@
     es: './assets/tekst/sportstot7.es.txt?v=20260620',
     id: './assets/tekst/sportstot7.id.txt?v=20260620'
   };
+  const TOP3_FOOD_ARTICLE_URLS = {
+    bg: './assets/tekst/top3hranaInd.txt?v=20260630a',
+    en: './assets/tekst/top3hranaInd.en.txt?v=20260630a',
+    de: './assets/tekst/top3hranaInd.de.txt?v=20260630a',
+    fr: './assets/tekst/top3hranaInd.fr.txt?v=20260630a',
+    es: './assets/tekst/top3hranaInd.es.txt?v=20260630a',
+    id: './assets/tekst/top3hranaInd.id.txt?v=20260630a'
+  };
 
   const marineAnimals = [
     {
@@ -299,6 +307,7 @@
   const birdSectionsByLanguage = {};
   const lombokArticleTextByLanguage = {};
   const sportsArticleTextByLanguage = {};
+  const top3FoodArticleTextByLanguage = {};
   let visitCountValue = null;
 
   function cacheDomElements() {
@@ -393,6 +402,9 @@ function cacheContentElements() {
     dom.blogArticle5Title = document.getElementById('blogArticle5Title');
     dom.blogArticle5Excerpt = document.getElementById('blogArticle5Excerpt');
     dom.blogReadBtn5 = document.getElementById('blogReadBtn5');
+    dom.blogArticle6Title = document.getElementById('blogArticle6Title');
+    dom.blogArticle6Excerpt = document.getElementById('blogArticle6Excerpt');
+    dom.blogReadBtn6 = document.getElementById('blogReadBtn6');
     dom.dataNotice = document.getElementById('dataNotice');
     countryInfoFields.forEach(function (field) {
       dom[field.id] = document.getElementById(field.id);
@@ -638,6 +650,11 @@ function cacheContentElements() {
             <p id="blogArticle5Excerpt" class="blog-excerpt"></p>
             <button id="blogReadBtn5" class="blog-read-btn" type="button"></button>
           </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle6Title"></h3>
+            <p id="blogArticle6Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn6" class="blog-read-btn" type="button"></button>
+          </div>
         </div>
 
         <div class="api-notice" id="dataNotice"></div>
@@ -663,6 +680,7 @@ function cacheContentElements() {
     dom.blogReadBtn3.addEventListener('click', openCruiseBlogModal);
     dom.blogReadBtn4.addEventListener('click', openLombokBlogModal);
     dom.blogReadBtn5.addEventListener('click', openSportsBlogModal);
+    dom.blogReadBtn6.addEventListener('click', openTop3FoodBlogModal);
     dom.content.addEventListener('click', function (event) {
       const marineReadButton = event.target.closest('.marine-read-text');
       if (marineReadButton) {
@@ -724,6 +742,9 @@ function cacheContentElements() {
     dom.blogArticle5Title.textContent = getTranslation('blogArticle5Title');
     dom.blogArticle5Excerpt.textContent = getTranslation('blogArticle5Excerpt');
     dom.blogReadBtn5.textContent = getTranslation('blogReadBtn5');
+    dom.blogArticle6Title.textContent = getTranslation('blogArticle6Title');
+    dom.blogArticle6Excerpt.textContent = getTranslation('blogArticle6Excerpt');
+    dom.blogReadBtn6.textContent = getTranslation('blogReadBtn6');
     dom.dataNotice.textContent = getTranslation('dataNotice');
 
     dom.cityPopulationTexts.forEach(function (populationElement) {
@@ -763,6 +784,57 @@ function cacheContentElements() {
     return currentLangPack[key] || englishPack[key] || key;
   }
 
+  function getBlogLineIcon(labelText) {
+    const normalized = labelText
+      .toLowerCase()
+      .replace(/&quot;/g, '"')
+      .replace(/[\u2018\u2019]/g, "'")
+      .replace(/[\u201C\u201D]/g, '"')
+      .trim();
+
+    if (/^(увод|introduction|einleitung|introduccion|introduction|pendahuluan)$/i.test(normalized)) {
+      return '📌';
+    }
+    if (/^(топ 3 ястия|top 3 dishes|top 3 gerichte|top 3 plats|top 3 platos|3 hidangan terbaik)$/i.test(normalized)) {
+      return '🍽️';
+    }
+    if (/^(защо е подходящо за лятото|why it is great for summer|warum es fur den sommer passt|pourquoi c'est ideal en ete|por que es ideal para verano|mengapa cocok untuk musim panas)$/i.test(normalized)) {
+      return '☀️';
+    }
+    if (/^(съставки|ingredients|zutaten|ingredients|ingredientes|bahan)$/i.test(normalized)) {
+      return '🧾';
+    }
+    if (/^(стъпки|steps|schritte|etapes|pasos|langkah)$/i.test(normalized)) {
+      return '👣';
+    }
+    if (/^(заключение|conclusion|fazit|conclusion|conclusion|penutup)$/i.test(normalized)) {
+      return '✅';
+    }
+
+    return '•';
+  }
+
+  function formatBlogArticleLine(line) {
+    const trimmed = line.trim();
+    if (!trimmed) {
+      return '';
+    }
+
+    const recipeTitlePattern = /^(Gado-Gado|Sate Lilit|Es Campur)\b/i;
+    if (recipeTitlePattern.test(trimmed)) {
+      return `<span class="blog-line blog-line-recipe"><span class="blog-line-icon" aria-hidden="true">🍴</span>${trimmed}</span>`;
+    }
+
+    const sectionMatch = trimmed.match(/^(.+):$/);
+    if (sectionMatch) {
+      const labelText = sectionMatch[1].trim();
+      const icon = getBlogLineIcon(labelText);
+      return `<span class="blog-line blog-line-section"><span class="blog-line-icon" aria-hidden="true">${icon}</span>${trimmed}</span>`;
+    }
+
+    return `<span class="blog-line">${trimmed}</span>`;
+  }
+
   function renderBlogArticleText(articleText) {
     const escaped = articleText
       .replace(/&/g, '&amp;')
@@ -772,7 +844,10 @@ function cacheContentElements() {
       .replace(/'/g, '&#39;');
 
     const withBold = escaped.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-    return withBold.replace(/\r?\n/g, '<br>');
+    return withBold
+      .split(/\r?\n/)
+      .map(formatBlogArticleLine)
+      .join('<br>');
   }
 
   function updateLanguageUI() {
@@ -1243,6 +1318,45 @@ function cacheContentElements() {
 
     try {
       const articleText = await loadSportsArticle(languageAtOpen);
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadTop3FoodArticle(lang) {
+    const requestedLang = TOP3_FOOD_ARTICLE_URLS[lang] ? lang : 'bg';
+    if (top3FoodArticleTextByLanguage[requestedLang]) {
+      return top3FoodArticleTextByLanguage[requestedLang];
+    }
+
+    async function fetchArticleText(languageCode) {
+      const response = await fetch(TOP3_FOOD_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('top3_food_blog_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticleText(requestedLang);
+      top3FoodArticleTextByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticleText('bg');
+      top3FoodArticleTextByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openTop3FoodBlogModal() {
+    const languageAtOpen = currentLanguage;
+    dom.blogModalTitle.textContent = getTranslation('blogArticle6Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadTop3FoodArticle(languageAtOpen);
       dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');
