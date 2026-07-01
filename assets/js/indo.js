@@ -68,6 +68,14 @@
     es: './assets/tekst/top3hranaInd.es.txt?v=20260630a',
     id: './assets/tekst/top3hranaInd.id.txt?v=20260630a'
   };
+  const FRUITS_ARTICLE_URLS = {
+    bg: './assets/tekst/plodowe.txt?v=20260701b',
+    en: './assets/tekst/plodowe.en.txt?v=20260701b',
+    de: './assets/tekst/plodowe.de.txt?v=20260701b',
+    fr: './assets/tekst/plodowe.fr.txt?v=20260701b',
+    es: './assets/tekst/plodowe.es.txt?v=20260701b',
+    id: './assets/tekst/plodowe.id.txt?v=20260701b'
+  };
 
   const marineAnimals = [
     {
@@ -237,6 +245,69 @@
     }
   ];
 
+  const fruits = [
+    {
+      image: './assets/images/fruit-mangosteen.webp',
+      sectionIndex: 0,
+      name_bg: 'Мангостан',
+      name_en: 'Mangosteen',
+      name_de: 'Mangostan',
+      name_fr: 'Mangoustan',
+      name_es: 'Mangostan',
+      name_id: 'Manggis'
+    },
+    {
+      image: './assets/images/fruit-jackfruit.webp',
+      sectionIndex: 1,
+      name_bg: 'Джакфрут',
+      name_en: 'Jackfruit',
+      name_de: 'Jackfrucht',
+      name_fr: 'Jacquier',
+      name_es: 'Yaca',
+      name_id: 'Nangka'
+    },
+    {
+      image: './assets/images/fruit-rambutan.webp',
+      sectionIndex: 2,
+      name_bg: 'Рамбутан',
+      name_en: 'Rambutan',
+      name_de: 'Rambutan',
+      name_fr: 'Ramboutan',
+      name_es: 'Rambutan',
+      name_id: 'Rambutan'
+    },
+    {
+      image: './assets/images/fruit-longan.webp',
+      sectionIndex: 3,
+      name_bg: 'Лонган',
+      name_en: 'Longan',
+      name_de: 'Longan',
+      name_fr: 'Longane',
+      name_es: 'Longan',
+      name_id: 'Longan'
+    },
+    {
+      image: './assets/images/fruit-salak.webp',
+      sectionIndex: 4,
+      name_bg: 'Салак',
+      name_en: 'Salak',
+      name_de: 'Schlangenfrucht',
+      name_fr: 'Salak',
+      name_es: 'Salak',
+      name_id: 'Salak'
+    },
+    {
+      image: './assets/images/fruit-durian.webp',
+      sectionIndex: 5,
+      name_bg: 'Дуриан',
+      name_en: 'Durian',
+      name_de: 'Durian',
+      name_fr: 'Durian',
+      name_es: 'Durian',
+      name_id: 'Durian'
+    }
+  ];
+
   const countryInfoFields = [
     { labelKey: 'capital', value: indonesiaData.country.capital, id: 'capitalLabel' },
     { labelKey: 'population', value: indonesiaData.country.population, id: 'populationInfoLabel' },
@@ -308,6 +379,7 @@
   const lombokArticleTextByLanguage = {};
   const sportsArticleTextByLanguage = {};
   const top3FoodArticleTextByLanguage = {};
+  const fruitSectionsByLanguage = {};
   let visitCountValue = null;
 
   function cacheDomElements() {
@@ -386,6 +458,7 @@ function cacheContentElements() {
     dom.majorCitiesTitle = document.getElementById('majorCitiesTitle');
     dom.marineAnimalsTitle = document.getElementById('marineAnimalsTitle');
     dom.birdsTitle = document.getElementById('birdsTitle');
+    dom.fruitsTitle = document.getElementById('fruitsTitle');
     dom.blogSectionTitle = document.getElementById('blogSectionTitle');
     dom.blogArticleTitle = document.getElementById('blogArticleTitle');
     dom.blogArticleExcerpt = document.getElementById('blogArticleExcerpt');
@@ -405,6 +478,9 @@ function cacheContentElements() {
     dom.blogArticle6Title = document.getElementById('blogArticle6Title');
     dom.blogArticle6Excerpt = document.getElementById('blogArticle6Excerpt');
     dom.blogReadBtn6 = document.getElementById('blogReadBtn6');
+    dom.blogArticle7Title = document.getElementById('blogArticle7Title');
+    dom.blogArticle7Excerpt = document.getElementById('blogArticle7Excerpt');
+    dom.blogReadBtn7 = document.getElementById('blogReadBtn7');
     dom.dataNotice = document.getElementById('dataNotice');
     countryInfoFields.forEach(function (field) {
       dom[field.id] = document.getElementById(field.id);
@@ -414,6 +490,8 @@ function cacheContentElements() {
     dom.marineReadTexts = Array.from(document.querySelectorAll('.marine-read-text'));
     dom.birdNameTexts = Array.from(document.querySelectorAll('.bird-name'));
     dom.birdReadTexts = Array.from(document.querySelectorAll('.bird-read-text'));
+    dom.fruitNameTexts = Array.from(document.querySelectorAll('.fruit-name'));
+    dom.fruitReadTexts = Array.from(document.querySelectorAll('.fruit-read-text'));
   }
 
   function setBodyScrollLocked(isLocked) {
@@ -487,6 +565,25 @@ function cacheContentElements() {
   function getBirdName(bird) {
     const key = `name_${currentLanguage}`;
     return bird[key] || bird.name_en || bird.name_bg || '';
+  }
+
+  function createFruitCardsHtml() {
+    return fruits.map(function (fruit, index) {
+      return `
+              <article class="fruit-card" aria-label="fruit-${index}">
+                <div class="fruit-image-placeholder">
+                  <img class="fruit-image" src="${fruit.image}" alt="${fruit.name_en}" loading="lazy" decoding="async">
+                </div>
+                <div class="fruit-name" data-fruit-index="${index}"></div>
+                <button class="fruit-read-text" type="button" data-fruit-read-index="${index}"></button>
+              </article>
+      `;
+    }).join('');
+  }
+
+  function getFruitName(fruit) {
+    const key = `name_${currentLanguage}`;
+    return fruit[key] || fruit.name_en || fruit.name_bg || '';
   }
 
   function createErrorHtml() {
@@ -623,6 +720,13 @@ function cacheContentElements() {
           </div>
         </div>
 
+        <div class="card">
+          <h2 id="fruitsTitle"></h2>
+          <div class="fruit-grid">
+            ${createFruitCardsHtml()}
+          </div>
+        </div>
+
         <div class="card blog-card">
           <h2 id="blogSectionTitle"></h2>
           <div class="blog-preview">
@@ -655,6 +759,11 @@ function cacheContentElements() {
             <p id="blogArticle6Excerpt" class="blog-excerpt"></p>
             <button id="blogReadBtn6" class="blog-read-btn" type="button"></button>
           </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle7Title"></h3>
+            <p id="blogArticle7Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn7" class="blog-read-btn" type="button"></button>
+          </div>
         </div>
 
         <div class="api-notice" id="dataNotice"></div>
@@ -681,6 +790,7 @@ function cacheContentElements() {
     dom.blogReadBtn4.addEventListener('click', openLombokBlogModal);
     dom.blogReadBtn5.addEventListener('click', openSportsBlogModal);
     dom.blogReadBtn6.addEventListener('click', openTop3FoodBlogModal);
+    dom.blogReadBtn7.addEventListener('click', openFruitsBlogModal);
     dom.content.addEventListener('click', function (event) {
       const marineReadButton = event.target.closest('.marine-read-text');
       if (marineReadButton) {
@@ -691,6 +801,12 @@ function cacheContentElements() {
       const birdReadButton = event.target.closest('.bird-read-text');
       if (birdReadButton) {
         openBirdInfoModal(Number(birdReadButton.dataset.birdReadIndex));
+        return;
+      }
+
+      const fruitReadButton = event.target.closest('.fruit-read-text');
+      if (fruitReadButton) {
+        openFruitInfoModal(Number(fruitReadButton.dataset.fruitReadIndex));
         return;
       }
 
@@ -726,6 +842,7 @@ function cacheContentElements() {
     dom.majorCitiesTitle.textContent = getTranslation('majorCities');
     dom.marineAnimalsTitle.textContent = getTranslation('marineAnimalsTitle');
     dom.birdsTitle.textContent = getTranslation('birdsTitle');
+    dom.fruitsTitle.textContent = getTranslation('fruitsTitle');
     dom.blogSectionTitle.textContent = getTranslation('blogSectionTitle');
     dom.blogArticleTitle.textContent = getTranslation('blogArticleTitle');
     dom.blogArticleExcerpt.textContent = getTranslation('blogArticleExcerpt');
@@ -745,6 +862,9 @@ function cacheContentElements() {
     dom.blogArticle6Title.textContent = getTranslation('blogArticle6Title');
     dom.blogArticle6Excerpt.textContent = getTranslation('blogArticle6Excerpt');
     dom.blogReadBtn6.textContent = getTranslation('blogReadBtn6');
+    dom.blogArticle7Title.textContent = getTranslation('blogArticle7Title');
+    dom.blogArticle7Excerpt.textContent = getTranslation('blogArticle7Excerpt');
+    dom.blogReadBtn7.textContent = getTranslation('blogReadBtn7');
     dom.dataNotice.textContent = getTranslation('dataNotice');
 
     dom.cityPopulationTexts.forEach(function (populationElement) {
@@ -776,6 +896,19 @@ function cacheContentElements() {
     dom.birdReadTexts.forEach(function (readElement) {
       readElement.textContent = getTranslation('birdsReadBtn');
     });
+
+    dom.fruitNameTexts.forEach(function (nameElement) {
+      const fruitIndex = Number(nameElement.dataset.fruitIndex);
+      const fruit = fruits[fruitIndex];
+      if (!fruit) {
+        return;
+      }
+      nameElement.textContent = getFruitName(fruit);
+    });
+
+    dom.fruitReadTexts.forEach(function (readElement) {
+      readElement.textContent = getTranslation('fruitsReadBtn');
+    });
   }
 
   function getTranslation(key) {
@@ -806,6 +939,15 @@ function cacheContentElements() {
     }
     if (/^(стъпки|steps|schritte|etapes|pasos|langkah)$/i.test(normalized)) {
       return '👣';
+    }
+    if (/^(къде се среща|where to find it|wo es vorkommt|ou on le trouve|donde se encuentra|di mana ditemukan)$/i.test(normalized)) {
+      return '📍';
+    }
+    if (/^(как се яде|how to eat it|wie man es isst|comment le manger|como comerlo|cara makan)$/i.test(normalized)) {
+      return '🍽️';
+    }
+    if (/^(интересно|interesting|interessant|a savoir|dato curioso|fakta menarik)$/i.test(normalized)) {
+      return '💡';
     }
     if (/^(заключение|conclusion|fazit|conclusion|conclusion|penutup)$/i.test(normalized)) {
       return '✅';
@@ -1363,6 +1505,49 @@ function cacheContentElements() {
     }
   }
 
+  async function loadFruitSections(lang) {
+    const requestedLang = FRUITS_ARTICLE_URLS[lang] ? lang : 'bg';
+    if (Array.isArray(fruitSectionsByLanguage[requestedLang]) && fruitSectionsByLanguage[requestedLang].length > 0) {
+      return fruitSectionsByLanguage[requestedLang];
+    }
+
+    async function fetchSections(languageCode) {
+      const response = await fetch(FRUITS_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('fruits_load_failed');
+      }
+      const articleText = await response.text();
+      return parseWaterworldSections(articleText);
+    }
+
+    try {
+      const sections = await fetchSections(requestedLang);
+      fruitSectionsByLanguage[requestedLang] = sections;
+      return sections;
+    } catch (error) {
+      const bulgarianSections = await fetchSections('bg');
+      fruitSectionsByLanguage.bg = bulgarianSections;
+      return bulgarianSections;
+    }
+  }
+
+  async function openFruitsBlogModal() {
+    const languageAtOpen = currentLanguage;
+    dom.blogModalTitle.textContent = getTranslation('blogArticle7Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const sections = await loadFruitSections(languageAtOpen);
+      const text = sections.map(function (section, index) {
+        return `${index + 1}. ${section.title}\n\n${section.content}`;
+      }).join('\n\n');
+      dom.blogModalContent.textContent = text || getTranslation('blogLoadError');
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
   function parseWaterworldSections(articleText) {
     const normalized = articleText.replace(/\r\n/g, '\n').trim();
     const chunks = normalized.split(/\n(?=\d+\.\s)/);
@@ -1502,6 +1687,31 @@ function cacheContentElements() {
     try {
       const sections = await loadBirdSections(languageAtOpen);
       const selected = sections[bird.sectionIndex] || sections[index] || null;
+      if (selected) {
+        dom.blogModalContent.textContent = `${selected.title}\n\n${selected.content}`;
+      } else {
+        dom.blogModalContent.textContent = getTranslation('blogLoadError');
+      }
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function openFruitInfoModal(index) {
+    const fruit = fruits[index];
+    if (!fruit) {
+      return;
+    }
+
+    const languageAtOpen = currentLanguage;
+
+    dom.blogModalTitle.textContent = getFruitName(fruit);
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const sections = await loadFruitSections(languageAtOpen);
+      const selected = sections[fruit.sectionIndex] || sections[index] || null;
       if (selected) {
         dom.blogModalContent.textContent = `${selected.title}\n\n${selected.content}`;
       } else {

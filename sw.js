@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v43';
+const CACHE_VERSION = 'v46';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -55,6 +55,12 @@ const CORE_ASSETS = [
   './assets/tekst/top3hranaInd.fr.txt',
   './assets/tekst/top3hranaInd.es.txt',
   './assets/tekst/top3hranaInd.id.txt',
+  './assets/tekst/plodowe.txt',
+  './assets/tekst/plodowe.en.txt',
+  './assets/tekst/plodowe.de.txt',
+  './assets/tekst/plodowe.fr.txt',
+  './assets/tekst/plodowe.es.txt',
+  './assets/tekst/plodowe.id.txt',
   './assets/tekst/птици.txt',
   './assets/tekst/birds.en.txt',
   './assets/tekst/birds.de.txt',
@@ -89,7 +95,13 @@ const IMAGE_ASSETS = [
   './assets/images/bird-javan-pheasant-480.webp',
   './assets/images/bird-javan-pheasant-960.webp',
   './assets/images/bird-myna-480.webp',
-  './assets/images/bird-myna-960.webp'
+  './assets/images/bird-myna-960.webp',
+  './assets/images/fruit-mangosteen.webp',
+  './assets/images/fruit-jackfruit.webp',
+  './assets/images/fruit-rambutan.webp',
+  './assets/images/fruit-longan.webp',
+  './assets/images/fruit-salak.webp',
+  './assets/images/fruit-durian.webp'
 ];
 
 self.addEventListener('install', (event) => {
