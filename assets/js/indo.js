@@ -84,6 +84,14 @@
     es: './assets/tekst/reki.es.txt?v=20260701a',
     id: './assets/tekst/reki.id.txt?v=20260701a'
   };
+  const VOLCANO_ARTICLE_URLS = {
+    bg: './assets/tekst/vulkani.txt?v=20260701a',
+    en: './assets/tekst/vulkani.en.txt?v=20260701a',
+    de: './assets/tekst/vulkani.de.txt?v=20260701a',
+    fr: './assets/tekst/vulkani.fr.txt?v=20260701a',
+    es: './assets/tekst/vulkani.es.txt?v=20260701a',
+    id: './assets/tekst/vulkani.id.txt?v=20260701a'
+  };
 
   const marineAnimals = [
     {
@@ -317,6 +325,7 @@
   ];
 
   const rekiSectionsByLanguage = {};
+  const volcanoSectionsByLanguage = {};
 
   const countryInfoFields = [
     { labelKey: 'capital', value: indonesiaData.country.capital, id: 'capitalLabel' },
@@ -494,6 +503,9 @@ function cacheContentElements() {
     dom.blogArticle8Title = document.getElementById('blogArticle8Title');
     dom.blogArticle8Excerpt = document.getElementById('blogArticle8Excerpt');
     dom.blogReadBtn8 = document.getElementById('blogReadBtn8');
+    dom.blogArticle9Title = document.getElementById('blogArticle9Title');
+    dom.blogArticle9Excerpt = document.getElementById('blogArticle9Excerpt');
+    dom.blogReadBtn9 = document.getElementById('blogReadBtn9');
     dom.dataNotice = document.getElementById('dataNotice');
     countryInfoFields.forEach(function (field) {
       dom[field.id] = document.getElementById(field.id);
@@ -782,6 +794,11 @@ function cacheContentElements() {
             <p id="blogArticle8Excerpt" class="blog-excerpt"></p>
             <button id="blogReadBtn8" class="blog-read-btn" type="button"></button>
           </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle9Title"></h3>
+            <p id="blogArticle9Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn9" class="blog-read-btn" type="button"></button>
+          </div>
         </div>
 
         <div class="api-notice" id="dataNotice"></div>
@@ -810,6 +827,7 @@ function cacheContentElements() {
     dom.blogReadBtn6.addEventListener('click', openTop3FoodBlogModal);
     dom.blogReadBtn7.addEventListener('click', openFruitsBlogModal);
     dom.blogReadBtn8.addEventListener('click', openRiversBlogModal);
+    dom.blogReadBtn9.addEventListener('click', openVolcanoBlogModal);
     dom.content.addEventListener('click', function (event) {
       const marineReadButton = event.target.closest('.marine-read-text');
       if (marineReadButton) {
@@ -887,6 +905,9 @@ function cacheContentElements() {
     dom.blogArticle8Title.textContent = getTranslation('blogArticle8Title');
     dom.blogArticle8Excerpt.textContent = getTranslation('blogArticle8Excerpt');
     dom.blogReadBtn8.textContent = getTranslation('blogReadBtn8');
+    dom.blogArticle9Title.textContent = getTranslation('blogArticle9Title');
+    dom.blogArticle9Excerpt.textContent = getTranslation('blogArticle9Excerpt');
+    dom.blogReadBtn9.textContent = getTranslation('blogReadBtn9');
     dom.dataNotice.textContent = getTranslation('dataNotice');
 
     dom.cityPopulationTexts.forEach(function (populationElement) {
@@ -1603,6 +1624,45 @@ function cacheContentElements() {
 
     try {
       const articleText = await loadRiversArticle(languageAtOpen);
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadVolcanoArticle(lang) {
+    const requestedLang = VOLCANO_ARTICLE_URLS[lang] ? lang : 'bg';
+    if (typeof volcanoSectionsByLanguage[requestedLang] === 'string' && volcanoSectionsByLanguage[requestedLang].length > 0) {
+      return volcanoSectionsByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(VOLCANO_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('volcano_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      volcanoSectionsByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      volcanoSectionsByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openVolcanoBlogModal() {
+    const languageAtOpen = currentLanguage;
+    dom.blogModalTitle.textContent = getTranslation('blogArticle9Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadVolcanoArticle(languageAtOpen);
       dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');
