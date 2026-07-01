@@ -76,6 +76,14 @@
     es: './assets/tekst/plodowe.es.txt?v=20260701b',
     id: './assets/tekst/plodowe.id.txt?v=20260701b'
   };
+  const REKI_ARTICLE_URLS = {
+    bg: './assets/tekst/reki.txt?v=20260701a',
+    en: './assets/tekst/reki.en.txt?v=20260701a',
+    de: './assets/tekst/reki.de.txt?v=20260701a',
+    fr: './assets/tekst/reki.fr.txt?v=20260701a',
+    es: './assets/tekst/reki.es.txt?v=20260701a',
+    id: './assets/tekst/reki.id.txt?v=20260701a'
+  };
 
   const marineAnimals = [
     {
@@ -308,6 +316,8 @@
     }
   ];
 
+  const rekiSectionsByLanguage = {};
+
   const countryInfoFields = [
     { labelKey: 'capital', value: indonesiaData.country.capital, id: 'capitalLabel' },
     { labelKey: 'population', value: indonesiaData.country.population, id: 'populationInfoLabel' },
@@ -481,6 +491,9 @@ function cacheContentElements() {
     dom.blogArticle7Title = document.getElementById('blogArticle7Title');
     dom.blogArticle7Excerpt = document.getElementById('blogArticle7Excerpt');
     dom.blogReadBtn7 = document.getElementById('blogReadBtn7');
+    dom.blogArticle8Title = document.getElementById('blogArticle8Title');
+    dom.blogArticle8Excerpt = document.getElementById('blogArticle8Excerpt');
+    dom.blogReadBtn8 = document.getElementById('blogReadBtn8');
     dom.dataNotice = document.getElementById('dataNotice');
     countryInfoFields.forEach(function (field) {
       dom[field.id] = document.getElementById(field.id);
@@ -764,6 +777,11 @@ function cacheContentElements() {
             <p id="blogArticle7Excerpt" class="blog-excerpt"></p>
             <button id="blogReadBtn7" class="blog-read-btn" type="button"></button>
           </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle8Title"></h3>
+            <p id="blogArticle8Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn8" class="blog-read-btn" type="button"></button>
+          </div>
         </div>
 
         <div class="api-notice" id="dataNotice"></div>
@@ -791,6 +809,7 @@ function cacheContentElements() {
     dom.blogReadBtn5.addEventListener('click', openSportsBlogModal);
     dom.blogReadBtn6.addEventListener('click', openTop3FoodBlogModal);
     dom.blogReadBtn7.addEventListener('click', openFruitsBlogModal);
+    dom.blogReadBtn8.addEventListener('click', openRiversBlogModal);
     dom.content.addEventListener('click', function (event) {
       const marineReadButton = event.target.closest('.marine-read-text');
       if (marineReadButton) {
@@ -865,6 +884,9 @@ function cacheContentElements() {
     dom.blogArticle7Title.textContent = getTranslation('blogArticle7Title');
     dom.blogArticle7Excerpt.textContent = getTranslation('blogArticle7Excerpt');
     dom.blogReadBtn7.textContent = getTranslation('blogReadBtn7');
+    dom.blogArticle8Title.textContent = getTranslation('blogArticle8Title');
+    dom.blogArticle8Excerpt.textContent = getTranslation('blogArticle8Excerpt');
+    dom.blogReadBtn8.textContent = getTranslation('blogReadBtn8');
     dom.dataNotice.textContent = getTranslation('dataNotice');
 
     dom.cityPopulationTexts.forEach(function (populationElement) {
@@ -1543,6 +1565,45 @@ function cacheContentElements() {
         return `${index + 1}. ${section.title}\n\n${section.content}`;
       }).join('\n\n');
       dom.blogModalContent.textContent = text || getTranslation('blogLoadError');
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadRiversArticle(lang) {
+    const requestedLang = REKI_ARTICLE_URLS[lang] ? lang : 'bg';
+    if (typeof rekiSectionsByLanguage[requestedLang] === 'string' && rekiSectionsByLanguage[requestedLang].length > 0) {
+      return rekiSectionsByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(REKI_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('reki_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      rekiSectionsByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      rekiSectionsByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openRiversBlogModal() {
+    const languageAtOpen = currentLanguage;
+    dom.blogModalTitle.textContent = getTranslation('blogArticle8Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadRiversArticle(languageAtOpen);
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');
     }

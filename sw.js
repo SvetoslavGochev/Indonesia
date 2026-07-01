@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v46';
+const CACHE_VERSION = 'v47';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -61,6 +61,12 @@ const CORE_ASSETS = [
   './assets/tekst/plodowe.fr.txt',
   './assets/tekst/plodowe.es.txt',
   './assets/tekst/plodowe.id.txt',
+  './assets/tekst/reki.txt',
+  './assets/tekst/reki.en.txt',
+  './assets/tekst/reki.de.txt',
+  './assets/tekst/reki.fr.txt',
+  './assets/tekst/reki.es.txt',
+  './assets/tekst/reki.id.txt',
   './assets/tekst/птици.txt',
   './assets/tekst/birds.en.txt',
   './assets/tekst/birds.de.txt',
