@@ -92,6 +92,9 @@
     es: './assets/tekst/vulkani.es.txt?v=20260701a',
     id: './assets/tekst/vulkani.id.txt?v=20260701a'
   };
+  const FRESHWATER_ARTICLE_URLS = {
+    bg: './assets/tekst/sladkowodniRibi.txt?v=20260702a'
+  };
 
   const marineAnimals = [
     {
@@ -324,6 +327,81 @@
     }
   ];
 
+  const freshwaterAnimals = [
+    {
+      image: './assets/images/freshwater-gourami.webp',
+      sectionIndex: 0,
+      speedKmh: 6,
+      weightKg: 8,
+      name_bg: 'Гурами',
+      name_en: 'Gourami',
+      name_de: 'Gurami',
+      name_fr: 'Gourami',
+      name_es: 'Gurami',
+      name_id: 'Gurami'
+    },
+    {
+      image: './assets/images/freshwater-catfish.webp',
+      sectionIndex: 1,
+      speedKmh: 8,
+      weightKg: 1.5,
+      name_bg: 'Леле',
+      name_en: 'Catfish',
+      name_de: 'Wels',
+      name_fr: 'Poisson-chat',
+      name_es: 'Bagre',
+      name_id: 'Lele'
+    },
+    {
+      image: './assets/images/freshwater-tilapia.webp',
+      sectionIndex: 2,
+      speedKmh: 11,
+      weightKg: 4,
+      name_bg: 'Тилапия',
+      name_en: 'Tilapia',
+      name_de: 'Tilapia',
+      name_fr: 'Tilapia',
+      name_es: 'Tilapia',
+      name_id: 'Nila'
+    },
+    {
+      image: './assets/images/freshwater-snakehead.webp',
+      sectionIndex: 3,
+      speedKmh: 15,
+      weightKg: 7,
+      name_bg: 'Икан Села',
+      name_en: 'Snakehead',
+      name_de: 'Schlangenkopffisch',
+      name_fr: 'Poisson-serpent',
+      name_es: 'Pez cabeza de serpiente',
+      name_id: 'Ikan Gabus'
+    },
+    {
+      image: './assets/images/freshwater-prawn.webp',
+      sectionIndex: 4,
+      speedKmh: 7,
+      weightKg: 0.3,
+      name_bg: 'Икан Бау',
+      name_en: 'Freshwater Prawn',
+      name_de: 'Susswassergarnele',
+      name_fr: 'Crevette d\'eau douce',
+      name_es: 'Langostino de agua dulce',
+      name_id: 'Udang galah'
+    },
+    {
+      image: './assets/images/freshwater-nile-perch.webp',
+      sectionIndex: 5,
+      speedKmh: 30,
+      weightKg: 200,
+      name_bg: 'Икан Нил',
+      name_en: 'Nile Perch',
+      name_de: 'Nilbarsch',
+      name_fr: 'Perche du Nil',
+      name_es: 'Perca del Nilo',
+      name_id: 'Ikan nil'
+    }
+  ];
+
   const rekiSectionsByLanguage = {};
   const volcanoSectionsByLanguage = {};
 
@@ -399,6 +477,7 @@
   const sportsArticleTextByLanguage = {};
   const top3FoodArticleTextByLanguage = {};
   const fruitSectionsByLanguage = {};
+  const freshwaterSectionsByLanguage = {};
   let visitCountValue = null;
 
   function cacheDomElements() {
@@ -476,6 +555,7 @@ function cacheContentElements() {
     dom.ticketInfoBtn = document.getElementById('ticketInfoBtn');
     dom.majorCitiesTitle = document.getElementById('majorCitiesTitle');
     dom.marineAnimalsTitle = document.getElementById('marineAnimalsTitle');
+    dom.freshwaterAnimalsTitle = document.getElementById('freshwaterAnimalsTitle');
     dom.birdsTitle = document.getElementById('birdsTitle');
     dom.fruitsTitle = document.getElementById('fruitsTitle');
     dom.blogSectionTitle = document.getElementById('blogSectionTitle');
@@ -513,6 +593,8 @@ function cacheContentElements() {
     dom.cityPopulationTexts = Array.from(document.querySelectorAll('.city-population'));
     dom.marineNameTexts = Array.from(document.querySelectorAll('.marine-name'));
     dom.marineReadTexts = Array.from(document.querySelectorAll('.marine-read-text'));
+    dom.freshwaterNameTexts = Array.from(document.querySelectorAll('.freshwater-name'));
+    dom.freshwaterReadTexts = Array.from(document.querySelectorAll('.freshwater-read-text'));
     dom.birdNameTexts = Array.from(document.querySelectorAll('.bird-name'));
     dom.birdReadTexts = Array.from(document.querySelectorAll('.bird-read-text'));
     dom.fruitNameTexts = Array.from(document.querySelectorAll('.fruit-name'));
@@ -565,9 +647,40 @@ function cacheContentElements() {
     }).join('');
   }
 
+  function createFreshwaterAnimalsCardsHtml() {
+    return freshwaterAnimals.map(function (animal, index) {
+      return `
+              <article class="marine-card freshwater-card" aria-label="freshwater-animal-${index}">
+                <div class="marine-image-placeholder freshwater-image-placeholder">
+                  <img class="marine-image freshwater-image" src="${animal.image}" alt="${animal.name_en}" loading="lazy" decoding="async">
+                </div>
+                <div class="marine-name freshwater-name" data-freshwater-index="${index}"></div>
+                <button class="marine-read-text freshwater-read-text" type="button" data-freshwater-read-index="${index}"></button>
+              </article>
+      `;
+    }).join('');
+  }
+
   function getMarineAnimalName(animal) {
     const key = `name_${currentLanguage}`;
     return animal[key] || animal.name_en || animal.name_bg || '';
+  }
+
+  function getFreshwaterAnimalName(animal) {
+    const key = `name_${currentLanguage}`;
+    return animal[key] || animal.name_en || animal.name_bg || '';
+  }
+
+  function getFreshwaterSpeedText(animal) {
+    return `${getTranslation('freshwaterSpeedLabel')}: ~${animal.speedKmh} km/h`;
+  }
+
+  function getFreshwaterWeightText(animal) {
+    return `${getTranslation('freshwaterWeightLabel')}: ~${animal.weightKg} kg`;
+  }
+
+  function getFreshwaterMetaText(animal) {
+    return `${getFreshwaterSpeedText(animal)}\n${getFreshwaterWeightText(animal)}`;
   }
 
   function createBirdCardsHtml() {
@@ -739,6 +852,13 @@ function cacheContentElements() {
         </div>
 
         <div class="card">
+          <h2 id="freshwaterAnimalsTitle"></h2>
+          <div class="marine-grid freshwater-grid">
+            ${createFreshwaterAnimalsCardsHtml()}
+          </div>
+        </div>
+
+        <div class="card">
           <h2 id="birdsTitle"></h2>
           <div class="bird-grid">
             ${createBirdCardsHtml()}
@@ -829,6 +949,12 @@ function cacheContentElements() {
     dom.blogReadBtn8.addEventListener('click', openRiversBlogModal);
     dom.blogReadBtn9.addEventListener('click', openVolcanoBlogModal);
     dom.content.addEventListener('click', function (event) {
+      const freshwaterReadButton = event.target.closest('.freshwater-read-text');
+      if (freshwaterReadButton) {
+        openFreshwaterInfoModal(Number(freshwaterReadButton.dataset.freshwaterReadIndex));
+        return;
+      }
+
       const marineReadButton = event.target.closest('.marine-read-text');
       if (marineReadButton) {
         openMarineInfoModal(Number(marineReadButton.dataset.marineIndex));
@@ -878,6 +1004,7 @@ function cacheContentElements() {
     });
     dom.majorCitiesTitle.textContent = getTranslation('majorCities');
     dom.marineAnimalsTitle.textContent = getTranslation('marineAnimalsTitle');
+    dom.freshwaterAnimalsTitle.textContent = getTranslation('freshwaterAnimalsTitle');
     dom.birdsTitle.textContent = getTranslation('birdsTitle');
     dom.fruitsTitle.textContent = getTranslation('fruitsTitle');
     dom.blogSectionTitle.textContent = getTranslation('blogSectionTitle');
@@ -925,6 +1052,19 @@ function cacheContentElements() {
 
     dom.marineReadTexts.forEach(function (readElement) {
       readElement.textContent = getTranslation('marineReadBtn');
+    });
+
+    dom.freshwaterNameTexts.forEach(function (nameElement) {
+      const animalIndex = Number(nameElement.dataset.freshwaterIndex);
+      const animal = freshwaterAnimals[animalIndex];
+      if (!animal) {
+        return;
+      }
+      nameElement.textContent = getFreshwaterAnimalName(animal);
+    });
+
+    dom.freshwaterReadTexts.forEach(function (readElement) {
+      readElement.textContent = getTranslation('freshwaterReadBtn');
     });
 
     dom.birdNameTexts.forEach(function (nameElement) {
@@ -1753,6 +1893,57 @@ function cacheContentElements() {
       const selected = getWaterworldSectionForAnimal(sections, animal, index);
       if (selected) {
         dom.blogModalContent.textContent = `${selected.title}\n\n${selected.content}`;
+      } else {
+        dom.blogModalContent.textContent = getTranslation('blogLoadError');
+      }
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadFreshwaterSections(lang) {
+    const requestedLang = FRESHWATER_ARTICLE_URLS[lang] ? lang : 'bg';
+    if (Array.isArray(freshwaterSectionsByLanguage[requestedLang]) && freshwaterSectionsByLanguage[requestedLang].length > 0) {
+      return freshwaterSectionsByLanguage[requestedLang];
+    }
+
+    async function fetchSections(languageCode) {
+      const response = await fetch(FRESHWATER_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('freshwater_load_failed');
+      }
+      const articleText = await response.text();
+      return parseWaterworldSections(articleText);
+    }
+
+    try {
+      const sections = await fetchSections(requestedLang);
+      freshwaterSectionsByLanguage[requestedLang] = sections;
+      return sections;
+    } catch (error) {
+      const bulgarianSections = await fetchSections('bg');
+      freshwaterSectionsByLanguage.bg = bulgarianSections;
+      return bulgarianSections;
+    }
+  }
+
+  async function openFreshwaterInfoModal(index) {
+    const animal = freshwaterAnimals[index];
+    if (!animal) {
+      return;
+    }
+
+    const languageAtOpen = currentLanguage;
+
+    dom.blogModalTitle.textContent = getFreshwaterAnimalName(animal);
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const sections = await loadFreshwaterSections(languageAtOpen);
+      const selected = sections[animal.sectionIndex] || sections[index] || null;
+      if (selected) {
+        dom.blogModalContent.textContent = `${getFreshwaterMetaText(animal)}\n\n${selected.title}\n\n${selected.content}`;
       } else {
         dom.blogModalContent.textContent = getTranslation('blogLoadError');
       }

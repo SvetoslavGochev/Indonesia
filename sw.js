@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v48';
+const CACHE_VERSION = 'v50';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -73,6 +73,7 @@ const CORE_ASSETS = [
   './assets/tekst/vulkani.fr.txt',
   './assets/tekst/vulkani.es.txt',
   './assets/tekst/vulkani.id.txt',
+  './assets/tekst/sladkowodniRibi.txt',
   './assets/tekst/птици.txt',
   './assets/tekst/birds.en.txt',
   './assets/tekst/birds.de.txt',
@@ -113,7 +114,13 @@ const IMAGE_ASSETS = [
   './assets/images/fruit-rambutan.webp',
   './assets/images/fruit-longan.webp',
   './assets/images/fruit-salak.webp',
-  './assets/images/fruit-durian.webp'
+  './assets/images/fruit-durian.webp',
+  './assets/images/freshwater-gourami.webp',
+  './assets/images/freshwater-catfish.webp',
+  './assets/images/freshwater-tilapia.webp',
+  './assets/images/freshwater-snakehead.webp',
+  './assets/images/freshwater-prawn.webp',
+  './assets/images/freshwater-nile-perch.webp'
 ];
 
 self.addEventListener('install', (event) => {
