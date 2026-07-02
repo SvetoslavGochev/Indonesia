@@ -69,7 +69,7 @@
     id: './assets/tekst/top3hranaInd.id.txt?v=20260630a'
   };
   const FRUITS_ARTICLE_URLS = {
-    bg: './assets/tekst/plodowe.txt?v=20260701b',
+    bg: './assets/tekst/plodowe.txt?v=20260702c',
     en: './assets/tekst/plodowe.en.txt?v=20260701b',
     de: './assets/tekst/plodowe.de.txt?v=20260701b',
     fr: './assets/tekst/plodowe.fr.txt?v=20260701b',
@@ -93,7 +93,7 @@
     id: './assets/tekst/vulkani.id.txt?v=20260701a'
   };
   const FRESHWATER_ARTICLE_URLS = {
-    bg: './assets/tekst/sladkowodniRibi.txt?v=20260702a'
+    bg: './assets/tekst/sladkowodniRibi.txt?v=20260702c'
   };
 
   const marineAnimals = [
