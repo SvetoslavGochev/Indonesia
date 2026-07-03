@@ -1064,15 +1064,15 @@ function cacheContentElements() {
         return;
       }
 
-      const fruitReadButton = event.target.closest('.fruit-read-text');
-      if (fruitReadButton) {
-        openFruitInfoModal(Number(fruitReadButton.dataset.fruitReadIndex));
-        return;
-      }
-
       const treeReadButton = event.target.closest('.tree-read-text');
       if (treeReadButton) {
         openTreeInfoModal(Number(treeReadButton.dataset.treeReadIndex));
+        return;
+      }
+
+      const fruitReadButton = event.target.closest('.fruit-read-text');
+      if (fruitReadButton) {
+        openFruitInfoModal(Number(fruitReadButton.dataset.fruitReadIndex));
         return;
       }
 
