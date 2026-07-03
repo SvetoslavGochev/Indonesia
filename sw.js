@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v56';
+const CACHE_VERSION = 'v57';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -136,7 +136,8 @@ const IMAGE_ASSETS = [
   './assets/images/freshwater-tilapia.webp',
   './assets/images/freshwater-snakehead.webp',
   './assets/images/freshwater-prawn.webp',
-  './assets/images/freshwater-nile-perch.webp'
+  './assets/images/freshwater-nile-perch.webp',
+  './assets/images/land-rhino.jpg'
 ];
 
 self.addEventListener('install', (event) => {

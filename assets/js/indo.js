@@ -174,7 +174,7 @@
 
   const landAnimals = [
     {
-      image: './assets/images/park-ujung-kulon.webp',
+      image: './assets/images/land-rhino.jpg',
       sectionIndex: 0,
       name_bg: 'Явански носорог',
       name_en: 'Javan Rhino',
