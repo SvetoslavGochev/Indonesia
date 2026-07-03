@@ -76,6 +76,9 @@
     es: './assets/tekst/plodowe.es.txt?v=20260701b',
     id: './assets/tekst/plodowe.id.txt?v=20260701b'
   };
+  const TREES_ARTICLE_URLS = {
+    bg: './assets/tekst/dyrweta.txt?v=20260703a'
+  };
   const REKI_ARTICLE_URLS = {
     bg: './assets/tekst/reki.txt?v=20260701a',
     en: './assets/tekst/reki.en.txt?v=20260701a',
@@ -95,6 +98,8 @@
   const FRESHWATER_ARTICLE_URLS = {
     bg: './assets/tekst/sladkowodniRibi.txt?v=20260702c'
   };
+
+  const treesArticleByLanguage = {};
 
   const marineAnimals = [
     {
@@ -324,6 +329,69 @@
       name_fr: 'Durian',
       name_es: 'Durian',
       name_id: 'Durian'
+    }
+  ];
+
+  const trees = [
+    {
+      image: './assets/images/tree-rafflesia.webp',
+      sectionIndex: 0,
+      name_bg: 'Рафлезия',
+      name_en: 'Rafflesia',
+      name_de: 'Rafflesia',
+      name_fr: 'Rafflesia',
+      name_es: 'Rafflesia',
+      name_id: 'Rafflesia'
+    },
+    {
+      image: './assets/images/tree-amber.webp',
+      sectionIndex: 1,
+      name_bg: 'Амбър',
+      name_en: 'Amber Tree',
+      name_de: 'Bernsteibaum',
+      name_fr: 'Arbre ambré',
+      name_es: 'Arbol ámbar',
+      name_id: 'Pohon damar'
+    },
+    {
+      image: './assets/images/tree-teak.webp',
+      sectionIndex: 2,
+      name_bg: 'Теака',
+      name_en: 'Teak',
+      name_de: 'Teak',
+      name_fr: 'Teck',
+      name_es: 'Teca',
+      name_id: 'Jati'
+    },
+    {
+      image: './assets/images/tree-mangrove.webp',
+      sectionIndex: 3,
+      name_bg: 'Мангрови дървета',
+      name_en: 'Mangrove',
+      name_de: 'Mangrove',
+      name_fr: 'Mangrove',
+      name_es: 'Mangle',
+      name_id: 'Bakau'
+    },
+    {
+      image: './assets/images/tree-casuarina.webp',
+      sectionIndex: 4,
+      name_bg: 'Казуарина',
+      name_en: 'Casuarina',
+      name_de: 'Kasuarine',
+      name_fr: 'Casuarina',
+      name_es: 'Casuarina',
+      name_id: 'Cemara laut'
+    },
+    {
+      image: './assets/images/tree-banyan.webp',
+      sectionIndex: 5,
+      name_bg: 'Баньян',
+      name_en: 'Banyan',
+      name_de: 'Banyanbaum',
+      name_fr: 'Banyan',
+      name_es: 'Baniano',
+      name_id: 'Beringin'
     }
   ];
 
@@ -558,6 +626,7 @@ function cacheContentElements() {
     dom.freshwaterAnimalsTitle = document.getElementById('freshwaterAnimalsTitle');
     dom.birdsTitle = document.getElementById('birdsTitle');
     dom.fruitsTitle = document.getElementById('fruitsTitle');
+    dom.treesTitle = document.getElementById('treesTitle');
     dom.blogSectionTitle = document.getElementById('blogSectionTitle');
     dom.blogArticleTitle = document.getElementById('blogArticleTitle');
     dom.blogArticleExcerpt = document.getElementById('blogArticleExcerpt');
@@ -599,6 +668,8 @@ function cacheContentElements() {
     dom.birdReadTexts = Array.from(document.querySelectorAll('.bird-read-text'));
     dom.fruitNameTexts = Array.from(document.querySelectorAll('.fruit-name'));
     dom.fruitReadTexts = Array.from(document.querySelectorAll('.fruit-read-text'));
+    dom.treeNameTexts = Array.from(document.querySelectorAll('.tree-name'));
+    dom.treeReadTexts = Array.from(document.querySelectorAll('.tree-read-text'));
   }
 
   function setBodyScrollLocked(isLocked) {
@@ -719,9 +790,28 @@ function cacheContentElements() {
     }).join('');
   }
 
+  function createTreeCardsHtml() {
+    return trees.map(function (tree, index) {
+      return `
+              <article class="fruit-card tree-card" aria-label="tree-${index}">
+                <div class="fruit-image-placeholder tree-image-placeholder">
+                  <img class="fruit-image tree-image" src="${tree.image}" alt="${tree.name_en}" loading="lazy" decoding="async">
+                </div>
+                <div class="fruit-name tree-name" data-tree-index="${index}"></div>
+                <button class="fruit-read-text tree-read-text" type="button" data-tree-read-index="${index}"></button>
+              </article>
+      `;
+    }).join('');
+  }
+
   function getFruitName(fruit) {
     const key = `name_${currentLanguage}`;
     return fruit[key] || fruit.name_en || fruit.name_bg || '';
+  }
+
+  function getTreeName(tree) {
+    const key = `name_${currentLanguage}`;
+    return tree[key] || tree.name_en || tree.name_bg || '';
   }
 
   function createErrorHtml() {
@@ -872,6 +962,13 @@ function cacheContentElements() {
           </div>
         </div>
 
+        <div class="card">
+          <h2 id="treesTitle"></h2>
+          <div class="fruit-grid tree-grid">
+            ${createTreeCardsHtml()}
+          </div>
+        </div>
+
         <div class="card blog-card">
           <h2 id="blogSectionTitle"></h2>
           <div class="blog-preview">
@@ -973,6 +1070,12 @@ function cacheContentElements() {
         return;
       }
 
+      const treeReadButton = event.target.closest('.tree-read-text');
+      if (treeReadButton) {
+        openTreeInfoModal(Number(treeReadButton.dataset.treeReadIndex));
+        return;
+      }
+
       const cityCard = event.target.closest('.city-card');
       if (!cityCard) {
         return;
@@ -1007,6 +1110,7 @@ function cacheContentElements() {
     dom.freshwaterAnimalsTitle.textContent = getTranslation('freshwaterAnimalsTitle');
     dom.birdsTitle.textContent = getTranslation('birdsTitle');
     dom.fruitsTitle.textContent = getTranslation('fruitsTitle');
+    dom.treesTitle.textContent = getTranslation('treesTitle');
     dom.blogSectionTitle.textContent = getTranslation('blogSectionTitle');
     dom.blogArticleTitle.textContent = getTranslation('blogArticleTitle');
     dom.blogArticleExcerpt.textContent = getTranslation('blogArticleExcerpt');
@@ -1091,6 +1195,19 @@ function cacheContentElements() {
 
     dom.fruitReadTexts.forEach(function (readElement) {
       readElement.textContent = getTranslation('fruitsReadBtn');
+    });
+
+    dom.treeNameTexts.forEach(function (nameElement) {
+      const treeIndex = Number(nameElement.dataset.treeIndex);
+      const tree = trees[treeIndex];
+      if (!tree) {
+        return;
+      }
+      nameElement.textContent = getTreeName(tree);
+    });
+
+    dom.treeReadTexts.forEach(function (readElement) {
+      readElement.textContent = getTranslation('treesReadBtn');
     });
   }
 
@@ -1714,6 +1831,31 @@ function cacheContentElements() {
     }
   }
 
+  async function loadTreesArticle(lang) {
+    const requestedLang = TREES_ARTICLE_URLS[lang] ? lang : 'bg';
+    if (typeof treesArticleByLanguage[requestedLang] === 'string' && treesArticleByLanguage[requestedLang].length > 0) {
+      return treesArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(TREES_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('trees_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      treesArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      treesArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
   async function openFruitsBlogModal() {
     const languageAtOpen = currentLanguage;
     dom.blogModalTitle.textContent = getTranslation('blogArticle7Title');
@@ -1726,6 +1868,32 @@ function cacheContentElements() {
         return `${index + 1}. ${section.title}\n\n${section.content}`;
       }).join('\n\n');
       dom.blogModalContent.textContent = text || getTranslation('blogLoadError');
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function openTreeInfoModal(index) {
+    const tree = trees[index];
+    if (!tree) {
+      return;
+    }
+
+    const languageAtOpen = currentLanguage;
+
+    dom.blogModalTitle.textContent = getTreeName(tree);
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadTreesArticle(languageAtOpen);
+      const sections = parseWaterworldSections(articleText);
+      const selected = sections[tree.sectionIndex] || sections[index] || null;
+      if (selected) {
+        dom.blogModalContent.textContent = `${selected.title}\n\n${selected.content}`;
+      } else {
+        dom.blogModalContent.textContent = getTranslation('blogLoadError');
+      }
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');
     }

@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v51';
+const CACHE_VERSION = 'v52';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -61,6 +61,7 @@ const CORE_ASSETS = [
   './assets/tekst/plodowe.fr.txt',
   './assets/tekst/plodowe.es.txt',
   './assets/tekst/plodowe.id.txt',
+  './assets/tekst/dyrweta.txt',
   './assets/tekst/reki.txt',
   './assets/tekst/reki.en.txt',
   './assets/tekst/reki.de.txt',
@@ -115,6 +116,12 @@ const IMAGE_ASSETS = [
   './assets/images/fruit-longan.webp',
   './assets/images/fruit-salak.webp',
   './assets/images/fruit-durian.webp',
+  './assets/images/tree-rafflesia.webp',
+  './assets/images/tree-amber.webp',
+  './assets/images/tree-teak.webp',
+  './assets/images/tree-mangrove.webp',
+  './assets/images/tree-casuarina.webp',
+  './assets/images/tree-banyan.webp',
   './assets/images/freshwater-gourami.webp',
   './assets/images/freshwater-catfish.webp',
   './assets/images/freshwater-tilapia.webp',
