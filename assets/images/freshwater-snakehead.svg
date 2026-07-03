@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="373" viewBox="0 0 960 373" role="img" aria-label="Snakehead fish illustration">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#244a3d"/><stop offset="100%" stop-color="#44735f"/></linearGradient></defs>
+  <rect width="960" height="373" fill="url(#bg)"/>
+  <path d="M180 210c72-58 160-90 258-96 120-8 212 20 292 84-84 66-182 94-304 90-114-4-192-30-246-78z" fill="#a4c2a5"/>
+  <ellipse cx="726" cy="200" rx="36" ry="24" fill="#a4c2a5"/>
+  <circle cx="744" cy="194" r="5" fill="#355247"/>
+  <path d="M180 210l-64-46v94z" fill="#94b297"/>
+  <path d="M300 182c130-28 246-18 352 26" stroke="#7ea286" stroke-width="5" fill="none"/>
+</svg>

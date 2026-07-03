@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="373" viewBox="0 0 960 373" role="img" aria-label="Tilapia illustration">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1f5e6b"/><stop offset="100%" stop-color="#3b9aa8"/></linearGradient></defs>
+  <rect width="960" height="373" fill="url(#bg)"/>
+  <ellipse cx="395" cy="186" rx="170" ry="82" fill="#b3dde1"/>
+  <ellipse cx="545" cy="186" rx="30" ry="24" fill="#b3dde1"/>
+  <circle cx="560" cy="180" r="5" fill="#285865"/>
+  <path d="M250 186l-54-42v84z" fill="#a1ced5"/>
+  <path d="M350 118l80-36 30 24-76 30z" fill="#9ecbd2"/>
+  <path d="M320 165h180" stroke="#86b9c3" stroke-width="4"/>
+  <path d="M320 205h180" stroke="#86b9c3" stroke-width="4"/>
+</svg>

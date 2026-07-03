@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="373" viewBox="0 0 960 373" role="img" aria-label="Nile perch illustration">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#1b4f62"/><stop offset="100%" stop-color="#2f86a0"/></linearGradient></defs>
+  <rect width="960" height="373" fill="url(#bg)"/>
+  <ellipse cx="400" cy="190" rx="185" ry="86" fill="#b6d7de"/>
+  <ellipse cx="565" cy="190" rx="36" ry="27" fill="#b6d7de"/>
+  <circle cx="583" cy="184" r="5" fill="#2f5a66"/>
+  <path d="M240 190l-62-46v92z" fill="#a3c7d0"/>
+  <path d="M340 112l92-44 34 24-92 38z" fill="#9ec4ce"/>
+  <path d="M332 160c84-18 160-18 244 0" stroke="#90b8c3" stroke-width="5" fill="none"/>
+  <path d="M332 218c84 18 160 18 244 0" stroke="#90b8c3" stroke-width="5" fill="none"/>
+</svg>

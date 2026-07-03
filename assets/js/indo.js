@@ -79,6 +79,9 @@
   const TREES_ARTICLE_URLS = {
     bg: './assets/tekst/dyrweta.txt?v=20260703a'
   };
+  const PARKS_ARTICLE_URLS = {
+    bg: './assets/tekst/parkove.txt?v=20260703a'
+  };
   const REKI_ARTICLE_URLS = {
     bg: './assets/tekst/reki.txt?v=20260701a',
     en: './assets/tekst/reki.en.txt?v=20260701a',
@@ -100,6 +103,7 @@
   };
 
   const treesArticleByLanguage = {};
+  const parksArticleByLanguage = {};
 
   const marineAnimals = [
     {
@@ -395,6 +399,69 @@
     }
   ];
 
+  const parks = [
+    {
+      image: './assets/images/park-komodo.webp',
+      sectionIndex: 0,
+      name_bg: 'Комодо',
+      name_en: 'Komodo National Park',
+      name_de: 'Komodo-Nationalpark',
+      name_fr: 'Parc national de Komodo',
+      name_es: 'Parque nacional de Komodo',
+      name_id: 'Taman Nasional Komodo'
+    },
+    {
+      image: './assets/images/park-bromo.webp',
+      sectionIndex: 1,
+      name_bg: 'Бромо-Тенгер-Семеру',
+      name_en: 'Bromo Tengger Semeru National Park',
+      name_de: 'Nationalpark Bromo-Tengger-Semeru',
+      name_fr: 'Parc national Bromo-Tengger-Semeru',
+      name_es: 'Parque nacional Bromo-Tengger-Semeru',
+      name_id: 'Taman Nasional Bromo Tengger Semeru'
+    },
+    {
+      image: './assets/images/park-ujung-kulon.webp',
+      sectionIndex: 2,
+      name_bg: 'Уджунг Кулон',
+      name_en: 'Ujung Kulon National Park',
+      name_de: 'Ujung-Kulon-Nationalpark',
+      name_fr: 'Parc national d’Ujung Kulon',
+      name_es: 'Parque nacional Ujung Kulon',
+      name_id: 'Taman Nasional Ujung Kulon'
+    },
+    {
+      image: './assets/images/park-gunung-leuser.webp',
+      sectionIndex: 3,
+      name_bg: 'Гунунг Лейзер',
+      name_en: 'Gunung Leuser National Park',
+      name_de: 'Gunung-Leuser-Nationalpark',
+      name_fr: 'Parc national de Gunung Leuser',
+      name_es: 'Parque nacional Gunung Leuser',
+      name_id: 'Taman Nasional Gunung Leuser'
+    },
+    {
+      image: './assets/images/park-lorentz.webp',
+      sectionIndex: 4,
+      name_bg: 'Лоренц',
+      name_en: 'Lorentz National Park',
+      name_de: 'Lorentz-Nationalpark',
+      name_fr: 'Parc national de Lorentz',
+      name_es: 'Parque nacional Lorentz',
+      name_id: 'Taman Nasional Lorentz'
+    },
+    {
+      image: './assets/images/park-tanjung-puting.webp',
+      sectionIndex: 5,
+      name_bg: 'Танджунг Путинг',
+      name_en: 'Tanjung Puting National Park',
+      name_de: 'Tanjung-Puting-Nationalpark',
+      name_fr: 'Parc national de Tanjung Puting',
+      name_es: 'Parque nacional Tanjung Puting',
+      name_id: 'Taman Nasional Tanjung Puting'
+    }
+  ];
+
   const freshwaterAnimals = [
     {
       image: './assets/images/freshwater-gourami.webp',
@@ -546,6 +613,7 @@
   const top3FoodArticleTextByLanguage = {};
   const fruitSectionsByLanguage = {};
   const freshwaterSectionsByLanguage = {};
+  const parksSectionsByLanguage = {};
   let visitCountValue = null;
 
   function cacheDomElements() {
@@ -626,6 +694,7 @@ function cacheContentElements() {
     dom.freshwaterAnimalsTitle = document.getElementById('freshwaterAnimalsTitle');
     dom.birdsTitle = document.getElementById('birdsTitle');
     dom.fruitsTitle = document.getElementById('fruitsTitle');
+    dom.parksTitle = document.getElementById('parksTitle');
     dom.treesTitle = document.getElementById('treesTitle');
     dom.blogSectionTitle = document.getElementById('blogSectionTitle');
     dom.blogArticleTitle = document.getElementById('blogArticleTitle');
@@ -668,6 +737,8 @@ function cacheContentElements() {
     dom.birdReadTexts = Array.from(document.querySelectorAll('.bird-read-text'));
     dom.fruitNameTexts = Array.from(document.querySelectorAll('.fruit-name'));
     dom.fruitReadTexts = Array.from(document.querySelectorAll('.fruit-read-text'));
+    dom.parkNameTexts = Array.from(document.querySelectorAll('.park-name'));
+    dom.parkReadTexts = Array.from(document.querySelectorAll('.park-read-text'));
     dom.treeNameTexts = Array.from(document.querySelectorAll('.tree-name'));
     dom.treeReadTexts = Array.from(document.querySelectorAll('.tree-read-text'));
   }
@@ -721,12 +792,12 @@ function cacheContentElements() {
   function createFreshwaterAnimalsCardsHtml() {
     return freshwaterAnimals.map(function (animal, index) {
       return `
-              <article class="marine-card freshwater-card" aria-label="freshwater-animal-${index}">
-                <div class="marine-image-placeholder freshwater-image-placeholder">
-                  <img class="marine-image freshwater-image" src="${animal.image}" alt="${animal.name_en}" loading="lazy" decoding="async">
+              <article class="fruit-card freshwater-card" aria-label="freshwater-animal-${index}">
+                <div class="fruit-image-placeholder freshwater-image-placeholder">
+                  <img class="fruit-image freshwater-image" src="${animal.image}" alt="${animal.name_en}" loading="lazy" decoding="async">
                 </div>
-                <div class="marine-name freshwater-name" data-freshwater-index="${index}"></div>
-                <button class="marine-read-text freshwater-read-text" type="button" data-freshwater-read-index="${index}"></button>
+                <div class="fruit-name freshwater-name" data-freshwater-index="${index}"></div>
+                <button class="fruit-read-text freshwater-read-text" type="button" data-freshwater-read-index="${index}"></button>
               </article>
       `;
     }).join('');
@@ -790,6 +861,20 @@ function cacheContentElements() {
     }).join('');
   }
 
+  function createParkCardsHtml() {
+    return parks.map(function (park, index) {
+      return `
+              <article class="fruit-card park-card" aria-label="park-${index}">
+                <div class="fruit-image-placeholder park-image-placeholder">
+                  <img class="fruit-image park-image" src="${park.image}" alt="${park.name_en}" loading="lazy" decoding="async">
+                </div>
+                <div class="fruit-name park-name" data-park-index="${index}"></div>
+                <button class="fruit-read-text park-read-text" type="button" data-park-read-index="${index}"></button>
+              </article>
+      `;
+    }).join('');
+  }
+
   function createTreeCardsHtml() {
     return trees.map(function (tree, index) {
       return `
@@ -807,6 +892,11 @@ function cacheContentElements() {
   function getFruitName(fruit) {
     const key = `name_${currentLanguage}`;
     return fruit[key] || fruit.name_en || fruit.name_bg || '';
+  }
+
+  function getParkName(park) {
+    const key = `name_${currentLanguage}`;
+    return park[key] || park.name_en || park.name_bg || '';
   }
 
   function getTreeName(tree) {
@@ -943,7 +1033,7 @@ function cacheContentElements() {
 
         <div class="card">
           <h2 id="freshwaterAnimalsTitle"></h2>
-          <div class="marine-grid freshwater-grid">
+          <div class="fruit-grid freshwater-grid">
             ${createFreshwaterAnimalsCardsHtml()}
           </div>
         </div>
@@ -959,6 +1049,13 @@ function cacheContentElements() {
           <h2 id="fruitsTitle"></h2>
           <div class="fruit-grid">
             ${createFruitCardsHtml()}
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 id="parksTitle"></h2>
+          <div class="fruit-grid parks-grid">
+            ${createParkCardsHtml()}
           </div>
         </div>
 
@@ -1070,6 +1167,12 @@ function cacheContentElements() {
         return;
       }
 
+      const parkReadButton = event.target.closest('.park-read-text');
+      if (parkReadButton) {
+        openParkInfoModal(Number(parkReadButton.dataset.parkReadIndex));
+        return;
+      }
+
       const fruitReadButton = event.target.closest('.fruit-read-text');
       if (fruitReadButton) {
         openFruitInfoModal(Number(fruitReadButton.dataset.fruitReadIndex));
@@ -1110,6 +1213,7 @@ function cacheContentElements() {
     dom.freshwaterAnimalsTitle.textContent = getTranslation('freshwaterAnimalsTitle');
     dom.birdsTitle.textContent = getTranslation('birdsTitle');
     dom.fruitsTitle.textContent = getTranslation('fruitsTitle');
+    dom.parksTitle.textContent = getTranslation('parksTitle');
     dom.treesTitle.textContent = getTranslation('treesTitle');
     dom.blogSectionTitle.textContent = getTranslation('blogSectionTitle');
     dom.blogArticleTitle.textContent = getTranslation('blogArticleTitle');
@@ -1195,6 +1299,19 @@ function cacheContentElements() {
 
     dom.fruitReadTexts.forEach(function (readElement) {
       readElement.textContent = getTranslation('fruitsReadBtn');
+    });
+
+    dom.parkNameTexts.forEach(function (nameElement) {
+      const parkIndex = Number(nameElement.dataset.parkIndex);
+      const park = parks[parkIndex];
+      if (!park) {
+        return;
+      }
+      nameElement.textContent = getParkName(park);
+    });
+
+    dom.parkReadTexts.forEach(function (readElement) {
+      readElement.textContent = getTranslation('parksReadBtn');
     });
 
     dom.treeNameTexts.forEach(function (nameElement) {
@@ -1831,6 +1948,31 @@ function cacheContentElements() {
     }
   }
 
+  async function loadParksArticle(lang) {
+    const requestedLang = PARKS_ARTICLE_URLS[lang] ? lang : 'bg';
+    if (typeof parksArticleByLanguage[requestedLang] === 'string' && parksArticleByLanguage[requestedLang].length > 0) {
+      return parksArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(PARKS_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('parks_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      parksArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      parksArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
   async function loadTreesArticle(lang) {
     const requestedLang = TREES_ARTICLE_URLS[lang] ? lang : 'bg';
     if (typeof treesArticleByLanguage[requestedLang] === 'string' && treesArticleByLanguage[requestedLang].length > 0) {
@@ -2192,6 +2334,32 @@ function cacheContentElements() {
     try {
       const sections = await loadFruitSections(languageAtOpen);
       const selected = sections[fruit.sectionIndex] || sections[index] || null;
+      if (selected) {
+        dom.blogModalContent.textContent = `${selected.title}\n\n${selected.content}`;
+      } else {
+        dom.blogModalContent.textContent = getTranslation('blogLoadError');
+      }
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function openParkInfoModal(index) {
+    const park = parks[index];
+    if (!park) {
+      return;
+    }
+
+    const languageAtOpen = currentLanguage;
+
+    dom.blogModalTitle.textContent = getParkName(park);
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadParksArticle(languageAtOpen);
+      const sections = parseWaterworldSections(articleText);
+      const selected = sections[park.sectionIndex] || sections[index] || null;
       if (selected) {
         dom.blogModalContent.textContent = `${selected.title}\n\n${selected.content}`;
       } else {
