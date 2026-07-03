@@ -184,7 +184,7 @@
       name_id: 'Badak Jawa'
     },
     {
-      image: './assets/images/park-gunung-leuser.webp',
+      image: './assets/images/land-tiger.jpg',
       sectionIndex: 1,
       name_bg: 'Суматренски тигър',
       name_en: 'Sumatran Tiger',
@@ -194,7 +194,7 @@
       name_id: 'Harimau Sumatra'
     },
     {
-      image: './assets/images/park-tanjung-puting.webp',
+      image: './assets/images/land-orangutan.jpg',
       sectionIndex: 2,
       name_bg: 'Орангутан',
       name_en: 'Orangutan',
@@ -204,7 +204,7 @@
       name_id: 'Orangutan'
     },
     {
-      image: './assets/images/park-komodo.webp',
+      image: './assets/images/land-komodo.jpg',
       sectionIndex: 3,
       name_bg: 'Комодски варан',
       name_en: 'Komodo Dragon',
@@ -214,7 +214,7 @@
       name_id: 'Komodo'
     },
     {
-      image: './assets/images/park-lorentz.webp',
+      image: './assets/images/land-elephant.jpg',
       sectionIndex: 4,
       name_bg: 'Суматренски слон',
       name_en: 'Sumatran Elephant',
@@ -224,7 +224,7 @@
       name_id: 'Gajah Sumatra'
     },
     {
-      image: './assets/images/indonesian-animals.avif',
+      image: './assets/images/land-babirusa.jpg',
       sectionIndex: 5,
       name_bg: 'Бабируса',
       name_en: 'Babirusa',
