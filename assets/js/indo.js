@@ -77,10 +77,20 @@
     id: './assets/tekst/plodowe.id.txt?v=20260701b'
   };
   const TREES_ARTICLE_URLS = {
-    bg: './assets/tekst/dyrweta.txt?v=20260703a'
+    bg: './assets/tekst/dyrweta.txt?v=20260703b',
+    en: './assets/tekst/dyrweta.en.txt?v=20260703b',
+    de: './assets/tekst/dyrweta.de.txt?v=20260703b',
+    fr: './assets/tekst/dyrweta.fr.txt?v=20260703b',
+    es: './assets/tekst/dyrweta.es.txt?v=20260703b',
+    id: './assets/tekst/dyrweta.id.txt?v=20260703b'
   };
   const PARKS_ARTICLE_URLS = {
-    bg: './assets/tekst/parkove.txt?v=20260703a'
+    bg: './assets/tekst/parkove.txt?v=20260703b',
+    en: './assets/tekst/parkove.en.txt?v=20260703b',
+    de: './assets/tekst/parkove.de.txt?v=20260703b',
+    fr: './assets/tekst/parkove.fr.txt?v=20260703b',
+    es: './assets/tekst/parkove.es.txt?v=20260703b',
+    id: './assets/tekst/parkove.id.txt?v=20260703b'
   };
   const REKI_ARTICLE_URLS = {
     bg: './assets/tekst/reki.txt?v=20260701a',

@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v59';
+const CACHE_VERSION = 'v60';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -62,7 +62,17 @@ const CORE_ASSETS = [
   './assets/tekst/plodowe.es.txt',
   './assets/tekst/plodowe.id.txt',
   './assets/tekst/dyrweta.txt',
+  './assets/tekst/dyrweta.en.txt',
+  './assets/tekst/dyrweta.de.txt',
+  './assets/tekst/dyrweta.fr.txt',
+  './assets/tekst/dyrweta.es.txt',
+  './assets/tekst/dyrweta.id.txt',
   './assets/tekst/parkove.txt',
+  './assets/tekst/parkove.en.txt',
+  './assets/tekst/parkove.de.txt',
+  './assets/tekst/parkove.fr.txt',
+  './assets/tekst/parkove.es.txt',
+  './assets/tekst/parkove.id.txt',
   './assets/tekst/vlak.txt',
   './assets/tekst/reki.txt',
   './assets/tekst/reki.en.txt',
