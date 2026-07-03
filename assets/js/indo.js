@@ -96,6 +96,9 @@
   const FRESHWATER_ARTICLE_URLS = {
     bg: './assets/tekst/sladkowodniRibi.txt?v=20260702c'
   };
+  const LAND_ANIMALS_ARTICLE_URLS = {
+    bg: './assets/tekst/zemniviwotni.txt?v=20260703a'
+  };
 
   const treesArticleByLanguage = {};
   const parksArticleByLanguage = {};
@@ -166,6 +169,69 @@
       name_fr: 'Requin-baleine',
       name_es: 'Tiburon ballena',
       name_id: 'Hiu paus'
+    }
+  ];
+
+  const landAnimals = [
+    {
+      image: './assets/images/park-ujung-kulon.webp',
+      sectionIndex: 0,
+      name_bg: 'Явански носорог',
+      name_en: 'Javan Rhino',
+      name_de: 'Java-Nashorn',
+      name_fr: 'Rhinoceros de Java',
+      name_es: 'Rinoceronte de Java',
+      name_id: 'Badak Jawa'
+    },
+    {
+      image: './assets/images/park-gunung-leuser.webp',
+      sectionIndex: 1,
+      name_bg: 'Суматренски тигър',
+      name_en: 'Sumatran Tiger',
+      name_de: 'Sumatra-Tiger',
+      name_fr: 'Tigre de Sumatra',
+      name_es: 'Tigre de Sumatra',
+      name_id: 'Harimau Sumatra'
+    },
+    {
+      image: './assets/images/park-tanjung-puting.webp',
+      sectionIndex: 2,
+      name_bg: 'Орангутан',
+      name_en: 'Orangutan',
+      name_de: 'Orang-Utan',
+      name_fr: 'Orang-outan',
+      name_es: 'Orangutan',
+      name_id: 'Orangutan'
+    },
+    {
+      image: './assets/images/park-komodo.webp',
+      sectionIndex: 3,
+      name_bg: 'Комодски варан',
+      name_en: 'Komodo Dragon',
+      name_de: 'Komodowaran',
+      name_fr: 'Dragon de Komodo',
+      name_es: 'Dragon de Komodo',
+      name_id: 'Komodo'
+    },
+    {
+      image: './assets/images/park-lorentz.webp',
+      sectionIndex: 4,
+      name_bg: 'Суматренски слон',
+      name_en: 'Sumatran Elephant',
+      name_de: 'Sumatra-Elefant',
+      name_fr: 'Elephant de Sumatra',
+      name_es: 'Elefante de Sumatra',
+      name_id: 'Gajah Sumatra'
+    },
+    {
+      image: './assets/images/park-bromo.webp',
+      sectionIndex: 5,
+      name_bg: 'Бабируса',
+      name_en: 'Babirusa',
+      name_de: 'Babirusa',
+      name_fr: 'Babiroussa',
+      name_es: 'Babirusa',
+      name_id: 'Babirusa'
     }
   ];
 
@@ -608,6 +674,7 @@
   const sportsArticleTextByLanguage = {};
   const top3FoodArticleTextByLanguage = {};
   const fruitSectionsByLanguage = {};
+  const landSectionsByLanguage = {};
   const freshwaterSectionsByLanguage = {};
   const parksSectionsByLanguage = {};
   let visitCountValue = null;
@@ -687,6 +754,7 @@ function cacheContentElements() {
     dom.ticketInfoBtn = document.getElementById('ticketInfoBtn');
     dom.majorCitiesTitle = document.getElementById('majorCitiesTitle');
     dom.marineAnimalsTitle = document.getElementById('marineAnimalsTitle');
+    dom.landAnimalsTitle = document.getElementById('landAnimalsTitle');
     dom.freshwaterAnimalsTitle = document.getElementById('freshwaterAnimalsTitle');
     dom.birdsTitle = document.getElementById('birdsTitle');
     dom.fruitsTitle = document.getElementById('fruitsTitle');
@@ -730,6 +798,8 @@ function cacheContentElements() {
     dom.cityPopulationTexts = Array.from(document.querySelectorAll('.city-population'));
     dom.marineNameTexts = Array.from(document.querySelectorAll('.marine-name'));
     dom.marineReadTexts = Array.from(document.querySelectorAll('.marine-read-text'));
+    dom.landNameTexts = Array.from(document.querySelectorAll('.land-name'));
+    dom.landReadTexts = Array.from(document.querySelectorAll('.land-read-text'));
     dom.freshwaterNameTexts = Array.from(document.querySelectorAll('.freshwater-name'));
     dom.freshwaterReadTexts = Array.from(document.querySelectorAll('.freshwater-read-text'));
     dom.birdNameTexts = Array.from(document.querySelectorAll('.bird-name'));
@@ -802,12 +872,31 @@ function cacheContentElements() {
     }).join('');
   }
 
+  function createLandAnimalsCardsHtml() {
+    return landAnimals.map(function (animal, index) {
+      return `
+              <article class="fruit-card land-card" aria-label="land-animal-${index}">
+                <div class="fruit-image-placeholder land-image-placeholder">
+                  <img class="fruit-image land-image" src="${animal.image}" alt="${animal.name_en}" loading="lazy" decoding="async">
+                </div>
+                <div class="fruit-name land-name" data-land-index="${index}"></div>
+                <button class="fruit-read-text land-read-text" type="button" data-land-read-index="${index}"></button>
+              </article>
+      `;
+    }).join('');
+  }
+
   function getMarineAnimalName(animal) {
     const key = `name_${currentLanguage}`;
     return animal[key] || animal.name_en || animal.name_bg || '';
   }
 
   function getFreshwaterAnimalName(animal) {
+    const key = `name_${currentLanguage}`;
+    return animal[key] || animal.name_en || animal.name_bg || '';
+  }
+
+  function getLandAnimalName(animal) {
     const key = `name_${currentLanguage}`;
     return animal[key] || animal.name_en || animal.name_bg || '';
   }
@@ -1031,6 +1120,13 @@ function cacheContentElements() {
         </div>
 
         <div class="card">
+          <h2 id="landAnimalsTitle"></h2>
+          <div class="fruit-grid land-grid">
+            ${createLandAnimalsCardsHtml()}
+          </div>
+        </div>
+
+        <div class="card">
           <h2 id="freshwaterAnimalsTitle"></h2>
           <div class="fruit-grid freshwater-grid">
             ${createFreshwaterAnimalsCardsHtml()}
@@ -1166,6 +1262,12 @@ function cacheContentElements() {
         return;
       }
 
+      const landReadButton = event.target.closest('.land-read-text');
+      if (landReadButton) {
+        openLandInfoModal(Number(landReadButton.dataset.landReadIndex));
+        return;
+      }
+
       const treeReadButton = event.target.closest('.tree-read-text');
       if (treeReadButton) {
         openTreeInfoModal(Number(treeReadButton.dataset.treeReadIndex));
@@ -1215,6 +1317,7 @@ function cacheContentElements() {
     });
     dom.majorCitiesTitle.textContent = getTranslation('majorCities');
     dom.marineAnimalsTitle.textContent = getTranslation('marineAnimalsTitle');
+    dom.landAnimalsTitle.textContent = getTranslation('landAnimalsTitle');
     dom.freshwaterAnimalsTitle.textContent = getTranslation('freshwaterAnimalsTitle');
     dom.birdsTitle.textContent = getTranslation('birdsTitle');
     dom.fruitsTitle.textContent = getTranslation('fruitsTitle');
@@ -1268,6 +1371,19 @@ function cacheContentElements() {
 
     dom.marineReadTexts.forEach(function (readElement) {
       readElement.textContent = getTranslation('marineReadBtn');
+    });
+
+    dom.landNameTexts.forEach(function (nameElement) {
+      const animalIndex = Number(nameElement.dataset.landIndex);
+      const animal = landAnimals[animalIndex];
+      if (!animal) {
+        return;
+      }
+      nameElement.textContent = getLandAnimalName(animal);
+    });
+
+    dom.landReadTexts.forEach(function (readElement) {
+      readElement.textContent = getTranslation('landReadBtn');
     });
 
     dom.freshwaterNameTexts.forEach(function (nameElement) {
@@ -2246,6 +2362,57 @@ function cacheContentElements() {
     try {
       const sections = await loadWaterworldSections(languageAtOpen);
       const selected = getWaterworldSectionForAnimal(sections, animal, index);
+      if (selected) {
+        dom.blogModalContent.textContent = `${selected.title}\n\n${selected.content}`;
+      } else {
+        dom.blogModalContent.textContent = getTranslation('blogLoadError');
+      }
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadLandSections(lang) {
+    const requestedLang = LAND_ANIMALS_ARTICLE_URLS[lang] ? lang : 'bg';
+    if (Array.isArray(landSectionsByLanguage[requestedLang]) && landSectionsByLanguage[requestedLang].length > 0) {
+      return landSectionsByLanguage[requestedLang];
+    }
+
+    async function fetchSections(languageCode) {
+      const response = await fetch(LAND_ANIMALS_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('land_animals_load_failed');
+      }
+      const articleText = await response.text();
+      return parseWaterworldSections(articleText);
+    }
+
+    try {
+      const sections = await fetchSections(requestedLang);
+      landSectionsByLanguage[requestedLang] = sections;
+      return sections;
+    } catch (error) {
+      const bulgarianSections = await fetchSections('bg');
+      landSectionsByLanguage.bg = bulgarianSections;
+      return bulgarianSections;
+    }
+  }
+
+  async function openLandInfoModal(index) {
+    const animal = landAnimals[index];
+    if (!animal) {
+      return;
+    }
+
+    const languageAtOpen = currentLanguage;
+
+    dom.blogModalTitle.textContent = getLandAnimalName(animal);
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const sections = await loadLandSections(languageAtOpen);
+      const selected = sections[animal.sectionIndex] || sections[index] || null;
       if (selected) {
         dom.blogModalContent.textContent = `${selected.title}\n\n${selected.content}`;
       } else {

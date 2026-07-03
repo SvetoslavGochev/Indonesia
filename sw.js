@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v55';
+const CACHE_VERSION = 'v56';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -77,6 +77,7 @@ const CORE_ASSETS = [
   './assets/tekst/vulkani.es.txt',
   './assets/tekst/vulkani.id.txt',
   './assets/tekst/sladkowodniRibi.txt',
+  './assets/tekst/zemniviwotni.txt',
   './assets/tekst/птици.txt',
   './assets/tekst/birds.en.txt',
   './assets/tekst/birds.de.txt',
