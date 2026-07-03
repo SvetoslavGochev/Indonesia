@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v58';
+const CACHE_VERSION = 'v59';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -78,6 +78,11 @@ const CORE_ASSETS = [
   './assets/tekst/vulkani.id.txt',
   './assets/tekst/sladkowodniRibi.txt',
   './assets/tekst/zemniviwotni.txt',
+  './assets/tekst/zemniviwotni.en.txt',
+  './assets/tekst/zemniviwotni.de.txt',
+  './assets/tekst/zemniviwotni.fr.txt',
+  './assets/tekst/zemniviwotni.es.txt',
+  './assets/tekst/zemniviwotni.id.txt',
   './assets/tekst/птици.txt',
   './assets/tekst/birds.en.txt',
   './assets/tekst/birds.de.txt',

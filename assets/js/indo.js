@@ -97,7 +97,12 @@
     bg: './assets/tekst/sladkowodniRibi.txt?v=20260702c'
   };
   const LAND_ANIMALS_ARTICLE_URLS = {
-    bg: './assets/tekst/zemniviwotni.txt?v=20260703a'
+    bg: './assets/tekst/zemniviwotni.txt?v=20260703b',
+    en: './assets/tekst/zemniviwotni.en.txt?v=20260703b',
+    de: './assets/tekst/zemniviwotni.de.txt?v=20260703b',
+    fr: './assets/tekst/zemniviwotni.fr.txt?v=20260703b',
+    es: './assets/tekst/zemniviwotni.es.txt?v=20260703b',
+    id: './assets/tekst/zemniviwotni.id.txt?v=20260703b'
   };
 
   const treesArticleByLanguage = {};
