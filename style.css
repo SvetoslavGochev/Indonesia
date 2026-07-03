@@ -407,6 +407,25 @@ header p {
     box-shadow: 0 10px 24px rgba(12, 38, 88, 0.3);
 }
 
+.land-card {
+    background: linear-gradient(135deg, #2f7a43 0%, #245f33 55%, #1f4f2c 100%);
+    box-shadow: 0 10px 24px rgba(9, 43, 24, 0.34);
+}
+
+.land-image-placeholder {
+    border-color: rgba(207, 241, 216, 0.62);
+    background: rgba(7, 39, 19, 0.28);
+}
+
+.land-image {
+    transform: scale(1.03);
+    transition: transform 0.22s ease;
+}
+
+.land-card:hover .land-image {
+    transform: scale(1.08);
+}
+
 .marine-image-placeholder {
     border: 2px dashed rgba(220, 234, 255, 0.55);
     border-radius: 10px;
@@ -483,6 +502,13 @@ header p {
 .bird-card:nth-child(6) .bird-image { object-position: center 24%; }
 .bird-card:nth-child(7) .bird-image { object-position: center 18%; }
 .bird-card:nth-child(8) .bird-image { object-position: center 16%; }
+
+.land-card:nth-child(1) .land-image { object-position: center 26%; }
+.land-card:nth-child(2) .land-image { object-position: center 38%; }
+.land-card:nth-child(3) .land-image { object-position: center 33%; }
+.land-card:nth-child(4) .land-image { object-position: center 48%; }
+.land-card:nth-child(5) .land-image { object-position: center 42%; }
+.land-card:nth-child(6) .land-image { object-position: center 34%; }
 
 
 

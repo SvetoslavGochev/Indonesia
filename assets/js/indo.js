@@ -224,7 +224,7 @@
       name_id: 'Gajah Sumatra'
     },
     {
-      image: './assets/images/park-bromo.webp',
+      image: './assets/images/indonesian-animals.avif',
       sectionIndex: 5,
       name_bg: 'Бабируса',
       name_en: 'Babirusa',
