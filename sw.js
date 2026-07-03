@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v54';
+const CACHE_VERSION = 'v55';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -63,6 +63,7 @@ const CORE_ASSETS = [
   './assets/tekst/plodowe.id.txt',
   './assets/tekst/dyrweta.txt',
   './assets/tekst/parkove.txt',
+  './assets/tekst/vlak.txt',
   './assets/tekst/reki.txt',
   './assets/tekst/reki.en.txt',
   './assets/tekst/reki.de.txt',
