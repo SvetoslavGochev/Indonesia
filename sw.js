@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v63';
+const CACHE_VERSION = 'v64';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -81,6 +81,7 @@ const CORE_ASSETS = [
   './assets/tekst/vlak1.es.txt',
   './assets/tekst/vlak1.id.txt',
   './assets/tekst/borneoPytuvane.txt',
+  './assets/tekst/motorsport.txt',
   './assets/tekst/reki.txt',
   './assets/tekst/reki.en.txt',
   './assets/tekst/reki.de.txt',

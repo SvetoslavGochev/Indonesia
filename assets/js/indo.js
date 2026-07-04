@@ -114,6 +114,9 @@
   const BORNEO_ARTICLE_URLS = {
     bg: './assets/tekst/borneoPytuvane.txt?v=20260704a'
   };
+  const MOTORSPORT_ARTICLE_URLS = {
+    bg: './assets/tekst/motorsport.txt?v=20260704a'
+  };
   const FRESHWATER_ARTICLE_URLS = {
     bg: './assets/tekst/sladkowodniRibi.txt?v=20260702c'
   };
@@ -629,6 +632,7 @@
   const trainArticleByLanguage = {};
   const trainStoryArticleByLanguage = {};
   const borneoArticleByLanguage = {};
+  const motorsportArticleByLanguage = {};
 
   const countryInfoFields = [
     { labelKey: 'capital', value: indonesiaData.country.capital, id: 'capitalLabel' },
@@ -825,6 +829,9 @@ function cacheContentElements() {
     dom.blogArticle12Title = document.getElementById('blogArticle12Title');
     dom.blogArticle12Excerpt = document.getElementById('blogArticle12Excerpt');
     dom.blogReadBtn12 = document.getElementById('blogReadBtn12');
+    dom.blogArticle13Title = document.getElementById('blogArticle13Title');
+    dom.blogArticle13Excerpt = document.getElementById('blogArticle13Excerpt');
+    dom.blogReadBtn13 = document.getElementById('blogReadBtn13');
     dom.dataNotice = document.getElementById('dataNotice');
     countryInfoFields.forEach(function (field) {
       dom[field.id] = document.getElementById(field.id);
@@ -1257,6 +1264,11 @@ function cacheContentElements() {
             <p id="blogArticle12Excerpt" class="blog-excerpt"></p>
             <button id="blogReadBtn12" class="blog-read-btn" type="button"></button>
           </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle13Title"></h3>
+            <p id="blogArticle13Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn13" class="blog-read-btn" type="button"></button>
+          </div>
         </div>
 
         <div class="api-notice" id="dataNotice"></div>
@@ -1289,6 +1301,7 @@ function cacheContentElements() {
     dom.blogReadBtn10.addEventListener('click', openTrainBlogModal);
     dom.blogReadBtn11.addEventListener('click', openTrainStoryBlogModal);
     dom.blogReadBtn12.addEventListener('click', openBorneoBlogModal);
+    dom.blogReadBtn13.addEventListener('click', openMotorsportBlogModal);
     dom.content.addEventListener('click', function (event) {
       const freshwaterReadButton = event.target.closest('.freshwater-read-text');
       if (freshwaterReadButton) {
@@ -1406,6 +1419,9 @@ function cacheContentElements() {
     dom.blogArticle12Title.textContent = getTranslation('blogArticle12Title');
     dom.blogArticle12Excerpt.textContent = getTranslation('blogArticle12Excerpt');
     dom.blogReadBtn12.textContent = getTranslation('blogReadBtn12');
+    dom.blogArticle13Title.textContent = getTranslation('blogArticle13Title');
+    dom.blogArticle13Excerpt.textContent = getTranslation('blogArticle13Excerpt');
+    dom.blogReadBtn13.textContent = getTranslation('blogReadBtn13');
     dom.dataNotice.textContent = getTranslation('dataNotice');
 
     dom.cityPopulationTexts.forEach(function (populationElement) {
@@ -2402,6 +2418,43 @@ function cacheContentElements() {
 
     try {
       const articleText = await loadBorneoArticle();
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadMotorsportArticle() {
+    if (typeof motorsportArticleByLanguage.bg === 'string' && motorsportArticleByLanguage.bg.length > 0) {
+      return motorsportArticleByLanguage.bg;
+    }
+
+    async function fetchArticle() {
+      const response = await fetch(MOTORSPORT_ARTICLE_URLS.bg);
+      if (!response.ok) {
+        throw new Error('motorsport_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle();
+      motorsportArticleByLanguage.bg = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle();
+      motorsportArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openMotorsportBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle13Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadMotorsportArticle();
       dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');
