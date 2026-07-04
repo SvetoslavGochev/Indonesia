@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v60';
+const CACHE_VERSION = 'v62';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -74,6 +74,12 @@ const CORE_ASSETS = [
   './assets/tekst/parkove.es.txt',
   './assets/tekst/parkove.id.txt',
   './assets/tekst/vlak.txt',
+  './assets/tekst/vlak1.txt',
+  './assets/tekst/vlak1.en.txt',
+  './assets/tekst/vlak1.de.txt',
+  './assets/tekst/vlak1.fr.txt',
+  './assets/tekst/vlak1.es.txt',
+  './assets/tekst/vlak1.id.txt',
   './assets/tekst/reki.txt',
   './assets/tekst/reki.en.txt',
   './assets/tekst/reki.de.txt',

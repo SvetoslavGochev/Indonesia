@@ -103,6 +103,14 @@
   const VOLCANO_ARTICLE_URLS = {
     bg: './assets/tekst/vlak.txt?v=20260703a'
   };
+  const TRAIN_STORY_ARTICLE_URLS = {
+    bg: './assets/tekst/vlak1.txt?v=20260704b',
+    en: './assets/tekst/vlak1.en.txt?v=20260704b',
+    de: './assets/tekst/vlak1.de.txt?v=20260704b',
+    fr: './assets/tekst/vlak1.fr.txt?v=20260704b',
+    es: './assets/tekst/vlak1.es.txt?v=20260704b',
+    id: './assets/tekst/vlak1.id.txt?v=20260704b'
+  };
   const FRESHWATER_ARTICLE_URLS = {
     bg: './assets/tekst/sladkowodniRibi.txt?v=20260702c'
   };
@@ -616,6 +624,7 @@
   const rekiSectionsByLanguage = {};
   const volcanoSectionsByLanguage = {};
   const trainArticleByLanguage = {};
+  const trainStoryArticleByLanguage = {};
 
   const countryInfoFields = [
     { labelKey: 'capital', value: indonesiaData.country.capital, id: 'capitalLabel' },
@@ -806,6 +815,9 @@ function cacheContentElements() {
     dom.blogArticle10Title = document.getElementById('blogArticle10Title');
     dom.blogArticle10Excerpt = document.getElementById('blogArticle10Excerpt');
     dom.blogReadBtn10 = document.getElementById('blogReadBtn10');
+    dom.blogArticle11Title = document.getElementById('blogArticle11Title');
+    dom.blogArticle11Excerpt = document.getElementById('blogArticle11Excerpt');
+    dom.blogReadBtn11 = document.getElementById('blogReadBtn11');
     dom.dataNotice = document.getElementById('dataNotice');
     countryInfoFields.forEach(function (field) {
       dom[field.id] = document.getElementById(field.id);
@@ -1228,6 +1240,11 @@ function cacheContentElements() {
             <p id="blogArticle10Excerpt" class="blog-excerpt"></p>
             <button id="blogReadBtn10" class="blog-read-btn" type="button"></button>
           </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle11Title"></h3>
+            <p id="blogArticle11Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn11" class="blog-read-btn" type="button"></button>
+          </div>
         </div>
 
         <div class="api-notice" id="dataNotice"></div>
@@ -1258,6 +1275,7 @@ function cacheContentElements() {
     dom.blogReadBtn8.addEventListener('click', openRiversBlogModal);
     dom.blogReadBtn9.addEventListener('click', openVolcanoBlogModal);
     dom.blogReadBtn10.addEventListener('click', openTrainBlogModal);
+    dom.blogReadBtn11.addEventListener('click', openTrainStoryBlogModal);
     dom.content.addEventListener('click', function (event) {
       const freshwaterReadButton = event.target.closest('.freshwater-read-text');
       if (freshwaterReadButton) {
@@ -1369,6 +1387,9 @@ function cacheContentElements() {
     dom.blogArticle10Title.textContent = getTranslation('blogArticle10Title');
     dom.blogArticle10Excerpt.textContent = getTranslation('blogArticle10Excerpt');
     dom.blogReadBtn10.textContent = getTranslation('blogReadBtn10');
+    dom.blogArticle11Title.textContent = getTranslation('blogArticle11Title');
+    dom.blogArticle11Excerpt.textContent = getTranslation('blogArticle11Excerpt');
+    dom.blogReadBtn11.textContent = getTranslation('blogReadBtn11');
     dom.dataNotice.textContent = getTranslation('dataNotice');
 
     dom.cityPopulationTexts.forEach(function (populationElement) {
@@ -2289,6 +2310,44 @@ function cacheContentElements() {
 
     try {
       const articleText = await loadTrainArticle();
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadTrainStoryArticle() {
+    const requestedLang = TRAIN_STORY_ARTICLE_URLS[currentLanguage] ? currentLanguage : 'bg';
+    if (typeof trainStoryArticleByLanguage[requestedLang] === 'string' && trainStoryArticleByLanguage[requestedLang].length > 0) {
+      return trainStoryArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(TRAIN_STORY_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('train_story_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      trainStoryArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      trainStoryArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openTrainStoryBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle11Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadTrainStoryArticle();
       dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');
