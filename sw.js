@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v64';
+const CACHE_VERSION = 'v65';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -148,12 +148,12 @@ const IMAGE_ASSETS = [
   './assets/images/tree-mangrove.webp',
   './assets/images/tree-casuarina.webp',
   './assets/images/tree-banyan.webp',
-  './assets/images/park-komodo.webp',
-  './assets/images/park-bromo.webp',
-  './assets/images/park-ujung-kulon.webp',
-  './assets/images/park-gunung-leuser.webp',
-  './assets/images/park-lorentz.webp',
-  './assets/images/park-tanjung-puting.webp',
+  './assets/images/park-komodo.jpg',
+  './assets/images/park-bromo.jpg',
+  './assets/images/park-ujung-kulon.jpg',
+  './assets/images/park-gunung-leuser.jpg',
+  './assets/images/park-lorentz.jpg',
+  './assets/images/park-tanjung-puting.jpg',
   './assets/images/freshwater-gourami.webp',
   './assets/images/freshwater-catfish.webp',
   './assets/images/freshwater-tilapia.webp',

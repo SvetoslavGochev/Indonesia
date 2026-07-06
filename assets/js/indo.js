@@ -491,7 +491,7 @@
 
   const parks = [
     {
-      image: './assets/images/park-komodo.webp',
+      image: './assets/images/park-komodo.jpg',
       sectionIndex: 0,
       name_bg: 'Комодо',
       name_en: 'Komodo National Park',
@@ -501,7 +501,7 @@
       name_id: 'Taman Nasional Komodo'
     },
     {
-      image: './assets/images/park-bromo.webp',
+      image: './assets/images/park-bromo.jpg',
       sectionIndex: 1,
       name_bg: 'Бромо-Тенгер-Семеру',
       name_en: 'Bromo Tengger Semeru National Park',
@@ -511,7 +511,7 @@
       name_id: 'Taman Nasional Bromo Tengger Semeru'
     },
     {
-      image: './assets/images/park-ujung-kulon.webp',
+      image: './assets/images/park-ujung-kulon.jpg',
       sectionIndex: 2,
       name_bg: 'Уджунг Кулон',
       name_en: 'Ujung Kulon National Park',
@@ -521,7 +521,7 @@
       name_id: 'Taman Nasional Ujung Kulon'
     },
     {
-      image: './assets/images/park-gunung-leuser.webp',
+      image: './assets/images/park-gunung-leuser.jpg',
       sectionIndex: 3,
       name_bg: 'Гунунг Лейзер',
       name_en: 'Gunung Leuser National Park',
@@ -531,7 +531,7 @@
       name_id: 'Taman Nasional Gunung Leuser'
     },
     {
-      image: './assets/images/park-lorentz.webp',
+      image: './assets/images/park-lorentz.jpg',
       sectionIndex: 4,
       name_bg: 'Лоренц',
       name_en: 'Lorentz National Park',
@@ -541,7 +541,7 @@
       name_id: 'Taman Nasional Lorentz'
     },
     {
-      image: './assets/images/park-tanjung-puting.webp',
+      image: './assets/images/park-tanjung-puting.jpg',
       sectionIndex: 5,
       name_bg: 'Танджунг Путинг',
       name_en: 'Tanjung Puting National Park',
