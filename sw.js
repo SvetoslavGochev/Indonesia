@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v65';
+const CACHE_VERSION = 'v67';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -82,6 +82,12 @@ const CORE_ASSETS = [
   './assets/tekst/vlak1.id.txt',
   './assets/tekst/borneoPytuvane.txt',
   './assets/tekst/motorsport.txt',
+  './assets/tekst/pytepisPalembeng.txt',
+  './assets/tekst/pytepisPalembeng.en.txt',
+  './assets/tekst/pytepisPalembeng.de.txt',
+  './assets/tekst/pytepisPalembeng.fr.txt',
+  './assets/tekst/pytepisPalembeng.es.txt',
+  './assets/tekst/pytepisPalembeng.id.txt',
   './assets/tekst/reki.txt',
   './assets/tekst/reki.en.txt',
   './assets/tekst/reki.de.txt',

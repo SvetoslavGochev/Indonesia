@@ -117,6 +117,14 @@
   const MOTORSPORT_ARTICLE_URLS = {
     bg: './assets/tekst/motorsport.txt?v=20260704a'
   };
+  const PALEMBANG_ARTICLE_URLS = {
+    bg: './assets/tekst/pytepisPalembeng.txt?v=20260706c',
+    en: './assets/tekst/pytepisPalembeng.en.txt?v=20260706c',
+    de: './assets/tekst/pytepisPalembeng.de.txt?v=20260706c',
+    fr: './assets/tekst/pytepisPalembeng.fr.txt?v=20260706c',
+    es: './assets/tekst/pytepisPalembeng.es.txt?v=20260706c',
+    id: './assets/tekst/pytepisPalembeng.id.txt?v=20260706c'
+  };
   const FRESHWATER_ARTICLE_URLS = {
     bg: './assets/tekst/sladkowodniRibi.txt?v=20260702c'
   };
@@ -633,6 +641,7 @@
   const trainStoryArticleByLanguage = {};
   const borneoArticleByLanguage = {};
   const motorsportArticleByLanguage = {};
+  const palembangArticleByLanguage = {};
 
   const countryInfoFields = [
     { labelKey: 'capital', value: indonesiaData.country.capital, id: 'capitalLabel' },
@@ -832,6 +841,9 @@ function cacheContentElements() {
     dom.blogArticle13Title = document.getElementById('blogArticle13Title');
     dom.blogArticle13Excerpt = document.getElementById('blogArticle13Excerpt');
     dom.blogReadBtn13 = document.getElementById('blogReadBtn13');
+    dom.blogArticle14Title = document.getElementById('blogArticle14Title');
+    dom.blogArticle14Excerpt = document.getElementById('blogArticle14Excerpt');
+    dom.blogReadBtn14 = document.getElementById('blogReadBtn14');
     dom.dataNotice = document.getElementById('dataNotice');
     countryInfoFields.forEach(function (field) {
       dom[field.id] = document.getElementById(field.id);
@@ -1269,6 +1281,11 @@ function cacheContentElements() {
             <p id="blogArticle13Excerpt" class="blog-excerpt"></p>
             <button id="blogReadBtn13" class="blog-read-btn" type="button"></button>
           </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle14Title"></h3>
+            <p id="blogArticle14Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn14" class="blog-read-btn" type="button"></button>
+          </div>
         </div>
 
         <div class="api-notice" id="dataNotice"></div>
@@ -1302,6 +1319,7 @@ function cacheContentElements() {
     dom.blogReadBtn11.addEventListener('click', openTrainStoryBlogModal);
     dom.blogReadBtn12.addEventListener('click', openBorneoBlogModal);
     dom.blogReadBtn13.addEventListener('click', openMotorsportBlogModal);
+    dom.blogReadBtn14.addEventListener('click', openPalembangBlogModal);
     dom.content.addEventListener('click', function (event) {
       const freshwaterReadButton = event.target.closest('.freshwater-read-text');
       if (freshwaterReadButton) {
@@ -1422,6 +1440,9 @@ function cacheContentElements() {
     dom.blogArticle13Title.textContent = getTranslation('blogArticle13Title');
     dom.blogArticle13Excerpt.textContent = getTranslation('blogArticle13Excerpt');
     dom.blogReadBtn13.textContent = getTranslation('blogReadBtn13');
+    dom.blogArticle14Title.textContent = getTranslation('blogArticle14Title');
+    dom.blogArticle14Excerpt.textContent = getTranslation('blogArticle14Excerpt');
+    dom.blogReadBtn14.textContent = getTranslation('blogReadBtn14');
     dom.dataNotice.textContent = getTranslation('dataNotice');
 
     dom.cityPopulationTexts.forEach(function (populationElement) {
@@ -2455,6 +2476,44 @@ function cacheContentElements() {
 
     try {
       const articleText = await loadMotorsportArticle();
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadPalembangArticle() {
+    const requestedLang = PALEMBANG_ARTICLE_URLS[currentLanguage] ? currentLanguage : 'bg';
+    if (typeof palembangArticleByLanguage[requestedLang] === 'string' && palembangArticleByLanguage[requestedLang].length > 0) {
+      return palembangArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(PALEMBANG_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('palembang_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      palembangArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      palembangArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openPalembangBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle14Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadPalembangArticle();
       dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');
