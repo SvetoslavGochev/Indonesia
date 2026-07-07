@@ -101,7 +101,12 @@
     id: './assets/tekst/reki.id.txt?v=20260701a'
   };
   const VOLCANO_ARTICLE_URLS = {
-    bg: './assets/tekst/vlak.txt?v=20260703a'
+    bg: './assets/tekst/vulkani.txt?v=20260707a',
+    en: './assets/tekst/vulkani.en.txt?v=20260707a',
+    de: './assets/tekst/vulkani.de.txt?v=20260707a',
+    fr: './assets/tekst/vulkani.fr.txt?v=20260707a',
+    es: './assets/tekst/vulkani.es.txt?v=20260707a',
+    id: './assets/tekst/vulkani.id.txt?v=20260707a'
   };
   const TRAIN_STORY_ARTICLE_URLS = {
     bg: './assets/tekst/vlak1.txt?v=20260704b',
