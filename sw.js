@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v69';
+const CACHE_VERSION = 'v70';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -148,7 +148,7 @@ const IMAGE_ASSETS = [
   './assets/images/fruit-longan.webp',
   './assets/images/fruit-salak.webp',
   './assets/images/fruit-durian.webp',
-  './assets/images/tree-ulin.webp',
+  './assets/images/tree-ulin.jpg',
   './assets/images/tree-amber.webp',
   './assets/images/tree-teak.webp',
   './assets/images/tree-mangrove.webp',

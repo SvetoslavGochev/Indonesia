@@ -441,7 +441,7 @@
 
   const trees = [
     {
-      image: './assets/images/tree-ulin.webp',
+      image: './assets/images/tree-ulin.jpg',
       sectionIndex: 0,
       name_bg: 'Улин',
       name_en: 'Ulin (Ironwood)',
