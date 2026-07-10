@@ -77,12 +77,12 @@
     id: './assets/tekst/plodowe.id.txt?v=20260701b'
   };
   const TREES_ARTICLE_URLS = {
-    bg: './assets/tekst/dyrweta.txt?v=20260703b',
-    en: './assets/tekst/dyrweta.en.txt?v=20260703b',
-    de: './assets/tekst/dyrweta.de.txt?v=20260703b',
-    fr: './assets/tekst/dyrweta.fr.txt?v=20260703b',
-    es: './assets/tekst/dyrweta.es.txt?v=20260703b',
-    id: './assets/tekst/dyrweta.id.txt?v=20260703b'
+    bg: './assets/tekst/dyrweta.txt?v=20260710a',
+    en: './assets/tekst/dyrweta.en.txt?v=20260710a',
+    de: './assets/tekst/dyrweta.de.txt?v=20260710a',
+    fr: './assets/tekst/dyrweta.fr.txt?v=20260710a',
+    es: './assets/tekst/dyrweta.es.txt?v=20260710a',
+    id: './assets/tekst/dyrweta.id.txt?v=20260710a'
   };
   const PARKS_ARTICLE_URLS = {
     bg: './assets/tekst/parkove.txt?v=20260703b',
@@ -441,14 +441,14 @@
 
   const trees = [
     {
-      image: './assets/images/tree-rafflesia.webp',
+      image: './assets/images/tree-ulin.webp',
       sectionIndex: 0,
-      name_bg: 'Рафлезия',
-      name_en: 'Rafflesia',
-      name_de: 'Rafflesia',
-      name_fr: 'Rafflesia',
-      name_es: 'Rafflesia',
-      name_id: 'Rafflesia'
+      name_bg: 'Улин',
+      name_en: 'Ulin (Ironwood)',
+      name_de: 'Ulin (Eisenholz)',
+      name_fr: 'Ulin (bois de fer)',
+      name_es: 'Ulin (madera de hierro)',
+      name_id: 'Ulin (kayu besi)'
     },
     {
       image: './assets/images/tree-amber.webp',
