@@ -803,6 +803,49 @@ header p {
     filter: brightness(1.06);
 }
 
+.about-projects-card {
+    background: linear-gradient(145deg, rgba(231, 242, 255, 0.1) 0%, rgba(218, 233, 255, 0.06) 100%);
+}
+
+.about-section-text {
+    margin: 0 0 16px;
+    color: #e7f1ff;
+    line-height: 1.6;
+}
+
+.about-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.about-project-item {
+    background: linear-gradient(145deg, rgba(248, 252, 255, 0.96) 0%, rgba(233, 242, 255, 0.94) 100%);
+    border: 1px solid rgba(150, 177, 228, 0.45);
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 10px 24px rgba(13, 32, 68, 0.2);
+}
+
+.about-project-item h3 {
+    margin: 0 0 10px;
+    color: #2f4f93;
+    font-size: 1.18rem;
+}
+
+.project-link-btn {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .about-projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .blog-modal-content {
     max-width: 760px;
 }

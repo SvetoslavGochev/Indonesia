@@ -849,6 +849,17 @@ function cacheContentElements() {
     dom.blogArticle14Title = document.getElementById('blogArticle14Title');
     dom.blogArticle14Excerpt = document.getElementById('blogArticle14Excerpt');
     dom.blogReadBtn14 = document.getElementById('blogReadBtn14');
+    dom.aboutSectionTitle = document.getElementById('aboutSectionTitle');
+    dom.aboutSectionText = document.getElementById('aboutSectionText');
+    dom.project1Title = document.getElementById('project1Title');
+    dom.project1Desc = document.getElementById('project1Desc');
+    dom.project1Link = document.getElementById('project1Link');
+    dom.project2Title = document.getElementById('project2Title');
+    dom.project2Desc = document.getElementById('project2Desc');
+    dom.project2Link = document.getElementById('project2Link');
+    dom.project3Title = document.getElementById('project3Title');
+    dom.project3Desc = document.getElementById('project3Desc');
+    dom.project3Link = document.getElementById('project3Link');
     dom.dataNotice = document.getElementById('dataNotice');
     countryInfoFields.forEach(function (field) {
       dom[field.id] = document.getElementById(field.id);
@@ -1293,6 +1304,28 @@ function cacheContentElements() {
           </div>
         </div>
 
+        <div class="card about-projects-card">
+          <h2 id="aboutSectionTitle"></h2>
+          <p id="aboutSectionText" class="about-section-text"></p>
+          <div class="about-projects-grid">
+            <article class="about-project-item">
+              <h3 id="project1Title"></h3>
+              <p id="project1Desc" class="blog-excerpt"></p>
+              <a id="project1Link" class="blog-read-btn project-link-btn" href="https://svetoslavgochev.github.io/PIn-Pong/" target="_blank" rel="noopener noreferrer"></a>
+            </article>
+            <article class="about-project-item">
+              <h3 id="project2Title"></h3>
+              <p id="project2Desc" class="blog-excerpt"></p>
+              <a id="project2Link" class="blog-read-btn project-link-btn" href="https://svetoslavgochev.github.io/cska-explorer/" target="_blank" rel="noopener noreferrer"></a>
+            </article>
+            <article class="about-project-item">
+              <h3 id="project3Title"></h3>
+              <p id="project3Desc" class="blog-excerpt"></p>
+              <a id="project3Link" class="blog-read-btn project-link-btn" href="https://svetoslavgochev.github.io/norway-info/" target="_blank" rel="noopener noreferrer"></a>
+            </article>
+          </div>
+        </div>
+
         <div class="api-notice" id="dataNotice"></div>
       `;
 
@@ -1448,6 +1481,17 @@ function cacheContentElements() {
     dom.blogArticle14Title.textContent = getTranslation('blogArticle14Title');
     dom.blogArticle14Excerpt.textContent = getTranslation('blogArticle14Excerpt');
     dom.blogReadBtn14.textContent = getTranslation('blogReadBtn14');
+    dom.aboutSectionTitle.textContent = getTranslation('aboutSectionTitle');
+    dom.aboutSectionText.textContent = getTranslation('aboutSectionText');
+    dom.project1Title.textContent = getTranslation('project1Title');
+    dom.project1Desc.textContent = getTranslation('project1Desc');
+    dom.project1Link.textContent = getTranslation('projectVisitBtn');
+    dom.project2Title.textContent = getTranslation('project2Title');
+    dom.project2Desc.textContent = getTranslation('project2Desc');
+    dom.project2Link.textContent = getTranslation('projectVisitBtn');
+    dom.project3Title.textContent = getTranslation('project3Title');
+    dom.project3Desc.textContent = getTranslation('project3Desc');
+    dom.project3Link.textContent = getTranslation('projectVisitBtn');
     dom.dataNotice.textContent = getTranslation('dataNotice');
 
     dom.cityPopulationTexts.forEach(function (populationElement) {
