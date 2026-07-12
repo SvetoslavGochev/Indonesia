@@ -131,7 +131,12 @@
     id: './assets/tekst/pytepisPalembeng.id.txt?v=20260706c'
   };
   const FOOTBALL_ARTICLE_URLS = {
-    bg: './assets/tekst/football2.txt?v=20260712b'
+    bg: './assets/tekst/football2.txt?v=20260712c',
+    en: './assets/tekst/football2.en.txt?v=20260712c',
+    de: './assets/tekst/football2.de.txt?v=20260712c',
+    fr: './assets/tekst/football2.fr.txt?v=20260712c',
+    es: './assets/tekst/football2.es.txt?v=20260712c',
+    id: './assets/tekst/football2.id.txt?v=20260712c'
   };
   const FRESHWATER_ARTICLE_URLS = {
     bg: './assets/tekst/sladkowodniRibi.txt?v=20260702c'
@@ -2586,12 +2591,13 @@ function cacheContentElements() {
   }
 
   async function loadFootballArticle() {
-    if (typeof footballArticleByLanguage.bg === 'string' && footballArticleByLanguage.bg.length > 0) {
-      return footballArticleByLanguage.bg;
+    const requestedLang = FOOTBALL_ARTICLE_URLS[currentLanguage] ? currentLanguage : 'bg';
+    if (typeof footballArticleByLanguage[requestedLang] === 'string' && footballArticleByLanguage[requestedLang].length > 0) {
+      return footballArticleByLanguage[requestedLang];
     }
 
-    async function fetchArticle() {
-      const response = await fetch(FOOTBALL_ARTICLE_URLS.bg);
+    async function fetchArticle(languageCode) {
+      const response = await fetch(FOOTBALL_ARTICLE_URLS[languageCode]);
       if (!response.ok) {
         throw new Error('football_load_failed');
       }
@@ -2599,11 +2605,11 @@ function cacheContentElements() {
     }
 
     try {
-      const articleText = await fetchArticle();
-      footballArticleByLanguage.bg = articleText;
+      const articleText = await fetchArticle(requestedLang);
+      footballArticleByLanguage[requestedLang] = articleText;
       return articleText;
     } catch (error) {
-      const bulgarianArticle = await fetchArticle();
+      const bulgarianArticle = await fetchArticle('bg');
       footballArticleByLanguage.bg = bulgarianArticle;
       return bulgarianArticle;
     }
