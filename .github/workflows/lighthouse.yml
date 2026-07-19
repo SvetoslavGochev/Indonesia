@@ -1,0 +1,64 @@
+name: Lighthouse QA
+
+on:
+  pull_request:
+    paths:
+      - "index.html"
+      - "style.css"
+      - "assets/**"
+      - "sw.js"
+      - "package.json"
+      - "package-lock.json"
+      - ".lighthouserc.pr.json"
+      - ".lighthouserc.main.json"
+      - ".github/workflows/lighthouse.yml"
+  push:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "style.css"
+      - "assets/**"
+      - "sw.js"
+      - "package.json"
+      - "package-lock.json"
+      - ".lighthouserc.pr.json"
+      - ".lighthouserc.main.json"
+      - ".github/workflows/lighthouse.yml"
+  workflow_dispatch:
+
+jobs:
+  lighthouse-pr-quick:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Lighthouse (PR quick)
+        run: npm run qa:lighthouse:pr
+
+  lighthouse-main-full:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Lighthouse (main full)
+        run: npm run qa:lighthouse:main
