@@ -833,6 +833,96 @@ header p {
     font-size: 1.18rem;
 }
 
+.game-partnership-panel {
+    margin-top: 20px;
+    padding: 22px;
+    border-radius: 18px;
+    border: 1px solid rgba(197, 223, 255, 0.34);
+    background: linear-gradient(135deg, rgba(15, 37, 78, 0.92) 0%, rgba(23, 58, 114, 0.86) 52%, rgba(16, 110, 127, 0.84) 100%);
+    box-shadow: 0 16px 34px rgba(8, 19, 42, 0.28);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    overflow: hidden;
+}
+
+.game-partnership-copy {
+    max-width: 640px;
+}
+
+.game-partnership-copy h3 {
+    margin: 0 0 12px;
+    color: #f3f8ff;
+    font-size: 1.5rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
+}
+
+.game-partnership-text {
+    margin: 0;
+    color: rgba(238, 247, 255, 0.96);
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+.game-partnership-btn {
+    flex-shrink: 0;
+    min-width: 220px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f8bc37 0%, #ff8f2c 100%);
+    color: #13213e;
+    box-shadow: 0 12px 24px rgba(255, 143, 44, 0.26);
+}
+
+.game-partnership-actions {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+}
+
+.game-partnership-email-row {
+    margin: 0;
+    color: rgba(232, 244, 255, 0.92);
+    font-size: 0.94rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.game-partnership-email-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff4c7;
+    font-size: 0.82rem;
+    vertical-align: middle;
+}
+
+.game-partnership-email-link {
+    color: #fff4c7;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 244, 199, 0.45);
+}
+
+.game-partnership-email-link:hover {
+    color: #ffffff;
+    border-bottom-color: rgba(255, 255, 255, 0.8);
+}
+
+.game-partnership-btn:hover {
+    filter: brightness(1.04);
+}
+
 .project-link-btn {
     text-decoration: none;
     display: inline-flex;
@@ -843,6 +933,20 @@ header p {
 @media (max-width: 768px) {
     .about-projects-grid {
         grid-template-columns: 1fr;
+    }
+
+    .game-partnership-panel {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .game-partnership-btn {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .game-partnership-actions {
+        width: 100%;
     }
 }
 

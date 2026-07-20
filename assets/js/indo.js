@@ -872,6 +872,10 @@ function cacheContentElements() {
     dom.project3Title = document.getElementById('project3Title');
     dom.project3Desc = document.getElementById('project3Desc');
     dom.project3Link = document.getElementById('project3Link');
+    dom.gamePartnerTitle = document.getElementById('gamePartnerTitle');
+    dom.gamePartnerText = document.getElementById('gamePartnerText');
+    dom.gamePartnerCta = document.getElementById('gamePartnerCta');
+    dom.gamePartnerEmailHint = document.getElementById('gamePartnerEmailHint');
     dom.dataNotice = document.getElementById('dataNotice');
     countryInfoFields.forEach(function (field) {
       dom[field.id] = document.getElementById(field.id);
@@ -1341,6 +1345,16 @@ function cacheContentElements() {
               <a id="project3Link" class="blog-read-btn project-link-btn" href="https://svetoslavgochev.github.io/norway-info/" target="_blank" rel="noopener noreferrer"></a>
             </article>
           </div>
+          <section class="game-partnership-panel" aria-labelledby="gamePartnerTitle">
+            <div class="game-partnership-copy">
+              <h3 id="gamePartnerTitle"></h3>
+              <p id="gamePartnerText" class="game-partnership-text"></p>
+            </div>
+            <div class="game-partnership-actions">
+              <a id="gamePartnerCta" class="blog-read-btn game-partnership-btn" href="mailto:svetoslav.gochev@gmail.com?subject=Game%20Explorer%20Partnership"></a>
+              <p class="game-partnership-email-row"><span class="game-partnership-email-icon" aria-hidden="true">✉</span><span id="gamePartnerEmailHint"></span> <a class="game-partnership-email-link" href="mailto:svetoslav.gochev@gmail.com?subject=Game%20Explorer%20Partnership">svetoslav.gochev@gmail.com</a></p>
+            </div>
+          </section>
         </div>
 
         <div class="api-notice" id="dataNotice"></div>
@@ -1513,6 +1527,10 @@ function cacheContentElements() {
     dom.project3Title.textContent = getTranslation('project3Title');
     dom.project3Desc.textContent = getTranslation('project3Desc');
     dom.project3Link.textContent = getTranslation('projectVisitBtn');
+    dom.gamePartnerTitle.textContent = getTranslation('gamePartnerTitle');
+    dom.gamePartnerText.textContent = getTranslation('gamePartnerText');
+    dom.gamePartnerCta.textContent = getTranslation('gamePartnerCta');
+    dom.gamePartnerEmailHint.textContent = getTranslation('gamePartnerEmailHint');
     dom.dataNotice.textContent = getTranslation('dataNotice');
 
     dom.cityPopulationTexts.forEach(function (populationElement) {
