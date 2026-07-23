@@ -138,6 +138,9 @@
     es: './assets/tekst/football2.es.txt?v=20260712c',
     id: './assets/tekst/football2.id.txt?v=20260712c'
   };
+  const METAMASK_WALLET_ADDRESS = '0xfca710eC5eB0FB036157Bb1E114BADc2310efE37';
+  const PARTNER_FORM_ENDPOINT = (window.PARTNER_FORM_ENDPOINT || 'https://formspree.io/f/yourFormId').trim();
+  const PARTNER_FORM_MIN_SUBMIT_MS = 3000;
   const FRESHWATER_ARTICLE_URLS = {
     bg: './assets/tekst/sladkowodniRibi.txt?v=20260702c'
   };
@@ -733,6 +736,7 @@
   const freshwaterSectionsByLanguage = {};
   const parksSectionsByLanguage = {};
   let visitCountValue = null;
+  let partnerFormReadyAt = 0;
 
   function cacheDomElements() {
     dom.bgBtn = document.getElementById('bgBtn');
@@ -875,7 +879,22 @@ function cacheContentElements() {
     dom.gamePartnerTitle = document.getElementById('gamePartnerTitle');
     dom.gamePartnerText = document.getElementById('gamePartnerText');
     dom.gamePartnerCta = document.getElementById('gamePartnerCta');
-    dom.gamePartnerEmailHint = document.getElementById('gamePartnerEmailHint');
+    dom.gamePartnerContactHint = document.getElementById('gamePartnerContactHint');
+    dom.partnerWalletLabel = document.getElementById('partnerWalletLabel');
+    dom.partnerWalletAddress = document.getElementById('partnerWalletAddress');
+    dom.partnerWalletCopy = document.getElementById('partnerWalletCopy');
+    dom.partnerWalletHint = document.getElementById('partnerWalletHint');
+    dom.partnerFormTitle = document.getElementById('partnerFormTitle');
+    dom.partnerFormNameLabel = document.getElementById('partnerFormNameLabel');
+    dom.partnerFormEmailLabel = document.getElementById('partnerFormEmailLabel');
+    dom.partnerFormMessageLabel = document.getElementById('partnerFormMessageLabel');
+    dom.partnerFormName = document.getElementById('partnerFormName');
+    dom.partnerFormEmail = document.getElementById('partnerFormEmail');
+    dom.partnerFormMessage = document.getElementById('partnerFormMessage');
+    dom.partnerFormWebsite = document.getElementById('partnerFormWebsite');
+    dom.partnerFormSubmit = document.getElementById('partnerFormSubmit');
+    dom.partnerFormStatus = document.getElementById('partnerFormStatus');
+    dom.partnerInquiryForm = document.getElementById('partnerInquiryFormInner');
     dom.dataNotice = document.getElementById('dataNotice');
     countryInfoFields.forEach(function (field) {
       dom[field.id] = document.getElementById(field.id);
@@ -1349,11 +1368,38 @@ function cacheContentElements() {
             <div class="game-partnership-copy">
               <h3 id="gamePartnerTitle"></h3>
               <p id="gamePartnerText" class="game-partnership-text"></p>
+              <div class="game-partnership-wallet" aria-live="polite">
+                <p id="partnerWalletLabel" class="game-partnership-wallet-label"></p>
+                <div class="game-partnership-wallet-row">
+                  <code id="partnerWalletAddress" class="game-partnership-wallet-address"></code>
+                  <button id="partnerWalletCopy" class="game-partnership-wallet-copy" type="button"></button>
+                </div>
+                <p id="partnerWalletHint" class="game-partnership-wallet-hint"></p>
+              </div>
             </div>
             <div class="game-partnership-actions">
-              <a id="gamePartnerCta" class="blog-read-btn game-partnership-btn" href="mailto:svetoslav.gochev@gmail.com?subject=Game%20Explorer%20Partnership"></a>
-              <p class="game-partnership-email-row"><span class="game-partnership-email-icon" aria-hidden="true">✉</span><span id="gamePartnerEmailHint"></span> <a class="game-partnership-email-link" href="mailto:svetoslav.gochev@gmail.com?subject=Game%20Explorer%20Partnership">svetoslav.gochev@gmail.com</a></p>
+              <a id="gamePartnerCta" class="blog-read-btn game-partnership-btn" href="#partnerInquiryForm"></a>
+              <p class="game-partnership-neutral-row"><span class="game-partnership-email-icon" aria-hidden="true">🛡</span><span id="gamePartnerContactHint"></span></p>
             </div>
+          </section>
+          <section id="partnerInquiryForm" class="partner-inquiry-form" aria-labelledby="partnerFormTitle">
+            <h3 id="partnerFormTitle"></h3>
+            <form id="partnerInquiryFormInner" class="partner-inquiry-form-inner" novalidate>
+              <label for="partnerFormWebsite" class="partner-honeypot-field" aria-hidden="true">Website</label>
+              <input id="partnerFormWebsite" class="partner-honeypot-field" name="website" type="text" tabindex="-1" autocomplete="off">
+
+              <label for="partnerFormName" id="partnerFormNameLabel"></label>
+              <input id="partnerFormName" name="name" type="text" required>
+
+              <label for="partnerFormEmail" id="partnerFormEmailLabel"></label>
+              <input id="partnerFormEmail" name="email" type="email" required>
+
+              <label for="partnerFormMessage" id="partnerFormMessageLabel"></label>
+              <textarea id="partnerFormMessage" name="message" rows="5" required></textarea>
+
+              <button id="partnerFormSubmit" class="blog-read-btn partner-inquiry-submit" type="submit"></button>
+              <p id="partnerFormStatus" class="partner-inquiry-status" role="status" aria-live="polite"></p>
+            </form>
           </section>
         </div>
 
@@ -1390,6 +1436,9 @@ function cacheContentElements() {
     dom.blogReadBtn13.addEventListener('click', openMotorsportBlogModal);
     dom.blogReadBtn14.addEventListener('click', openPalembangBlogModal);
     dom.blogReadBtn15.addEventListener('click', openFootballBlogModal);
+    dom.partnerWalletCopy.addEventListener('click', copyPartnerWalletAddress);
+    dom.partnerInquiryForm.addEventListener('submit', handlePartnerFormSubmit);
+    partnerFormReadyAt = Date.now();
     dom.content.addEventListener('click', function (event) {
       const freshwaterReadButton = event.target.closest('.freshwater-read-text');
       if (freshwaterReadButton) {
@@ -1530,7 +1579,20 @@ function cacheContentElements() {
     dom.gamePartnerTitle.textContent = getTranslation('gamePartnerTitle');
     dom.gamePartnerText.textContent = getTranslation('gamePartnerText');
     dom.gamePartnerCta.textContent = getTranslation('gamePartnerCta');
-    dom.gamePartnerEmailHint.textContent = getTranslation('gamePartnerEmailHint');
+    dom.gamePartnerContactHint.textContent = getTranslation('gamePartnerContactHint');
+    dom.partnerWalletLabel.textContent = getTranslation('partnerWalletLabel');
+    dom.partnerWalletAddress.textContent = METAMASK_WALLET_ADDRESS;
+    dom.partnerWalletCopy.textContent = getTranslation('partnerWalletCopy');
+    dom.partnerWalletHint.textContent = getTranslation('partnerWalletHint');
+    dom.partnerFormTitle.textContent = getTranslation('partnerFormTitle');
+    dom.partnerFormNameLabel.textContent = getTranslation('partnerFormNameLabel');
+    dom.partnerFormEmailLabel.textContent = getTranslation('partnerFormEmailLabel');
+    dom.partnerFormMessageLabel.textContent = getTranslation('partnerFormMessageLabel');
+    dom.partnerFormName.placeholder = getTranslation('partnerFormNamePlaceholder');
+    dom.partnerFormEmail.placeholder = getTranslation('partnerFormEmailPlaceholder');
+    dom.partnerFormMessage.placeholder = getTranslation('partnerFormMessagePlaceholder');
+    dom.partnerFormSubmit.textContent = getTranslation('partnerFormSubmit');
+    dom.partnerFormStatus.textContent = '';
     dom.dataNotice.textContent = getTranslation('dataNotice');
 
     dom.cityPopulationTexts.forEach(function (populationElement) {
@@ -1633,6 +1695,124 @@ function cacheContentElements() {
     const currentLangPack = translations[currentLanguage] || {};
     const englishPack = translations.en || {};
     return currentLangPack[key] || englishPack[key] || key;
+  }
+
+  function copyPartnerWalletAddress() {
+    const copyText = METAMASK_WALLET_ADDRESS;
+    const copyButton = dom.partnerWalletCopy;
+    const defaultLabel = getTranslation('partnerWalletCopy');
+    const successLabel = getTranslation('partnerWalletCopied');
+
+    function onCopySuccess() {
+      copyButton.textContent = successLabel;
+      setTimeout(function () {
+        copyButton.textContent = defaultLabel;
+      }, 1400);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(copyText)
+        .then(onCopySuccess)
+        .catch(function () {
+          copyWalletAddressFallback(copyText, onCopySuccess);
+        });
+      return;
+    }
+
+    copyWalletAddressFallback(copyText, onCopySuccess);
+  }
+
+  function copyWalletAddressFallback(copyText, onCopySuccess) {
+    const textArea = document.createElement('textarea');
+    textArea.value = copyText;
+    textArea.setAttribute('readonly', '');
+    textArea.style.position = 'absolute';
+    textArea.style.left = '-9999px';
+    document.body.appendChild(textArea);
+    textArea.select();
+
+    try {
+      const copied = document.execCommand('copy');
+      if (copied) {
+        onCopySuccess();
+      }
+    } catch (error) {
+      // Keep the UI unchanged if copy fails silently.
+    }
+
+    document.body.removeChild(textArea);
+  }
+
+  async function handlePartnerFormSubmit(event) {
+    event.preventDefault();
+
+    if (dom.partnerFormWebsite.value.trim()) {
+      // Honeypot hit: mimic successful submit and drop silently.
+      dom.partnerFormStatus.textContent = getTranslation('partnerFormSuccess');
+      event.target.reset();
+      return;
+    }
+
+    if (Date.now() - partnerFormReadyAt < PARTNER_FORM_MIN_SUBMIT_MS) {
+      dom.partnerFormStatus.textContent = getTranslation('partnerFormTooFast');
+      return;
+    }
+
+    if (!dom.partnerFormName.value.trim() || !dom.partnerFormEmail.value.trim() || !dom.partnerFormMessage.value.trim()) {
+      dom.partnerFormStatus.textContent = getTranslation('partnerFormRequired');
+      return;
+    }
+
+    if (!dom.partnerFormEmail.checkValidity()) {
+      dom.partnerFormStatus.textContent = getTranslation('partnerFormInvalidEmail');
+      return;
+    }
+
+    if (!isPartnerEndpointConfigured()) {
+      dom.partnerFormStatus.textContent = getTranslation('partnerFormEndpointMissing');
+      return;
+    }
+
+    const payload = {
+      name: dom.partnerFormName.value.trim(),
+      email: dom.partnerFormEmail.value.trim(),
+      message: dom.partnerFormMessage.value.trim(),
+      source: 'Indonesia Explorer Partnership Form'
+    };
+
+    dom.partnerFormStatus.textContent = getTranslation('partnerFormSending');
+    dom.partnerFormSubmit.disabled = true;
+
+    try {
+      const response = await fetch(PARTNER_FORM_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.status === 429) {
+        dom.partnerFormStatus.textContent = getTranslation('partnerFormRateLimited');
+        return;
+      }
+
+      if (!response.ok) {
+        throw new Error('Partner form request failed.');
+      }
+
+      dom.partnerFormStatus.textContent = getTranslation('partnerFormSuccess');
+      event.target.reset();
+    } catch (error) {
+      dom.partnerFormStatus.textContent = getTranslation('partnerFormError');
+    } finally {
+      dom.partnerFormSubmit.disabled = false;
+    }
+  }
+
+  function isPartnerEndpointConfigured() {
+    return !/yourFormId$/i.test(PARTNER_FORM_ENDPOINT);
   }
 
   function getBlogLineIcon(labelText) {
