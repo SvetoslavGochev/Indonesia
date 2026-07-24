@@ -1,6 +1,10 @@
-const { ethers } = require("hardhat");
+const hre = require("hardhat");
+const { ethers } = hre;
+const fs = require("fs");
+const path = require("path");
 
 async function main() {
+  const networkName = hre.network.name;
   const [deployer] = await ethers.getSigners();
 
   const initialSupply = ethers.parseEther("1000000000"); // 1,000,000,000 GLC
@@ -44,6 +48,31 @@ async function main() {
   console.log("Timelock:", await timelock.getAddress());
   console.log("Governor:", await governor.getAddress());
   console.log("Ownership transferred to Timelock.");
+
+  const deployment = {
+    network: networkName,
+    chainId: Number((await ethers.provider.getNetwork()).chainId),
+    deployer: deployer.address,
+    params: {
+      initialSupply: initialSupply.toString(),
+      minDelaySeconds,
+      votingDelayBlocks,
+      votingPeriodBlocks,
+      proposalThreshold: proposalThreshold.toString(),
+      quorumFraction
+    },
+    contracts: {
+      token: await token.getAddress(),
+      timelock: await timelock.getAddress(),
+      governor: await governor.getAddress()
+    }
+  };
+
+  const outDir = path.join(__dirname, "..", "deployments");
+  fs.mkdirSync(outDir, { recursive: true });
+  const outFile = path.join(outDir, `${networkName}.json`);
+  fs.writeFileSync(outFile, JSON.stringify(deployment, null, 2));
+  console.log("Saved deployment:", outFile);
 }
 
 main().catch((error) => {

@@ -56,6 +56,20 @@ npm run deploy:amoy
 
 Required env variables are in [glc-dao/.env.example](glc-dao/.env.example).
 
+## Verify on explorers
+
+```bash
+cd glc-dao
+npm run verify:sepolia
+```
+
+```bash
+cd glc-dao
+npm run verify:amoy
+```
+
+Detailed production-like checklist is in [glc-dao/RUNBOOK_DEPLOY.md](glc-dao/RUNBOOK_DEPLOY.md).
+
 Deployment script does this automatically:
 
 1. Deploys `TimelockController`.
