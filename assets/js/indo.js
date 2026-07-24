@@ -4,6 +4,7 @@
   const translations = window.APP_TRANSLATIONS || {};
   const stadiumData = window.STADIUM_DATA || {};
   const indonesiaData = window.INDONESIA_DATA || { country: {}, cities: [] };
+  const PAYPAL_PARTNER_URL = (window.PAYPAL_PARTNER_URL || '').trim();
   const BLOG_ARTICLE_URLS = {
     bg: './assets/tekst/indotext.txt?v=20260603',
     en: './assets/tekst/indotext.en.txt?v=20260603',
@@ -895,6 +896,8 @@ function cacheContentElements() {
     dom.partnerFormSubmit = document.getElementById('partnerFormSubmit');
     dom.partnerFormStatus = document.getElementById('partnerFormStatus');
     dom.partnerInquiryForm = document.getElementById('partnerInquiryFormInner');
+    dom.gamePartnerPaypalCta = document.getElementById('gamePartnerPaypalCta');
+    dom.gamePartnerEmailHint = document.getElementById('gamePartnerEmailHint');
     dom.dataNotice = document.getElementById('dataNotice');
     countryInfoFields.forEach(function (field) {
       dom[field.id] = document.getElementById(field.id);
@@ -1378,8 +1381,10 @@ function cacheContentElements() {
               </div>
             </div>
             <div class="game-partnership-actions">
-              <a id="gamePartnerCta" class="blog-read-btn game-partnership-btn" href="#partnerInquiryForm"></a>
+              <a id="gamePartnerCta" class="blog-read-btn game-partnership-btn" href="mailto:svetoslav.gochev@gmail.com?subject=Game%20Explorer%20Partnership"></a>
               <p class="game-partnership-neutral-row"><span class="game-partnership-email-icon" aria-hidden="true">🛡</span><span id="gamePartnerContactHint"></span></p>
+              <a id="gamePartnerPaypalCta" class="blog-read-btn game-partnership-btn game-partnership-paypal-btn" href="#" target="_blank" rel="noopener noreferrer" hidden></a>
+              <p class="game-partnership-email-row"><span class="game-partnership-email-icon" aria-hidden="true">✉</span><span id="gamePartnerEmailHint"></span> <a class="game-partnership-email-link" href="mailto:svetoslav.gochev@gmail.com?subject=Game%20Explorer%20Partnership">svetoslav.gochev@gmail.com</a></p>
             </div>
           </section>
           <section id="partnerInquiryForm" class="partner-inquiry-form" aria-labelledby="partnerFormTitle">
@@ -1593,6 +1598,16 @@ function cacheContentElements() {
     dom.partnerFormMessage.placeholder = getTranslation('partnerFormMessagePlaceholder');
     dom.partnerFormSubmit.textContent = getTranslation('partnerFormSubmit');
     dom.partnerFormStatus.textContent = '';
+    if (dom.gamePartnerPaypalCta) {
+      dom.gamePartnerPaypalCta.textContent = getTranslation('gamePartnerPaypalCta');
+      if (PAYPAL_PARTNER_URL) {
+        dom.gamePartnerPaypalCta.href = PAYPAL_PARTNER_URL;
+        dom.gamePartnerPaypalCta.hidden = false;
+      } else {
+        dom.gamePartnerPaypalCta.hidden = true;
+      }
+    }
+    dom.gamePartnerEmailHint.textContent = getTranslation('gamePartnerEmailHint');
     dom.dataNotice.textContent = getTranslation('dataNotice');
 
     dom.cityPopulationTexts.forEach(function (populationElement) {

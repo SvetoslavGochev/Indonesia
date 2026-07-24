@@ -988,6 +988,12 @@ header p {
     filter: brightness(1.04);
 }
 
+.game-partnership-paypal-btn {
+    background: linear-gradient(135deg, #0b5bd3 0%, #1296ff 100%);
+    color: #f4f9ff;
+    box-shadow: 0 12px 24px rgba(7, 63, 165, 0.28);
+}
+
 .project-link-btn {
     text-decoration: none;
     display: inline-flex;
