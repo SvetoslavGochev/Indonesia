@@ -140,17 +140,9 @@
     id: './assets/tekst/football2.id.txt?v=20260712c'
   };
   const METAMASK_WALLET_ADDRESS = '0xfca710eC5eB0FB036157Bb1E114BADc2310efE37';
-  const PARTNER_FORM_ENDPOINT = (window.PARTNER_FORM_ENDPOINT || 'https://formspree.io/f/yourFormId').trim();
-  const PARTNER_FORM_MIN_SUBMIT_MS = 3000;
-  const PARTNER_FORM_NAME_MAX_LEN = 80;
-  const PARTNER_FORM_EMAIL_MAX_LEN = 160;
-  const PARTNER_FORM_MESSAGE_MAX_LEN = 1200;
-  const PARTNER_FORM_MESSAGE_MIN_LEN = 12;
-  const PARTNER_FORM_REQUEST_TIMEOUT_MS = 12000;
-  const PARTNER_FORM_RATE_WINDOW_MS = 10 * 60 * 1000;
-  const PARTNER_FORM_MAX_ATTEMPTS = 4;
-  const PARTNER_FORM_BLOCK_WINDOW_MS = 15 * 60 * 1000;
-  const PARTNER_FORM_RATE_KEY = 'indonesia_partner_form_rate_v1';
+  const PARTNER_INSTAGRAM_URL = (window.PARTNER_INSTAGRAM_URL || 'https://www.instagram.com/').trim();
+  const PARTNER_FACEBOOK_URL = (window.PARTNER_FACEBOOK_URL || 'https://www.facebook.com/').trim();
+  const PARTNER_X_URL = (window.PARTNER_X_URL || 'https://x.com/').trim();
   const FRESHWATER_ARTICLE_URLS = {
     bg: './assets/tekst/sladkowodniRibi.txt?v=20260702c'
   };
@@ -746,7 +738,6 @@
   const freshwaterSectionsByLanguage = {};
   const parksSectionsByLanguage = {};
   let visitCountValue = null;
-  let partnerFormReadyAt = 0;
 
   function cacheDomElements() {
     dom.bgBtn = document.getElementById('bgBtn');
@@ -893,17 +884,10 @@ function cacheContentElements() {
     dom.partnerWalletAddress = document.getElementById('partnerWalletAddress');
     dom.partnerWalletCopy = document.getElementById('partnerWalletCopy');
     dom.partnerWalletHint = document.getElementById('partnerWalletHint');
-    dom.partnerFormTitle = document.getElementById('partnerFormTitle');
-    dom.partnerFormNameLabel = document.getElementById('partnerFormNameLabel');
-    dom.partnerFormEmailLabel = document.getElementById('partnerFormEmailLabel');
-    dom.partnerFormMessageLabel = document.getElementById('partnerFormMessageLabel');
-    dom.partnerFormName = document.getElementById('partnerFormName');
-    dom.partnerFormEmail = document.getElementById('partnerFormEmail');
-    dom.partnerFormMessage = document.getElementById('partnerFormMessage');
-    dom.partnerFormWebsite = document.getElementById('partnerFormWebsite');
-    dom.partnerFormSubmit = document.getElementById('partnerFormSubmit');
-    dom.partnerFormStatus = document.getElementById('partnerFormStatus');
-    dom.partnerInquiryForm = document.getElementById('partnerInquiryFormInner');
+    dom.gamePartnerSocialTitle = document.getElementById('gamePartnerSocialTitle');
+    dom.gamePartnerInstagram = document.getElementById('gamePartnerInstagram');
+    dom.gamePartnerFacebook = document.getElementById('gamePartnerFacebook');
+    dom.gamePartnerX = document.getElementById('gamePartnerX');
     dom.gamePartnerPaypalCta = document.getElementById('gamePartnerPaypalCta');
     dom.dataNotice = document.getElementById('dataNotice');
     countryInfoFields.forEach(function (field) {
@@ -1389,27 +1373,14 @@ function cacheContentElements() {
             </div>
             <div class="game-partnership-actions">
               <p class="game-partnership-neutral-row"><span class="game-partnership-email-icon" aria-hidden="true">🛡</span><span id="gamePartnerContactHint"></span></p>
+              <p id="gamePartnerSocialTitle" class="game-partnership-social-title"></p>
+              <div class="game-partnership-social-grid" aria-label="Social contacts">
+                <a id="gamePartnerInstagram" class="blog-read-btn game-partnership-btn game-partnership-social-btn game-partnership-instagram-btn" href="${PARTNER_INSTAGRAM_URL}" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a id="gamePartnerFacebook" class="blog-read-btn game-partnership-btn game-partnership-social-btn game-partnership-facebook-btn" href="${PARTNER_FACEBOOK_URL}" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <a id="gamePartnerX" class="blog-read-btn game-partnership-btn game-partnership-social-btn game-partnership-x-btn" href="${PARTNER_X_URL}" target="_blank" rel="noopener noreferrer">X</a>
+              </div>
               <a id="gamePartnerPaypalCta" class="blog-read-btn game-partnership-btn game-partnership-paypal-btn" href="#" target="_blank" rel="noopener noreferrer" hidden></a>
             </div>
-          </section>
-          <section id="partnerInquiryForm" class="partner-inquiry-form" aria-labelledby="partnerFormTitle">
-            <h3 id="partnerFormTitle"></h3>
-            <form id="partnerInquiryFormInner" class="partner-inquiry-form-inner" novalidate>
-              <label for="partnerFormWebsite" class="partner-honeypot-field" aria-hidden="true">Website</label>
-              <input id="partnerFormWebsite" class="partner-honeypot-field" name="website" type="text" tabindex="-1" autocomplete="off">
-
-              <label for="partnerFormName" id="partnerFormNameLabel"></label>
-              <input id="partnerFormName" name="name" type="text" maxlength="80" autocomplete="name" required>
-
-              <label for="partnerFormEmail" id="partnerFormEmailLabel"></label>
-              <input id="partnerFormEmail" name="email" type="email" maxlength="160" autocomplete="email" required>
-
-              <label for="partnerFormMessage" id="partnerFormMessageLabel"></label>
-              <textarea id="partnerFormMessage" name="message" rows="5" maxlength="1200" required></textarea>
-
-              <button id="partnerFormSubmit" class="blog-read-btn partner-inquiry-submit" type="submit"></button>
-              <p id="partnerFormStatus" class="partner-inquiry-status" role="status" aria-live="polite"></p>
-            </form>
           </section>
         </div>
 
@@ -1447,8 +1418,6 @@ function cacheContentElements() {
     dom.blogReadBtn14.addEventListener('click', openPalembangBlogModal);
     dom.blogReadBtn15.addEventListener('click', openFootballBlogModal);
     dom.partnerWalletCopy.addEventListener('click', copyPartnerWalletAddress);
-    dom.partnerInquiryForm.addEventListener('submit', handlePartnerFormSubmit);
-    partnerFormReadyAt = Date.now();
     dom.content.addEventListener('click', function (event) {
       const freshwaterReadButton = event.target.closest('.freshwater-read-text');
       if (freshwaterReadButton) {
@@ -1589,19 +1558,11 @@ function cacheContentElements() {
     dom.gamePartnerTitle.textContent = getTranslation('gamePartnerTitle');
     dom.gamePartnerText.textContent = getTranslation('gamePartnerText');
     dom.gamePartnerContactHint.textContent = getTranslation('gamePartnerContactHint');
+    dom.gamePartnerSocialTitle.textContent = getTranslation('gamePartnerCta');
     dom.partnerWalletLabel.textContent = getTranslation('partnerWalletLabel');
     dom.partnerWalletAddress.textContent = METAMASK_WALLET_ADDRESS;
     dom.partnerWalletCopy.textContent = getTranslation('partnerWalletCopy');
     dom.partnerWalletHint.textContent = getTranslation('partnerWalletHint');
-    dom.partnerFormTitle.textContent = getTranslation('partnerFormTitle');
-    dom.partnerFormNameLabel.textContent = getTranslation('partnerFormNameLabel');
-    dom.partnerFormEmailLabel.textContent = getTranslation('partnerFormEmailLabel');
-    dom.partnerFormMessageLabel.textContent = getTranslation('partnerFormMessageLabel');
-    dom.partnerFormName.placeholder = getTranslation('partnerFormNamePlaceholder');
-    dom.partnerFormEmail.placeholder = getTranslation('partnerFormEmailPlaceholder');
-    dom.partnerFormMessage.placeholder = getTranslation('partnerFormMessagePlaceholder');
-    dom.partnerFormSubmit.textContent = getTranslation('partnerFormSubmit');
-    dom.partnerFormStatus.textContent = '';
     if (dom.gamePartnerPaypalCta) {
       dom.gamePartnerPaypalCta.textContent = getTranslation('gamePartnerPaypalCta');
       if (PAYPAL_PARTNER_URL) {
@@ -1759,200 +1720,6 @@ function cacheContentElements() {
     }
 
     document.body.removeChild(textArea);
-  }
-
-  async function handlePartnerFormSubmit(event) {
-    event.preventDefault();
-    const now = Date.now();
-
-    if (dom.partnerFormWebsite.value.trim()) {
-      // Honeypot hit: mimic successful submit and drop silently.
-      dom.partnerFormStatus.textContent = getTranslation('partnerFormSuccess');
-      event.target.reset();
-      return;
-    }
-
-    if (now - partnerFormReadyAt < PARTNER_FORM_MIN_SUBMIT_MS) {
-      dom.partnerFormStatus.textContent = getTranslation('partnerFormTooFast');
-      return;
-    }
-
-    if (isPartnerRateLimited(now)) {
-      dom.partnerFormStatus.textContent = getTranslation('partnerFormRateClientLimited');
-      return;
-    }
-
-    const normalizedName = normalizeSingleLineField(dom.partnerFormName.value);
-    const normalizedEmail = normalizeSingleLineField(dom.partnerFormEmail.value);
-    const normalizedMessage = normalizeMessageField(dom.partnerFormMessage.value);
-
-    dom.partnerFormName.value = normalizedName;
-    dom.partnerFormEmail.value = normalizedEmail;
-    dom.partnerFormMessage.value = normalizedMessage;
-
-    if (!normalizedName || !normalizedEmail || !normalizedMessage) {
-      dom.partnerFormStatus.textContent = getTranslation('partnerFormRequired');
-      return;
-    }
-
-    if (!dom.partnerFormEmail.checkValidity()) {
-      dom.partnerFormStatus.textContent = getTranslation('partnerFormInvalidEmail');
-      return;
-    }
-
-    if (normalizedName.length > PARTNER_FORM_NAME_MAX_LEN || normalizedEmail.length > PARTNER_FORM_EMAIL_MAX_LEN || normalizedMessage.length > PARTNER_FORM_MESSAGE_MAX_LEN) {
-      dom.partnerFormStatus.textContent = getTranslation('partnerFormTooLong');
-      return;
-    }
-
-    if (normalizedMessage.length < PARTNER_FORM_MESSAGE_MIN_LEN) {
-      dom.partnerFormStatus.textContent = getTranslation('partnerFormTooShort');
-      return;
-    }
-
-    if (hasSuspiciousPartnerInput(normalizedName) || hasSuspiciousPartnerInput(normalizedMessage)) {
-      dom.partnerFormStatus.textContent = getTranslation('partnerFormUnsafeInput');
-      return;
-    }
-
-    if (!isPartnerEndpointConfigured()) {
-      dom.partnerFormStatus.textContent = getTranslation('partnerFormEndpointMissing');
-      return;
-    }
-
-    const payload = {
-      name: normalizedName,
-      email: normalizedEmail,
-      message: normalizedMessage,
-      source: 'Indonesia Explorer Partnership Form'
-    };
-
-    registerPartnerAttempt(now);
-
-    dom.partnerFormStatus.textContent = getTranslation('partnerFormSending');
-    dom.partnerFormSubmit.disabled = true;
-
-    const controller = new AbortController();
-    const timeoutId = setTimeout(function () {
-      controller.abort();
-    }, PARTNER_FORM_REQUEST_TIMEOUT_MS);
-
-    try {
-      const response = await fetch(PARTNER_FORM_ENDPOINT, {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload),
-        signal: controller.signal
-      });
-      clearTimeout(timeoutId);
-
-      if (response.status === 429) {
-        registerPartnerAbuse(now);
-        dom.partnerFormStatus.textContent = getTranslation('partnerFormRateLimited');
-        return;
-      }
-
-      if (!response.ok) {
-        throw new Error('Partner form request failed.');
-      }
-
-      dom.partnerFormStatus.textContent = getTranslation('partnerFormSuccess');
-      event.target.reset();
-    } catch (error) {
-      clearTimeout(timeoutId);
-      dom.partnerFormStatus.textContent = getTranslation('partnerFormError');
-    } finally {
-      dom.partnerFormSubmit.disabled = false;
-    }
-  }
-
-  function normalizeSingleLineField(value) {
-    return String(value || '')
-      .replace(/[\u0000-\u001F\u007F]/g, ' ')
-      .replace(/\s+/g, ' ')
-      .trim();
-  }
-
-  function normalizeMessageField(value) {
-    return String(value || '')
-      .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, ' ')
-      .replace(/\r\n/g, '\n')
-      .replace(/\n{3,}/g, '\n\n')
-      .trim();
-  }
-
-  function hasSuspiciousPartnerInput(value) {
-    const input = String(value || '').toLowerCase();
-    return /<\s*script|javascript:|onerror\s*=|onload\s*=|<\s*iframe|<\s*object|<\s*embed|data\s*:\s*text\/html/.test(input);
-  }
-
-  function readPartnerRateState() {
-    try {
-      const raw = window.localStorage.getItem(PARTNER_FORM_RATE_KEY);
-      if (!raw) {
-        return { attempts: [], blockedUntil: 0 };
-      }
-
-      const parsed = JSON.parse(raw);
-      if (!Array.isArray(parsed.attempts) || typeof parsed.blockedUntil !== 'number') {
-        return { attempts: [], blockedUntil: 0 };
-      }
-
-      return parsed;
-    } catch (error) {
-      return { attempts: [], blockedUntil: 0 };
-    }
-  }
-
-  function writePartnerRateState(state) {
-    try {
-      window.localStorage.setItem(PARTNER_FORM_RATE_KEY, JSON.stringify(state));
-    } catch (error) {
-      // localStorage may be unavailable in private mode; continue without persistence.
-    }
-  }
-
-  function isPartnerRateLimited(nowTs) {
-    const state = readPartnerRateState();
-    if (state.blockedUntil > nowTs) {
-      return true;
-    }
-
-    const attempts = state.attempts.filter(function (ts) {
-      return nowTs - ts <= PARTNER_FORM_RATE_WINDOW_MS;
-    });
-
-    if (attempts.length >= PARTNER_FORM_MAX_ATTEMPTS) {
-      writePartnerRateState({ attempts: attempts, blockedUntil: nowTs + PARTNER_FORM_BLOCK_WINDOW_MS });
-      return true;
-    }
-
-    if (attempts.length !== state.attempts.length) {
-      writePartnerRateState({ attempts: attempts, blockedUntil: 0 });
-    }
-
-    return false;
-  }
-
-  function registerPartnerAttempt(nowTs) {
-    const state = readPartnerRateState();
-    const attempts = state.attempts.filter(function (ts) {
-      return nowTs - ts <= PARTNER_FORM_RATE_WINDOW_MS;
-    });
-    attempts.push(nowTs);
-    writePartnerRateState({ attempts: attempts, blockedUntil: state.blockedUntil > nowTs ? state.blockedUntil : 0 });
-  }
-
-  function registerPartnerAbuse(nowTs) {
-    const state = readPartnerRateState();
-    writePartnerRateState({ attempts: state.attempts, blockedUntil: nowTs + PARTNER_FORM_BLOCK_WINDOW_MS });
-  }
-
-  function isPartnerEndpointConfigured() {
-    return !/yourFormId$/i.test(PARTNER_FORM_ENDPOINT);
   }
 
   function getBlogLineIcon(labelText) {

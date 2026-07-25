@@ -1023,6 +1023,44 @@ header p {
     text-align: left;
 }
 
+.game-partnership-social-title {
+    margin: 2px 0 0;
+    color: rgba(236, 247, 255, 0.96);
+    font-size: 0.96rem;
+    font-weight: 700;
+}
+
+.game-partnership-social-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.game-partnership-social-btn {
+    width: 100%;
+    min-width: 0;
+    font-size: 0.96rem;
+    padding: 11px 10px;
+}
+
+.game-partnership-instagram-btn {
+    background: linear-gradient(135deg, #f9b93e 0%, #ef4d7a 50%, #8b41c2 100%);
+    color: #fff;
+    box-shadow: 0 10px 22px rgba(130, 39, 144, 0.28);
+}
+
+.game-partnership-facebook-btn {
+    background: linear-gradient(135deg, #2178ff 0%, #0f53d7 100%);
+    color: #f2f8ff;
+    box-shadow: 0 10px 22px rgba(8, 51, 148, 0.28);
+}
+
+.game-partnership-x-btn {
+    background: linear-gradient(135deg, #161b24 0%, #2f3948 100%);
+    color: #f7fbff;
+    box-shadow: 0 10px 22px rgba(4, 8, 16, 0.34);
+}
+
 .game-partnership-btn:hover {
     filter: brightness(1.04);
 }
@@ -1038,69 +1076,6 @@ header p {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-}
-
-.partner-inquiry-form {
-    margin-top: 18px;
-    padding: 20px;
-    border-radius: 16px;
-    border: 1px solid rgba(185, 209, 240, 0.48);
-    background: linear-gradient(145deg, rgba(248, 252, 255, 0.95) 0%, rgba(238, 247, 255, 0.9) 100%);
-    box-shadow: 0 10px 20px rgba(18, 43, 82, 0.14);
-}
-
-.partner-inquiry-form h3 {
-    margin: 0 0 14px;
-    color: #24447e;
-    font-size: 1.2rem;
-}
-
-.partner-inquiry-form-inner {
-    display: grid;
-    gap: 10px;
-}
-
-.partner-inquiry-form-inner label {
-    color: #2f3f5f;
-    font-weight: 600;
-    font-size: 0.92rem;
-}
-
-.partner-inquiry-form-inner input,
-.partner-inquiry-form-inner textarea {
-    width: 100%;
-    border: 1px solid #c4d6ef;
-    border-radius: 11px;
-    padding: 10px 11px;
-    font-size: 0.95rem;
-    font-family: inherit;
-    color: #1f2c45;
-    background: #ffffff;
-}
-
-.partner-inquiry-form-inner textarea {
-    resize: vertical;
-    min-height: 110px;
-}
-
-.partner-inquiry-submit {
-    margin-top: 6px;
-    width: fit-content;
-}
-
-.partner-inquiry-status {
-    margin: 2px 0 0;
-    color: #2e4f8f;
-    font-size: 0.9rem;
-    line-height: 1.4;
-}
-
-.partner-honeypot-field {
-    position: absolute;
-    left: -10000px;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
 }
 
 @media (max-width: 768px) {
@@ -1129,12 +1104,12 @@ header p {
         padding: 14px;
     }
 
-    .game-partnership-neutral-row {
-        font-size: 0.93rem;
+    .game-partnership-social-grid {
+        grid-template-columns: 1fr;
     }
 
-    .partner-inquiry-form {
-        padding: 16px;
+    .game-partnership-neutral-row {
+        font-size: 0.93rem;
     }
 }
 
