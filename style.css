@@ -948,6 +948,14 @@ header p {
     line-height: 1.45;
 }
 
+.game-partnership-wallet .game-partnership-paypal-btn {
+    margin-top: 12px;
+    width: fit-content;
+    min-width: 0;
+    padding: 10px 14px;
+    font-size: 0.96rem;
+}
+
 .game-partnership-btn {
     flex-shrink: 0;
     width: 100%;
@@ -1097,6 +1105,10 @@ header p {
         width: 100%;
         min-width: 0;
         font-size: 1rem;
+    }
+
+    .game-partnership-wallet .game-partnership-paypal-btn {
+        width: 100%;
     }
 
     .game-partnership-actions {

@@ -1370,6 +1370,7 @@ function cacheContentElements() {
                 <button id="partnerWalletCopy" class="game-partnership-wallet-copy" type="button"></button>
               </div>
               <p id="partnerWalletHint" class="game-partnership-wallet-hint"></p>
+              <a id="gamePartnerPaypalCta" class="blog-read-btn game-partnership-btn game-partnership-paypal-btn" href="#" target="_blank" rel="noopener noreferrer" hidden></a>
             </div>
             <div class="game-partnership-actions">
               <p class="game-partnership-neutral-row"><span class="game-partnership-email-icon" aria-hidden="true">🛡</span><span id="gamePartnerContactHint"></span></p>
@@ -1379,7 +1380,6 @@ function cacheContentElements() {
                 <a id="gamePartnerFacebook" class="blog-read-btn game-partnership-btn game-partnership-social-btn game-partnership-facebook-btn" href="${PARTNER_FACEBOOK_URL}" target="_blank" rel="noopener noreferrer">Facebook</a>
                 <a id="gamePartnerX" class="blog-read-btn game-partnership-btn game-partnership-social-btn game-partnership-x-btn" href="${PARTNER_X_URL}" target="_blank" rel="noopener noreferrer">X</a>
               </div>
-              <a id="gamePartnerPaypalCta" class="blog-read-btn game-partnership-btn game-partnership-paypal-btn" href="#" target="_blank" rel="noopener noreferrer" hidden></a>
             </div>
           </section>
         </div>
