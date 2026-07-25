@@ -879,7 +879,6 @@ function cacheContentElements() {
     dom.project3Link = document.getElementById('project3Link');
     dom.gamePartnerTitle = document.getElementById('gamePartnerTitle');
     dom.gamePartnerText = document.getElementById('gamePartnerText');
-    dom.gamePartnerCta = document.getElementById('gamePartnerCta');
     dom.gamePartnerContactHint = document.getElementById('gamePartnerContactHint');
     dom.partnerWalletLabel = document.getElementById('partnerWalletLabel');
     dom.partnerWalletAddress = document.getElementById('partnerWalletAddress');
@@ -897,7 +896,6 @@ function cacheContentElements() {
     dom.partnerFormStatus = document.getElementById('partnerFormStatus');
     dom.partnerInquiryForm = document.getElementById('partnerInquiryFormInner');
     dom.gamePartnerPaypalCta = document.getElementById('gamePartnerPaypalCta');
-    dom.gamePartnerEmailHint = document.getElementById('gamePartnerEmailHint');
     dom.dataNotice = document.getElementById('dataNotice');
     countryInfoFields.forEach(function (field) {
       dom[field.id] = document.getElementById(field.id);
@@ -1381,10 +1379,8 @@ function cacheContentElements() {
               </div>
             </div>
             <div class="game-partnership-actions">
-              <a id="gamePartnerCta" class="blog-read-btn game-partnership-btn" href="mailto:svetoslav.gochev@gmail.com?subject=Game%20Explorer%20Partnership"></a>
               <p class="game-partnership-neutral-row"><span class="game-partnership-email-icon" aria-hidden="true">🛡</span><span id="gamePartnerContactHint"></span></p>
               <a id="gamePartnerPaypalCta" class="blog-read-btn game-partnership-btn game-partnership-paypal-btn" href="#" target="_blank" rel="noopener noreferrer" hidden></a>
-              <p class="game-partnership-email-row"><span class="game-partnership-email-icon" aria-hidden="true">✉</span><span id="gamePartnerEmailHint"></span> <a class="game-partnership-email-link" href="mailto:svetoslav.gochev@gmail.com?subject=Game%20Explorer%20Partnership">svetoslav.gochev@gmail.com</a></p>
             </div>
           </section>
           <section id="partnerInquiryForm" class="partner-inquiry-form" aria-labelledby="partnerFormTitle">
@@ -1583,7 +1579,6 @@ function cacheContentElements() {
     dom.project3Link.textContent = getTranslation('projectVisitBtn');
     dom.gamePartnerTitle.textContent = getTranslation('gamePartnerTitle');
     dom.gamePartnerText.textContent = getTranslation('gamePartnerText');
-    dom.gamePartnerCta.textContent = getTranslation('gamePartnerCta');
     dom.gamePartnerContactHint.textContent = getTranslation('gamePartnerContactHint');
     dom.partnerWalletLabel.textContent = getTranslation('partnerWalletLabel');
     dom.partnerWalletAddress.textContent = METAMASK_WALLET_ADDRESS;
@@ -1607,7 +1602,6 @@ function cacheContentElements() {
         dom.gamePartnerPaypalCta.hidden = true;
       }
     }
-    dom.gamePartnerEmailHint.textContent = getTranslation('gamePartnerEmailHint');
     dom.dataNotice.textContent = getTranslation('dataNotice');
 
     dom.cityPopulationTexts.forEach(function (populationElement) {
