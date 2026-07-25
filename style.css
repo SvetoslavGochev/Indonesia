@@ -835,42 +835,63 @@ header p {
 
 .game-partnership-panel {
     margin-top: 20px;
-    padding: 22px;
-    border-radius: 18px;
-    border: 1px solid rgba(197, 223, 255, 0.34);
-    background: linear-gradient(135deg, rgba(15, 37, 78, 0.92) 0%, rgba(23, 58, 114, 0.86) 52%, rgba(16, 110, 127, 0.84) 100%);
-    box-shadow: 0 16px 34px rgba(8, 19, 42, 0.28);
+    padding: 26px;
+    border-radius: 22px;
+    border: 1px solid rgba(203, 227, 255, 0.38);
+    background:
+        radial-gradient(circle at 88% 10%, rgba(120, 196, 255, 0.24) 0%, rgba(120, 196, 255, 0) 44%),
+        linear-gradient(136deg, rgba(13, 34, 72, 0.95) 0%, rgba(20, 54, 106, 0.9) 56%, rgba(14, 100, 121, 0.87) 100%);
+    box-shadow: 0 20px 38px rgba(8, 19, 42, 0.34);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 18px;
+    gap: 24px;
     overflow: hidden;
+    position: relative;
+}
+
+.game-partnership-panel::before {
+    content: "";
+    position: absolute;
+    top: -70px;
+    right: -70px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 68%);
+    pointer-events: none;
 }
 
 .game-partnership-copy {
-    max-width: 640px;
+    max-width: 66ch;
+    position: relative;
+    z-index: 1;
 }
 
 .game-partnership-copy h3 {
-    margin: 0 0 12px;
+    margin: 0 0 14px;
     color: #f3f8ff;
-    font-size: 1.5rem;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+    line-height: 1.12;
+    letter-spacing: 0.01em;
+    text-shadow: 0 3px 14px rgba(0, 0, 0, 0.32);
 }
 
 .game-partnership-text {
     margin: 0;
     color: rgba(238, 247, 255, 0.96);
-    line-height: 1.7;
-    font-size: 1rem;
+    line-height: 1.72;
+    font-size: 1.04rem;
+    max-width: 58ch;
 }
 
 .game-partnership-wallet {
-    margin-top: 14px;
-    padding: 12px;
-    border-radius: 12px;
-    border: 1px solid rgba(200, 228, 255, 0.34);
-    background: rgba(8, 21, 48, 0.45);
+    margin-top: 16px;
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(208, 233, 255, 0.34);
+    background: linear-gradient(135deg, rgba(6, 19, 45, 0.55) 0%, rgba(11, 27, 57, 0.44) 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .game-partnership-wallet-label {
@@ -889,7 +910,7 @@ header p {
 
 .game-partnership-wallet-address {
     display: inline-block;
-    padding: 8px 10px;
+    padding: 9px 11px;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -901,8 +922,8 @@ header p {
 
 .game-partnership-wallet-copy {
     border: 0;
-    border-radius: 10px;
-    padding: 8px 12px;
+    border-radius: 11px;
+    padding: 9px 14px;
     background: #fff4c7;
     color: #12305f;
     font-weight: 700;
@@ -924,11 +945,15 @@ header p {
 
 .game-partnership-btn {
     flex-shrink: 0;
-    min-width: 220px;
+    width: 100%;
+    min-width: 250px;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    padding: 12px 16px;
+    font-size: 1.08rem;
+    letter-spacing: 0.01em;
     background: linear-gradient(135deg, #f8bc37 0%, #ff8f2c 100%);
     color: #13213e;
     box-shadow: 0 12px 24px rgba(255, 143, 44, 0.26);
@@ -939,7 +964,14 @@ header p {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 10px;
+    justify-content: center;
+    gap: 12px;
+    width: min(390px, 100%);
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(196, 225, 255, 0.26);
+    background: rgba(8, 30, 66, 0.22);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .game-partnership-email-row {
@@ -979,9 +1011,9 @@ header p {
 .game-partnership-neutral-row {
     margin: 0;
     color: rgba(232, 244, 255, 0.92);
-    font-size: 0.92rem;
+    font-size: 0.98rem;
     line-height: 1.5;
-    text-align: center;
+    text-align: left;
 }
 
 .game-partnership-btn:hover {
@@ -1002,22 +1034,23 @@ header p {
 }
 
 .partner-inquiry-form {
-    margin-top: 16px;
-    padding: 18px;
-    border-radius: 14px;
-    border: 1px solid rgba(180, 205, 238, 0.4);
-    background: rgba(244, 249, 255, 0.86);
+    margin-top: 18px;
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(185, 209, 240, 0.48);
+    background: linear-gradient(145deg, rgba(248, 252, 255, 0.95) 0%, rgba(238, 247, 255, 0.9) 100%);
+    box-shadow: 0 10px 20px rgba(18, 43, 82, 0.14);
 }
 
 .partner-inquiry-form h3 {
-    margin: 0 0 12px;
+    margin: 0 0 14px;
     color: #24447e;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
 }
 
 .partner-inquiry-form-inner {
     display: grid;
-    gap: 8px;
+    gap: 10px;
 }
 
 .partner-inquiry-form-inner label {
@@ -1030,8 +1063,8 @@ header p {
 .partner-inquiry-form-inner textarea {
     width: 100%;
     border: 1px solid #c4d6ef;
-    border-radius: 10px;
-    padding: 9px 10px;
+    border-radius: 11px;
+    padding: 10px 11px;
     font-size: 0.95rem;
     font-family: inherit;
     color: #1f2c45;
@@ -1044,7 +1077,7 @@ header p {
 }
 
 .partner-inquiry-submit {
-    margin-top: 4px;
+    margin-top: 6px;
     width: fit-content;
 }
 
@@ -1071,15 +1104,27 @@ header p {
     .game-partnership-panel {
         flex-direction: column;
         align-items: flex-start;
+        padding: 20px;
+        gap: 16px;
     }
 
     .game-partnership-btn {
         width: 100%;
         min-width: 0;
+        font-size: 1rem;
     }
 
     .game-partnership-actions {
         width: 100%;
+        padding: 14px;
+    }
+
+    .game-partnership-neutral-row {
+        font-size: 0.93rem;
+    }
+
+    .partner-inquiry-form {
+        padding: 16px;
     }
 }
 
