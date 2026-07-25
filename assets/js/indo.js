@@ -1354,17 +1354,17 @@ function cacheContentElements() {
             <article class="about-project-item">
               <h3 id="project1Title"></h3>
               <p id="project1Desc" class="blog-excerpt"></p>
-              <a id="project1Link" class="blog-read-btn project-link-btn" href="https://svetoslavgochev.github.io/PIn-Pong/" target="_blank" rel="noopener noreferrer"></a>
+              <a id="project1Link" class="blog-read-btn project-link-btn" href="https://p-in-pong-trs2.vercel.app/" target="_blank" rel="noopener noreferrer"></a>
             </article>
             <article class="about-project-item">
               <h3 id="project2Title"></h3>
               <p id="project2Desc" class="blog-excerpt"></p>
-              <a id="project2Link" class="blog-read-btn project-link-btn" href="https://svetoslavgochev.github.io/cska-explorer/" target="_blank" rel="noopener noreferrer"></a>
+              <a id="project2Link" class="blog-read-btn project-link-btn" href="https://cska-explorer.vercel.app/" target="_blank" rel="noopener noreferrer"></a>
             </article>
             <article class="about-project-item">
               <h3 id="project3Title"></h3>
               <p id="project3Desc" class="blog-excerpt"></p>
-              <a id="project3Link" class="blog-read-btn project-link-btn" href="https://svetoslavgochev.github.io/norway-info/" target="_blank" rel="noopener noreferrer"></a>
+              <a id="project3Link" class="blog-read-btn project-link-btn" href="https://norway-info.vercel.app/" target="_blank" rel="noopener noreferrer"></a>
             </article>
           </div>
           <section class="game-partnership-panel" aria-labelledby="gamePartnerTitle">
