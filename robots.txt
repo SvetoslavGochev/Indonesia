@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://svetoslavgochev.github.io/Indonesia/sitemap.xml
+Sitemap: https://indonesia-five.vercel.app/sitemap.xml
