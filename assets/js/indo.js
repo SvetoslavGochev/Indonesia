@@ -1369,14 +1369,14 @@ function cacheContentElements() {
             <div class="game-partnership-copy">
               <h3 id="gamePartnerTitle"></h3>
               <p id="gamePartnerText" class="game-partnership-text"></p>
-              <div class="game-partnership-wallet" aria-live="polite">
-                <p id="partnerWalletLabel" class="game-partnership-wallet-label"></p>
-                <div class="game-partnership-wallet-row">
-                  <code id="partnerWalletAddress" class="game-partnership-wallet-address"></code>
-                  <button id="partnerWalletCopy" class="game-partnership-wallet-copy" type="button"></button>
-                </div>
-                <p id="partnerWalletHint" class="game-partnership-wallet-hint"></p>
+            </div>
+            <div class="game-partnership-wallet" aria-live="polite">
+              <p id="partnerWalletLabel" class="game-partnership-wallet-label"></p>
+              <div class="game-partnership-wallet-row">
+                <code id="partnerWalletAddress" class="game-partnership-wallet-address"></code>
+                <button id="partnerWalletCopy" class="game-partnership-wallet-copy" type="button"></button>
               </div>
+              <p id="partnerWalletHint" class="game-partnership-wallet-hint"></p>
             </div>
             <div class="game-partnership-actions">
               <p class="game-partnership-neutral-row"><span class="game-partnership-email-icon" aria-hidden="true">🛡</span><span id="gamePartnerContactHint"></span></p>
