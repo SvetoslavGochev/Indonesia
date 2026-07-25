@@ -142,6 +142,15 @@
   const METAMASK_WALLET_ADDRESS = '0xfca710eC5eB0FB036157Bb1E114BADc2310efE37';
   const PARTNER_FORM_ENDPOINT = (window.PARTNER_FORM_ENDPOINT || 'https://formspree.io/f/yourFormId').trim();
   const PARTNER_FORM_MIN_SUBMIT_MS = 3000;
+  const PARTNER_FORM_NAME_MAX_LEN = 80;
+  const PARTNER_FORM_EMAIL_MAX_LEN = 160;
+  const PARTNER_FORM_MESSAGE_MAX_LEN = 1200;
+  const PARTNER_FORM_MESSAGE_MIN_LEN = 12;
+  const PARTNER_FORM_REQUEST_TIMEOUT_MS = 12000;
+  const PARTNER_FORM_RATE_WINDOW_MS = 10 * 60 * 1000;
+  const PARTNER_FORM_MAX_ATTEMPTS = 4;
+  const PARTNER_FORM_BLOCK_WINDOW_MS = 15 * 60 * 1000;
+  const PARTNER_FORM_RATE_KEY = 'indonesia_partner_form_rate_v1';
   const FRESHWATER_ARTICLE_URLS = {
     bg: './assets/tekst/sladkowodniRibi.txt?v=20260702c'
   };
@@ -1390,13 +1399,13 @@ function cacheContentElements() {
               <input id="partnerFormWebsite" class="partner-honeypot-field" name="website" type="text" tabindex="-1" autocomplete="off">
 
               <label for="partnerFormName" id="partnerFormNameLabel"></label>
-              <input id="partnerFormName" name="name" type="text" required>
+              <input id="partnerFormName" name="name" type="text" maxlength="80" autocomplete="name" required>
 
               <label for="partnerFormEmail" id="partnerFormEmailLabel"></label>
-              <input id="partnerFormEmail" name="email" type="email" required>
+              <input id="partnerFormEmail" name="email" type="email" maxlength="160" autocomplete="email" required>
 
               <label for="partnerFormMessage" id="partnerFormMessageLabel"></label>
-              <textarea id="partnerFormMessage" name="message" rows="5" required></textarea>
+              <textarea id="partnerFormMessage" name="message" rows="5" maxlength="1200" required></textarea>
 
               <button id="partnerFormSubmit" class="blog-read-btn partner-inquiry-submit" type="submit"></button>
               <p id="partnerFormStatus" class="partner-inquiry-status" role="status" aria-live="polite"></p>
@@ -1754,6 +1763,7 @@ function cacheContentElements() {
 
   async function handlePartnerFormSubmit(event) {
     event.preventDefault();
+    const now = Date.now();
 
     if (dom.partnerFormWebsite.value.trim()) {
       // Honeypot hit: mimic successful submit and drop silently.
@@ -1762,12 +1772,25 @@ function cacheContentElements() {
       return;
     }
 
-    if (Date.now() - partnerFormReadyAt < PARTNER_FORM_MIN_SUBMIT_MS) {
+    if (now - partnerFormReadyAt < PARTNER_FORM_MIN_SUBMIT_MS) {
       dom.partnerFormStatus.textContent = getTranslation('partnerFormTooFast');
       return;
     }
 
-    if (!dom.partnerFormName.value.trim() || !dom.partnerFormEmail.value.trim() || !dom.partnerFormMessage.value.trim()) {
+    if (isPartnerRateLimited(now)) {
+      dom.partnerFormStatus.textContent = getTranslation('partnerFormRateClientLimited');
+      return;
+    }
+
+    const normalizedName = normalizeSingleLineField(dom.partnerFormName.value);
+    const normalizedEmail = normalizeSingleLineField(dom.partnerFormEmail.value);
+    const normalizedMessage = normalizeMessageField(dom.partnerFormMessage.value);
+
+    dom.partnerFormName.value = normalizedName;
+    dom.partnerFormEmail.value = normalizedEmail;
+    dom.partnerFormMessage.value = normalizedMessage;
+
+    if (!normalizedName || !normalizedEmail || !normalizedMessage) {
       dom.partnerFormStatus.textContent = getTranslation('partnerFormRequired');
       return;
     }
@@ -1777,20 +1800,42 @@ function cacheContentElements() {
       return;
     }
 
+    if (normalizedName.length > PARTNER_FORM_NAME_MAX_LEN || normalizedEmail.length > PARTNER_FORM_EMAIL_MAX_LEN || normalizedMessage.length > PARTNER_FORM_MESSAGE_MAX_LEN) {
+      dom.partnerFormStatus.textContent = getTranslation('partnerFormTooLong');
+      return;
+    }
+
+    if (normalizedMessage.length < PARTNER_FORM_MESSAGE_MIN_LEN) {
+      dom.partnerFormStatus.textContent = getTranslation('partnerFormTooShort');
+      return;
+    }
+
+    if (hasSuspiciousPartnerInput(normalizedName) || hasSuspiciousPartnerInput(normalizedMessage)) {
+      dom.partnerFormStatus.textContent = getTranslation('partnerFormUnsafeInput');
+      return;
+    }
+
     if (!isPartnerEndpointConfigured()) {
       dom.partnerFormStatus.textContent = getTranslation('partnerFormEndpointMissing');
       return;
     }
 
     const payload = {
-      name: dom.partnerFormName.value.trim(),
-      email: dom.partnerFormEmail.value.trim(),
-      message: dom.partnerFormMessage.value.trim(),
+      name: normalizedName,
+      email: normalizedEmail,
+      message: normalizedMessage,
       source: 'Indonesia Explorer Partnership Form'
     };
 
+    registerPartnerAttempt(now);
+
     dom.partnerFormStatus.textContent = getTranslation('partnerFormSending');
     dom.partnerFormSubmit.disabled = true;
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(function () {
+      controller.abort();
+    }, PARTNER_FORM_REQUEST_TIMEOUT_MS);
 
     try {
       const response = await fetch(PARTNER_FORM_ENDPOINT, {
@@ -1799,10 +1844,13 @@ function cacheContentElements() {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
+        signal: controller.signal
       });
+      clearTimeout(timeoutId);
 
       if (response.status === 429) {
+        registerPartnerAbuse(now);
         dom.partnerFormStatus.textContent = getTranslation('partnerFormRateLimited');
         return;
       }
@@ -1814,10 +1862,93 @@ function cacheContentElements() {
       dom.partnerFormStatus.textContent = getTranslation('partnerFormSuccess');
       event.target.reset();
     } catch (error) {
+      clearTimeout(timeoutId);
       dom.partnerFormStatus.textContent = getTranslation('partnerFormError');
     } finally {
       dom.partnerFormSubmit.disabled = false;
     }
+  }
+
+  function normalizeSingleLineField(value) {
+    return String(value || '')
+      .replace(/[\u0000-\u001F\u007F]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function normalizeMessageField(value) {
+    return String(value || '')
+      .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, ' ')
+      .replace(/\r\n/g, '\n')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim();
+  }
+
+  function hasSuspiciousPartnerInput(value) {
+    const input = String(value || '').toLowerCase();
+    return /<\s*script|javascript:|onerror\s*=|onload\s*=|<\s*iframe|<\s*object|<\s*embed|data\s*:\s*text\/html/.test(input);
+  }
+
+  function readPartnerRateState() {
+    try {
+      const raw = window.localStorage.getItem(PARTNER_FORM_RATE_KEY);
+      if (!raw) {
+        return { attempts: [], blockedUntil: 0 };
+      }
+
+      const parsed = JSON.parse(raw);
+      if (!Array.isArray(parsed.attempts) || typeof parsed.blockedUntil !== 'number') {
+        return { attempts: [], blockedUntil: 0 };
+      }
+
+      return parsed;
+    } catch (error) {
+      return { attempts: [], blockedUntil: 0 };
+    }
+  }
+
+  function writePartnerRateState(state) {
+    try {
+      window.localStorage.setItem(PARTNER_FORM_RATE_KEY, JSON.stringify(state));
+    } catch (error) {
+      // localStorage may be unavailable in private mode; continue without persistence.
+    }
+  }
+
+  function isPartnerRateLimited(nowTs) {
+    const state = readPartnerRateState();
+    if (state.blockedUntil > nowTs) {
+      return true;
+    }
+
+    const attempts = state.attempts.filter(function (ts) {
+      return nowTs - ts <= PARTNER_FORM_RATE_WINDOW_MS;
+    });
+
+    if (attempts.length >= PARTNER_FORM_MAX_ATTEMPTS) {
+      writePartnerRateState({ attempts: attempts, blockedUntil: nowTs + PARTNER_FORM_BLOCK_WINDOW_MS });
+      return true;
+    }
+
+    if (attempts.length !== state.attempts.length) {
+      writePartnerRateState({ attempts: attempts, blockedUntil: 0 });
+    }
+
+    return false;
+  }
+
+  function registerPartnerAttempt(nowTs) {
+    const state = readPartnerRateState();
+    const attempts = state.attempts.filter(function (ts) {
+      return nowTs - ts <= PARTNER_FORM_RATE_WINDOW_MS;
+    });
+    attempts.push(nowTs);
+    writePartnerRateState({ attempts: attempts, blockedUntil: state.blockedUntil > nowTs ? state.blockedUntil : 0 });
+  }
+
+  function registerPartnerAbuse(nowTs) {
+    const state = readPartnerRateState();
+    writePartnerRateState({ attempts: state.attempts, blockedUntil: nowTs + PARTNER_FORM_BLOCK_WINDOW_MS });
   }
 
   function isPartnerEndpointConfigured() {
