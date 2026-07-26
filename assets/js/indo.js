@@ -140,7 +140,7 @@
     id: './assets/tekst/football2.id.txt?v=20260712c'
   };
   const METAMASK_WALLET_ADDRESS = '0xfca710eC5eB0FB036157Bb1E114BADc2310efE37';
-  const PARTNER_INSTAGRAM_URL = (window.PARTNER_INSTAGRAM_URL || 'https://www.instagram.com/').trim();
+  const PARTNER_INSTAGRAM_URL = (window.PARTNER_INSTAGRAM_URL || 'https://www.instagram.com/indo.nesiaexplorerr/').trim();
   const PARTNER_FACEBOOK_URL = (window.PARTNER_FACEBOOK_URL || 'https://www.facebook.com/').trim();
   const PARTNER_X_URL = (window.PARTNER_X_URL || 'https://x.com/').trim();
   const FRESHWATER_ARTICLE_URLS = {
