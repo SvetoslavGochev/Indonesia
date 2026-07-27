@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v76';
+const CACHE_VERSION = 'v77';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -90,6 +90,12 @@ const CORE_ASSETS = [
   './assets/tekst/football2.fr.txt',
   './assets/tekst/football2.es.txt',
   './assets/tekst/football2.id.txt',
+  './assets/tekst/UningBromo.bg.txt',
+  './assets/tekst/UningBromo.en.txt',
+  './assets/tekst/UningBromo.de.txt',
+  './assets/tekst/UningBromo.fr.txt',
+  './assets/tekst/UningBromo.es.txt',
+  './assets/tekst/UningBromo.id.txt',
   './assets/tekst/pytepisPalembeng.txt',
   './assets/tekst/pytepisPalembeng.en.txt',
   './assets/tekst/pytepisPalembeng.de.txt',
