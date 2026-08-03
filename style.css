@@ -251,6 +251,18 @@ header p {
     margin-bottom: 40px;
 }
 
+.site-footer {
+    margin: 16px auto 4px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.site-footer a {
+    color: #d9e7ff;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
 .card {
     background: rgba(223, 230, 242, 0.03);
     border-radius: 15px;
