@@ -54,12 +54,12 @@
     id: './assets/tekst/ламбо.id.txt?v=20260618'
   };
   const SPORTS_ARTICLE_URLS = {
-    bg: './assets/tekst/sportstot7.txt?v=20260620',
-    en: './assets/tekst/sportstot7.en.txt?v=20260620',
-    de: './assets/tekst/sportstot7.de.txt?v=20260620',
-    fr: './assets/tekst/sportstot7.fr.txt?v=20260620',
-    es: './assets/tekst/sportstot7.es.txt?v=20260620',
-    id: './assets/tekst/sportstot7.id.txt?v=20260620'
+    bg: './assets/tekst/sportstot7.txt?v=20260728',
+    en: './assets/tekst/sportstot7.en.txt?v=20260728',
+    de: './assets/tekst/sportstot7.de.txt?v=20260728',
+    fr: './assets/tekst/sportstot7.fr.txt?v=20260728',
+    es: './assets/tekst/sportstot7.es.txt?v=20260728',
+    id: './assets/tekst/sportstot7.id.txt?v=20260728'
   };
   const TOP3_FOOD_ARTICLE_URLS = {
     bg: './assets/tekst/top3hranaInd.txt?v=20260630a',
@@ -737,6 +737,7 @@
   const blogArticleTextByLanguage = {};
   const dolphinArticleTextByLanguage = {};
   const waterworldSectionsByLanguage = {};
+  const marineAnimalArticleTextByLanguage = {};
   const cruiseArticleTextByLanguage = {};
   const birdSectionsByLanguage = {};
   const lombokArticleTextByLanguage = {};
@@ -846,9 +847,6 @@ function cacheContentElements() {
     dom.blogArticle6Title = document.getElementById('blogArticle6Title');
     dom.blogArticle6Excerpt = document.getElementById('blogArticle6Excerpt');
     dom.blogReadBtn6 = document.getElementById('blogReadBtn6');
-    dom.blogArticle7Title = document.getElementById('blogArticle7Title');
-    dom.blogArticle7Excerpt = document.getElementById('blogArticle7Excerpt');
-    dom.blogReadBtn7 = document.getElementById('blogReadBtn7');
     dom.blogArticle8Title = document.getElementById('blogArticle8Title');
     dom.blogArticle8Excerpt = document.getElementById('blogArticle8Excerpt');
     dom.blogReadBtn8 = document.getElementById('blogReadBtn8');
@@ -1145,6 +1143,32 @@ function cacheContentElements() {
       parsedUrl.searchParams.forEach(function (value, key) {
         translatedUrl.searchParams.set(key, value);
       });
+    },
+    {
+      image: './assets/images/ribaLuna.jpeg',
+      articleUrls: {
+        bg: './assets/tekst/ribaLuna.txt?v=20260806',
+        en: './assets/tekst/ribaLuna.en.txt?v=20260806'
+      },
+      name_bg: 'Риба Луна',
+      name_en: 'Mola Mola',
+      name_de: 'Mondfisch',
+      name_fr: 'Poisson-lune',
+      name_es: 'Pez luna',
+      name_id: 'Mola Mola'
+    },
+    {
+      image: './assets/images/sinOKtopod.jpeg',
+      articleUrls: {
+        bg: './assets/tekst/sinioprastenOktopod.txt?v=20260806',
+        en: './assets/tekst/sinioprastenOktopod.en.txt?v=20260806'
+      },
+      name_bg: 'Синьопръстенен октопод',
+      name_en: 'Blue-ringed Octopus',
+      name_de: 'Blaugeringelter Oktopus',
+      name_fr: 'Poulpe a anneaux bleus',
+      name_es: 'Pulpo de anillos azules',
+      name_id: 'Gurita cincin biru'
       translatedUrl.searchParams.set('_x_tr_sl', 'en');
       translatedUrl.searchParams.set('_x_tr_tl', 'bg');
       translatedUrl.searchParams.set('_x_tr_hl', 'bg');
@@ -1302,11 +1326,6 @@ function cacheContentElements() {
             <button id="blogReadBtn6" class="blog-read-btn" type="button"></button>
           </div>
           <div class="blog-preview">
-            <h3 id="blogArticle7Title"></h3>
-            <p id="blogArticle7Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn7" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
             <h3 id="blogArticle8Title"></h3>
             <p id="blogArticle8Excerpt" class="blog-excerpt"></p>
             <button id="blogReadBtn8" class="blog-read-btn" type="button"></button>
@@ -1423,7 +1442,6 @@ function cacheContentElements() {
     dom.blogReadBtn4.addEventListener('click', openLombokBlogModal);
     dom.blogReadBtn5.addEventListener('click', openSportsBlogModal);
     dom.blogReadBtn6.addEventListener('click', openTop3FoodBlogModal);
-    dom.blogReadBtn7.addEventListener('click', openFruitsBlogModal);
     dom.blogReadBtn8.addEventListener('click', openRiversBlogModal);
     dom.blogReadBtn9.addEventListener('click', openVolcanoBlogModal);
     dom.blogReadBtn10.addEventListener('click', openTrainBlogModal);
@@ -1533,9 +1551,6 @@ function cacheContentElements() {
     dom.blogArticle6Title.textContent = getTranslation('blogArticle6Title');
     dom.blogArticle6Excerpt.textContent = getTranslation('blogArticle6Excerpt');
     dom.blogReadBtn6.textContent = getTranslation('blogReadBtn6');
-    dom.blogArticle7Title.textContent = getTranslation('blogArticle7Title');
-    dom.blogArticle7Excerpt.textContent = getTranslation('blogArticle7Excerpt');
-    dom.blogReadBtn7.textContent = getTranslation('blogReadBtn7');
     dom.blogArticle8Title.textContent = getTranslation('blogArticle8Title');
     dom.blogArticle8Excerpt.textContent = getTranslation('blogArticle8Excerpt');
     dom.blogReadBtn8.textContent = getTranslation('blogReadBtn8');
@@ -2315,23 +2330,6 @@ function cacheContentElements() {
     }
   }
 
-  async function openFruitsBlogModal() {
-    const languageAtOpen = currentLanguage;
-    dom.blogModalTitle.textContent = getTranslation('blogArticle7Title');
-    dom.blogModalContent.textContent = getTranslation('blogLoading');
-    toggleModal(dom.blogModal, true);
-
-    try {
-      const sections = await loadFruitSections(languageAtOpen);
-      const text = sections.map(function (section, index) {
-        return `${index + 1}. ${section.title}\n\n${section.content}`;
-      }).join('\n\n');
-      dom.blogModalContent.textContent = text || getTranslation('blogLoadError');
-    } catch (error) {
-      dom.blogModalContent.textContent = getTranslation('blogLoadError');
-    }
-  }
-
   async function openTreeInfoModal(index) {
     const tree = trees[index];
     if (!tree) {
@@ -2723,6 +2721,52 @@ function cacheContentElements() {
       });
   }
 
+  async function loadLocalizedArticleText(articleUrls, language, cachePrefix, fallbackLanguageOrder) {
+    if (!articleUrls) {
+      return null;
+    }
+
+    const fallbackOrder = Array.isArray(fallbackLanguageOrder) && fallbackLanguageOrder.length > 0
+      ? fallbackLanguageOrder
+      : ['en', 'bg'];
+    const requestedLanguage = articleUrls[language] ? language : (articleUrls.en ? 'en' : (articleUrls.bg ? 'bg' : null));
+    if (!requestedLanguage) {
+      return null;
+    }
+
+    const cacheKey = `${cachePrefix}:${requestedLanguage}`;
+    if (marineAnimalArticleTextByLanguage[cacheKey]) {
+      return marineAnimalArticleTextByLanguage[cacheKey];
+    }
+
+    async function fetchArticleText(languageCode) {
+      const response = await fetch(articleUrls[languageCode]);
+      if (!response.ok) {
+        throw new Error('localized_article_load_failed');
+      }
+      return response.text();
+    }
+
+    const orderedLanguages = [requestedLanguage].concat(fallbackOrder.filter(function (languageCode) {
+      return languageCode !== requestedLanguage;
+    }));
+
+    for (const languageCode of orderedLanguages) {
+      if (!articleUrls[languageCode]) {
+        continue;
+      }
+
+      try {
+        const articleText = await fetchArticleText(languageCode);
+        marineAnimalArticleTextByLanguage[cacheKey] = articleText;
+        return articleText;
+      } catch (error) {
+      }
+    }
+
+    return null;
+  }
+
   function getWaterworldSectionForAnimal(sections, animal, index) {
     if (Number.isInteger(animal.waterworldSectionIndex) && sections[animal.waterworldSectionIndex]) {
       return sections[animal.waterworldSectionIndex];
@@ -2780,12 +2824,17 @@ function cacheContentElements() {
     toggleModal(dom.blogModal, true);
 
     try {
-      const sections = await loadWaterworldSections(languageAtOpen);
-      const selected = getWaterworldSectionForAnimal(sections, animal, index);
-      if (selected) {
-        dom.blogModalContent.textContent = `${selected.title}\n\n${selected.content}`;
+      const localizedArticleText = await loadLocalizedArticleText(animal.articleUrls, languageAtOpen, animal.name_en || animal.name_bg || `marine-${index}`);
+      if (localizedArticleText) {
+        dom.blogModalContent.textContent = localizedArticleText;
       } else {
-        dom.blogModalContent.textContent = getTranslation('blogLoadError');
+        const sections = await loadWaterworldSections(languageAtOpen);
+        const selected = getWaterworldSectionForAnimal(sections, animal, index);
+        if (selected) {
+          dom.blogModalContent.textContent = `${selected.title}\n\n${selected.content}`;
+        } else {
+          dom.blogModalContent.textContent = getTranslation('blogLoadError');
+        }
       }
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');
