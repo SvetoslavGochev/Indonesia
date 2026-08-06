@@ -232,6 +232,32 @@
       name_fr: 'Requin-baleine',
       name_es: 'Tiburon ballena',
       name_id: 'Hiu paus'
+    },
+    {
+      image: './assets/images/ribaLuna.jpeg',
+      articleUrls: {
+        bg: './assets/tekst/ribaLuna.txt?v=20260806',
+        en: './assets/tekst/ribaLuna.en.txt?v=20260806'
+      },
+      name_bg: 'Риба Луна',
+      name_en: 'Mola Mola',
+      name_de: 'Mondfisch',
+      name_fr: 'Poisson-lune',
+      name_es: 'Pez luna',
+      name_id: 'Mola Mola'
+    },
+    {
+      image: './assets/images/sinOKtopod.jpeg',
+      articleUrls: {
+        bg: './assets/tekst/sinioprastenOktopod.txt?v=20260806',
+        en: './assets/tekst/sinioprastenOktopod.en.txt?v=20260806'
+      },
+      name_bg: 'Синьопръстенен октопод',
+      name_en: 'Blue-ringed Octopus',
+      name_de: 'Blaugeringelter Oktopus',
+      name_fr: 'Poulpe a anneaux bleus',
+      name_es: 'Pulpo de anillos azules',
+      name_id: 'Gurita cincin biru'
     }
   ];
 
@@ -1143,32 +1169,6 @@ function cacheContentElements() {
       parsedUrl.searchParams.forEach(function (value, key) {
         translatedUrl.searchParams.set(key, value);
       });
-    },
-    {
-      image: './assets/images/ribaLuna.jpeg',
-      articleUrls: {
-        bg: './assets/tekst/ribaLuna.txt?v=20260806',
-        en: './assets/tekst/ribaLuna.en.txt?v=20260806'
-      },
-      name_bg: 'Риба Луна',
-      name_en: 'Mola Mola',
-      name_de: 'Mondfisch',
-      name_fr: 'Poisson-lune',
-      name_es: 'Pez luna',
-      name_id: 'Mola Mola'
-    },
-    {
-      image: './assets/images/sinOKtopod.jpeg',
-      articleUrls: {
-        bg: './assets/tekst/sinioprastenOktopod.txt?v=20260806',
-        en: './assets/tekst/sinioprastenOktopod.en.txt?v=20260806'
-      },
-      name_bg: 'Синьопръстенен октопод',
-      name_en: 'Blue-ringed Octopus',
-      name_de: 'Blaugeringelter Oktopus',
-      name_fr: 'Poulpe a anneaux bleus',
-      name_es: 'Pulpo de anillos azules',
-      name_id: 'Gurita cincin biru'
       translatedUrl.searchParams.set('_x_tr_sl', 'en');
       translatedUrl.searchParams.set('_x_tr_tl', 'bg');
       translatedUrl.searchParams.set('_x_tr_hl', 'bg');
