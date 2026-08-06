@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v78';
+const CACHE_VERSION = 'v82';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -33,6 +33,10 @@ const CORE_ASSETS = [
   './assets/tekst/waterworld.fr.txt',
   './assets/tekst/waterworld.es.txt',
   './assets/tekst/waterworld.id.txt',
+  './assets/tekst/ribaLuna.txt',
+  './assets/tekst/ribaLuna.en.txt',
+  './assets/tekst/sinioprastenOktopod.txt',
+  './assets/tekst/sinioprastenOktopod.en.txt',
   './assets/tekst/круиз.txt',
   './assets/tekst/круиз.en.txt',
   './assets/tekst/круиз.de.txt',
@@ -140,6 +144,8 @@ const IMAGE_ASSETS = [
   './assets/images/marine-coral-fish.jpg',
   './assets/images/marine-seahorse.jpg',
   './assets/images/marine-whale-shark.jpg',
+  './assets/images/ribaLuna.jpeg',
+  './assets/images/sinOKtopod.jpeg',
   './assets/images/bird-javan-ostrich-480.webp',
   './assets/images/bird-javan-ostrich-960.webp',
   './assets/images/bird-cockatoo-480.webp',
