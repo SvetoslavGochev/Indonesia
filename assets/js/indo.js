@@ -1154,26 +1154,20 @@ function cacheContentElements() {
     return `https://en.wikipedia.org/wiki/Special:Search?search=${searchQuery}`;
   }
 
-  function toBulgarianTranslatedWikipediaUrl(url) {
-    if (currentLanguage !== 'bg') {
-      return url;
-    }
-
+  function normalizeEnglishWikipediaUrl(url) {
     try {
       const parsedUrl = new URL(url);
-      if (parsedUrl.hostname !== 'en.wikipedia.org') {
-        return url;
+      if (parsedUrl.hostname === 'en-wikipedia-org.translate.goog') {
+        const englishUrl = new URL(`https://en.wikipedia.org${parsedUrl.pathname}`);
+        parsedUrl.searchParams.forEach(function (value, key) {
+          if (!key.startsWith('_x_tr_')) {
+            englishUrl.searchParams.set(key, value);
+          }
+        });
+        return englishUrl.toString();
       }
 
-      const translatedUrl = new URL(`https://en-wikipedia-org.translate.goog${parsedUrl.pathname}`);
-      parsedUrl.searchParams.forEach(function (value, key) {
-        translatedUrl.searchParams.set(key, value);
-      });
-      translatedUrl.searchParams.set('_x_tr_sl', 'en');
-      translatedUrl.searchParams.set('_x_tr_tl', 'bg');
-      translatedUrl.searchParams.set('_x_tr_hl', 'bg');
-      translatedUrl.searchParams.set('_x_tr_pto', 'wapp');
-      return translatedUrl.toString();
+      return url;
     } catch (error) {
       return url;
     }
@@ -1206,7 +1200,7 @@ function cacheContentElements() {
     dom.modalHighlights.innerHTML = localizedHighlights.map(function (highlight, index) {
       const queryTerm = englishHighlights[index] || highlight;
       const directUrl = directHighlightLinks[index];
-      const finalUrl = toBulgarianTranslatedWikipediaUrl(directUrl || getAttractionWikipediaUrl(city.name, queryTerm));
+      const finalUrl = normalizeEnglishWikipediaUrl(directUrl || getAttractionWikipediaUrl(city.name, queryTerm));
       return `<a class="attraction-link-badge" href="${finalUrl}" target="_blank" rel="noopener noreferrer">${highlight}</a>`;
     }).join('');
 
