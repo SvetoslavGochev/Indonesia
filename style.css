@@ -273,6 +273,16 @@ header p {
     animation: slideIn 0.6s ease-out;
 }
 
+#content .card {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 560px;
+}
+
+#content .card.country-info {
+    content-visibility: visible;
+    contain-intrinsic-size: auto;
+}
+
 @keyframes slideIn {
     from {
         opacity: 0;
@@ -1086,6 +1096,10 @@ header p {
 }
 
 @media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+    }
+
     .about-projects-grid {
         grid-template-columns: 1fr;
     }
