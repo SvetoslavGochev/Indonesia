@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "http-server . -p 4173 -c-1",
+    "qa:lighthouse:ci-local": "lhci autorun --config=.lighthouserc.pr.json",
+    "qa:lighthouse:production": "lhci autorun --config=.lighthouserc.main.json",
     "qa:lighthouse:pr": "lhci autorun --config=.lighthouserc.pr.json",
     "qa:lighthouse:main": "lhci autorun --config=.lighthouserc.main.json"
   },
