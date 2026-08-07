@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v83';
+const CACHE_VERSION = 'v84';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -100,6 +100,7 @@ const CORE_ASSETS = [
   './assets/tekst/UningBromo.fr.txt',
   './assets/tekst/UningBromo.es.txt',
   './assets/tekst/UningBromo.id.txt',
+  './assets/tekst/smqh.txt',
   './assets/tekst/pytepisPalembeng.txt',
   './assets/tekst/pytepisPalembeng.en.txt',
   './assets/tekst/pytepisPalembeng.de.txt',
