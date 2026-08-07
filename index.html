@@ -22,9 +22,6 @@
     <meta name="twitter:image" content="https://indonesia-five.vercel.app/assets/images/social-preview.svg">
     <meta name="theme-color" content="#0f1f3a">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: blob: https://static.flashscore.com https://svetoslavgochev.github.io; font-src 'self' https://fonts.gstatic.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://plausible.io; connect-src 'self' https://plausible.io https://formspree.io https://*.googleapis.com https://*.firebaseio.com https://*.firebasedatabase.app; form-action 'self' https://formspree.io; upgrade-insecure-requests; block-all-mixed-content;">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="./assets/favicons/favicon.svg">
     <link rel="shortcut icon" href="./assets/favicons/favicon.svg">
     <link rel="apple-touch-icon" href="./assets/favicons/favicon.svg">
@@ -44,18 +41,50 @@
             }
         }
     </script>
-        <script>
+    <script>
+        (function () {
+            const isLocalPreview = ['127.0.0.1', 'localhost'].includes(window.location.hostname);
+
+            function appendHeadLink(rel, href, options) {
+                const link = document.createElement('link');
+                link.rel = rel;
+                link.href = href;
+                if (options && options.crossOrigin) {
+                    link.crossOrigin = options.crossOrigin;
+                }
+                document.head.appendChild(link);
+            }
+
+            function appendDeferredScript(src, isAsync) {
+                const script = document.createElement('script');
+                script.src = src;
+                if (isAsync) {
+                    script.async = true;
+                } else {
+                    script.defer = true;
+                }
+                document.head.appendChild(script);
+            }
+
+            window.APP_RUNTIME_FLAGS = {
+                isLocalPreview: isLocalPreview
+            };
+
+            if (!isLocalPreview) {
+                appendHeadLink('preconnect', 'https://fonts.googleapis.com');
+                appendHeadLink('preconnect', 'https://fonts.gstatic.com', { crossOrigin: 'anonymous' });
+                appendHeadLink('stylesheet', 'https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+                appendDeferredScript('/_vercel/insights/script.js', false);
+                appendDeferredScript('https://plausible.io/js/pa-OirWEDKGqBKTySIyRIuFm.js', true);
+            }
+
             window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-        </script>
-        <script defer src="/_vercel/insights/script.js"></script>
-        <!-- Privacy-friendly analytics by Plausible -->
-        <script async src="https://plausible.io/js/pa-OirWEDKGqBKTySIyRIuFm.js"></script>
-        <script>
             window.plausible = window.plausible || function () { (plausible.q = plausible.q || []).push(arguments); };
             plausible.init = plausible.init || function (i) { plausible.o = i || {}; };
             plausible.init();
             window.PAYPAL_PARTNER_URL = 'https://paypal.me/SvetoslavGochev';
-        </script>
+        })();
+    </script>
 </head>
 <body>
     <div class="page-layout">
@@ -230,8 +259,27 @@
         </div>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js" defer></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js" defer></script>
+    <script>
+        (function () {
+            if (window.APP_RUNTIME_FLAGS && window.APP_RUNTIME_FLAGS.isLocalPreview) {
+                return;
+            }
+
+            function appendFirebaseScript(src, onload) {
+                const script = document.createElement('script');
+                script.src = src;
+                script.defer = true;
+                script.onload = onload || null;
+                document.body.appendChild(script);
+            }
+
+            appendFirebaseScript('https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js', function () {
+                appendFirebaseScript('https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js', function () {
+                    window.dispatchEvent(new Event('indonesia:firebase-ready'));
+                });
+            });
+        })();
+    </script>
     <script src="./assets/js/firebase-config.js?v=20260628" defer></script>
     <script>
         window.PARTNER_FORM_ENDPOINT = "https://formspree.io/f/yourFormId";
@@ -243,4 +291,3 @@
     <script src="./assets/js/indo.js?v=20260725d" defer></script>
 </body>
 </html>
-
