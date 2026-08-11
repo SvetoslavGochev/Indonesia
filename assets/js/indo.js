@@ -1199,9 +1199,7 @@ function cacheContentElements() {
     dom.modalTitle.textContent = city.name;
     dom.modalDescription.textContent = city[keys.description] || city.description_en || city.description_bg || '';
     dom.modalPopulation.textContent = city.population;
-    dom.modalCoordinates.textContent = `${city.latitude.toFixed(2)}°, ${city.longitude.toFixed(2)}°`;
     dom.populationLabel.textContent = getTranslation('population');
-    dom.coordinatesLabel.textContent = getTranslation('coordinates');
     dom.attractionsLabel.textContent = getTranslation('keyAttractions');
     dom.hotelsLabel.textContent = getTranslation('topHotels');
     dom.modalHighlights.innerHTML = localizedHighlights.map(function (highlight, index) {
