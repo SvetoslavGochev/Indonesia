@@ -419,7 +419,7 @@
       name_id: 'Beruang madu'
     },
     {
-      image: './assets/images/Аноа.png',
+      image: './assets/images/аноа (2).png',
       articleUrls: {
         bg: './assets/tekst/anoa.txt?v=20260812',
         en: './assets/tekst/zemniviwotni.en.txt?v=20260703b'
