@@ -264,10 +264,77 @@
     }
   ];
 
+  const sunBearSvg = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="Sun Bear illustration">
+      <defs>
+        <linearGradient id="bg" x1="0" x2="1">
+          <stop offset="0%" stop-color="#dfead4"/>
+          <stop offset="100%" stop-color="#5b7d52"/>
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="750" fill="url(#bg)"/>
+      <ellipse cx="600" cy="610" rx="360" ry="120" fill="#3e332b" opacity="0.18"/>
+      <rect x="0" y="0" width="1200" height="750" fill="transparent"/>
+      <g transform="translate(135 35)">
+        <ellipse cx="435" cy="370" rx="270" ry="250" fill="#1d1d1f"/>
+        <ellipse cx="395" cy="565" rx="145" ry="90" fill="#1a1a1a"/>
+        <ellipse cx="580" cy="565" rx="155" ry="90" fill="#1a1a1a"/>
+        <ellipse cx="435" cy="225" rx="150" ry="120" fill="#0f1113"/>
+        <ellipse cx="390" cy="240" rx="50" ry="35" fill="#d0b287"/>
+        <ellipse cx="492" cy="240" rx="48" ry="35" fill="#d0b287"/>
+        <circle cx="402" cy="242" r="8" fill="#1d1d1f"/>
+        <circle cx="476" cy="242" r="8" fill="#1d1d1f"/>
+        <ellipse cx="440" cy="260" rx="18" ry="12" fill="#2e2a28"/>
+        <ellipse cx="443" cy="310" rx="62" ry="48" fill="#d4a46a"/>
+        <path d="M405 300c20 38 70 50 98 18" fill="none" stroke="#77552d" stroke-width="8" stroke-linecap="round"/>
+        <path d="M345 300l-115 25l-10 65l125 10z" fill="#1b1b1b"/>
+        <path d="M520 290l115 20l20 70l-125 8z" fill="#1b1b1b"/>
+        <path d="M350 280c-12-52 18-120 80-146" fill="none" stroke="#c9b78d" stroke-width="18" stroke-linecap="round"/>
+        <path d="M530 282c18-54 54-92 110-120" fill="none" stroke="#d0be95" stroke-width="18" stroke-linecap="round"/>
+        <path d="M505 326c125 26 228 86 260 199" fill="none" stroke="#1d1d1f" stroke-width="28" stroke-linecap="round"/>
+        <path d="M340 332c-116 18-181 93-203 201" fill="none" stroke="#1d1d1f" stroke-width="28" stroke-linecap="round"/>
+        <path d="M350 392c70 22 130 44 198 42" fill="none" stroke="#d4a46a" stroke-width="26" stroke-linecap="round"/>
+        <path d="M350 430c72 16 126 26 188 22" fill="none" stroke="#c58d4b" stroke-width="14" stroke-linecap="round"/>
+      </g>
+    </svg>
+  `);
+
+  const anoaSvg = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="Anoa illustration">
+      <defs>
+        <linearGradient id="g1" x1="0" x2="1">
+          <stop offset="0%" stop-color="#d2d5d9"/>
+          <stop offset="100%" stop-color="#7f8b8e"/>
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="750" fill="#d8d0b4"/>
+      <ellipse cx="600" cy="620" rx="420" ry="80" fill="#8a8a7d" opacity="0.2"/>
+      <g transform="translate(95 75)">
+        <path d="M170 460c36-146 104-212 186-228c72-13 170 0 220 58c60 68 64 186 40 230c-36 65-117 126-169 136c-119 23-243-22-277-196z" fill="#111316"/>
+        <path d="M425 255l96-90l52 31l-44 88l-104 3z" fill="#13171a"/>
+        <path d="M386 260l-58-116l-55 58l70 92z" fill="#101214"/>
+        <path d="M460 270l82-118l96 18l-80 118z" fill="#111316"/>
+        <path d="M365 310c70-21 132-22 202 0" fill="none" stroke="#727b7f" stroke-width="9" stroke-linecap="round"/>
+        <path d="M325 420c56 18 90 38 110 76" fill="none" stroke="#111316" stroke-width="20" stroke-linecap="round"/>
+        <path d="M492 420c62 18 100 40 124 86" fill="none" stroke="#111316" stroke-width="22" stroke-linecap="round"/>
+        <path d="M360 520l-58 150" stroke="#111316" stroke-width="26" stroke-linecap="round"/>
+        <path d="M528 523l70 155" stroke="#111316" stroke-width="26" stroke-linecap="round"/>
+        <path d="M620 510l101 145" stroke="#111316" stroke-width="28" stroke-linecap="round"/>
+        <path d="M246 520l-36 150" stroke="#111316" stroke-width="26" stroke-linecap="round"/>
+        <path d="M463 195c12-12 28-18 46-18c20 0 42 8 57 22" fill="none" stroke="#a9b1b3" stroke-width="9" stroke-linecap="round"/>
+        <circle cx="453" cy="276" r="9" fill="#e9f0f4"/>
+        <circle cx="560" cy="276" r="9" fill="#e9f0f4"/>
+        <path d="M455 300c19 21 55 21 75 0" fill="none" stroke="#7e5f48" stroke-width="7" stroke-linecap="round"/>
+      </g>
+    </svg>
+  `);
+
   const landAnimals = [
     {
       image: './assets/images/land-rhino.jpg',
       sectionIndex: 0,
+      speedKmh: '40',
+      weightKg: '900-2300',
       name_bg: 'Явански носорог',
       name_en: 'Javan Rhino',
       name_de: 'Java-Nashorn',
@@ -278,6 +345,8 @@
     {
       image: './assets/images/land-tiger.jpg',
       sectionIndex: 1,
+      speedKmh: '65',
+      weightKg: '90-140 / 65-90',
       name_bg: 'Суматренски тигър',
       name_en: 'Sumatran Tiger',
       name_de: 'Sumatra-Tiger',
@@ -288,6 +357,8 @@
     {
       image: './assets/images/land-orangutan.jpg',
       sectionIndex: 2,
+      speedKmh: '5-10',
+      weightKg: '50-120 / 30-50',
       name_bg: 'Орангутан',
       name_en: 'Orangutan',
       name_de: 'Orang-Utan',
@@ -298,6 +369,8 @@
     {
       image: './assets/images/land-komodo.jpg',
       sectionIndex: 3,
+      speedKmh: '20',
+      weightKg: '70-90',
       name_bg: 'Комодски варан',
       name_en: 'Komodo Dragon',
       name_de: 'Komodowaran',
@@ -308,6 +381,8 @@
     {
       image: './assets/images/land-elephant.jpg',
       sectionIndex: 4,
+      speedKmh: '15-20',
+      weightKg: '2000-4000',
       name_bg: 'Суматренски слон',
       name_en: 'Sumatran Elephant',
       name_de: 'Sumatra-Elefant',
@@ -318,12 +393,46 @@
     {
       image: './assets/images/land-babirusa.jpg',
       sectionIndex: 5,
+      speedKmh: '40',
+      weightKg: '60-100',
       name_bg: 'Бабируса',
       name_en: 'Babirusa',
       name_de: 'Babirusa',
       name_fr: 'Babiroussa',
       name_es: 'Babirusa',
       name_id: 'Babirusa'
+    },
+    {
+      image: './assets/images/sumatrenskaMechka.png',
+      articleUrls: {
+        bg: './assets/tekst/sumatranskaMechka.txt?v=20260812',
+        en: './assets/tekst/zemniviwotni.en.txt?v=20260703b'
+      },
+      sectionIndex: 6,
+      speedKmh: '25-35',
+      weightKg: '25-80',
+      name_bg: 'Суматранска мечка',
+      name_en: 'Sun Bear',
+      name_de: 'Sonnenbär',
+      name_fr: 'Ours malais',
+      name_es: 'Oso solar',
+      name_id: 'Beruang madu'
+    },
+    {
+      image: './assets/images/Аноа.png',
+      articleUrls: {
+        bg: './assets/tekst/anoa.txt?v=20260812',
+        en: './assets/tekst/zemniviwotni.en.txt?v=20260703b'
+      },
+      sectionIndex: 7,
+      speedKmh: '20-30',
+      weightKg: '150-300',
+      name_bg: 'Аноа',
+      name_en: 'Anoa',
+      name_de: 'Anoa',
+      name_fr: 'Anoa',
+      name_es: 'Anoa',
+      name_id: 'Anoa'
     }
   ];
 
@@ -1038,6 +1147,18 @@ function cacheContentElements() {
   function getLandAnimalName(animal) {
     const key = `name_${currentLanguage}`;
     return animal[key] || animal.name_en || animal.name_bg || '';
+  }
+
+  function getLandSpeedText(animal) {
+    return `${getTranslation('freshwaterSpeedLabel')}: ~${animal.speedKmh} km/h`;
+  }
+
+  function getLandWeightText(animal) {
+    return `${getTranslation('freshwaterWeightLabel')}: ~${animal.weightKg} kg`;
+  }
+
+  function getLandMetaText(animal) {
+    return `${getLandSpeedText(animal)}\n${getLandWeightText(animal)}`;
   }
 
   function getFreshwaterSpeedText(animal) {
@@ -2926,15 +3047,24 @@ function cacheContentElements() {
     toggleModal(dom.blogModal, true);
 
     try {
+      if (animal.articleUrls) {
+        const localizedText = await loadLocalizedArticleText(animal.articleUrls, languageAtOpen, animal.name_en || animal.name_bg || `land-${index}`, ['bg', 'en']);
+        if (localizedText) {
+          dom.blogModalContent.textContent = `${getLandMetaText(animal)}\n\n${localizedText}`;
+          return;
+        }
+      }
+
       const sections = await loadLandSections(languageAtOpen);
-      const selected = sections[animal.sectionIndex] || sections[index] || null;
+      const fallbackSections = languageAtOpen !== 'bg' ? await loadLandSections('bg') : null;
+      const selected = sections[animal.sectionIndex] || sections[index] || (fallbackSections && (fallbackSections[animal.sectionIndex] || fallbackSections[index])) || null;
       if (selected) {
-        dom.blogModalContent.textContent = `${selected.title}\n\n${selected.content}`;
+        dom.blogModalContent.textContent = `${getLandMetaText(animal)}\n\n${selected.title}\n\n${selected.content}`;
       } else {
-        dom.blogModalContent.textContent = getTranslation('blogLoadError');
+        dom.blogModalContent.textContent = `${getLandMetaText(animal)}\n\n${getLandAnimalName(animal)}`;
       }
     } catch (error) {
-      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+      dom.blogModalContent.textContent = `${getLandMetaText(animal)}\n\n${getLandAnimalName(animal)}`;
     }
   }
 
