@@ -166,6 +166,14 @@
     es: './assets/tekst/tervel.es.txt?v=20260814c',
     id: './assets/tekst/tervel.id.txt?v=20260814c'
   };
+  const DOIRAN_ARTICLE_URLS = {
+    bg: './assets/tekst/бИТКАТАПРИДОИРАН.txt?v=20260814b',
+    en: './assets/tekst/doiran.en.txt?v=20260814b',
+    de: './assets/tekst/doiran.de.txt?v=20260814b',
+    fr: './assets/tekst/doiran.fr.txt?v=20260814b',
+    es: './assets/tekst/doiran.es.txt?v=20260814b',
+    id: './assets/tekst/doiran.id.txt?v=20260814b'
+  };
   const METAMASK_WALLET_ADDRESS = '0xfca710eC5eB0FB036157Bb1E114BADc2310efE37';
   const PARTNER_INSTAGRAM_URL = (window.PARTNER_INSTAGRAM_URL || 'https://www.instagram.com/indo.nesiaexplorerr/').trim();
   const PARTNER_FACEBOOK_URL = (window.PARTNER_FACEBOOK_URL || 'https://www.facebook.com/profile.php?id=61592328399672').trim();
@@ -827,6 +835,7 @@
   const smqhArticleByLanguage = {};
   const carKaloqnArticleByLanguage = {};
   const tervelArticleByLanguage = {};
+  const doiranArticleByLanguage = {};
 
   const countryInfoFields = [
     { labelKey: 'capital', value: indonesiaData.country.capital, id: 'capitalLabel' },
@@ -1040,6 +1049,9 @@ function cacheContentElements() {
     dom.blogArticle19Title = document.getElementById('blogArticle19Title');
     dom.blogArticle19Excerpt = document.getElementById('blogArticle19Excerpt');
     dom.blogReadBtn19 = document.getElementById('blogReadBtn19');
+    dom.blogArticle20Title = document.getElementById('blogArticle20Title');
+    dom.blogArticle20Excerpt = document.getElementById('blogArticle20Excerpt');
+    dom.blogReadBtn20 = document.getElementById('blogReadBtn20');
     dom.aboutSectionTitle = document.getElementById('aboutSectionTitle');
     dom.aboutSectionText = document.getElementById('aboutSectionText');
     dom.project1Title = document.getElementById('project1Title');
@@ -1529,6 +1541,11 @@ function cacheContentElements() {
             <p id="blogArticle19Excerpt" class="blog-excerpt"></p>
             <button id="blogReadBtn19" class="blog-read-btn" type="button"></button>
           </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle20Title"></h3>
+            <p id="blogArticle20Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn20" class="blog-read-btn" type="button"></button>
+          </div>
         </div>
 
         <div class="card about-projects-card">
@@ -1613,6 +1630,7 @@ function cacheContentElements() {
     dom.blogReadBtn17.addEventListener('click', openSmqhBlogModal);
     dom.blogReadBtn18.addEventListener('click', openCarKaloqnBlogModal);
     dom.blogReadBtn19.addEventListener('click', openTervelBlogModal);
+    dom.blogReadBtn20.addEventListener('click', openDoiranBlogModal);
     dom.partnerWalletCopy.addEventListener('click', copyPartnerWalletAddress);
     dom.content.addEventListener('click', function (event) {
       const freshwaterReadButton = event.target.closest('.freshwater-read-text');
@@ -1749,6 +1767,9 @@ function cacheContentElements() {
     dom.blogArticle19Title.textContent = getTranslation('blogArticle19Title');
     dom.blogArticle19Excerpt.textContent = getTranslation('blogArticle19Excerpt');
     dom.blogReadBtn19.textContent = getTranslation('blogReadBtn19');
+    dom.blogArticle20Title.textContent = getTranslation('blogArticle20Title');
+    dom.blogArticle20Excerpt.textContent = getTranslation('blogArticle20Excerpt');
+    dom.blogReadBtn20.textContent = getTranslation('blogReadBtn20');
     dom.aboutSectionTitle.textContent = getTranslation('aboutSectionTitle');
     dom.aboutSectionText.textContent = getTranslation('aboutSectionText');
     dom.project1Title.textContent = getTranslation('project1Title');
@@ -2977,6 +2998,44 @@ function cacheContentElements() {
 
     try {
       const articleText = await loadTervelArticle();
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadDoiranArticle() {
+    const requestedLang = DOIRAN_ARTICLE_URLS[currentLanguage] ? currentLanguage : 'bg';
+    if (typeof doiranArticleByLanguage[requestedLang] === 'string' && doiranArticleByLanguage[requestedLang].length > 0) {
+      return doiranArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(DOIRAN_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('doiran_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      doiranArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      doiranArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openDoiranBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle20Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadDoiranArticle();
       dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');
