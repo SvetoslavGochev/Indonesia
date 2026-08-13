@@ -151,7 +151,12 @@
     bg: './assets/tekst/smqh.txt?v=20260807a'
   };
   const CAR_KALOQN_ARTICLE_URLS = {
-    bg: './assets/tekst/carKaloqn.txt?v=20260814a'
+    bg: './assets/tekst/carKaloqn.txt?v=20260814a',
+    en: './assets/tekst/carKaloqn.en.txt?v=20260814a',
+    de: './assets/tekst/carKaloqn.de.txt?v=20260814a',
+    fr: './assets/tekst/carKaloqn.fr.txt?v=20260814a',
+    es: './assets/tekst/carKaloqn.es.txt?v=20260814a',
+    id: './assets/tekst/carKaloqn.id.txt?v=20260814a'
   };
   const METAMASK_WALLET_ADDRESS = '0xfca710eC5eB0FB036157Bb1E114BADc2310efE37';
   const PARTNER_INSTAGRAM_URL = (window.PARTNER_INSTAGRAM_URL || 'https://www.instagram.com/indo.nesiaexplorerr/').trim();
