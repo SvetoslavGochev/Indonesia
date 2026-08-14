@@ -175,7 +175,7 @@
     id: './assets/tekst/doiran.id.txt?v=20260814b'
   };
   const EUROPE_DRUG_POLICY_ARTICLE_URLS = {
-    bg: './assets/tekst/ежропа.txt?v=20260814b',
+    bg: './assets/tekst/europaPolicy.bg.txt?v=20260814c',
     en: './assets/tekst/europaPolicy.en.txt?v=20260814b',
     de: './assets/tekst/europaPolicy.de.txt?v=20260814b',
     fr: './assets/tekst/europaPolicy.fr.txt?v=20260814b',
