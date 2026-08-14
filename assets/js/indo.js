@@ -174,6 +174,14 @@
     es: './assets/tekst/doiran.es.txt?v=20260814b',
     id: './assets/tekst/doiran.id.txt?v=20260814b'
   };
+  const EUROPE_DRUG_POLICY_ARTICLE_URLS = {
+    bg: './assets/tekst/ежропа.txt?v=20260814b',
+    en: './assets/tekst/europaPolicy.en.txt?v=20260814b',
+    de: './assets/tekst/europaPolicy.de.txt?v=20260814b',
+    fr: './assets/tekst/europaPolicy.fr.txt?v=20260814b',
+    es: './assets/tekst/europaPolicy.es.txt?v=20260814b',
+    id: './assets/tekst/europaPolicy.id.txt?v=20260814b'
+  };
   const METAMASK_WALLET_ADDRESS = '0xfca710eC5eB0FB036157Bb1E114BADc2310efE37';
   const PARTNER_INSTAGRAM_URL = (window.PARTNER_INSTAGRAM_URL || 'https://www.instagram.com/indo.nesiaexplorerr/').trim();
   const PARTNER_FACEBOOK_URL = (window.PARTNER_FACEBOOK_URL || 'https://www.facebook.com/profile.php?id=61592328399672').trim();
@@ -836,6 +844,7 @@
   const carKaloqnArticleByLanguage = {};
   const tervelArticleByLanguage = {};
   const doiranArticleByLanguage = {};
+  const europeDrugPolicyArticleByLanguage = {};
 
   const countryInfoFields = [
     { labelKey: 'capital', value: indonesiaData.country.capital, id: 'capitalLabel' },
@@ -1052,6 +1061,9 @@ function cacheContentElements() {
     dom.blogArticle20Title = document.getElementById('blogArticle20Title');
     dom.blogArticle20Excerpt = document.getElementById('blogArticle20Excerpt');
     dom.blogReadBtn20 = document.getElementById('blogReadBtn20');
+    dom.blogArticle21Title = document.getElementById('blogArticle21Title');
+    dom.blogArticle21Excerpt = document.getElementById('blogArticle21Excerpt');
+    dom.blogReadBtn21 = document.getElementById('blogReadBtn21');
     dom.aboutSectionTitle = document.getElementById('aboutSectionTitle');
     dom.aboutSectionText = document.getElementById('aboutSectionText');
     dom.project1Title = document.getElementById('project1Title');
@@ -1546,6 +1558,11 @@ function cacheContentElements() {
             <p id="blogArticle20Excerpt" class="blog-excerpt"></p>
             <button id="blogReadBtn20" class="blog-read-btn" type="button"></button>
           </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle21Title"></h3>
+            <p id="blogArticle21Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn21" class="blog-read-btn" type="button"></button>
+          </div>
         </div>
 
         <div class="card about-projects-card">
@@ -1631,6 +1648,7 @@ function cacheContentElements() {
     dom.blogReadBtn18.addEventListener('click', openCarKaloqnBlogModal);
     dom.blogReadBtn19.addEventListener('click', openTervelBlogModal);
     dom.blogReadBtn20.addEventListener('click', openDoiranBlogModal);
+    dom.blogReadBtn21.addEventListener('click', openEuropeDrugPolicyBlogModal);
     dom.partnerWalletCopy.addEventListener('click', copyPartnerWalletAddress);
     dom.content.addEventListener('click', function (event) {
       const freshwaterReadButton = event.target.closest('.freshwater-read-text');
@@ -1770,6 +1788,9 @@ function cacheContentElements() {
     dom.blogArticle20Title.textContent = getTranslation('blogArticle20Title');
     dom.blogArticle20Excerpt.textContent = getTranslation('blogArticle20Excerpt');
     dom.blogReadBtn20.textContent = getTranslation('blogReadBtn20');
+    dom.blogArticle21Title.textContent = getTranslation('blogArticle21Title');
+    dom.blogArticle21Excerpt.textContent = getTranslation('blogArticle21Excerpt');
+    dom.blogReadBtn21.textContent = getTranslation('blogReadBtn21');
     dom.aboutSectionTitle.textContent = getTranslation('aboutSectionTitle');
     dom.aboutSectionText.textContent = getTranslation('aboutSectionText');
     dom.project1Title.textContent = getTranslation('project1Title');
@@ -3036,6 +3057,44 @@ function cacheContentElements() {
 
     try {
       const articleText = await loadDoiranArticle();
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadEuropeDrugPolicyArticle() {
+    const requestedLang = EUROPE_DRUG_POLICY_ARTICLE_URLS[currentLanguage] ? currentLanguage : 'bg';
+    if (typeof europeDrugPolicyArticleByLanguage[requestedLang] === 'string' && europeDrugPolicyArticleByLanguage[requestedLang].length > 0) {
+      return europeDrugPolicyArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(EUROPE_DRUG_POLICY_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('europe_drug_policy_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      europeDrugPolicyArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      europeDrugPolicyArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openEuropeDrugPolicyBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle21Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadEuropeDrugPolicyArticle();
       dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');
