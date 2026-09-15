@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v88';
+const CACHE_VERSION = 'v89';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -132,6 +132,7 @@ const CORE_ASSETS = [
   './assets/tekst/birds.fr.txt',
   './assets/tekst/birds.es.txt',
   './assets/tekst/birds.id.txt',
+  './assets/tekst/UsaOpen.txt',
   './assets/favicons/favicon.svg'
 ];
 
