@@ -199,7 +199,12 @@
     id: './assets/tekst/hidenIndonesia.id.txt?v=20260820a'
   };
   const USA_OPEN_ARTICLE_URLS = {
-    bg: './assets/tekst/UsaOpen.txt?v=20260915a'
+    bg: './assets/tekst/UsaOpen.txt?v=20260915b',
+    en: './assets/tekst/UsaOpen.en.txt?v=20260915b',
+    de: './assets/tekst/UsaOpen.de.txt?v=20260915b',
+    fr: './assets/tekst/UsaOpen.fr.txt?v=20260915b',
+    es: './assets/tekst/UsaOpen.es.txt?v=20260915b',
+    id: './assets/tekst/UsaOpen.id.txt?v=20260915b'
   };
   const METAMASK_WALLET_ADDRESS = '0xfca710eC5eB0FB036157Bb1E114BADc2310efE37';
   const PARTNER_INSTAGRAM_URL = (window.PARTNER_INSTAGRAM_URL || 'https://www.instagram.com/indo.nesiaexplorerr/').trim();
