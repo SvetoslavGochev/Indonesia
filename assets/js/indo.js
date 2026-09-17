@@ -1755,7 +1755,21 @@ function cacheContentElements() {
       openCityModal(Number(cityCard.dataset.cityIndex));
     });
 
+    hideSpecificBlogCards();
     contentRendered = true;
+  }
+
+  function hideSpecificBlogCards() {
+    const hiddenCardIds = ['blogArticle18Title', 'blogArticle20Title', 'blogArticle21Title', 'blogArticle22Title'];
+
+    hiddenCardIds.forEach(function (cardId) {
+      const cardTitle = document.getElementById(cardId);
+      const cardPreview = cardTitle && cardTitle.closest('.blog-preview');
+
+      if (cardPreview) {
+        cardPreview.style.display = 'none';
+      }
+    });
   }
 
   function updateContentTranslations() {
