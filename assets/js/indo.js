@@ -1076,6 +1076,9 @@ function cacheContentElements() {
     dom.blogArticle6Title = document.getElementById('blogArticle6Title');
     dom.blogArticle6Excerpt = document.getElementById('blogArticle6Excerpt');
     dom.blogReadBtn6 = document.getElementById('blogReadBtn6');
+    dom.blogArticle7Title = document.getElementById('blogArticle7Title');
+    dom.blogArticle7Excerpt = document.getElementById('blogArticle7Excerpt');
+    dom.blogReadBtn7 = document.getElementById('blogReadBtn7');
     dom.blogArticle8Title = document.getElementById('blogArticle8Title');
     dom.blogArticle8Excerpt = document.getElementById('blogArticle8Excerpt');
     dom.blogReadBtn8 = document.getElementById('blogReadBtn8');
@@ -1563,95 +1566,21 @@ function cacheContentElements() {
           </div>
         </div>
 
-<<<<<<< HEAD
         <div class="card travel-tips-card" id="travel-tips">
-          <h2 id="travelTipsSectionTitle">🌍 Travel Tips</h2>
+          <h2 id="travelTipsSectionTitle"></h2>
           <div class="travel-tips-grid">
             <div class="travel-tip-item">
-              <h3 id="travelTip1Title">Best season</h3>
-              <p id="travelTip1Text">May to October is ideal for dry weather and easier travel planning.</p>
+              <h3 id="travelTip1Title"></h3>
+              <p id="travelTip1Text"></p>
             </div>
             <div class="travel-tip-item">
-              <h3 id="travelTip2Title">Budget tip</h3>
-              <p id="travelTip2Text">Use local ferries, guesthouses, and city-to-city trains for better value.</p>
+              <h3 id="travelTip2Title"></h3>
+              <p id="travelTip2Text"></p>
             </div>
             <div class="travel-tip-item">
-              <h3 id="travelTip3Title">Culture tip</h3>
-              <p id="travelTip3Text">Respect local dress codes in temples and small communities.</p>
+              <h3 id="travelTip3Title"></h3>
+              <p id="travelTip3Text"></p>
             </div>
-=======
-        <div class="card blog-card">
-          <h2 id="blogSectionTitle"></h2>
-          <div class="blog-preview">
-            <h3 id="blogArticleTitle"></h3>
-            <p id="blogArticleExcerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle2Title"></h3>
-            <p id="blogArticle2Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn2" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle3Title"></h3>
-            <p id="blogArticle3Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn3" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle4Title"></h3>
-            <p id="blogArticle4Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn4" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle5Title"></h3>
-            <p id="blogArticle5Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn5" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle6Title"></h3>
-            <p id="blogArticle6Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn6" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle8Title"></h3>
-            <p id="blogArticle8Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn8" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle9Title"></h3>
-            <p id="blogArticle9Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn9" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle10Title"></h3>
-            <p id="blogArticle10Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn10" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle11Title"></h3>
-            <p id="blogArticle11Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn11" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle12Title"></h3>
-            <p id="blogArticle12Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn12" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle13Title"></h3>
-            <p id="blogArticle13Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn13" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle14Title"></h3>
-            <p id="blogArticle14Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn14" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle15Title"></h3>
-            <p id="blogArticle15Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn15" class="blog-read-btn" type="button"></button>
->>>>>>> a2d3cc02b05b07c5a17a53d347b720ad73c45889
           </div>
         </div>
 
@@ -1787,46 +1716,6 @@ function cacheContentElements() {
               </div>
             </article>
           </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle17Title"></h3>
-            <p id="blogArticle17Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn17" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle18Title"></h3>
-            <p id="blogArticle18Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn18" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle19Title"></h3>
-            <p id="blogArticle19Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn19" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle20Title"></h3>
-            <p id="blogArticle20Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn20" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle21Title"></h3>
-            <p id="blogArticle21Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn21" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle22Title"></h3>
-            <p id="blogArticle22Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn22" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle23Title"></h3>
-            <p id="blogArticle23Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn23" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle24Title"></h3>
-            <p id="blogArticle24Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn24" class="blog-read-btn" type="button"></button>
-          </div>
         </div>
 
         <div class="card about-projects-card" id="projects">
@@ -1893,30 +1782,30 @@ function cacheContentElements() {
     dom.stadiumInfoBtn.addEventListener('click', openStadiumModal);
     dom.wildlifeInfoBtn.addEventListener('click', openWildlifeModal);
     dom.ticketInfoBtn.addEventListener('click', openTicketModal);
-    dom.blogReadBtn.addEventListener('click', openBlogModal);
-    dom.blogReadBtn2.addEventListener('click', openDolphinBlogModal);
-    dom.blogReadBtn3.addEventListener('click', openCruiseBlogModal);
-    dom.blogReadBtn4.addEventListener('click', openLombokBlogModal);
-    dom.blogReadBtn5.addEventListener('click', openSportsBlogModal);
-    dom.blogReadBtn6.addEventListener('click', openTop3FoodBlogModal);
-    dom.blogReadBtn8.addEventListener('click', openRiversBlogModal);
-    dom.blogReadBtn9.addEventListener('click', openVolcanoBlogModal);
-    dom.blogReadBtn10.addEventListener('click', openTrainBlogModal);
-    dom.blogReadBtn11.addEventListener('click', openTrainStoryBlogModal);
-    dom.blogReadBtn12.addEventListener('click', openBorneoBlogModal);
-    dom.blogReadBtn13.addEventListener('click', openMotorsportBlogModal);
-    dom.blogReadBtn14.addEventListener('click', openPalembangBlogModal);
-    dom.blogReadBtn15.addEventListener('click', openFootballBlogModal);
-    dom.blogReadBtn16.addEventListener('click', openUningBromoBlogModal);
-    dom.blogReadBtn17.addEventListener('click', openSmqhBlogModal);
-    dom.blogReadBtn18.addEventListener('click', openCarKaloqnBlogModal);
-    dom.blogReadBtn19.addEventListener('click', openTervelBlogModal);
-    dom.blogReadBtn20.addEventListener('click', openDoiranBlogModal);
-    dom.blogReadBtn21.addEventListener('click', openEuropeDrugPolicyBlogModal);
-    dom.blogReadBtn22.addEventListener('click', openBatBayanBlogModal);
-    dom.blogReadBtn23.addEventListener('click', openHiddenIndonesiaBlogModal);
-    dom.blogReadBtn24.addEventListener('click', openUsaOpenBlogModal);
-    dom.partnerWalletCopy.addEventListener('click', copyPartnerWalletAddress);
+    if (dom.blogReadBtn) dom.blogReadBtn.addEventListener('click', openBlogModal);
+    if (dom.blogReadBtn2) dom.blogReadBtn2.addEventListener('click', openDolphinBlogModal);
+    if (dom.blogReadBtn3) dom.blogReadBtn3.addEventListener('click', openCruiseBlogModal);
+    if (dom.blogReadBtn4) dom.blogReadBtn4.addEventListener('click', openLombokBlogModal);
+    if (dom.blogReadBtn5) dom.blogReadBtn5.addEventListener('click', openSportsBlogModal);
+    if (dom.blogReadBtn6) dom.blogReadBtn6.addEventListener('click', openTop3FoodBlogModal);
+    if (dom.blogReadBtn8) dom.blogReadBtn8.addEventListener('click', openRiversBlogModal);
+    if (dom.blogReadBtn9) dom.blogReadBtn9.addEventListener('click', openVolcanoBlogModal);
+    if (dom.blogReadBtn10) dom.blogReadBtn10.addEventListener('click', openTrainBlogModal);
+    if (dom.blogReadBtn11) dom.blogReadBtn11.addEventListener('click', openTrainStoryBlogModal);
+    if (dom.blogReadBtn12) dom.blogReadBtn12.addEventListener('click', openBorneoBlogModal);
+    if (dom.blogReadBtn13) dom.blogReadBtn13.addEventListener('click', openMotorsportBlogModal);
+    if (dom.blogReadBtn14) dom.blogReadBtn14.addEventListener('click', openPalembangBlogModal);
+    if (dom.blogReadBtn15) dom.blogReadBtn15.addEventListener('click', openFootballBlogModal);
+    if (dom.blogReadBtn16) dom.blogReadBtn16.addEventListener('click', openUningBromoBlogModal);
+    if (dom.blogReadBtn17) dom.blogReadBtn17.addEventListener('click', openSmqhBlogModal);
+    if (dom.blogReadBtn18) dom.blogReadBtn18.addEventListener('click', openCarKaloqnBlogModal);
+    if (dom.blogReadBtn19) dom.blogReadBtn19.addEventListener('click', openTervelBlogModal);
+    if (dom.blogReadBtn20) dom.blogReadBtn20.addEventListener('click', openDoiranBlogModal);
+    if (dom.blogReadBtn21) dom.blogReadBtn21.addEventListener('click', openEuropeDrugPolicyBlogModal);
+    if (dom.blogReadBtn22) dom.blogReadBtn22.addEventListener('click', openBatBayanBlogModal);
+    if (dom.blogReadBtn23) dom.blogReadBtn23.addEventListener('click', openHiddenIndonesiaBlogModal);
+    if (dom.blogReadBtn24) dom.blogReadBtn24.addEventListener('click', openUsaOpenBlogModal);
+    if (dom.partnerWalletCopy) dom.partnerWalletCopy.addEventListener('click', copyPartnerWalletAddress);
     dom.content.addEventListener('click', function (event) {
       const freshwaterReadButton = event.target.closest('.freshwater-read-text');
       if (freshwaterReadButton) {
@@ -2038,75 +1927,75 @@ function cacheContentElements() {
     dom.parksTitle.textContent = getTranslation('parksTitle');
     dom.treesTitle.textContent = getTranslation('treesTitle');
     dom.blogSectionTitle.textContent = getTranslation('blogSectionTitle');
-    dom.blogArticleTitle.textContent = getTranslation('blogArticleTitle');
-    dom.blogArticleExcerpt.textContent = getTranslation('blogArticleExcerpt');
-    dom.blogReadBtn.textContent = getTranslation('blogReadBtn');
-    dom.blogArticle2Title.textContent = getTranslation('blogArticle2Title');
-    dom.blogArticle2Excerpt.textContent = getTranslation('blogArticle2Excerpt');
-    dom.blogReadBtn2.textContent = getTranslation('blogReadBtn2');
-    dom.blogArticle3Title.textContent = getTranslation('blogArticle3Title');
-    dom.blogArticle3Excerpt.textContent = getTranslation('blogArticle3Excerpt');
-    dom.blogReadBtn3.textContent = getTranslation('blogReadBtn3');
-    dom.blogArticle4Title.textContent = getTranslation('blogArticle4Title');
-    dom.blogArticle4Excerpt.textContent = getTranslation('blogArticle4Excerpt');
-    dom.blogReadBtn4.textContent = getTranslation('blogReadBtn4');
-    dom.blogArticle5Title.textContent = getTranslation('blogArticle5Title');
-    dom.blogArticle5Excerpt.textContent = getTranslation('blogArticle5Excerpt');
-    dom.blogReadBtn5.textContent = getTranslation('blogReadBtn5');
-    dom.blogArticle6Title.textContent = getTranslation('blogArticle6Title');
-    dom.blogArticle6Excerpt.textContent = getTranslation('blogArticle6Excerpt');
-    dom.blogReadBtn6.textContent = getTranslation('blogReadBtn6');
-    dom.blogArticle8Title.textContent = getTranslation('blogArticle8Title');
-    dom.blogArticle8Excerpt.textContent = getTranslation('blogArticle8Excerpt');
-    dom.blogReadBtn8.textContent = getTranslation('blogReadBtn8');
-    dom.blogArticle9Title.textContent = getTranslation('blogArticle9Title');
-    dom.blogArticle9Excerpt.textContent = getTranslation('blogArticle9Excerpt');
-    dom.blogReadBtn9.textContent = getTranslation('blogReadBtn9');
-    dom.blogArticle10Title.textContent = getTranslation('blogArticle10Title');
-    dom.blogArticle10Excerpt.textContent = getTranslation('blogArticle10Excerpt');
-    dom.blogReadBtn10.textContent = getTranslation('blogReadBtn10');
-    dom.blogArticle11Title.textContent = getTranslation('blogArticle11Title');
-    dom.blogArticle11Excerpt.textContent = getTranslation('blogArticle11Excerpt');
-    dom.blogReadBtn11.textContent = getTranslation('blogReadBtn11');
-    dom.blogArticle12Title.textContent = getTranslation('blogArticle12Title');
-    dom.blogArticle12Excerpt.textContent = getTranslation('blogArticle12Excerpt');
-    dom.blogReadBtn12.textContent = getTranslation('blogReadBtn12');
-    dom.blogArticle13Title.textContent = getTranslation('blogArticle13Title');
-    dom.blogArticle13Excerpt.textContent = getTranslation('blogArticle13Excerpt');
-    dom.blogReadBtn13.textContent = getTranslation('blogReadBtn13');
-    dom.blogArticle14Title.textContent = getTranslation('blogArticle14Title');
-    dom.blogArticle14Excerpt.textContent = getTranslation('blogArticle14Excerpt');
-    dom.blogReadBtn14.textContent = getTranslation('blogReadBtn14');
-    dom.blogArticle15Title.textContent = getTranslation('blogArticle15Title');
-    dom.blogArticle15Excerpt.textContent = getTranslation('blogArticle15Excerpt');
-    dom.blogReadBtn15.textContent = getTranslation('blogReadBtn15');
-    dom.blogArticle16Title.textContent = getTranslation('blogArticle16Title');
-    dom.blogArticle16Excerpt.textContent = getTranslation('blogArticle16Excerpt');
-    dom.blogReadBtn16.textContent = getTranslation('blogReadBtn16');
-    dom.blogArticle17Title.textContent = getTranslation('blogArticle17Title');
-    dom.blogArticle17Excerpt.textContent = getTranslation('blogArticle17Excerpt');
-    dom.blogReadBtn17.textContent = getTranslation('blogReadBtn17');
-    dom.blogArticle18Title.textContent = getTranslation('blogArticle18Title');
-    dom.blogArticle18Excerpt.textContent = getTranslation('blogArticle18Excerpt');
-    dom.blogReadBtn18.textContent = getTranslation('blogReadBtn18');
-    dom.blogArticle19Title.textContent = getTranslation('blogArticle19Title');
-    dom.blogArticle19Excerpt.textContent = getTranslation('blogArticle19Excerpt');
-    dom.blogReadBtn19.textContent = getTranslation('blogReadBtn19');
-    dom.blogArticle20Title.textContent = getTranslation('blogArticle20Title');
-    dom.blogArticle20Excerpt.textContent = getTranslation('blogArticle20Excerpt');
-    dom.blogReadBtn20.textContent = getTranslation('blogReadBtn20');
-    dom.blogArticle21Title.textContent = getTranslation('blogArticle21Title');
-    dom.blogArticle21Excerpt.textContent = getTranslation('blogArticle21Excerpt');
-    dom.blogReadBtn21.textContent = getTranslation('blogReadBtn21');
-    dom.blogArticle22Title.textContent = getTranslation('blogArticle22Title');
-    dom.blogArticle22Excerpt.textContent = getTranslation('blogArticle22Excerpt');
-    dom.blogReadBtn22.textContent = getTranslation('blogReadBtn22');
-    dom.blogArticle23Title.textContent = getTranslation('blogArticle23Title');
-    dom.blogArticle23Excerpt.textContent = getTranslation('blogArticle23Excerpt');
-    dom.blogReadBtn23.textContent = getTranslation('blogReadBtn23');
-    dom.blogArticle24Title.textContent = getTranslation('blogArticle24Title');
-    dom.blogArticle24Excerpt.textContent = getTranslation('blogArticle24Excerpt');
-    dom.blogReadBtn24.textContent = getTranslation('blogReadBtn24');
+    if (dom.blogArticleTitle) dom.blogArticleTitle.textContent = getTranslation('blogArticleTitle');
+    if (dom.blogArticleExcerpt) dom.blogArticleExcerpt.textContent = getTranslation('blogArticleExcerpt');
+    if (dom.blogReadBtn) dom.blogReadBtn.textContent = getTranslation('blogReadBtn');
+    if (dom.blogArticle2Title) dom.blogArticle2Title.textContent = getTranslation('blogArticle2Title');
+    if (dom.blogArticle2Excerpt) dom.blogArticle2Excerpt.textContent = getTranslation('blogArticle2Excerpt');
+    if (dom.blogReadBtn2) dom.blogReadBtn2.textContent = getTranslation('blogReadBtn2');
+    if (dom.blogArticle3Title) dom.blogArticle3Title.textContent = getTranslation('blogArticle3Title');
+    if (dom.blogArticle3Excerpt) dom.blogArticle3Excerpt.textContent = getTranslation('blogArticle3Excerpt');
+    if (dom.blogReadBtn3) dom.blogReadBtn3.textContent = getTranslation('blogReadBtn3');
+    if (dom.blogArticle4Title) dom.blogArticle4Title.textContent = getTranslation('blogArticle4Title');
+    if (dom.blogArticle4Excerpt) dom.blogArticle4Excerpt.textContent = getTranslation('blogArticle4Excerpt');
+    if (dom.blogReadBtn4) dom.blogReadBtn4.textContent = getTranslation('blogReadBtn4');
+    if (dom.blogArticle5Title) dom.blogArticle5Title.textContent = getTranslation('blogArticle5Title');
+    if (dom.blogArticle5Excerpt) dom.blogArticle5Excerpt.textContent = getTranslation('blogArticle5Excerpt');
+    if (dom.blogReadBtn5) dom.blogReadBtn5.textContent = getTranslation('blogReadBtn5');
+    if (dom.blogArticle6Title) dom.blogArticle6Title.textContent = getTranslation('blogArticle6Title');
+    if (dom.blogArticle6Excerpt) dom.blogArticle6Excerpt.textContent = getTranslation('blogArticle6Excerpt');
+    if (dom.blogReadBtn6) dom.blogReadBtn6.textContent = getTranslation('blogReadBtn6');
+    if (dom.blogArticle8Title) dom.blogArticle8Title.textContent = getTranslation('blogArticle8Title');
+    if (dom.blogArticle8Excerpt) dom.blogArticle8Excerpt.textContent = getTranslation('blogArticle8Excerpt');
+    if (dom.blogReadBtn8) dom.blogReadBtn8.textContent = getTranslation('blogReadBtn8');
+    if (dom.blogArticle9Title) dom.blogArticle9Title.textContent = getTranslation('blogArticle9Title');
+    if (dom.blogArticle9Excerpt) dom.blogArticle9Excerpt.textContent = getTranslation('blogArticle9Excerpt');
+    if (dom.blogReadBtn9) dom.blogReadBtn9.textContent = getTranslation('blogReadBtn9');
+    if (dom.blogArticle10Title) dom.blogArticle10Title.textContent = getTranslation('blogArticle10Title');
+    if (dom.blogArticle10Excerpt) dom.blogArticle10Excerpt.textContent = getTranslation('blogArticle10Excerpt');
+    if (dom.blogReadBtn10) dom.blogReadBtn10.textContent = getTranslation('blogReadBtn10');
+    if (dom.blogArticle11Title) dom.blogArticle11Title.textContent = getTranslation('blogArticle11Title');
+    if (dom.blogArticle11Excerpt) dom.blogArticle11Excerpt.textContent = getTranslation('blogArticle11Excerpt');
+    if (dom.blogReadBtn11) dom.blogReadBtn11.textContent = getTranslation('blogReadBtn11');
+    if (dom.blogArticle12Title) dom.blogArticle12Title.textContent = getTranslation('blogArticle12Title');
+    if (dom.blogArticle12Excerpt) dom.blogArticle12Excerpt.textContent = getTranslation('blogArticle12Excerpt');
+    if (dom.blogReadBtn12) dom.blogReadBtn12.textContent = getTranslation('blogReadBtn12');
+    if (dom.blogArticle13Title) dom.blogArticle13Title.textContent = getTranslation('blogArticle13Title');
+    if (dom.blogArticle13Excerpt) dom.blogArticle13Excerpt.textContent = getTranslation('blogArticle13Excerpt');
+    if (dom.blogReadBtn13) dom.blogReadBtn13.textContent = getTranslation('blogReadBtn13');
+    if (dom.blogArticle14Title) dom.blogArticle14Title.textContent = getTranslation('blogArticle14Title');
+    if (dom.blogArticle14Excerpt) dom.blogArticle14Excerpt.textContent = getTranslation('blogArticle14Excerpt');
+    if (dom.blogReadBtn14) dom.blogReadBtn14.textContent = getTranslation('blogReadBtn14');
+    if (dom.blogArticle15Title) dom.blogArticle15Title.textContent = getTranslation('blogArticle15Title');
+    if (dom.blogArticle15Excerpt) dom.blogArticle15Excerpt.textContent = getTranslation('blogArticle15Excerpt');
+    if (dom.blogReadBtn15) dom.blogReadBtn15.textContent = getTranslation('blogReadBtn15');
+    if (dom.blogArticle16Title) dom.blogArticle16Title.textContent = getTranslation('blogArticle16Title');
+    if (dom.blogArticle16Excerpt) dom.blogArticle16Excerpt.textContent = getTranslation('blogArticle16Excerpt');
+    if (dom.blogReadBtn16) dom.blogReadBtn16.textContent = getTranslation('blogReadBtn16');
+    if (dom.blogArticle17Title) dom.blogArticle17Title.textContent = getTranslation('blogArticle17Title');
+    if (dom.blogArticle17Excerpt) dom.blogArticle17Excerpt.textContent = getTranslation('blogArticle17Excerpt');
+    if (dom.blogReadBtn17) dom.blogReadBtn17.textContent = getTranslation('blogReadBtn17');
+    if (dom.blogArticle18Title) dom.blogArticle18Title.textContent = getTranslation('blogArticle18Title');
+    if (dom.blogArticle18Excerpt) dom.blogArticle18Excerpt.textContent = getTranslation('blogArticle18Excerpt');
+    if (dom.blogReadBtn18) dom.blogReadBtn18.textContent = getTranslation('blogReadBtn18');
+    if (dom.blogArticle19Title) dom.blogArticle19Title.textContent = getTranslation('blogArticle19Title');
+    if (dom.blogArticle19Excerpt) dom.blogArticle19Excerpt.textContent = getTranslation('blogArticle19Excerpt');
+    if (dom.blogReadBtn19) dom.blogReadBtn19.textContent = getTranslation('blogReadBtn19');
+    if (dom.blogArticle20Title) dom.blogArticle20Title.textContent = getTranslation('blogArticle20Title');
+    if (dom.blogArticle20Excerpt) dom.blogArticle20Excerpt.textContent = getTranslation('blogArticle20Excerpt');
+    if (dom.blogReadBtn20) dom.blogReadBtn20.textContent = getTranslation('blogReadBtn20');
+    if (dom.blogArticle21Title) dom.blogArticle21Title.textContent = getTranslation('blogArticle21Title');
+    if (dom.blogArticle21Excerpt) dom.blogArticle21Excerpt.textContent = getTranslation('blogArticle21Excerpt');
+    if (dom.blogReadBtn21) dom.blogReadBtn21.textContent = getTranslation('blogReadBtn21');
+    if (dom.blogArticle22Title) dom.blogArticle22Title.textContent = getTranslation('blogArticle22Title');
+    if (dom.blogArticle22Excerpt) dom.blogArticle22Excerpt.textContent = getTranslation('blogArticle22Excerpt');
+    if (dom.blogReadBtn22) dom.blogReadBtn22.textContent = getTranslation('blogReadBtn22');
+    if (dom.blogArticle23Title) dom.blogArticle23Title.textContent = getTranslation('blogArticle23Title');
+    if (dom.blogArticle23Excerpt) dom.blogArticle23Excerpt.textContent = getTranslation('blogArticle23Excerpt');
+    if (dom.blogReadBtn23) dom.blogReadBtn23.textContent = getTranslation('blogReadBtn23');
+    if (dom.blogArticle24Title) dom.blogArticle24Title.textContent = getTranslation('blogArticle24Title');
+    if (dom.blogArticle24Excerpt) dom.blogArticle24Excerpt.textContent = getTranslation('blogArticle24Excerpt');
+    if (dom.blogReadBtn24) dom.blogReadBtn24.textContent = getTranslation('blogReadBtn24');
     dom.aboutSectionTitle.textContent = getTranslation('aboutSectionTitle');
     dom.aboutSectionText.textContent = getTranslation('aboutSectionText');
     dom.project1Title.textContent = getTranslation('project1Title');
