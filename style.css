@@ -1888,9 +1888,16 @@ header p {
     }
 
     .sticky-nav {
+        position: fixed;
+        top: 10px;
+        left: 12px;
+        right: 12px;
+        z-index: 50;
         gap: 8px;
         padding: 10px 12px;
-        width: 100%;
+        width: auto;
+        max-width: none;
+        margin: 0;
     }
 
     .nav-brand {
@@ -1924,6 +1931,7 @@ header p {
     .container {
         width: 100%;
         max-width: 100%;
+        padding-top: 72px;
     }
 
     .page-layout {
