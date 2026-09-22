@@ -1887,6 +1887,36 @@ header p {
         overflow-x: hidden;
     }
 
+    .sticky-nav {
+        gap: 8px;
+        padding: 10px 12px;
+        width: 100%;
+    }
+
+    .nav-brand {
+        display: none;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        width: 100%;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-links a {
+        white-space: nowrap;
+        flex: 0 0 auto;
+    }
+
     body {
         padding: 14px;
     }
