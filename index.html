@@ -59,52 +59,38 @@
         </script>
 </head>
 <body>
-    <div class="page-layout">
-        <aside class="ad-sidebar ad-sidebar-left" aria-label="Left advertisement">
-            <div class="ad-box">
-                <span class="ad-box-label">Място за реклама</span>
+    <div class="container">
+        <header>
+            <h1 id="headerTitle">🇮🇩 Indonesia Explorer</h1>
+            <p id="headerSubtitle">Explore detailed information about Indonesia</p>
+            <div class="language-selector" role="group" aria-label="Language selector">
+                <button class="lang-btn active" onclick="changeLanguage('bg')" id="bgBtn">BG</button>
+                <button class="lang-btn" onclick="changeLanguage('en')" id="enBtn">EN</button>
+                <button class="lang-btn" onclick="changeLanguage('de')" id="deBtn">DE</button>
+                <button class="lang-btn" onclick="changeLanguage('fr')" id="frBtn">FR</button>
+                <button class="lang-btn" onclick="changeLanguage('es')" id="esBtn">ESP</button>
+                <button class="lang-btn" onclick="changeLanguage('id')" id="idBtn">IND</button>
             </div>
-        </aside>
+        </header>
 
-        <div class="container">
-            <header>
-                <h1 id="headerTitle">🇮🇩 Indonesia Explorer</h1>
-                <p id="headerSubtitle">Explore detailed information about Indonesia</p>
-                <div class="language-selector" role="group" aria-label="Language selector">
-                    <button class="lang-btn active" onclick="changeLanguage('bg')" id="bgBtn">BG</button>
-                    <button class="lang-btn" onclick="changeLanguage('en')" id="enBtn">EN</button>
-                    <button class="lang-btn" onclick="changeLanguage('de')" id="deBtn">DE</button>
-                    <button class="lang-btn" onclick="changeLanguage('fr')" id="frBtn">FR</button>
-                    <button class="lang-btn" onclick="changeLanguage('es')" id="esBtn">ESP</button>
-                    <button class="lang-btn" onclick="changeLanguage('id')" id="idBtn">IND</button>
-                </div>
-            </header>
+        <nav class="sticky-nav" aria-label="Main navigation">
+            <div class="nav-brand">Indonesia Explorer</div>
+            <div class="nav-links">
+                <a href="#overview" data-nav-key="home">Home</a>
+                <a href="#cities" data-nav-key="cities">Cities</a>
+                <a href="#wildlife" data-nav-key="wildlife">Wildlife</a>
+                <a href="#travel-tips" data-nav-key="travelTips">Travel Tips</a>
+                <a href="#blog" data-nav-key="blog">Blog</a>
+                <a href="#projects" data-nav-key="projects">Projects</a>
+            </div>
+        </nav>
 
-            <nav class="sticky-nav" aria-label="Main navigation">
-                <div class="nav-brand">Indonesia Explorer</div>
-                <div class="nav-links">
-                    <a href="#overview" data-nav-key="home">Home</a>
-                    <a href="#cities" data-nav-key="cities">Cities</a>
-                    <a href="#wildlife" data-nav-key="wildlife">Wildlife</a>
-                    <a href="#travel-tips" data-nav-key="travelTips">Travel Tips</a>
-                    <a href="#blog" data-nav-key="blog">Blog</a>
-                    <a href="#projects" data-nav-key="projects">Projects</a>
-                </div>
-            </nav>
-
-            <div id="content">
-                <div class="loading">
-                    <div class="spinner"></div>
-                    <p style="margin-top: 20px;">Loading Indonesia data...</p>
-                </div>
+        <div id="content">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p style="margin-top: 20px;">Loading Indonesia data...</p>
             </div>
         </div>
-
-        <aside class="ad-sidebar ad-sidebar-right" aria-label="Right advertisement">
-            <div class="ad-box">
-                <span class="ad-box-label">Място за реклама</span>
-            </div>
-        </aside>
     </div>
 
     <!-- City Modal -->
