@@ -420,6 +420,18 @@ header p {
     margin-bottom: 40px;
 }
 
+.site-footer {
+    margin: 16px auto 4px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.site-footer a {
+    color: #d9e7ff;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
 .card {
     background: rgba(223, 230, 242, 0.04);
     border-radius: 18px;
@@ -444,6 +456,16 @@ header p {
 #content .card > h2 {
     position: relative;
     z-index: 1;
+}
+
+#content .card {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 560px;
+}
+
+#content .card.country-info {
+    content-visibility: visible;
+    contain-intrinsic-size: auto;
 }
 
 @keyframes slideIn {
@@ -745,7 +767,7 @@ header p {
 .bird-card:nth-child(8) .bird-image { object-position: center 16%; }
 
 .land-card:nth-child(1) .land-image { object-position: center 26%; }
-.land-card:nth-child(2) .land-image { object-position: center 38%; }
+.land-card:nth-child(2) .land-image { object-position: 68% 18%; }
 .land-card:nth-child(3) .land-image { object-position: center 33%; }
 .land-card:nth-child(4) .land-image { object-position: center 48%; }
 .land-card:nth-child(5) .land-image { object-position: center 42%; }
@@ -1372,6 +1394,10 @@ header p {
 }
 
 @media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+    }
+
     .about-projects-grid {
         grid-template-columns: 1fr;
     }

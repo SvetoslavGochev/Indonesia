@@ -54,12 +54,12 @@
     id: './assets/tekst/ламбо.id.txt?v=20260618'
   };
   const SPORTS_ARTICLE_URLS = {
-    bg: './assets/tekst/sportstot7.txt?v=20260620',
-    en: './assets/tekst/sportstot7.en.txt?v=20260620',
-    de: './assets/tekst/sportstot7.de.txt?v=20260620',
-    fr: './assets/tekst/sportstot7.fr.txt?v=20260620',
-    es: './assets/tekst/sportstot7.es.txt?v=20260620',
-    id: './assets/tekst/sportstot7.id.txt?v=20260620'
+    bg: './assets/tekst/sportstot7.txt?v=20260728',
+    en: './assets/tekst/sportstot7.en.txt?v=20260728',
+    de: './assets/tekst/sportstot7.de.txt?v=20260728',
+    fr: './assets/tekst/sportstot7.fr.txt?v=20260728',
+    es: './assets/tekst/sportstot7.es.txt?v=20260728',
+    id: './assets/tekst/sportstot7.id.txt?v=20260728'
   };
   const TOP3_FOOD_ARTICLE_URLS = {
     bg: './assets/tekst/top3hranaInd.txt?v=20260630a',
@@ -147,6 +147,65 @@
     es: './assets/tekst/UningBromo.es.txt?v=20260727a',
     id: './assets/tekst/UningBromo.id.txt?v=20260727a'
   };
+  const SMQH_ARTICLE_URLS = {
+    bg: './assets/tekst/smqh.txt?v=20260807a'
+  };
+  const CAR_KALOQN_ARTICLE_URLS = {
+    bg: './assets/tekst/carKaloqn.txt?v=20260814a',
+    en: './assets/tekst/carKaloqn.en.txt?v=20260814a',
+    de: './assets/tekst/carKaloqn.de.txt?v=20260814a',
+    fr: './assets/tekst/carKaloqn.fr.txt?v=20260814a',
+    es: './assets/tekst/carKaloqn.es.txt?v=20260814a',
+    id: './assets/tekst/carKaloqn.id.txt?v=20260814a'
+  };
+  const TERVEL_ARTICLE_URLS = {
+    bg: './assets/tekst/ТЕРВЕЛСПАСИТЕЛЯ.TXT?v=20260814c',
+    en: './assets/tekst/tervel.en.txt?v=20260814c',
+    de: './assets/tekst/tervel.de.txt?v=20260814c',
+    fr: './assets/tekst/tervel.fr.txt?v=20260814c',
+    es: './assets/tekst/tervel.es.txt?v=20260814c',
+    id: './assets/tekst/tervel.id.txt?v=20260814c'
+  };
+  const DOIRAN_ARTICLE_URLS = {
+    bg: './assets/tekst/бИТКАТАПРИДОИРАН.txt?v=20260814b',
+    en: './assets/tekst/doiran.en.txt?v=20260814b',
+    de: './assets/tekst/doiran.de.txt?v=20260814b',
+    fr: './assets/tekst/doiran.fr.txt?v=20260814b',
+    es: './assets/tekst/doiran.es.txt?v=20260814b',
+    id: './assets/tekst/doiran.id.txt?v=20260814b'
+  };
+  const EUROPE_DRUG_POLICY_ARTICLE_URLS = {
+    bg: './assets/tekst/europaPolicy.bg.txt?v=20260814c',
+    en: './assets/tekst/europaPolicy.en.txt?v=20260814b',
+    de: './assets/tekst/europaPolicy.de.txt?v=20260814b',
+    fr: './assets/tekst/europaPolicy.fr.txt?v=20260814b',
+    es: './assets/tekst/europaPolicy.es.txt?v=20260814b',
+    id: './assets/tekst/europaPolicy.id.txt?v=20260814b'
+  };
+  const BAT_BAYAN_ARTICLE_URLS = {
+    bg: './assets/tekst/batBayan.bg.txt?v=20260814b',
+    en: './assets/tekst/batBayan.en.txt?v=20260814b',
+    de: './assets/tekst/batBayan.de.txt?v=20260814b',
+    fr: './assets/tekst/batBayan.fr.txt?v=20260814b',
+    es: './assets/tekst/batBayan.es.txt?v=20260814b',
+    id: './assets/tekst/batBayan.id.txt?v=20260814b'
+  };
+  const HIDDEN_INDONESIA_ARTICLE_URLS = {
+    bg: './assets/tekst/hidenIndonesia.txt?v=20260820a',
+    en: './assets/tekst/hidenIndonesia.en.txt?v=20260820a',
+    de: './assets/tekst/hidenIndonesia.de.txt?v=20260820a',
+    fr: './assets/tekst/hidenIndonesia.fr.txt?v=20260820a',
+    es: './assets/tekst/hidenIndonesia.es.txt?v=20260820a',
+    id: './assets/tekst/hidenIndonesia.id.txt?v=20260820a'
+  };
+  const USA_OPEN_ARTICLE_URLS = {
+    bg: './assets/tekst/UsaOpen.txt?v=20260915c',
+    en: './assets/tekst/UsaOpen.en.txt?v=20260915c',
+    de: './assets/tekst/UsaOpen.de.txt?v=20260915c',
+    fr: './assets/tekst/UsaOpen.fr.txt?v=20260915c',
+    es: './assets/tekst/UsaOpen.es.txt?v=20260915c',
+    id: './assets/tekst/UsaOpen.id.txt?v=20260915c'
+  };
   const METAMASK_WALLET_ADDRESS = '0xfca710eC5eB0FB036157Bb1E114BADc2310efE37';
   const PARTNER_INSTAGRAM_URL = (window.PARTNER_INSTAGRAM_URL || 'https://www.instagram.com/indo.nesiaexplorerr/').trim();
   const PARTNER_FACEBOOK_URL = (window.PARTNER_FACEBOOK_URL || 'https://www.facebook.com/profile.php?id=61592328399672').trim();
@@ -232,13 +291,106 @@
       name_fr: 'Requin-baleine',
       name_es: 'Tiburon ballena',
       name_id: 'Hiu paus'
+    },
+    {
+      image: './assets/images/ribaLuna.jpeg',
+      articleUrls: {
+        bg: './assets/tekst/ribaLuna.txt?v=20260806',
+        en: './assets/tekst/ribaLuna.en.txt?v=20260806'
+      },
+      name_bg: 'Риба Луна',
+      name_en: 'Mola Mola',
+      name_de: 'Mondfisch',
+      name_fr: 'Poisson-lune',
+      name_es: 'Pez luna',
+      name_id: 'Mola Mola'
+    },
+    {
+      image: './assets/images/sinOKtopod.jpeg',
+      articleUrls: {
+        bg: './assets/tekst/sinioprastenOktopod.txt?v=20260806',
+        en: './assets/tekst/sinioprastenOktopod.en.txt?v=20260806'
+      },
+      name_bg: 'Синьопръстенен октопод',
+      name_en: 'Blue-ringed Octopus',
+      name_de: 'Blaugeringelter Oktopus',
+      name_fr: 'Poulpe a anneaux bleus',
+      name_es: 'Pulpo de anillos azules',
+      name_id: 'Gurita cincin biru'
     }
   ];
+
+  const sunBearSvg = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="Sun Bear illustration">
+      <defs>
+        <linearGradient id="bg" x1="0" x2="1">
+          <stop offset="0%" stop-color="#dfead4"/>
+          <stop offset="100%" stop-color="#5b7d52"/>
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="750" fill="url(#bg)"/>
+      <ellipse cx="600" cy="610" rx="360" ry="120" fill="#3e332b" opacity="0.18"/>
+      <rect x="0" y="0" width="1200" height="750" fill="transparent"/>
+      <g transform="translate(135 35)">
+        <ellipse cx="435" cy="370" rx="270" ry="250" fill="#1d1d1f"/>
+        <ellipse cx="395" cy="565" rx="145" ry="90" fill="#1a1a1a"/>
+        <ellipse cx="580" cy="565" rx="155" ry="90" fill="#1a1a1a"/>
+        <ellipse cx="435" cy="225" rx="150" ry="120" fill="#0f1113"/>
+        <ellipse cx="390" cy="240" rx="50" ry="35" fill="#d0b287"/>
+        <ellipse cx="492" cy="240" rx="48" ry="35" fill="#d0b287"/>
+        <circle cx="402" cy="242" r="8" fill="#1d1d1f"/>
+        <circle cx="476" cy="242" r="8" fill="#1d1d1f"/>
+        <ellipse cx="440" cy="260" rx="18" ry="12" fill="#2e2a28"/>
+        <ellipse cx="443" cy="310" rx="62" ry="48" fill="#d4a46a"/>
+        <path d="M405 300c20 38 70 50 98 18" fill="none" stroke="#77552d" stroke-width="8" stroke-linecap="round"/>
+        <path d="M345 300l-115 25l-10 65l125 10z" fill="#1b1b1b"/>
+        <path d="M520 290l115 20l20 70l-125 8z" fill="#1b1b1b"/>
+        <path d="M350 280c-12-52 18-120 80-146" fill="none" stroke="#c9b78d" stroke-width="18" stroke-linecap="round"/>
+        <path d="M530 282c18-54 54-92 110-120" fill="none" stroke="#d0be95" stroke-width="18" stroke-linecap="round"/>
+        <path d="M505 326c125 26 228 86 260 199" fill="none" stroke="#1d1d1f" stroke-width="28" stroke-linecap="round"/>
+        <path d="M340 332c-116 18-181 93-203 201" fill="none" stroke="#1d1d1f" stroke-width="28" stroke-linecap="round"/>
+        <path d="M350 392c70 22 130 44 198 42" fill="none" stroke="#d4a46a" stroke-width="26" stroke-linecap="round"/>
+        <path d="M350 430c72 16 126 26 188 22" fill="none" stroke="#c58d4b" stroke-width="14" stroke-linecap="round"/>
+      </g>
+    </svg>
+  `);
+
+  const anoaSvg = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="Anoa illustration">
+      <defs>
+        <linearGradient id="g1" x1="0" x2="1">
+          <stop offset="0%" stop-color="#d2d5d9"/>
+          <stop offset="100%" stop-color="#7f8b8e"/>
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="750" fill="#d8d0b4"/>
+      <ellipse cx="600" cy="620" rx="420" ry="80" fill="#8a8a7d" opacity="0.2"/>
+      <g transform="translate(95 75)">
+        <path d="M170 460c36-146 104-212 186-228c72-13 170 0 220 58c60 68 64 186 40 230c-36 65-117 126-169 136c-119 23-243-22-277-196z" fill="#111316"/>
+        <path d="M425 255l96-90l52 31l-44 88l-104 3z" fill="#13171a"/>
+        <path d="M386 260l-58-116l-55 58l70 92z" fill="#101214"/>
+        <path d="M460 270l82-118l96 18l-80 118z" fill="#111316"/>
+        <path d="M365 310c70-21 132-22 202 0" fill="none" stroke="#727b7f" stroke-width="9" stroke-linecap="round"/>
+        <path d="M325 420c56 18 90 38 110 76" fill="none" stroke="#111316" stroke-width="20" stroke-linecap="round"/>
+        <path d="M492 420c62 18 100 40 124 86" fill="none" stroke="#111316" stroke-width="22" stroke-linecap="round"/>
+        <path d="M360 520l-58 150" stroke="#111316" stroke-width="26" stroke-linecap="round"/>
+        <path d="M528 523l70 155" stroke="#111316" stroke-width="26" stroke-linecap="round"/>
+        <path d="M620 510l101 145" stroke="#111316" stroke-width="28" stroke-linecap="round"/>
+        <path d="M246 520l-36 150" stroke="#111316" stroke-width="26" stroke-linecap="round"/>
+        <path d="M463 195c12-12 28-18 46-18c20 0 42 8 57 22" fill="none" stroke="#a9b1b3" stroke-width="9" stroke-linecap="round"/>
+        <circle cx="453" cy="276" r="9" fill="#e9f0f4"/>
+        <circle cx="560" cy="276" r="9" fill="#e9f0f4"/>
+        <path d="M455 300c19 21 55 21 75 0" fill="none" stroke="#7e5f48" stroke-width="7" stroke-linecap="round"/>
+      </g>
+    </svg>
+  `);
 
   const landAnimals = [
     {
       image: './assets/images/land-rhino.jpg',
       sectionIndex: 0,
+      speedKmh: '40',
+      weightKg: '900-2300',
       name_bg: 'Явански носорог',
       name_en: 'Javan Rhino',
       name_de: 'Java-Nashorn',
@@ -249,6 +401,8 @@
     {
       image: './assets/images/land-tiger.jpg',
       sectionIndex: 1,
+      speedKmh: '65',
+      weightKg: '90-140 / 65-90',
       name_bg: 'Суматренски тигър',
       name_en: 'Sumatran Tiger',
       name_de: 'Sumatra-Tiger',
@@ -259,6 +413,8 @@
     {
       image: './assets/images/land-orangutan.jpg',
       sectionIndex: 2,
+      speedKmh: '5-10',
+      weightKg: '50-120 / 30-50',
       name_bg: 'Орангутан',
       name_en: 'Orangutan',
       name_de: 'Orang-Utan',
@@ -269,6 +425,8 @@
     {
       image: './assets/images/land-komodo.jpg',
       sectionIndex: 3,
+      speedKmh: '20',
+      weightKg: '70-90',
       name_bg: 'Комодски варан',
       name_en: 'Komodo Dragon',
       name_de: 'Komodowaran',
@@ -279,6 +437,8 @@
     {
       image: './assets/images/land-elephant.jpg',
       sectionIndex: 4,
+      speedKmh: '15-20',
+      weightKg: '2000-4000',
       name_bg: 'Суматренски слон',
       name_en: 'Sumatran Elephant',
       name_de: 'Sumatra-Elefant',
@@ -289,12 +449,46 @@
     {
       image: './assets/images/land-babirusa.jpg',
       sectionIndex: 5,
+      speedKmh: '40',
+      weightKg: '60-100',
       name_bg: 'Бабируса',
       name_en: 'Babirusa',
       name_de: 'Babirusa',
       name_fr: 'Babiroussa',
       name_es: 'Babirusa',
       name_id: 'Babirusa'
+    },
+    {
+      image: './assets/images/sumatrenskaMechka.png',
+      articleUrls: {
+        bg: './assets/tekst/sumatranskaMechka.txt?v=20260812',
+        en: './assets/tekst/zemniviwotni.en.txt?v=20260703b'
+      },
+      sectionIndex: 6,
+      speedKmh: '25-35',
+      weightKg: '25-80',
+      name_bg: 'Суматранска мечка',
+      name_en: 'Sun Bear',
+      name_de: 'Sonnenbär',
+      name_fr: 'Ours malais',
+      name_es: 'Oso solar',
+      name_id: 'Beruang madu'
+    },
+    {
+      image: './assets/images/аноа (2).png',
+      articleUrls: {
+        bg: './assets/tekst/anoa.txt?v=20260812',
+        en: './assets/tekst/zemniviwotni.en.txt?v=20260703b'
+      },
+      sectionIndex: 7,
+      speedKmh: '20-30',
+      weightKg: '150-300',
+      name_bg: 'Аноа',
+      name_en: 'Anoa',
+      name_de: 'Anoa',
+      name_fr: 'Anoa',
+      name_es: 'Anoa',
+      name_id: 'Anoa'
     }
   ];
 
@@ -670,6 +864,14 @@
   const palembangArticleByLanguage = {};
   const footballArticleByLanguage = {};
   const uningBromoArticleByLanguage = {};
+  const smqhArticleByLanguage = {};
+  const carKaloqnArticleByLanguage = {};
+  const tervelArticleByLanguage = {};
+  const doiranArticleByLanguage = {};
+  const europeDrugPolicyArticleByLanguage = {};
+  const batBayanArticleByLanguage = {};
+  const hiddenIndonesiaArticleByLanguage = {};
+  const usaOpenArticleByLanguage = {};
 
   const countryInfoFields = [
     { labelKey: 'capital', value: indonesiaData.country.capital, id: 'capitalLabel' },
@@ -737,6 +939,7 @@
   const blogArticleTextByLanguage = {};
   const dolphinArticleTextByLanguage = {};
   const waterworldSectionsByLanguage = {};
+  const marineAnimalArticleTextByLanguage = {};
   const cruiseArticleTextByLanguage = {};
   const birdSectionsByLanguage = {};
   const lombokArticleTextByLanguage = {};
@@ -873,9 +1076,6 @@ function cacheContentElements() {
     dom.blogArticle6Title = document.getElementById('blogArticle6Title');
     dom.blogArticle6Excerpt = document.getElementById('blogArticle6Excerpt');
     dom.blogReadBtn6 = document.getElementById('blogReadBtn6');
-    dom.blogArticle7Title = document.getElementById('blogArticle7Title');
-    dom.blogArticle7Excerpt = document.getElementById('blogArticle7Excerpt');
-    dom.blogReadBtn7 = document.getElementById('blogReadBtn7');
     dom.blogArticle8Title = document.getElementById('blogArticle8Title');
     dom.blogArticle8Excerpt = document.getElementById('blogArticle8Excerpt');
     dom.blogReadBtn8 = document.getElementById('blogReadBtn8');
@@ -903,6 +1103,30 @@ function cacheContentElements() {
     dom.blogArticle16Title = document.getElementById('blogArticle16Title');
     dom.blogArticle16Excerpt = document.getElementById('blogArticle16Excerpt');
     dom.blogReadBtn16 = document.getElementById('blogReadBtn16');
+    dom.blogArticle17Title = document.getElementById('blogArticle17Title');
+    dom.blogArticle17Excerpt = document.getElementById('blogArticle17Excerpt');
+    dom.blogReadBtn17 = document.getElementById('blogReadBtn17');
+    dom.blogArticle18Title = document.getElementById('blogArticle18Title');
+    dom.blogArticle18Excerpt = document.getElementById('blogArticle18Excerpt');
+    dom.blogReadBtn18 = document.getElementById('blogReadBtn18');
+    dom.blogArticle19Title = document.getElementById('blogArticle19Title');
+    dom.blogArticle19Excerpt = document.getElementById('blogArticle19Excerpt');
+    dom.blogReadBtn19 = document.getElementById('blogReadBtn19');
+    dom.blogArticle20Title = document.getElementById('blogArticle20Title');
+    dom.blogArticle20Excerpt = document.getElementById('blogArticle20Excerpt');
+    dom.blogReadBtn20 = document.getElementById('blogReadBtn20');
+    dom.blogArticle21Title = document.getElementById('blogArticle21Title');
+    dom.blogArticle21Excerpt = document.getElementById('blogArticle21Excerpt');
+    dom.blogReadBtn21 = document.getElementById('blogReadBtn21');
+    dom.blogArticle22Title = document.getElementById('blogArticle22Title');
+    dom.blogArticle22Excerpt = document.getElementById('blogArticle22Excerpt');
+    dom.blogReadBtn22 = document.getElementById('blogReadBtn22');
+    dom.blogArticle23Title = document.getElementById('blogArticle23Title');
+    dom.blogArticle23Excerpt = document.getElementById('blogArticle23Excerpt');
+    dom.blogReadBtn23 = document.getElementById('blogReadBtn23');
+    dom.blogArticle24Title = document.getElementById('blogArticle24Title');
+    dom.blogArticle24Excerpt = document.getElementById('blogArticle24Excerpt');
+    dom.blogReadBtn24 = document.getElementById('blogReadBtn24');
     dom.aboutSectionTitle = document.getElementById('aboutSectionTitle');
     dom.aboutSectionText = document.getElementById('aboutSectionText');
     dom.project1Title = document.getElementById('project1Title');
@@ -1036,6 +1260,18 @@ function cacheContentElements() {
     return animal[key] || animal.name_en || animal.name_bg || '';
   }
 
+  function getLandSpeedText(animal) {
+    return `${getTranslation('freshwaterSpeedLabel')}: ~${animal.speedKmh} km/h`;
+  }
+
+  function getLandWeightText(animal) {
+    return `${getTranslation('freshwaterWeightLabel')}: ~${animal.weightKg} kg`;
+  }
+
+  function getLandMetaText(animal) {
+    return `${getLandSpeedText(animal)}\n${getLandWeightText(animal)}`;
+  }
+
   function getFreshwaterSpeedText(animal) {
     return `${getTranslation('freshwaterSpeedLabel')}: ~${animal.speedKmh} km/h`;
   }
@@ -1157,26 +1393,20 @@ function cacheContentElements() {
     return `https://en.wikipedia.org/wiki/Special:Search?search=${searchQuery}`;
   }
 
-  function toBulgarianTranslatedWikipediaUrl(url) {
-    if (currentLanguage !== 'bg') {
-      return url;
-    }
-
+  function normalizeEnglishWikipediaUrl(url) {
     try {
       const parsedUrl = new URL(url);
-      if (parsedUrl.hostname !== 'en.wikipedia.org') {
-        return url;
+      if (parsedUrl.hostname === 'en-wikipedia-org.translate.goog') {
+        const englishUrl = new URL(`https://en.wikipedia.org${parsedUrl.pathname}`);
+        parsedUrl.searchParams.forEach(function (value, key) {
+          if (!key.startsWith('_x_tr_')) {
+            englishUrl.searchParams.set(key, value);
+          }
+        });
+        return englishUrl.toString();
       }
 
-      const translatedUrl = new URL(`https://en-wikipedia-org.translate.goog${parsedUrl.pathname}`);
-      parsedUrl.searchParams.forEach(function (value, key) {
-        translatedUrl.searchParams.set(key, value);
-      });
-      translatedUrl.searchParams.set('_x_tr_sl', 'en');
-      translatedUrl.searchParams.set('_x_tr_tl', 'bg');
-      translatedUrl.searchParams.set('_x_tr_hl', 'bg');
-      translatedUrl.searchParams.set('_x_tr_pto', 'wapp');
-      return translatedUrl.toString();
+      return url;
     } catch (error) {
       return url;
     }
@@ -1201,15 +1431,13 @@ function cacheContentElements() {
     dom.modalTitle.textContent = city.name;
     dom.modalDescription.textContent = city[keys.description] || city.description_en || city.description_bg || '';
     dom.modalPopulation.textContent = city.population;
-    dom.modalCoordinates.textContent = `${city.latitude.toFixed(2)}°, ${city.longitude.toFixed(2)}°`;
     dom.populationLabel.textContent = getTranslation('population');
-    dom.coordinatesLabel.textContent = getTranslation('coordinates');
     dom.attractionsLabel.textContent = getTranslation('keyAttractions');
     dom.hotelsLabel.textContent = getTranslation('topHotels');
     dom.modalHighlights.innerHTML = localizedHighlights.map(function (highlight, index) {
       const queryTerm = englishHighlights[index] || highlight;
       const directUrl = directHighlightLinks[index];
-      const finalUrl = toBulgarianTranslatedWikipediaUrl(directUrl || getAttractionWikipediaUrl(city.name, queryTerm));
+      const finalUrl = normalizeEnglishWikipediaUrl(directUrl || getAttractionWikipediaUrl(city.name, queryTerm));
       return `<a class="attraction-link-badge" href="${finalUrl}" target="_blank" rel="noopener noreferrer">${highlight}</a>`;
     }).join('');
 
@@ -1335,6 +1563,7 @@ function cacheContentElements() {
           </div>
         </div>
 
+<<<<<<< HEAD
         <div class="card travel-tips-card" id="travel-tips">
           <h2 id="travelTipsSectionTitle">🌍 Travel Tips</h2>
           <div class="travel-tips-grid">
@@ -1350,6 +1579,79 @@ function cacheContentElements() {
               <h3 id="travelTip3Title">Culture tip</h3>
               <p id="travelTip3Text">Respect local dress codes in temples and small communities.</p>
             </div>
+=======
+        <div class="card blog-card">
+          <h2 id="blogSectionTitle"></h2>
+          <div class="blog-preview">
+            <h3 id="blogArticleTitle"></h3>
+            <p id="blogArticleExcerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn" class="blog-read-btn" type="button"></button>
+          </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle2Title"></h3>
+            <p id="blogArticle2Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn2" class="blog-read-btn" type="button"></button>
+          </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle3Title"></h3>
+            <p id="blogArticle3Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn3" class="blog-read-btn" type="button"></button>
+          </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle4Title"></h3>
+            <p id="blogArticle4Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn4" class="blog-read-btn" type="button"></button>
+          </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle5Title"></h3>
+            <p id="blogArticle5Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn5" class="blog-read-btn" type="button"></button>
+          </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle6Title"></h3>
+            <p id="blogArticle6Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn6" class="blog-read-btn" type="button"></button>
+          </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle8Title"></h3>
+            <p id="blogArticle8Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn8" class="blog-read-btn" type="button"></button>
+          </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle9Title"></h3>
+            <p id="blogArticle9Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn9" class="blog-read-btn" type="button"></button>
+          </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle10Title"></h3>
+            <p id="blogArticle10Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn10" class="blog-read-btn" type="button"></button>
+          </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle11Title"></h3>
+            <p id="blogArticle11Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn11" class="blog-read-btn" type="button"></button>
+          </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle12Title"></h3>
+            <p id="blogArticle12Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn12" class="blog-read-btn" type="button"></button>
+          </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle13Title"></h3>
+            <p id="blogArticle13Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn13" class="blog-read-btn" type="button"></button>
+          </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle14Title"></h3>
+            <p id="blogArticle14Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn14" class="blog-read-btn" type="button"></button>
+          </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle15Title"></h3>
+            <p id="blogArticle15Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn15" class="blog-read-btn" type="button"></button>
+>>>>>>> a2d3cc02b05b07c5a17a53d347b720ad73c45889
           </div>
         </div>
 
@@ -1485,6 +1787,46 @@ function cacheContentElements() {
               </div>
             </article>
           </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle17Title"></h3>
+            <p id="blogArticle17Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn17" class="blog-read-btn" type="button"></button>
+          </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle18Title"></h3>
+            <p id="blogArticle18Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn18" class="blog-read-btn" type="button"></button>
+          </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle19Title"></h3>
+            <p id="blogArticle19Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn19" class="blog-read-btn" type="button"></button>
+          </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle20Title"></h3>
+            <p id="blogArticle20Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn20" class="blog-read-btn" type="button"></button>
+          </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle21Title"></h3>
+            <p id="blogArticle21Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn21" class="blog-read-btn" type="button"></button>
+          </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle22Title"></h3>
+            <p id="blogArticle22Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn22" class="blog-read-btn" type="button"></button>
+          </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle23Title"></h3>
+            <p id="blogArticle23Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn23" class="blog-read-btn" type="button"></button>
+          </div>
+          <div class="blog-preview">
+            <h3 id="blogArticle24Title"></h3>
+            <p id="blogArticle24Excerpt" class="blog-excerpt"></p>
+            <button id="blogReadBtn24" class="blog-read-btn" type="button"></button>
+          </div>
         </div>
 
         <div class="card about-projects-card" id="projects">
@@ -1557,7 +1899,6 @@ function cacheContentElements() {
     dom.blogReadBtn4.addEventListener('click', openLombokBlogModal);
     dom.blogReadBtn5.addEventListener('click', openSportsBlogModal);
     dom.blogReadBtn6.addEventListener('click', openTop3FoodBlogModal);
-    dom.blogReadBtn7.addEventListener('click', openFruitsBlogModal);
     dom.blogReadBtn8.addEventListener('click', openRiversBlogModal);
     dom.blogReadBtn9.addEventListener('click', openVolcanoBlogModal);
     dom.blogReadBtn10.addEventListener('click', openTrainBlogModal);
@@ -1567,6 +1908,14 @@ function cacheContentElements() {
     dom.blogReadBtn14.addEventListener('click', openPalembangBlogModal);
     dom.blogReadBtn15.addEventListener('click', openFootballBlogModal);
     dom.blogReadBtn16.addEventListener('click', openUningBromoBlogModal);
+    dom.blogReadBtn17.addEventListener('click', openSmqhBlogModal);
+    dom.blogReadBtn18.addEventListener('click', openCarKaloqnBlogModal);
+    dom.blogReadBtn19.addEventListener('click', openTervelBlogModal);
+    dom.blogReadBtn20.addEventListener('click', openDoiranBlogModal);
+    dom.blogReadBtn21.addEventListener('click', openEuropeDrugPolicyBlogModal);
+    dom.blogReadBtn22.addEventListener('click', openBatBayanBlogModal);
+    dom.blogReadBtn23.addEventListener('click', openHiddenIndonesiaBlogModal);
+    dom.blogReadBtn24.addEventListener('click', openUsaOpenBlogModal);
     dom.partnerWalletCopy.addEventListener('click', copyPartnerWalletAddress);
     dom.content.addEventListener('click', function (event) {
       const freshwaterReadButton = event.target.closest('.freshwater-read-text');
@@ -1619,7 +1968,21 @@ function cacheContentElements() {
       openCityModal(Number(cityCard.dataset.cityIndex));
     });
 
+    hideSpecificBlogCards();
     contentRendered = true;
+  }
+
+  function hideSpecificBlogCards() {
+    const hiddenCardIds = ['blogArticle18Title', 'blogArticle20Title', 'blogArticle21Title', 'blogArticle22Title'];
+
+    hiddenCardIds.forEach(function (cardId) {
+      const cardTitle = document.getElementById(cardId);
+      const cardPreview = cardTitle && cardTitle.closest('.blog-preview');
+
+      if (cardPreview) {
+        cardPreview.style.display = 'none';
+      }
+    });
   }
 
   function updateContentTranslations() {
@@ -1693,9 +2056,6 @@ function cacheContentElements() {
     dom.blogArticle6Title.textContent = getTranslation('blogArticle6Title');
     dom.blogArticle6Excerpt.textContent = getTranslation('blogArticle6Excerpt');
     dom.blogReadBtn6.textContent = getTranslation('blogReadBtn6');
-    dom.blogArticle7Title.textContent = getTranslation('blogArticle7Title');
-    dom.blogArticle7Excerpt.textContent = getTranslation('blogArticle7Excerpt');
-    dom.blogReadBtn7.textContent = getTranslation('blogReadBtn7');
     dom.blogArticle8Title.textContent = getTranslation('blogArticle8Title');
     dom.blogArticle8Excerpt.textContent = getTranslation('blogArticle8Excerpt');
     dom.blogReadBtn8.textContent = getTranslation('blogReadBtn8');
@@ -1723,6 +2083,30 @@ function cacheContentElements() {
     dom.blogArticle16Title.textContent = getTranslation('blogArticle16Title');
     dom.blogArticle16Excerpt.textContent = getTranslation('blogArticle16Excerpt');
     dom.blogReadBtn16.textContent = getTranslation('blogReadBtn16');
+    dom.blogArticle17Title.textContent = getTranslation('blogArticle17Title');
+    dom.blogArticle17Excerpt.textContent = getTranslation('blogArticle17Excerpt');
+    dom.blogReadBtn17.textContent = getTranslation('blogReadBtn17');
+    dom.blogArticle18Title.textContent = getTranslation('blogArticle18Title');
+    dom.blogArticle18Excerpt.textContent = getTranslation('blogArticle18Excerpt');
+    dom.blogReadBtn18.textContent = getTranslation('blogReadBtn18');
+    dom.blogArticle19Title.textContent = getTranslation('blogArticle19Title');
+    dom.blogArticle19Excerpt.textContent = getTranslation('blogArticle19Excerpt');
+    dom.blogReadBtn19.textContent = getTranslation('blogReadBtn19');
+    dom.blogArticle20Title.textContent = getTranslation('blogArticle20Title');
+    dom.blogArticle20Excerpt.textContent = getTranslation('blogArticle20Excerpt');
+    dom.blogReadBtn20.textContent = getTranslation('blogReadBtn20');
+    dom.blogArticle21Title.textContent = getTranslation('blogArticle21Title');
+    dom.blogArticle21Excerpt.textContent = getTranslation('blogArticle21Excerpt');
+    dom.blogReadBtn21.textContent = getTranslation('blogReadBtn21');
+    dom.blogArticle22Title.textContent = getTranslation('blogArticle22Title');
+    dom.blogArticle22Excerpt.textContent = getTranslation('blogArticle22Excerpt');
+    dom.blogReadBtn22.textContent = getTranslation('blogReadBtn22');
+    dom.blogArticle23Title.textContent = getTranslation('blogArticle23Title');
+    dom.blogArticle23Excerpt.textContent = getTranslation('blogArticle23Excerpt');
+    dom.blogReadBtn23.textContent = getTranslation('blogReadBtn23');
+    dom.blogArticle24Title.textContent = getTranslation('blogArticle24Title');
+    dom.blogArticle24Excerpt.textContent = getTranslation('blogArticle24Excerpt');
+    dom.blogReadBtn24.textContent = getTranslation('blogReadBtn24');
     dom.aboutSectionTitle.textContent = getTranslation('aboutSectionTitle');
     dom.aboutSectionText.textContent = getTranslation('aboutSectionText');
     dom.project1Title.textContent = getTranslation('project1Title');
@@ -2493,23 +2877,6 @@ function cacheContentElements() {
     }
   }
 
-  async function openFruitsBlogModal() {
-    const languageAtOpen = currentLanguage;
-    dom.blogModalTitle.textContent = getTranslation('blogArticle7Title');
-    dom.blogModalContent.textContent = getTranslation('blogLoading');
-    toggleModal(dom.blogModal, true);
-
-    try {
-      const sections = await loadFruitSections(languageAtOpen);
-      const text = sections.map(function (section, index) {
-        return `${index + 1}. ${section.title}\n\n${section.content}`;
-      }).join('\n\n');
-      dom.blogModalContent.textContent = text || getTranslation('blogLoadError');
-    } catch (error) {
-      dom.blogModalContent.textContent = getTranslation('blogLoadError');
-    }
-  }
-
   async function openTreeInfoModal(index) {
     const tree = trees[index];
     if (!tree) {
@@ -2878,6 +3245,310 @@ function cacheContentElements() {
     }
   }
 
+  async function loadSmqhArticle() {
+    const requestedLang = SMQH_ARTICLE_URLS[currentLanguage] ? currentLanguage : 'bg';
+    if (typeof smqhArticleByLanguage[requestedLang] === 'string' && smqhArticleByLanguage[requestedLang].length > 0) {
+      return smqhArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(SMQH_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('smqh_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      smqhArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      smqhArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openSmqhBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle17Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadSmqhArticle();
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadCarKaloqnArticle() {
+    const requestedLang = CAR_KALOQN_ARTICLE_URLS[currentLanguage] ? currentLanguage : 'bg';
+    if (typeof carKaloqnArticleByLanguage[requestedLang] === 'string' && carKaloqnArticleByLanguage[requestedLang].length > 0) {
+      return carKaloqnArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(CAR_KALOQN_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('car_kaloqn_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      carKaloqnArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      carKaloqnArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openCarKaloqnBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle18Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadCarKaloqnArticle();
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadTervelArticle() {
+    const requestedLang = TERVEL_ARTICLE_URLS[currentLanguage] ? currentLanguage : 'bg';
+    if (typeof tervelArticleByLanguage[requestedLang] === 'string' && tervelArticleByLanguage[requestedLang].length > 0) {
+      return tervelArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(TERVEL_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('tervel_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      tervelArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      tervelArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openTervelBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle19Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadTervelArticle();
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadDoiranArticle() {
+    const requestedLang = DOIRAN_ARTICLE_URLS[currentLanguage] ? currentLanguage : 'bg';
+    if (typeof doiranArticleByLanguage[requestedLang] === 'string' && doiranArticleByLanguage[requestedLang].length > 0) {
+      return doiranArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(DOIRAN_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('doiran_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      doiranArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      doiranArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openDoiranBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle20Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadDoiranArticle();
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadEuropeDrugPolicyArticle() {
+    const requestedLang = EUROPE_DRUG_POLICY_ARTICLE_URLS[currentLanguage] ? currentLanguage : 'bg';
+    if (typeof europeDrugPolicyArticleByLanguage[requestedLang] === 'string' && europeDrugPolicyArticleByLanguage[requestedLang].length > 0) {
+      return europeDrugPolicyArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(EUROPE_DRUG_POLICY_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('europe_drug_policy_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      europeDrugPolicyArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      europeDrugPolicyArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openEuropeDrugPolicyBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle21Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadEuropeDrugPolicyArticle();
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadBatBayanArticle() {
+    const requestedLang = BAT_BAYAN_ARTICLE_URLS[currentLanguage] ? currentLanguage : 'bg';
+    if (typeof batBayanArticleByLanguage[requestedLang] === 'string' && batBayanArticleByLanguage[requestedLang].length > 0) {
+      return batBayanArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(BAT_BAYAN_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('bat_bayan_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      batBayanArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      batBayanArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openBatBayanBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle22Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadBatBayanArticle();
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadHiddenIndonesiaArticle(lang) {
+    const requestedLang = HIDDEN_INDONESIA_ARTICLE_URLS[lang] ? lang : 'bg';
+    if (typeof hiddenIndonesiaArticleByLanguage[requestedLang] === 'string' && hiddenIndonesiaArticleByLanguage[requestedLang].length > 0) {
+      return hiddenIndonesiaArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(HIDDEN_INDONESIA_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('hidden_indonesia_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      hiddenIndonesiaArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      hiddenIndonesiaArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openHiddenIndonesiaBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle23Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadHiddenIndonesiaArticle(currentLanguage);
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadUsaOpenArticle() {
+    const requestedLang = USA_OPEN_ARTICLE_URLS[currentLanguage] ? currentLanguage : 'bg';
+    if (typeof usaOpenArticleByLanguage[requestedLang] === 'string' && usaOpenArticleByLanguage[requestedLang].length > 0) {
+      return usaOpenArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(USA_OPEN_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('usa_open_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      usaOpenArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      usaOpenArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openUsaOpenBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle24Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadUsaOpenArticle();
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
   function parseWaterworldSections(articleText) {
     const normalized = articleText.replace(/\r\n/g, '\n').trim();
     const chunks = normalized.split(/\n(?=\d+\.\s)/);
@@ -2899,6 +3570,52 @@ function cacheContentElements() {
           searchable: `${title}\n${content}`.toLowerCase()
         };
       });
+  }
+
+  async function loadLocalizedArticleText(articleUrls, language, cachePrefix, fallbackLanguageOrder) {
+    if (!articleUrls) {
+      return null;
+    }
+
+    const fallbackOrder = Array.isArray(fallbackLanguageOrder) && fallbackLanguageOrder.length > 0
+      ? fallbackLanguageOrder
+      : ['en', 'bg'];
+    const requestedLanguage = articleUrls[language] ? language : (articleUrls.en ? 'en' : (articleUrls.bg ? 'bg' : null));
+    if (!requestedLanguage) {
+      return null;
+    }
+
+    const cacheKey = `${cachePrefix}:${requestedLanguage}`;
+    if (marineAnimalArticleTextByLanguage[cacheKey]) {
+      return marineAnimalArticleTextByLanguage[cacheKey];
+    }
+
+    async function fetchArticleText(languageCode) {
+      const response = await fetch(articleUrls[languageCode]);
+      if (!response.ok) {
+        throw new Error('localized_article_load_failed');
+      }
+      return response.text();
+    }
+
+    const orderedLanguages = [requestedLanguage].concat(fallbackOrder.filter(function (languageCode) {
+      return languageCode !== requestedLanguage;
+    }));
+
+    for (const languageCode of orderedLanguages) {
+      if (!articleUrls[languageCode]) {
+        continue;
+      }
+
+      try {
+        const articleText = await fetchArticleText(languageCode);
+        marineAnimalArticleTextByLanguage[cacheKey] = articleText;
+        return articleText;
+      } catch (error) {
+      }
+    }
+
+    return null;
   }
 
   function getWaterworldSectionForAnimal(sections, animal, index) {
@@ -2958,12 +3675,17 @@ function cacheContentElements() {
     toggleModal(dom.blogModal, true);
 
     try {
-      const sections = await loadWaterworldSections(languageAtOpen);
-      const selected = getWaterworldSectionForAnimal(sections, animal, index);
-      if (selected) {
-        dom.blogModalContent.textContent = `${selected.title}\n\n${selected.content}`;
+      const localizedArticleText = await loadLocalizedArticleText(animal.articleUrls, languageAtOpen, animal.name_en || animal.name_bg || `marine-${index}`);
+      if (localizedArticleText) {
+        dom.blogModalContent.textContent = localizedArticleText;
       } else {
-        dom.blogModalContent.textContent = getTranslation('blogLoadError');
+        const sections = await loadWaterworldSections(languageAtOpen);
+        const selected = getWaterworldSectionForAnimal(sections, animal, index);
+        if (selected) {
+          dom.blogModalContent.textContent = `${selected.title}\n\n${selected.content}`;
+        } else {
+          dom.blogModalContent.textContent = getTranslation('blogLoadError');
+        }
       }
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');
@@ -3009,15 +3731,24 @@ function cacheContentElements() {
     toggleModal(dom.blogModal, true);
 
     try {
+      if (animal.articleUrls) {
+        const localizedText = await loadLocalizedArticleText(animal.articleUrls, languageAtOpen, animal.name_en || animal.name_bg || `land-${index}`, ['bg', 'en']);
+        if (localizedText) {
+          dom.blogModalContent.textContent = `${getLandMetaText(animal)}\n\n${localizedText}`;
+          return;
+        }
+      }
+
       const sections = await loadLandSections(languageAtOpen);
-      const selected = sections[animal.sectionIndex] || sections[index] || null;
+      const fallbackSections = languageAtOpen !== 'bg' ? await loadLandSections('bg') : null;
+      const selected = sections[animal.sectionIndex] || sections[index] || (fallbackSections && (fallbackSections[animal.sectionIndex] || fallbackSections[index])) || null;
       if (selected) {
-        dom.blogModalContent.textContent = `${selected.title}\n\n${selected.content}`;
+        dom.blogModalContent.textContent = `${getLandMetaText(animal)}\n\n${selected.title}\n\n${selected.content}`;
       } else {
-        dom.blogModalContent.textContent = getTranslation('blogLoadError');
+        dom.blogModalContent.textContent = `${getLandMetaText(animal)}\n\n${getLandAnimalName(animal)}`;
       }
     } catch (error) {
-      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+      dom.blogModalContent.textContent = `${getLandMetaText(animal)}\n\n${getLandAnimalName(animal)}`;
     }
   }
 
