@@ -756,6 +756,7 @@
     dom.idBtn = document.getElementById('idBtn');
     dom.headerTitle = document.getElementById('headerTitle');
     dom.headerSubtitle = document.getElementById('headerSubtitle');
+    dom.navLinks = Array.from(document.querySelectorAll('.nav-links a'));
     dom.adBoxLabels = Array.from(document.querySelectorAll('.ad-box-label'));
     dom.content = document.getElementById('content');
     dom.cityModal = document.getElementById('cityModal');
@@ -816,6 +817,32 @@
 
 function cacheContentElements() {
     dom.countryInfoTitle = document.getElementById('countryInfoTitle');
+    dom.quickLinksTitle = document.getElementById('quickLinksTitle');
+    dom.quickLinkCitiesTitle = document.getElementById('quickLinkCitiesTitle');
+    dom.quickLinkCitiesSubtitle = document.getElementById('quickLinkCitiesSubtitle');
+    dom.quickLinkWildlifeTitle = document.getElementById('quickLinkWildlifeTitle');
+    dom.quickLinkWildlifeSubtitle = document.getElementById('quickLinkWildlifeSubtitle');
+    dom.quickLinkTravelTitle = document.getElementById('quickLinkTravelTitle');
+    dom.quickLinkTravelSubtitle = document.getElementById('quickLinkTravelSubtitle');
+    dom.quickLinkBlogTitle = document.getElementById('quickLinkBlogTitle');
+    dom.quickLinkBlogSubtitle = document.getElementById('quickLinkBlogSubtitle');
+    dom.overviewNavCities = document.getElementById('overviewNavCities');
+    dom.overviewNavMarineAnimals = document.getElementById('overviewNavMarineAnimals');
+    dom.overviewNavLandAnimals = document.getElementById('overviewNavLandAnimals');
+    dom.overviewNavFreshwaterAnimals = document.getElementById('overviewNavFreshwaterAnimals');
+    dom.overviewNavBirds = document.getElementById('overviewNavBirds');
+    dom.overviewNavFruits = document.getElementById('overviewNavFruits');
+    dom.overviewNavParks = document.getElementById('overviewNavParks');
+    dom.overviewNavTrees = document.getElementById('overviewNavTrees');
+    dom.overviewNavTravelTips = document.getElementById('overviewNavTravelTips');
+    dom.overviewNavBlog = document.getElementById('overviewNavBlog');
+    dom.travelTipsSectionTitle = document.getElementById('travelTipsSectionTitle');
+    dom.travelTip1Title = document.getElementById('travelTip1Title');
+    dom.travelTip1Text = document.getElementById('travelTip1Text');
+    dom.travelTip2Title = document.getElementById('travelTip2Title');
+    dom.travelTip2Text = document.getElementById('travelTip2Text');
+    dom.travelTip3Title = document.getElementById('travelTip3Title');
+    dom.travelTip3Text = document.getElementById('travelTip3Text');
     dom.stadiumInfoBtn = document.getElementById('stadiumInfoBtn');
     dom.wildlifeInfoBtn = document.getElementById('wildlifeInfoBtn');
     dom.ticketInfoBtn = document.getElementById('ticketInfoBtn');
@@ -1213,147 +1240,254 @@ function cacheContentElements() {
           </div>
         </div>
 
-        <div class="card">
+        <div class="card quick-links-card" id="overview">
+          <h2 id="quickLinksTitle">Explore Indonesia</h2>
+          <div class="quick-links-grid">
+            <a href="#cities" class="quick-link-card">
+              <span class="quick-link-icon">🏙️</span>
+              <strong id="quickLinkCitiesTitle">Cities</strong>
+              <small id="quickLinkCitiesSubtitle">Top destinations</small>
+            </a>
+            <a href="#wildlife" class="quick-link-card">
+              <span class="quick-link-icon">🦁</span>
+              <strong id="quickLinkWildlifeTitle">Wildlife</strong>
+              <small id="quickLinkWildlifeSubtitle">Nature & animals</small>
+            </a>
+            <a href="#travel-tips" class="quick-link-card">
+              <span class="quick-link-icon">🧭</span>
+              <strong id="quickLinkTravelTitle">Travel Tips</strong>
+              <small id="quickLinkTravelSubtitle">Useful guidance</small>
+            </a>
+            <a href="#blog" class="quick-link-card">
+              <span class="quick-link-icon">📝</span>
+              <strong id="quickLinkBlogTitle">Blog</strong>
+              <small id="quickLinkBlogSubtitle">Stories & articles</small>
+            </a>
+          </div>
+          <nav class="overview-anchor-nav" aria-label="Overview quick navigation">
+            <a href="#cities" id="overviewNavCities">Cities</a>
+            <a href="#marine-animals" id="overviewNavMarineAnimals">Marine Animals</a>
+            <a href="#land-animals" id="overviewNavLandAnimals">Land Animals</a>
+            <a href="#freshwater-animals" id="overviewNavFreshwaterAnimals">Freshwater Animals</a>
+            <a href="#birds" id="overviewNavBirds">Birds</a>
+            <a href="#fruits" id="overviewNavFruits">Fruits</a>
+            <a href="#parks" id="overviewNavParks">National Parks</a>
+            <a href="#trees" id="overviewNavTrees">Trees</a>
+            <a href="#travel-tips" id="overviewNavTravelTips">Travel Tips</a>
+            <a href="#blog" id="overviewNavBlog">Blog</a>
+          </nav>
+        </div>
+
+        <div class="card" id="cities">
           <h2 id="majorCitiesTitle"></h2>
           <div class="cities-grid">
             ${createCityCardsHtml()}
           </div>
         </div>
 
-        <div class="card">
+        <div id="wildlife" class="section-anchor-marker"></div>
+        <div class="card" id="marine-animals">
           <h2 id="marineAnimalsTitle"></h2>
           <div class="marine-grid">
             ${createMarineAnimalsCardsHtml()}
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" id="land-animals">
           <h2 id="landAnimalsTitle"></h2>
           <div class="fruit-grid land-grid">
             ${createLandAnimalsCardsHtml()}
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" id="freshwater-animals">
           <h2 id="freshwaterAnimalsTitle"></h2>
           <div class="fruit-grid freshwater-grid">
             ${createFreshwaterAnimalsCardsHtml()}
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" id="birds">
           <h2 id="birdsTitle"></h2>
           <div class="bird-grid">
             ${createBirdCardsHtml()}
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" id="fruits">
           <h2 id="fruitsTitle"></h2>
           <div class="fruit-grid">
             ${createFruitCardsHtml()}
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" id="parks">
           <h2 id="parksTitle"></h2>
           <div class="fruit-grid parks-grid">
             ${createParkCardsHtml()}
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" id="trees">
           <h2 id="treesTitle"></h2>
           <div class="fruit-grid tree-grid">
             ${createTreeCardsHtml()}
           </div>
         </div>
 
-        <div class="card blog-card">
-          <h2 id="blogSectionTitle"></h2>
-          <div class="blog-preview">
-            <h3 id="blogArticleTitle"></h3>
-            <p id="blogArticleExcerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle2Title"></h3>
-            <p id="blogArticle2Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn2" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle3Title"></h3>
-            <p id="blogArticle3Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn3" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle4Title"></h3>
-            <p id="blogArticle4Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn4" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle5Title"></h3>
-            <p id="blogArticle5Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn5" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle6Title"></h3>
-            <p id="blogArticle6Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn6" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle7Title"></h3>
-            <p id="blogArticle7Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn7" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle8Title"></h3>
-            <p id="blogArticle8Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn8" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle9Title"></h3>
-            <p id="blogArticle9Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn9" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle10Title"></h3>
-            <p id="blogArticle10Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn10" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle11Title"></h3>
-            <p id="blogArticle11Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn11" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle12Title"></h3>
-            <p id="blogArticle12Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn12" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle13Title"></h3>
-            <p id="blogArticle13Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn13" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle14Title"></h3>
-            <p id="blogArticle14Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn14" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle15Title"></h3>
-            <p id="blogArticle15Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn15" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle16Title"></h3>
-            <p id="blogArticle16Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn16" class="blog-read-btn" type="button"></button>
+        <div class="card travel-tips-card" id="travel-tips">
+          <h2 id="travelTipsSectionTitle">🌍 Travel Tips</h2>
+          <div class="travel-tips-grid">
+            <div class="travel-tip-item">
+              <h3 id="travelTip1Title">Best season</h3>
+              <p id="travelTip1Text">May to October is ideal for dry weather and easier travel planning.</p>
+            </div>
+            <div class="travel-tip-item">
+              <h3 id="travelTip2Title">Budget tip</h3>
+              <p id="travelTip2Text">Use local ferries, guesthouses, and city-to-city trains for better value.</p>
+            </div>
+            <div class="travel-tip-item">
+              <h3 id="travelTip3Title">Culture tip</h3>
+              <p id="travelTip3Text">Respect local dress codes in temples and small communities.</p>
+            </div>
           </div>
         </div>
 
-        <div class="card about-projects-card">
+        <div class="card blog-card" id="blog">
+          <h2 id="blogSectionTitle"></h2>
+          <div class="blog-grid">
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-1" aria-hidden="true">📖</div>
+              <div class="blog-content">
+                <h3 id="blogArticleTitle"></h3>
+                <p id="blogArticleExcerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-2" aria-hidden="true">🐬</div>
+              <div class="blog-content">
+                <h3 id="blogArticle2Title"></h3>
+                <p id="blogArticle2Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn2" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-3" aria-hidden="true">🚢</div>
+              <div class="blog-content">
+                <h3 id="blogArticle3Title"></h3>
+                <p id="blogArticle3Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn3" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-4" aria-hidden="true">🏝️</div>
+              <div class="blog-content">
+                <h3 id="blogArticle4Title"></h3>
+                <p id="blogArticle4Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn4" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-5" aria-hidden="true">🏅</div>
+              <div class="blog-content">
+                <h3 id="blogArticle5Title"></h3>
+                <p id="blogArticle5Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn5" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-6" aria-hidden="true">🍽️</div>
+              <div class="blog-content">
+                <h3 id="blogArticle6Title"></h3>
+                <p id="blogArticle6Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn6" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-7" aria-hidden="true">🍍</div>
+              <div class="blog-content">
+                <h3 id="blogArticle7Title"></h3>
+                <p id="blogArticle7Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn7" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-8" aria-hidden="true">🌊</div>
+              <div class="blog-content">
+                <h3 id="blogArticle8Title"></h3>
+                <p id="blogArticle8Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn8" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-9" aria-hidden="true">🌋</div>
+              <div class="blog-content">
+                <h3 id="blogArticle9Title"></h3>
+                <p id="blogArticle9Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn9" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-10" aria-hidden="true">🚆</div>
+              <div class="blog-content">
+                <h3 id="blogArticle10Title"></h3>
+                <p id="blogArticle10Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn10" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-11" aria-hidden="true">🚂</div>
+              <div class="blog-content">
+                <h3 id="blogArticle11Title"></h3>
+                <p id="blogArticle11Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn11" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-12" aria-hidden="true">🦧</div>
+              <div class="blog-content">
+                <h3 id="blogArticle12Title"></h3>
+                <p id="blogArticle12Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn12" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-13" aria-hidden="true">🏍️</div>
+              <div class="blog-content">
+                <h3 id="blogArticle13Title"></h3>
+                <p id="blogArticle13Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn13" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-14" aria-hidden="true">🛶</div>
+              <div class="blog-content">
+                <h3 id="blogArticle14Title"></h3>
+                <p id="blogArticle14Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn14" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-15" aria-hidden="true">⚽</div>
+              <div class="blog-content">
+                <h3 id="blogArticle15Title"></h3>
+                <p id="blogArticle15Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn15" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-16" aria-hidden="true">🌋</div>
+              <div class="blog-content">
+                <h3 id="blogArticle16Title"></h3>
+                <p id="blogArticle16Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn16" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="card about-projects-card" id="projects">
           <h2 id="aboutSectionTitle"></h2>
           <p id="aboutSectionText" class="about-section-text"></p>
           <div class="about-projects-grid">
@@ -1490,6 +1624,32 @@ function cacheContentElements() {
 
   function updateContentTranslations() {
     dom.countryInfoTitle.textContent = getTranslation('countryInfo');
+    dom.quickLinksTitle.textContent = getTranslation('quickLinksTitle');
+    dom.quickLinkCitiesTitle.textContent = getTranslation('quickLinkCitiesTitle');
+    dom.quickLinkCitiesSubtitle.textContent = getTranslation('quickLinkCitiesSubtitle');
+    dom.quickLinkWildlifeTitle.textContent = getTranslation('quickLinkWildlifeTitle');
+    dom.quickLinkWildlifeSubtitle.textContent = getTranslation('quickLinkWildlifeSubtitle');
+    dom.quickLinkTravelTitle.textContent = getTranslation('quickLinkTravelTitle');
+    dom.quickLinkTravelSubtitle.textContent = getTranslation('quickLinkTravelSubtitle');
+    dom.quickLinkBlogTitle.textContent = getTranslation('quickLinkBlogTitle');
+    dom.quickLinkBlogSubtitle.textContent = getTranslation('quickLinkBlogSubtitle');
+    if (dom.overviewNavCities) dom.overviewNavCities.textContent = getTranslation('overviewCities');
+    if (dom.overviewNavMarineAnimals) dom.overviewNavMarineAnimals.textContent = getTranslation('overviewMarineAnimals');
+    if (dom.overviewNavLandAnimals) dom.overviewNavLandAnimals.textContent = getTranslation('overviewLandAnimals');
+    if (dom.overviewNavFreshwaterAnimals) dom.overviewNavFreshwaterAnimals.textContent = getTranslation('overviewFreshwaterAnimals');
+    if (dom.overviewNavBirds) dom.overviewNavBirds.textContent = getTranslation('overviewBirds');
+    if (dom.overviewNavFruits) dom.overviewNavFruits.textContent = getTranslation('overviewFruits');
+    if (dom.overviewNavParks) dom.overviewNavParks.textContent = getTranslation('overviewParks');
+    if (dom.overviewNavTrees) dom.overviewNavTrees.textContent = getTranslation('overviewTrees');
+    if (dom.overviewNavTravelTips) dom.overviewNavTravelTips.textContent = getTranslation('overviewTravelTips');
+    if (dom.overviewNavBlog) dom.overviewNavBlog.textContent = getTranslation('overviewBlog');
+    dom.travelTipsSectionTitle.textContent = getTranslation('travelTipsSectionTitle');
+    dom.travelTip1Title.textContent = getTranslation('travelTip1Title');
+    dom.travelTip1Text.textContent = getTranslation('travelTip1Text');
+    dom.travelTip2Title.textContent = getTranslation('travelTip2Title');
+    dom.travelTip2Text.textContent = getTranslation('travelTip2Text');
+    dom.travelTip3Title.textContent = getTranslation('travelTip3Title');
+    dom.travelTip3Text.textContent = getTranslation('travelTip3Text');
     dom.stadiumInfoBtn.textContent = getTranslation('stadiumInfoBtn');
     dom.wildlifeInfoBtn.textContent = getTranslation('wildlifeInfoBtn');
     dom.ticketInfoBtn.textContent = getTranslation('ticketInfoBtn');
@@ -1817,6 +1977,24 @@ function cacheContentElements() {
   }
 
   function updateLanguageUI() {
+    const navLabels = {
+      home: getTranslation('navHome'),
+      cities: getTranslation('navCities'),
+      wildlife: getTranslation('navWildlife'),
+      travelTips: getTranslation('navTravelTips'),
+      blog: getTranslation('navBlog'),
+      projects: getTranslation('navProjects')
+    };
+
+    if (Array.isArray(dom.navLinks)) {
+      dom.navLinks.forEach(function (link) {
+        const key = link.dataset.navKey;
+        if (key && navLabels[key]) {
+          link.textContent = navLabels[key];
+        }
+      });
+    }
+
     dom.bgBtn.classList.toggle('active', currentLanguage === 'bg');
     dom.enBtn.classList.toggle('active', currentLanguage === 'en');
     if (dom.deBtn) {

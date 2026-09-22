@@ -88,13 +88,61 @@ body::before {
     border: 1px solid rgba(204, 221, 248, 0.35);
 }
 
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    max-width: 980px;
+    margin: 0 auto 24px;
+    padding: 14px 18px;
+    border: 1px solid rgba(187, 208, 236, 0.35);
+    border-radius: 18px;
+    background: rgba(12, 25, 48, 0.78);
+    box-shadow: 0 14px 28px rgba(5, 12, 22, 0.28);
+    backdrop-filter: blur(10px);
+}
+
+.nav-brand {
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    font-size: 0.96rem;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.nav-links a {
+    color: #eaf3ff;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 999px;
+    transition: background 0.2s ease, transform 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+    background: rgba(255, 255, 255, 0.09);
+    transform: translateY(-1px);
+}
+
 header {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     color: white;
-    margin-bottom: 40px;
+    margin-bottom: 24px;
 }
 
 header h1 {
@@ -107,6 +155,127 @@ header p {
     opacity: 0.9;
 }
 
+#cities,
+#wildlife,
+#marine-animals,
+#land-animals,
+#freshwater-animals,
+#birds,
+#fruits,
+#parks,
+#trees,
+#travel-tips,
+#blog,
+#projects,
+#overview {
+    scroll-margin-top: 94px;
+}
+
+.section-anchor-marker {
+    position: relative;
+    top: -96px;
+    display: block;
+    height: 0;
+}
+
+.quick-links-card h2 {
+    margin-bottom: 16px;
+}
+
+.overview-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+    padding-top: 4px;
+}
+
+.overview-anchor-nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(127, 166, 215, 0.12);
+    border: 1px solid rgba(176, 205, 236, 0.25);
+    color: #ecf5ff;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.overview-anchor-nav a:hover,
+.overview-anchor-nav a:focus-visible {
+    transform: translateY(-1px);
+    background: rgba(152, 202, 255, 0.18);
+    border-color: rgba(174, 226, 255, 0.7);
+}
+
+.quick-links-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.quick-link-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    text-decoration: none;
+    color: #edf5ff;
+    background: linear-gradient(180deg, rgba(20, 52, 93, 0.8), rgba(11, 29, 53, 0.8));
+    border: 1px solid rgba(176, 205, 236, 0.32);
+    border-radius: 16px;
+    padding: 18px 16px;
+    min-height: 128px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quick-link-card:hover,
+.quick-link-card:focus-visible {
+    transform: translateY(-2px);
+    border-color: rgba(174, 226, 255, 0.7);
+    box-shadow: 0 12px 24px rgba(9, 23, 41, 0.25);
+}
+
+.quick-link-icon {
+    font-size: 1.7rem;
+}
+
+.quick-link-card strong {
+    font-size: 1.05rem;
+}
+
+.quick-link-card small {
+    color: rgba(233, 240, 255, 0.8);
+}
+
+.travel-tips-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.travel-tip-item {
+    padding: 18px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(182, 204, 230, 0.28);
+    background: rgba(16, 31, 56, 0.45);
+}
+
+.travel-tip-item h3 {
+    margin-bottom: 8px;
+    color: #f5fbff;
+    font-size: 1.02rem;
+}
+
+.travel-tip-item p {
+    color: rgba(235, 243, 255, 0.82);
+    line-height: 1.55;
+}
 
 .country-title-row {
     display: flex;
@@ -252,13 +421,29 @@ header p {
 }
 
 .card {
-    background: rgba(223, 230, 242, 0.03);
-    border-radius: 15px;
-    padding: 24px;
+    background: rgba(223, 230, 242, 0.04);
+    border-radius: 18px;
+    padding: 26px 24px;
     border: 1px solid rgba(180, 194, 220, 0.45);
-    box-shadow: 0 14px 36px rgba(6, 14, 34, 0.35);
+    box-shadow: 0 16px 40px rgba(6, 14, 34, 0.35);
     backdrop-filter: blur(2px);
     animation: slideIn 0.6s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+#content .card::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 5px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.2));
+    opacity: 0.7;
+}
+
+#content .card > h2 {
+    position: relative;
+    z-index: 1;
 }
 
 @keyframes slideIn {
@@ -278,7 +463,7 @@ header p {
 }
 
 #content .card + .card {
-    margin-top: 14px;
+    margin-top: 20px;
 }
 
 .country-info h2 {
@@ -290,6 +475,75 @@ header p {
     gap: 12px;
     text-shadow: 0 2px 7px rgba(4, 10, 24, 0.75);
 }
+
+#content .card:not(.country-info) > h2 {
+    color: #f2f7ff;
+    margin-bottom: 18px;
+    font-size: clamp(1.9rem, 2.3vw, 2.8rem);
+    line-height: 1.1;
+    text-shadow: 0 2px 7px rgba(4, 10, 24, 0.75);
+    padding-left: 8px;
+    letter-spacing: 0.01em;
+}
+
+#content .card:not(.country-info) > h2 + * {
+    margin-top: 6px;
+}
+
+#cities,
+#marine-animals,
+#land-animals,
+#freshwater-animals,
+#birds,
+#fruits,
+#parks,
+#trees,
+#travel-tips,
+#blog {
+    background: linear-gradient(180deg, rgba(18, 31, 55, 0.86), rgba(12, 22, 38, 0.8));
+    border-color: rgba(189, 211, 239, 0.34);
+}
+
+#cities { box-shadow: 0 18px 42px rgba(90, 146, 255, 0.18); }
+#marine-animals { box-shadow: 0 18px 42px rgba(79, 142, 255, 0.18); }
+#land-animals { box-shadow: 0 18px 42px rgba(64, 176, 98, 0.18); }
+#freshwater-animals { box-shadow: 0 18px 42px rgba(70, 162, 193, 0.18); }
+#birds { box-shadow: 0 18px 42px rgba(145, 120, 255, 0.18); }
+#fruits { box-shadow: 0 18px 42px rgba(255, 171, 74, 0.18); }
+#parks { box-shadow: 0 18px 42px rgba(255, 196, 96, 0.18); }
+#trees { box-shadow: 0 18px 42px rgba(117, 190, 112, 0.18); }
+#travel-tips { box-shadow: 0 18px 42px rgba(127, 164, 255, 0.15); }
+#blog { box-shadow: 0 18px 42px rgba(255, 142, 185, 0.15); }
+
+#content .card:not(.country-info) {
+    padding-top: 28px;
+    padding-bottom: 28px;
+}
+
+#cities::before,
+#marine-animals::before,
+#land-animals::before,
+#freshwater-animals::before,
+#birds::before,
+#fruits::before,
+#parks::before,
+#trees::before,
+#travel-tips::before,
+#blog::before {
+    width: 7px;
+    background: linear-gradient(180deg, #8fd3ff 0%, rgba(255,255,255,0.25) 100%);
+}
+
+#cities::before { background: linear-gradient(180deg, #85b7ff, rgba(133,183,255,0.2)); }
+#marine-animals::before { background: linear-gradient(180deg, #72b5ff, rgba(114,181,255,0.18)); }
+#land-animals::before { background: linear-gradient(180deg, #8fed8d, rgba(143,237,141,0.2)); }
+#freshwater-animals::before { background: linear-gradient(180deg, #7ed9d6, rgba(126,217,214,0.2)); }
+#birds::before { background: linear-gradient(180deg, #b498ff, rgba(180,152,255,0.18)); }
+#fruits::before { background: linear-gradient(180deg, #ffbf66, rgba(255,191,102,0.2)); }
+#parks::before { background: linear-gradient(180deg, #ffd27a, rgba(255,210,122,0.2)); }
+#trees::before { background: linear-gradient(180deg, #9fe58d, rgba(159,229,141,0.2)); }
+#travel-tips::before { background: linear-gradient(180deg, #90c7ff, rgba(144,199,255,0.2)); }
+#blog::before { background: linear-gradient(180deg, #ff9fc4, rgba(255,159,196,0.2)); }
 
 .country-info h2::before {
     content: '';
@@ -751,27 +1005,71 @@ header p {
     font-size: 0.9em;
 }
 
-.blog-card .blog-preview {
-    background: linear-gradient(140deg, rgba(245, 249, 255, 0.95) 0%, rgba(233, 240, 254, 0.95) 100%);
-    border: 1px solid rgba(157, 181, 226, 0.45);
-    border-radius: 14px;
-    padding: 18px;
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
 }
 
-.blog-card .blog-preview + .blog-preview {
-    margin-top: 14px;
+.blog-card .blog-preview {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    background: linear-gradient(140deg, rgba(245, 249, 255, 0.95) 0%, rgba(233, 240, 254, 0.95) 100%);
+    border: 1px solid rgba(157, 181, 226, 0.45);
+    border-radius: 16px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 12px 22px rgba(18, 31, 54, 0.14);
+}
+
+.blog-thumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 98px;
+    background: linear-gradient(135deg, rgba(48, 88, 185, 0.95), rgba(71, 128, 233, 0.85));
+    color: #fff;
+    font-size: 2.1rem;
+    letter-spacing: 0.04em;
+}
+
+.blog-thumb-2 { background: linear-gradient(135deg, rgba(28, 94, 157, 0.95), rgba(75, 156, 222, 0.82)); }
+.blog-thumb-3 { background: linear-gradient(135deg, rgba(16, 127, 143, 0.95), rgba(56, 176, 196, 0.8)); }
+.blog-thumb-4 { background: linear-gradient(135deg, rgba(38, 124, 87, 0.95), rgba(90, 198, 132, 0.8)); }
+.blog-thumb-5 { background: linear-gradient(135deg, rgba(104, 80, 196, 0.95), rgba(151, 124, 255, 0.8)); }
+.blog-thumb-6 { background: linear-gradient(135deg, rgba(163, 94, 40, 0.95), rgba(233, 146, 71, 0.8)); }
+.blog-thumb-7 { background: linear-gradient(135deg, rgba(166, 111, 28, 0.95), rgba(234, 182, 72, 0.82)); }
+.blog-thumb-8 { background: linear-gradient(135deg, rgba(24, 104, 154, 0.95), rgba(86, 172, 217, 0.82)); }
+.blog-thumb-9 { background: linear-gradient(135deg, rgba(190, 86, 61, 0.95), rgba(255, 146, 76, 0.82)); }
+.blog-thumb-10 { background: linear-gradient(135deg, rgba(55, 91, 167, 0.95), rgba(123, 158, 255, 0.82)); }
+.blog-thumb-11 { background: linear-gradient(135deg, rgba(95, 99, 154, 0.95), rgba(156, 144, 220, 0.82)); }
+.blog-thumb-12 { background: linear-gradient(135deg, rgba(71, 122, 72, 0.95), rgba(127, 191, 119, 0.82)); }
+.blog-thumb-13 { background: linear-gradient(135deg, rgba(146, 86, 40, 0.95), rgba(216, 135, 74, 0.82)); }
+.blog-thumb-14 { background: linear-gradient(135deg, rgba(36, 106, 144, 0.95), rgba(88, 164, 201, 0.8)); }
+.blog-thumb-15 { background: linear-gradient(135deg, rgba(58, 116, 96, 0.95), rgba(92, 175, 136, 0.8)); }
+.blog-thumb-16 { background: linear-gradient(135deg, rgba(153, 91, 91, 0.95), rgba(226, 116, 116, 0.82)); }
+
+.blog-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 18px 18px 16px;
 }
 
 .blog-card .blog-preview h3 {
     margin: 0 0 10px;
     color: #324b8f;
-    font-size: 1.2rem;
+    font-size: 1.12rem;
+    line-height: 1.3;
 }
 
 .blog-excerpt {
     margin: 0 0 14px;
     color: #304161;
-    line-height: 1.6;
+    line-height: 1.55;
+    font-size: 0.96rem;
 }
 
 .blog-read-btn {
