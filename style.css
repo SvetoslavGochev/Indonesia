@@ -142,31 +142,32 @@ header p {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 16px;
-    padding: 10px 12px 8px;
-    border-radius: 14px;
-    background: rgba(11, 19, 33, 0.72);
-    border: 1px solid rgba(166, 194, 232, 0.18);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    box-shadow: 0 10px 24px rgba(7, 13, 23, 0.18);
+    gap: 10px;
+    margin-bottom: 14px;
+    padding: 8px 10px 7px;
+    border-radius: 12px;
+    background: rgba(17, 28, 45, 0.56);
+    border: 1px solid rgba(166, 194, 232, 0.12);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0 8px 18px rgba(7, 13, 23, 0.12);
 }
 
 .section-header-row h2 {
     margin: 0;
     color: #ffffff;
     text-shadow: 0 2px 7px rgba(4, 10, 24, 0.75);
+    line-height: 1.2;
 }
 
 .section-toggle-btn {
     appearance: none;
-    border: 1px solid rgba(196, 214, 243, 0.4);
-    background: rgba(18, 40, 71, 0.55);
+    border: 1px solid rgba(196, 214, 243, 0.32);
+    background: rgba(35, 57, 87, 0.52);
     color: #edf4ff;
     border-radius: 999px;
-    padding: 8px 12px;
-    font-size: 0.78rem;
+    padding: 7px 10px;
+    font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.02em;
     cursor: pointer;
@@ -174,6 +175,8 @@ header p {
     position: sticky;
     top: 86px;
     z-index: 7;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .section-toggle-btn:hover,
@@ -1055,6 +1058,12 @@ header p {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
+}
+
+@media (max-width: 640px) {
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .blog-card .blog-preview {
@@ -1992,12 +2001,16 @@ header p {
     }
 
     .section-header-row {
+        top: 72px;
+        gap: 8px;
         margin-bottom: 10px;
+        padding: 7px 8px 6px;
     }
 
     .section-toggle-btn {
-        padding: 7px 10px;
-        font-size: 0.72rem;
+        top: 72px;
+        padding: 6px 9px;
+        font-size: 0.68rem;
     }
 
     .marine-section-body[hidden] {
