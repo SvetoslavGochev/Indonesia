@@ -136,11 +136,21 @@ header p {
 }
 
 .section-header-row {
+    position: sticky;
+    top: 86px;
+    z-index: 6;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
     margin-bottom: 16px;
+    padding: 10px 12px 8px;
+    border-radius: 14px;
+    background: rgba(11, 19, 33, 0.72);
+    border: 1px solid rgba(166, 194, 232, 0.18);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 10px 24px rgba(7, 13, 23, 0.18);
 }
 
 .section-header-row h2 {
@@ -161,6 +171,9 @@ header p {
     letter-spacing: 0.02em;
     cursor: pointer;
     transition: background 0.2s ease, transform 0.2s ease;
+    position: sticky;
+    top: 86px;
+    z-index: 7;
 }
 
 .section-toggle-btn:hover,
@@ -437,7 +450,7 @@ header p {
     backdrop-filter: blur(2px);
     animation: slideIn 0.6s ease-out;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 #content .card::before {
