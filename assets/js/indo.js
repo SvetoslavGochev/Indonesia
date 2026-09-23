@@ -1020,32 +1020,6 @@
 
 function cacheContentElements() {
     dom.countryInfoTitle = document.getElementById('countryInfoTitle');
-    dom.quickLinksTitle = document.getElementById('quickLinksTitle');
-    dom.quickLinkCitiesTitle = document.getElementById('quickLinkCitiesTitle');
-    dom.quickLinkCitiesSubtitle = document.getElementById('quickLinkCitiesSubtitle');
-    dom.quickLinkWildlifeTitle = document.getElementById('quickLinkWildlifeTitle');
-    dom.quickLinkWildlifeSubtitle = document.getElementById('quickLinkWildlifeSubtitle');
-    dom.quickLinkTravelTitle = document.getElementById('quickLinkTravelTitle');
-    dom.quickLinkTravelSubtitle = document.getElementById('quickLinkTravelSubtitle');
-    dom.quickLinkBlogTitle = document.getElementById('quickLinkBlogTitle');
-    dom.quickLinkBlogSubtitle = document.getElementById('quickLinkBlogSubtitle');
-    dom.overviewNavCities = document.getElementById('overviewNavCities');
-    dom.overviewNavMarineAnimals = document.getElementById('overviewNavMarineAnimals');
-    dom.overviewNavLandAnimals = document.getElementById('overviewNavLandAnimals');
-    dom.overviewNavFreshwaterAnimals = document.getElementById('overviewNavFreshwaterAnimals');
-    dom.overviewNavBirds = document.getElementById('overviewNavBirds');
-    dom.overviewNavFruits = document.getElementById('overviewNavFruits');
-    dom.overviewNavParks = document.getElementById('overviewNavParks');
-    dom.overviewNavTrees = document.getElementById('overviewNavTrees');
-    dom.overviewNavTravelTips = document.getElementById('overviewNavTravelTips');
-    dom.overviewNavBlog = document.getElementById('overviewNavBlog');
-    dom.travelTipsSectionTitle = document.getElementById('travelTipsSectionTitle');
-    dom.travelTip1Title = document.getElementById('travelTip1Title');
-    dom.travelTip1Text = document.getElementById('travelTip1Text');
-    dom.travelTip2Title = document.getElementById('travelTip2Title');
-    dom.travelTip2Text = document.getElementById('travelTip2Text');
-    dom.travelTip3Title = document.getElementById('travelTip3Title');
-    dom.travelTip3Text = document.getElementById('travelTip3Text');
     dom.stadiumInfoBtn = document.getElementById('stadiumInfoBtn');
     dom.wildlifeInfoBtn = document.getElementById('wildlifeInfoBtn');
     dom.ticketInfoBtn = document.getElementById('ticketInfoBtn');
@@ -1455,9 +1429,43 @@ function cacheContentElements() {
     }
   }
 
+  function removeLegacyTravelTipsElements() {
+    const legacySelectors = [
+      '[data-nav-key="travelTips"]',
+      '[href="#travel-tips"]',
+      '#travel-tips',
+      '#quickLinkTravelTitle',
+      '#quickLinkTravelSubtitle',
+      '#overviewNavTravelTips',
+      '#travelTipsSectionTitle',
+      '#travelTip1Title',
+      '#travelTip1Text',
+      '#travelTip2Title',
+      '#travelTip2Text',
+      '#travelTip3Title',
+      '#travelTip3Text'
+    ];
+
+    legacySelectors.forEach(function (selector) {
+      document.querySelectorAll(selector).forEach(function (element) {
+        element.remove();
+      });
+    });
+  }
+
+  function ensureIndependentSections() {
+    const blogSection = document.getElementById('blog');
+    const projectsSection = document.getElementById('projects');
+
+    if (blogSection && projectsSection && blogSection.contains(projectsSection)) {
+      blogSection.parentNode.insertBefore(projectsSection, blogSection.nextSibling);
+    }
+  }
+
   function renderContentShell() {
+    removeLegacyTravelTipsElements();
     dom.content.innerHTML = `
-        <div class="card country-info">
+        <div class="card country-info" id="overview">
           <div class="country-title-row">
             <h2 id="countryInfoTitle"></h2>
             <div class="action-buttons">
@@ -1471,46 +1479,9 @@ function cacheContentElements() {
           </div>
         </div>
 
-        <div class="card quick-links-card" id="overview">
-          <h2 id="quickLinksTitle">Explore Indonesia</h2>
-          <div class="quick-links-grid">
-            <a href="#cities" class="quick-link-card">
-              <span class="quick-link-icon">🏙️</span>
-              <strong id="quickLinkCitiesTitle">Cities</strong>
-              <small id="quickLinkCitiesSubtitle">Top destinations</small>
-            </a>
-            <a href="#wildlife" class="quick-link-card">
-              <span class="quick-link-icon">🦁</span>
-              <strong id="quickLinkWildlifeTitle">Wildlife</strong>
-              <small id="quickLinkWildlifeSubtitle">Nature & animals</small>
-            </a>
-            <a href="#travel-tips" class="quick-link-card">
-              <span class="quick-link-icon">🧭</span>
-              <strong id="quickLinkTravelTitle">Travel Tips</strong>
-              <small id="quickLinkTravelSubtitle">Useful guidance</small>
-            </a>
-            <a href="#blog" class="quick-link-card">
-              <span class="quick-link-icon">📝</span>
-              <strong id="quickLinkBlogTitle">Blog</strong>
-              <small id="quickLinkBlogSubtitle">Stories & articles</small>
-            </a>
-          </div>
-          <nav class="overview-anchor-nav" aria-label="Overview quick navigation">
-            <a href="#cities" id="overviewNavCities">Cities</a>
-            <a href="#marine-animals" id="overviewNavMarineAnimals">Marine Animals</a>
-            <a href="#land-animals" id="overviewNavLandAnimals">Land Animals</a>
-            <a href="#freshwater-animals" id="overviewNavFreshwaterAnimals">Freshwater Animals</a>
-            <a href="#birds" id="overviewNavBirds">Birds</a>
-            <a href="#fruits" id="overviewNavFruits">Fruits</a>
-            <a href="#parks" id="overviewNavParks">National Parks</a>
-            <a href="#trees" id="overviewNavTrees">Trees</a>
-            <a href="#travel-tips" id="overviewNavTravelTips">Travel Tips</a>
-            <a href="#blog" id="overviewNavBlog">Blog</a>
-          </nav>
-        </div>
-
         <div class="card" id="cities">
           <h2 id="majorCitiesTitle"></h2>
+          <div class="api-notice" id="dataNotice"></div>
           <div class="cities-grid">
             ${createCityCardsHtml()}
           </div>
@@ -1518,76 +1489,97 @@ function cacheContentElements() {
 
         <div id="wildlife" class="section-anchor-marker"></div>
         <div class="card" id="marine-animals">
-          <h2 id="marineAnimalsTitle"></h2>
-          <div class="marine-grid">
-            ${createMarineAnimalsCardsHtml()}
+          <div class="section-header-row">
+            <h2 id="marineAnimalsTitle"></h2>
+            <button type="button" class="section-toggle-btn" data-target="marine-animals-body" aria-expanded="false">Покажи</button>
+          </div>
+          <div id="marine-animals-body" class="marine-section-body">
+            <div class="marine-grid">
+              ${createMarineAnimalsCardsHtml()}
+            </div>
           </div>
         </div>
 
         <div class="card" id="land-animals">
-          <h2 id="landAnimalsTitle"></h2>
-          <div class="fruit-grid land-grid">
-            ${createLandAnimalsCardsHtml()}
+          <div class="section-header-row">
+            <h2 id="landAnimalsTitle"></h2>
+            <button type="button" class="section-toggle-btn" data-target="land-animals-body" aria-expanded="false">Покажи</button>
+          </div>
+          <div id="land-animals-body" class="marine-section-body">
+            <div class="fruit-grid land-grid">
+              ${createLandAnimalsCardsHtml()}
+            </div>
           </div>
         </div>
 
         <div class="card" id="freshwater-animals">
-          <h2 id="freshwaterAnimalsTitle"></h2>
-          <div class="fruit-grid freshwater-grid">
-            ${createFreshwaterAnimalsCardsHtml()}
+          <div class="section-header-row">
+            <h2 id="freshwaterAnimalsTitle"></h2>
+            <button type="button" class="section-toggle-btn" data-target="freshwater-animals-body" aria-expanded="false">Покажи</button>
+          </div>
+          <div id="freshwater-animals-body" class="marine-section-body">
+            <div class="fruit-grid freshwater-grid">
+              ${createFreshwaterAnimalsCardsHtml()}
+            </div>
           </div>
         </div>
 
         <div class="card" id="birds">
-          <h2 id="birdsTitle"></h2>
-          <div class="bird-grid">
-            ${createBirdCardsHtml()}
+          <div class="section-header-row">
+            <h2 id="birdsTitle"></h2>
+            <button type="button" class="section-toggle-btn" data-target="birds-body" aria-expanded="false">Покажи</button>
+          </div>
+          <div id="birds-body" class="marine-section-body">
+            <div class="bird-grid">
+              ${createBirdCardsHtml()}
+            </div>
           </div>
         </div>
 
         <div class="card" id="fruits">
-          <h2 id="fruitsTitle"></h2>
-          <div class="fruit-grid">
-            ${createFruitCardsHtml()}
+          <div class="section-header-row">
+            <h2 id="fruitsTitle"></h2>
+            <button type="button" class="section-toggle-btn" data-target="fruits-body" aria-expanded="false">Покажи</button>
+          </div>
+          <div id="fruits-body" class="marine-section-body">
+            <div class="fruit-grid">
+              ${createFruitCardsHtml()}
+            </div>
           </div>
         </div>
 
         <div class="card" id="parks">
-          <h2 id="parksTitle"></h2>
-          <div class="fruit-grid parks-grid">
-            ${createParkCardsHtml()}
+          <div class="section-header-row">
+            <h2 id="parksTitle"></h2>
+            <button type="button" class="section-toggle-btn" data-target="parks-body" aria-expanded="false">Покажи</button>
+          </div>
+          <div id="parks-body" class="marine-section-body">
+            <div class="fruit-grid parks-grid">
+              ${createParkCardsHtml()}
+            </div>
           </div>
         </div>
 
         <div class="card" id="trees">
-          <h2 id="treesTitle"></h2>
-          <div class="fruit-grid tree-grid">
-            ${createTreeCardsHtml()}
+          <div class="section-header-row">
+            <h2 id="treesTitle"></h2>
+            <button type="button" class="section-toggle-btn" data-target="trees-body" aria-expanded="false">Покажи</button>
           </div>
-        </div>
-
-        <div class="card travel-tips-card" id="travel-tips">
-          <h2 id="travelTipsSectionTitle"></h2>
-          <div class="travel-tips-grid">
-            <div class="travel-tip-item">
-              <h3 id="travelTip1Title"></h3>
-              <p id="travelTip1Text"></p>
-            </div>
-            <div class="travel-tip-item">
-              <h3 id="travelTip2Title"></h3>
-              <p id="travelTip2Text"></p>
-            </div>
-            <div class="travel-tip-item">
-              <h3 id="travelTip3Title"></h3>
-              <p id="travelTip3Text"></p>
+          <div id="trees-body" class="marine-section-body">
+            <div class="fruit-grid tree-grid">
+              ${createTreeCardsHtml()}
             </div>
           </div>
         </div>
 
         <div class="card blog-card" id="blog">
-          <h2 id="blogSectionTitle"></h2>
-          <div class="blog-grid">
-            <article class="blog-preview">
+          <div class="section-header-row">
+            <h2 id="blogSectionTitle"></h2>
+            <button type="button" class="section-toggle-btn" data-target="blog-body" aria-expanded="false">Покажи</button>
+          </div>
+          <div id="blog-body" class="marine-section-body">
+            <div class="blog-grid">
+              <article class="blog-preview">
               <div class="blog-thumb blog-thumb-1" aria-hidden="true">📖</div>
               <div class="blog-content">
                 <h3 id="blogArticleTitle"></h3>
@@ -1659,30 +1651,30 @@ function cacheContentElements() {
                 <button id="blogReadBtn9" class="blog-read-btn" type="button"></button>
               </div>
             </article>
-            <article class="blog-preview">
-              <div class="blog-thumb blog-thumb-10" aria-hidden="true">🚆</div>
-              <div class="blog-content">
-                <h3 id="blogArticle10Title"></h3>
-                <p id="blogArticle10Excerpt" class="blog-excerpt"></p>
-                <button id="blogReadBtn10" class="blog-read-btn" type="button"></button>
-              </div>
-            </article>
-            <article class="blog-preview">
+              <article class="blog-preview">
+                <div class="blog-thumb blog-thumb-10" aria-hidden="true">🚆</div>
+                <div class="blog-content">
+                  <h3 id="blogArticle10Title"></h3>
+                  <p id="blogArticle10Excerpt" class="blog-excerpt"></p>
+                  <button id="blogReadBtn10" class="blog-read-btn" type="button"></button>
+                </div>
+              </article>
+              <article class="blog-preview">
               <div class="blog-thumb blog-thumb-11" aria-hidden="true">🚂</div>
               <div class="blog-content">
                 <h3 id="blogArticle11Title"></h3>
                 <p id="blogArticle11Excerpt" class="blog-excerpt"></p>
                 <button id="blogReadBtn11" class="blog-read-btn" type="button"></button>
               </div>
-            </article>
-            <article class="blog-preview">
-              <div class="blog-thumb blog-thumb-12" aria-hidden="true">🦧</div>
-              <div class="blog-content">
-                <h3 id="blogArticle12Title"></h3>
-                <p id="blogArticle12Excerpt" class="blog-excerpt"></p>
-                <button id="blogReadBtn12" class="blog-read-btn" type="button"></button>
-              </div>
-            </article>
+              </article>
+              <article class="blog-preview">
+                <div class="blog-thumb blog-thumb-12" aria-hidden="true">🦧</div>
+                <div class="blog-content">
+                  <h3 id="blogArticle12Title"></h3>
+                  <p id="blogArticle12Excerpt" class="blog-excerpt"></p>
+                  <button id="blogReadBtn12" class="blog-read-btn" type="button"></button>
+                </div>
+              </article>
             <article class="blog-preview">
               <div class="blog-thumb blog-thumb-13" aria-hidden="true">🏍️</div>
               <div class="blog-content">
@@ -1763,11 +1755,10 @@ function cacheContentElements() {
             </div>
           </section>
         </div>
-
-        <div class="api-notice" id="dataNotice"></div>
       `;
 
     cacheContentElements();
+    ensureIndependentSections();
 
     const loadingElement = document.querySelector('.loading');
     if (loadingElement) {
@@ -1779,6 +1770,7 @@ function cacheContentElements() {
       }, 600);
     }
 
+    bindSectionToggles();
     dom.stadiumInfoBtn.addEventListener('click', openStadiumModal);
     dom.wildlifeInfoBtn.addEventListener('click', openWildlifeModal);
     dom.ticketInfoBtn.addEventListener('click', openTicketModal);
@@ -1876,32 +1868,6 @@ function cacheContentElements() {
 
   function updateContentTranslations() {
     dom.countryInfoTitle.textContent = getTranslation('countryInfo');
-    dom.quickLinksTitle.textContent = getTranslation('quickLinksTitle');
-    dom.quickLinkCitiesTitle.textContent = getTranslation('quickLinkCitiesTitle');
-    dom.quickLinkCitiesSubtitle.textContent = getTranslation('quickLinkCitiesSubtitle');
-    dom.quickLinkWildlifeTitle.textContent = getTranslation('quickLinkWildlifeTitle');
-    dom.quickLinkWildlifeSubtitle.textContent = getTranslation('quickLinkWildlifeSubtitle');
-    dom.quickLinkTravelTitle.textContent = getTranslation('quickLinkTravelTitle');
-    dom.quickLinkTravelSubtitle.textContent = getTranslation('quickLinkTravelSubtitle');
-    dom.quickLinkBlogTitle.textContent = getTranslation('quickLinkBlogTitle');
-    dom.quickLinkBlogSubtitle.textContent = getTranslation('quickLinkBlogSubtitle');
-    if (dom.overviewNavCities) dom.overviewNavCities.textContent = getTranslation('overviewCities');
-    if (dom.overviewNavMarineAnimals) dom.overviewNavMarineAnimals.textContent = getTranslation('overviewMarineAnimals');
-    if (dom.overviewNavLandAnimals) dom.overviewNavLandAnimals.textContent = getTranslation('overviewLandAnimals');
-    if (dom.overviewNavFreshwaterAnimals) dom.overviewNavFreshwaterAnimals.textContent = getTranslation('overviewFreshwaterAnimals');
-    if (dom.overviewNavBirds) dom.overviewNavBirds.textContent = getTranslation('overviewBirds');
-    if (dom.overviewNavFruits) dom.overviewNavFruits.textContent = getTranslation('overviewFruits');
-    if (dom.overviewNavParks) dom.overviewNavParks.textContent = getTranslation('overviewParks');
-    if (dom.overviewNavTrees) dom.overviewNavTrees.textContent = getTranslation('overviewTrees');
-    if (dom.overviewNavTravelTips) dom.overviewNavTravelTips.textContent = getTranslation('overviewTravelTips');
-    if (dom.overviewNavBlog) dom.overviewNavBlog.textContent = getTranslation('overviewBlog');
-    dom.travelTipsSectionTitle.textContent = getTranslation('travelTipsSectionTitle');
-    dom.travelTip1Title.textContent = getTranslation('travelTip1Title');
-    dom.travelTip1Text.textContent = getTranslation('travelTip1Text');
-    dom.travelTip2Title.textContent = getTranslation('travelTip2Title');
-    dom.travelTip2Text.textContent = getTranslation('travelTip2Text');
-    dom.travelTip3Title.textContent = getTranslation('travelTip3Title');
-    dom.travelTip3Text.textContent = getTranslation('travelTip3Text');
     dom.stadiumInfoBtn.textContent = getTranslation('stadiumInfoBtn');
     dom.wildlifeInfoBtn.textContent = getTranslation('wildlifeInfoBtn');
     dom.ticketInfoBtn.textContent = getTranslation('ticketInfoBtn');
@@ -2249,12 +2215,72 @@ function cacheContentElements() {
       .join('<br>');
   }
 
+  function syncSectionToggleLabels() {
+    const toggleButtons = document.querySelectorAll('.section-toggle-btn[data-target]');
+    toggleButtons.forEach(function (toggleBtn) {
+      const sectionBody = document.getElementById(toggleBtn.dataset.target);
+      if (!sectionBody) {
+        return;
+      }
+
+      const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      toggleBtn.textContent = isExpanded ? getTranslation('marineToggleHide') : getTranslation('marineToggleShow');
+    });
+  }
+
+  function bindSectionToggles() {
+    const toggleButtons = document.querySelectorAll('.section-toggle-btn[data-target]');
+    if (!toggleButtons.length) {
+      return;
+    }
+
+    const applyState = function (toggleBtn, isExpanded) {
+      const sectionBody = document.getElementById(toggleBtn.dataset.target);
+      if (!sectionBody) {
+        return;
+      }
+
+      if (isExpanded) {
+        sectionBody.hidden = false;
+        requestAnimationFrame(function () {
+          sectionBody.style.maxHeight = sectionBody.scrollHeight + 'px';
+          sectionBody.style.opacity = '1';
+        });
+      } else {
+        sectionBody.style.maxHeight = '0px';
+        sectionBody.style.opacity = '0';
+        setTimeout(function () {
+          sectionBody.hidden = true;
+        }, 220);
+      }
+
+      toggleBtn.setAttribute('aria-expanded', String(isExpanded));
+      toggleBtn.textContent = isExpanded ? getTranslation('marineToggleHide') : getTranslation('marineToggleShow');
+    };
+
+    toggleButtons.forEach(function (toggleBtn) {
+      const sectionBody = document.getElementById(toggleBtn.dataset.target);
+      if (sectionBody) {
+        sectionBody.hidden = true;
+        sectionBody.style.maxHeight = '0px';
+        sectionBody.style.opacity = '0';
+        sectionBody.style.overflow = 'hidden';
+        sectionBody.style.transition = 'max-height 0.28s ease, opacity 0.25s ease';
+      }
+      applyState(toggleBtn, false);
+
+      toggleBtn.addEventListener('click', function () {
+        const nextState = toggleBtn.getAttribute('aria-expanded') !== 'true';
+        applyState(toggleBtn, nextState);
+      });
+    });
+  }
+
   function updateLanguageUI() {
     const navLabels = {
       home: getTranslation('navHome'),
       cities: getTranslation('navCities'),
       wildlife: getTranslation('navWildlife'),
-      travelTips: getTranslation('navTravelTips'),
       blog: getTranslation('navBlog'),
       projects: getTranslation('navProjects')
     };
@@ -2294,6 +2320,8 @@ function cacheContentElements() {
       dom.wildlifeInfoBtn.setAttribute('aria-label', wildlifeLabel);
       dom.wildlifeInfoBtn.title = wildlifeLabel;
     }
+
+    syncSectionToggleLabels();
   }
 
   function buildImageCandidates(src) {
