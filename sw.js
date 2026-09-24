@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v75';
+const CACHE_VERSION = 'v90';
 const STATIC_CACHE = `indo-static-${CACHE_VERSION}`;
 const IMAGE_CACHE = `indo-images-${CACHE_VERSION}`;
 
@@ -9,7 +9,6 @@ const CORE_ASSETS = [
   './sitemap.xml',
   './style.css',
   './style.min.css',
-  './assets/js/firebase-config.js',
   './assets/js/indo.translations.js',
   './assets/js/indo.data.js',
   './assets/js/indo.data.mock.js',
@@ -34,6 +33,10 @@ const CORE_ASSETS = [
   './assets/tekst/waterworld.fr.txt',
   './assets/tekst/waterworld.es.txt',
   './assets/tekst/waterworld.id.txt',
+  './assets/tekst/ribaLuna.txt',
+  './assets/tekst/ribaLuna.en.txt',
+  './assets/tekst/sinioprastenOktopod.txt',
+  './assets/tekst/sinioprastenOktopod.en.txt',
   './assets/tekst/круиз.txt',
   './assets/tekst/круиз.en.txt',
   './assets/tekst/круиз.de.txt',
@@ -91,6 +94,13 @@ const CORE_ASSETS = [
   './assets/tekst/football2.fr.txt',
   './assets/tekst/football2.es.txt',
   './assets/tekst/football2.id.txt',
+  './assets/tekst/UningBromo.bg.txt',
+  './assets/tekst/UningBromo.en.txt',
+  './assets/tekst/UningBromo.de.txt',
+  './assets/tekst/UningBromo.fr.txt',
+  './assets/tekst/UningBromo.es.txt',
+  './assets/tekst/UningBromo.id.txt',
+  './assets/tekst/smqh.txt',
   './assets/tekst/pytepisPalembeng.txt',
   './assets/tekst/pytepisPalembeng.en.txt',
   './assets/tekst/pytepisPalembeng.de.txt',
@@ -122,6 +132,12 @@ const CORE_ASSETS = [
   './assets/tekst/birds.fr.txt',
   './assets/tekst/birds.es.txt',
   './assets/tekst/birds.id.txt',
+  './assets/tekst/UsaOpen.txt',
+  './assets/tekst/UsaOpen.en.txt',
+  './assets/tekst/UsaOpen.de.txt',
+  './assets/tekst/UsaOpen.fr.txt',
+  './assets/tekst/UsaOpen.es.txt',
+  './assets/tekst/UsaOpen.id.txt',
   './assets/favicons/favicon.svg'
 ];
 
@@ -135,6 +151,8 @@ const IMAGE_ASSETS = [
   './assets/images/marine-coral-fish.jpg',
   './assets/images/marine-seahorse.jpg',
   './assets/images/marine-whale-shark.jpg',
+  './assets/images/ribaLuna.jpeg',
+  './assets/images/sinOKtopod.jpeg',
   './assets/images/bird-javan-ostrich-480.webp',
   './assets/images/bird-javan-ostrich-960.webp',
   './assets/images/bird-cockatoo-480.webp',

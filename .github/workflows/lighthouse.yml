@@ -27,8 +27,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  lighthouse-pr-quick:
-    if: github.event_name == 'pull_request'
+  lighthouse-ci-local:
+    if: github.event_name == 'pull_request' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -42,11 +42,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Lighthouse (PR quick)
-        run: npm run qa:lighthouse:pr
+      - name: Run Lighthouse (CI local)
+        run: npm run qa:lighthouse:ci-local
 
-  lighthouse-main-full:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+  lighthouse-production-audit:
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -60,5 +60,5 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Lighthouse (main full)
-        run: npm run qa:lighthouse:main
+      - name: Run Lighthouse (production audit)
+        run: npm run qa:lighthouse:production

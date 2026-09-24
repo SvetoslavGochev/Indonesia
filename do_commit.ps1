@@ -1,5 +1,9 @@
+param(
+	[switch]$DryRun
+)
+
 # Git commit script
-$dir = "c:\Users\ss3434\Downloads\IndonesiaData"
+$dir = $PSScriptRoot
 Set-Location $dir
 
 Write-Host "Current directory: $(Get-Location)" -ForegroundColor Cyan
@@ -9,6 +13,11 @@ Write-Host ""
 Write-Host "Git status:" -ForegroundColor Yellow
 git status --short
 Write-Host ""
+
+if ($DryRun) {
+	Write-Host "Dry run enabled - skipping add/commit/push." -ForegroundColor Cyan
+	return
+}
 
 # Add all changes
 Write-Host "Adding changes..." -ForegroundColor Cyan
