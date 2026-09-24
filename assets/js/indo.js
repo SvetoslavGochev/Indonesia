@@ -206,6 +206,14 @@
     es: './assets/tekst/UsaOpen.es.txt?v=20260915c',
     id: './assets/tekst/UsaOpen.id.txt?v=20260915c'
   };
+  const INDIVIDUAL_TIME_TRIAL_ARTICLE_URLS = {
+    bg: './assets/tekst/individualTimeTrial.txt?v=20260924a',
+    en: './assets/tekst/individualTimeTrial.en.txt?v=20260924a',
+    de: './assets/tekst/individualTimeTrial.de.txt?v=20260924a',
+    fr: './assets/tekst/individualTimeTrial.fr.txt?v=20260924a',
+    es: './assets/tekst/individualTimeTrial.es.txt?v=20260924a',
+    id: './assets/tekst/individualTimeTrial.id.txt?v=20260924a'
+  };
   const METAMASK_WALLET_ADDRESS = '0xfca710eC5eB0FB036157Bb1E114BADc2310efE37';
   const PARTNER_INSTAGRAM_URL = (window.PARTNER_INSTAGRAM_URL || 'https://www.instagram.com/indo.nesiaexplorerr/').trim();
   const PARTNER_FACEBOOK_URL = (window.PARTNER_FACEBOOK_URL || 'https://www.facebook.com/profile.php?id=61592328399672').trim();
@@ -224,6 +232,7 @@
 
   const treesArticleByLanguage = {};
   const parksArticleByLanguage = {};
+  const individualTimeTrialArticleByLanguage = {};
 
   const marineAnimals = [
     {
@@ -1104,6 +1113,9 @@ function cacheContentElements() {
     dom.blogArticle24Title = document.getElementById('blogArticle24Title');
     dom.blogArticle24Excerpt = document.getElementById('blogArticle24Excerpt');
     dom.blogReadBtn24 = document.getElementById('blogReadBtn24');
+    dom.blogArticle25Title = document.getElementById('blogArticle25Title');
+    dom.blogArticle25Excerpt = document.getElementById('blogArticle25Excerpt');
+    dom.blogReadBtn25 = document.getElementById('blogReadBtn25');
     dom.aboutSectionTitle = document.getElementById('aboutSectionTitle');
     dom.aboutSectionText = document.getElementById('aboutSectionText');
     dom.project1Title = document.getElementById('project1Title');
@@ -1707,6 +1719,14 @@ function cacheContentElements() {
                 <button id="blogReadBtn16" class="blog-read-btn" type="button"></button>
               </div>
             </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-25" aria-hidden="true">🚴‍♂️</div>
+              <div class="blog-content">
+                <h3 id="blogArticle25Title"></h3>
+                <p id="blogArticle25Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn25" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
           </div>
         </div>
 
@@ -1797,6 +1817,7 @@ function cacheContentElements() {
     if (dom.blogReadBtn22) dom.blogReadBtn22.addEventListener('click', openBatBayanBlogModal);
     if (dom.blogReadBtn23) dom.blogReadBtn23.addEventListener('click', openHiddenIndonesiaBlogModal);
     if (dom.blogReadBtn24) dom.blogReadBtn24.addEventListener('click', openUsaOpenBlogModal);
+    if (dom.blogReadBtn25) dom.blogReadBtn25.addEventListener('click', openIndividualTimeTrialBlogModal);
     if (dom.partnerWalletCopy) dom.partnerWalletCopy.addEventListener('click', copyPartnerWalletAddress);
     dom.content.addEventListener('click', function (event) {
       const freshwaterReadButton = event.target.closest('.freshwater-read-text');
@@ -1962,6 +1983,9 @@ function cacheContentElements() {
     if (dom.blogArticle24Title) dom.blogArticle24Title.textContent = getTranslation('blogArticle24Title');
     if (dom.blogArticle24Excerpt) dom.blogArticle24Excerpt.textContent = getTranslation('blogArticle24Excerpt');
     if (dom.blogReadBtn24) dom.blogReadBtn24.textContent = getTranslation('blogReadBtn24');
+    if (dom.blogArticle25Title) dom.blogArticle25Title.textContent = getTranslation('blogArticle25Title');
+    if (dom.blogArticle25Excerpt) dom.blogArticle25Excerpt.textContent = getTranslation('blogArticle25Excerpt');
+    if (dom.blogReadBtn25) dom.blogReadBtn25.textContent = getTranslation('blogReadBtn25');
     dom.aboutSectionTitle.textContent = getTranslation('aboutSectionTitle');
     dom.aboutSectionText.textContent = getTranslation('aboutSectionText');
     dom.project1Title.textContent = getTranslation('project1Title');
@@ -3460,6 +3484,44 @@ function cacheContentElements() {
 
     try {
       const articleText = await loadUsaOpenArticle();
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadIndividualTimeTrialArticle(lang) {
+    const requestedLang = INDIVIDUAL_TIME_TRIAL_ARTICLE_URLS[lang] ? lang : 'bg';
+    if (typeof individualTimeTrialArticleByLanguage[requestedLang] === 'string' && individualTimeTrialArticleByLanguage[requestedLang].length > 0) {
+      return individualTimeTrialArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(INDIVIDUAL_TIME_TRIAL_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('individual_time_trial_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      individualTimeTrialArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      individualTimeTrialArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openIndividualTimeTrialBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle25Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadIndividualTimeTrialArticle(currentLanguage);
       dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');
