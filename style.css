@@ -576,18 +576,37 @@ header p {
 
 .planner-actions {
     margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
-.planner-submit-btn {
+.planner-submit-btn,
+.planner-reset-btn {
     appearance: none;
     border: none;
     border-radius: 12px;
     padding: 12px 18px;
-    background: linear-gradient(135deg, #6ec6ff, #7b8cff);
-    color: #081422;
     font-weight: 800;
     cursor: pointer;
+    transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.planner-submit-btn {
+    background: linear-gradient(135deg, #6ec6ff, #7b8cff);
+    color: #081422;
     box-shadow: 0 12px 24px rgba(110, 198, 255, 0.28);
+}
+
+.planner-reset-btn {
+    background: rgba(120, 140, 170, 0.18);
+    color: #edf5ff;
+    border: 1px solid rgba(160, 183, 216, 0.35);
+}
+
+.planner-submit-btn:hover,
+.planner-reset-btn:hover {
+    transform: translateY(-1px);
 }
 
 .trip-planner-result {

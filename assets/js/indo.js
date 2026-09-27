@@ -1046,6 +1046,7 @@ function cacheContentElements() {
     dom.tripPlannerBudgetLabel = document.getElementById('tripPlannerBudgetLabel');
     dom.tripPlannerDestinationLabel = document.getElementById('tripPlannerDestinationLabel');
     dom.tripPlannerSubmitBtn = document.getElementById('tripPlannerSubmitBtn');
+    dom.tripPlannerResetBtn = document.getElementById('tripPlannerResetBtn');
     dom.tripPlannerResultPlaceholder = document.getElementById('tripPlannerResultPlaceholder');
     dom.tripPlannerEstimateNote = document.getElementById('tripPlannerEstimateNote');
     dom.blogSectionTitle = document.getElementById('blogSectionTitle');
@@ -1542,6 +1543,7 @@ function cacheContentElements() {
 
             <div class="planner-actions">
               <button id="tripPlannerSubmitBtn" type="submit" class="planner-submit-btn">Calculate trip</button>
+              <button id="tripPlannerResetBtn" type="button" class="planner-reset-btn">Reset</button>
             </div>
             <p id="tripPlannerEstimateNote" class="trip-planner-estimate-note">Trip estimates are approximate and based on average local prices.</p>
           </form>
@@ -2452,20 +2454,36 @@ function cacheContentElements() {
 
   function bindTripPlannerForm() {
     const form = document.getElementById('tripPlannerForm');
+    const resetBtn = document.getElementById('tripPlannerResetBtn');
+    const result = document.getElementById('tripPlannerResult');
+    const startCountrySelect = document.getElementById('tripPlannerStartCountry');
+    const daysInput = document.getElementById('tripPlannerDays');
+    const budgetInput = document.getElementById('tripPlannerBudget');
+    const destinationSelect = document.getElementById('tripPlannerDestination');
+
     if (!form) return;
 
     form.addEventListener('submit', function (event) {
       event.preventDefault();
 
-      const startCountry = document.getElementById('tripPlannerStartCountry').value;
-      const days = Number(document.getElementById('tripPlannerDays').value || 0);
-      const budget = Number(document.getElementById('tripPlannerBudget').value || 0);
-      const destination = document.getElementById('tripPlannerDestination').value;
-      const result = document.getElementById('tripPlannerResult');
+      const startCountry = startCountrySelect.value;
+      const days = Number(daysInput.value || 0);
+      const budget = Number(budgetInput.value || 0);
+      const destination = destinationSelect.value;
 
       const plannerResult = calculateTripPlannerResult(startCountry, days, budget, destination);
       result.innerHTML = renderTripPlannerResult(plannerResult);
     });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function () {
+        startCountrySelect.value = 'BG';
+        daysInput.value = '7';
+        budgetInput.value = '1200';
+        destinationSelect.value = 'lombok';
+        result.innerHTML = '<p id="tripPlannerResultPlaceholder">' + getTranslation('tripPlannerResultPlaceholder') + '</p>';
+      });
+    }
   }
 
   function hideSpecificBlogCards() {
@@ -2513,6 +2531,7 @@ function cacheContentElements() {
     dom.tripPlannerBudgetLabel.textContent = getTranslation('tripPlannerBudgetLabel');
     dom.tripPlannerDestinationLabel.textContent = getTranslation('tripPlannerDestinationLabel');
     dom.tripPlannerSubmitBtn.textContent = getTranslation('tripPlannerSubmitBtn');
+    if (dom.tripPlannerResetBtn) dom.tripPlannerResetBtn.textContent = getTranslation('tripPlannerResetBtn');
     if (dom.tripPlannerEstimateNote) dom.tripPlannerEstimateNote.textContent = getTranslation('tripPlannerEstimateNote');
     if (dom.tripPlannerResultPlaceholder) dom.tripPlannerResultPlaceholder.textContent = getTranslation('tripPlannerResultPlaceholder');
     updateTripPlannerOptions();
