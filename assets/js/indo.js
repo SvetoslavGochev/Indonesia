@@ -2102,6 +2102,200 @@ function cacheContentElements() {
     };
   }
 
+  function getLocalizedTripPlannerValue(value) {
+    const languageMap = {
+      bg: {
+        'April - October': 'Април - Октомври',
+        'April - November': 'Април - Ноември',
+        'May - September': 'Май - Септември',
+        'All year': 'Цяла година',
+        'Kuta Lombok': 'Кута Ломбок',
+        'Senaru': 'Сенару',
+        'Tiu Kelep': 'Тиу Келеп',
+        'Gili Islands': 'Гили острови',
+        'Ubud': 'Убуд',
+        'Uluwatu': 'Улувату',
+        'Canggu': 'Canggu',
+        'Nusa Penida': 'Nusa Penida',
+        'Jakarta': 'Джакарта',
+        'Yogyakarta': 'Йогякарта',
+        'Borobudur': 'Боробудур',
+        'Prambanan': 'Прамбанан',
+        'Tanjung Puting': 'Танджунг Путинг',
+        'Jungle river trip': 'Река в джунглата',
+        'wildlife lookouts': 'гледки за дивата природа',
+        'Komodo': 'Комодо',
+        'Padar Island': 'Остров Падар',
+        'Pink Beach': 'Розов плаж',
+        'boat day': 'ден на лодката',
+        'Beach + waterfalls + relaxed island pace.': 'Плаж + водопади + спокойна островна атмосфера.',
+        'Balanced mix of culture, beaches and food.': 'Баланс между култура, плажове и храна.',
+        'Culture, volcanoes, temples and efficient city stops.': 'Култура, вулкани, храмове и ефективни градски спирки.',
+        'Wildlife, rainforest and stronger adventure feel.': 'Диви животни, джунгла и по-силно приключенско усещане.',
+        'Perfect for a compact cultural trip.': 'Идеален за кратко културно пътуване.',
+        'Island hopping and dramatic coastal scenery.': 'Островни преходи и драматична крайбрежна красота.',
+        'Remote islands, dragons, and big scenic payoff.': 'Отдалечени острови, дракони и впечатляващи гледки.',
+        'Rainy period is usually from November to February.': 'Дъждовният период обикновено е от ноември до февруари.',
+        'Popular season raises accommodation prices.': 'Популярният сезон повишава цените на местата за настаняване.',
+        'Longer transfers between cities can reduce free time if you overpack the route.': 'По-дългите пътувания между градовете могат да намалят свободното време, ако маршрута е твърде натоварен.',
+        'Remote areas need more planning and longer transfers.': 'Отдалечените райони изискват повече планиране и по-дълги трансфери.',
+        'Best for culture trips and short city stays.': 'Най-подходящо за културни пътувания и кратки престои в градовете.',
+        'Boat trips and lodging can quickly increase the total cost.': 'Лодковите екскурзии и настаняването могат бързо да повишат общата цена.',
+        'Most comfort comes from boat-based travel and a higher daily budget.': 'По-голямата част от комфорт идва от пътуване с лодка и по-висок дневен бюджет.',
+        'A very comfortable trip with private transfers, boutique stays, and fewer logistics headaches.': 'Много комфортно пътуване с частни трансфери, бутикови места за настаняване и по-малко логистични проблеми.',
+        'A premium Java trip works well with guided experiences and comfortable hotels in key cities.': 'Премиум пътуване за Ява работи отлично с водени преживявания и комфортни хотели в ключови градове.',
+        'Keep a slower route and book a private car between cultural highlights.': 'Задръж по-бавен маршрут и резервирай частен автомобил между културните атракции.',
+        'A solid low-cost island escape for beach time, simple stays, and local food.': 'Добър и достъпен островен избор за плаж, прости места за настаняване и местна храна.',
+        'A balanced choice with comfortable stays, more flexibility, and a smoother trip rhythm.': 'Добър баланс между комфорт, гъвкавост и по-плавен ритъм на пътуването.',
+        'Keep the route compact and add a private boat or wellness day.': 'Задържи маршрута компактен и добави частна лодка или ден за wellness.',
+        'A very comfortable trip with private transfers, boutique stays, and fewer logistics headaches.': 'Много комфортно пътуване с частни трансфери, бутикови места за настаняване и по-малко логистични проблеми.',
+        'Lombok': 'Ломбок',
+        'Java': 'Ява',
+        'Bali': 'Бали',
+        'Borneo': 'Борнео',
+        'Yogyakarta': 'Йогякарта',
+        'Labuan Bajo': 'Лабуан Баджо',
+        'Komodo': 'Комодо',
+        'BG': 'България',
+        'DE': 'Германия',
+        'FR': 'Франция',
+        'ES': 'Испания',
+        'UK': 'Великобритания'
+      },
+      en: {
+        'April - October': 'April - October',
+        'April - November': 'April - November',
+        'May - September': 'May - September',
+        'All year': 'All year',
+        'Rainy period is usually from November to February.': 'Rainy period is usually from November to February.',
+        'Longer transfers between cities can reduce free time if you overpack the route.': 'Longer transfers between cities can reduce free time if you overpack the route.',
+        'A premium Java trip works well with guided experiences and comfortable hotels in key cities.': 'A premium Java trip works well with guided experiences and comfortable hotels in key cities.',
+        'Keep a slower route and book a private car between cultural highlights.': 'Keep a slower route and book a private car between cultural highlights.',
+        'Keep the route compact and add a private boat or wellness day.': 'Keep the route compact and add a private boat or wellness day.',
+        'Beach + waterfalls + relaxed island pace.': 'Beach + waterfalls + relaxed island pace.',
+        'Culture, volcanoes, temples and efficient city stops.': 'Culture, volcanoes, temples and efficient city stops.',
+        'Lombok': 'Lombok',
+        'Java': 'Java',
+        'Bali': 'Bali',
+        'Borneo': 'Borneo',
+        'Yogyakarta': 'Yogyakarta',
+        'Labuan Bajo': 'Labuan Bajo',
+        'Komodo': 'Komodo',
+        'BG': 'Bulgaria',
+        'DE': 'Germany',
+        'FR': 'France',
+        'ES': 'Spain',
+        'UK': 'United Kingdom'
+      },
+      de: {
+        'April - October': 'April - Oktober',
+        'April - November': 'April - November',
+        'May - September': 'Mai - September',
+        'All year': 'Ganzes Jahr',
+        'Rainy period is usually from November to February.': 'Die Regenzeit liegt meist zwischen November und Februar.',
+        'Longer transfers between cities can reduce free time if you overpack the route.': 'Längere Transfers zwischen Städten können die freie Zeit verkürzen, wenn die Route zu voll ist.',
+        'A premium Java trip works well with guided experiences and comfortable hotels in key cities.': 'Eine Premium-Reise auf Java funktioniert gut mit geführten Erlebnissen und komfortablen Hotels in wichtigen Städten.',
+        'Keep a slower route and book a private car between cultural highlights.': 'Wähle eine ruhigere Route und buche ein privates Auto zwischen den Kulturhighlights.',
+        'Keep the route compact and add a private boat or wellness day.': 'Halte die Route kompakt und füge einen privaten Bootstag oder Wellness-Tag hinzu.',
+        'Beach + waterfalls + relaxed island pace.': 'Strand + Wasserfälle + entspannter Inselrhythmus.',
+        'Culture, volcanoes, temples and efficient city stops.': 'Kultur, Vulkane, Tempel und effiziente Stadtstopps.',
+        'Lombok': 'Lombok',
+        'Java': 'Java',
+        'Bali': 'Bali',
+        'Borneo': 'Borneo',
+        'Yogyakarta': 'Yogyakarta',
+        'Labuan Bajo': 'Labuan Bajo',
+        'Komodo': 'Komodo',
+        'BG': 'Bulgarien',
+        'DE': 'Deutschland',
+        'FR': 'Frankreich',
+        'ES': 'Spanien',
+        'UK': 'Vereinigtes Königreich'
+      },
+      fr: {
+        'April - October': 'Avril - Octobre',
+        'April - November': 'Avril - Novembre',
+        'May - September': 'Mai - Septembre',
+        'All year': 'Toute l’année',
+        'Rainy period is usually from November to February.': 'La saison des pluies est généralement de novembre à février.',
+        'Longer transfers between cities can reduce free time if you overpack the route.': 'Des transferts plus longs entre villes peuvent réduire le temps libre si le parcours est trop chargé.',
+        'A premium Java trip works well with guided experiences and comfortable hotels in key cities.': 'Un voyage premium à Java fonctionne bien avec des expériences guidées et des hôtels confortables dans les villes clés.',
+        'Keep a slower route and book a private car between cultural highlights.': 'Gardez un itinéraire plus lent et réservez une voiture privée entre les points forts culturels.',
+        'Keep the route compact and add a private boat or wellness day.': 'Gardez l’itinéraire compact et ajoutez une journée en bateau privé ou bien-être.',
+        'Beach + waterfalls + relaxed island pace.': 'Plage + cascades + rythme paisible de l’île.',
+        'Culture, volcanoes, temples and efficient city stops.': 'Culture, volcans, temples et arrêts urbains efficaces.',
+        'Lombok': 'Lombok',
+        'Java': 'Java',
+        'Bali': 'Bali',
+        'Borneo': 'Bornéo',
+        'Yogyakarta': 'Yogyakarta',
+        'Labuan Bajo': 'Labuan Bajo',
+        'Komodo': 'Komodo',
+        'BG': 'Bulgarie',
+        'DE': 'Allemagne',
+        'FR': 'France',
+        'ES': 'Espagne',
+        'UK': 'Royaume-Uni'
+      },
+      es: {
+        'April - October': 'Abril - Octubre',
+        'April - November': 'Abril - Noviembre',
+        'May - September': 'Mayo - Septiembre',
+        'All year': 'Todo el año',
+        'Rainy period is usually from November to February.': 'La temporada de lluvias suele ir de noviembre a febrero.',
+        'Longer transfers between cities can reduce free time if you overpack the route.': 'Los traslados más largos pueden reducir el tiempo libre si el recorrido está demasiado cargado.',
+        'A premium Java trip works well with guided experiences and comfortable hotels in key cities.': 'Un viaje premium por Java funciona bien con experiencias guiadas y hoteles cómodos en ciudades clave.',
+        'Keep a slower route and book a private car between cultural highlights.': 'Mantén un recorrido más tranquilo y reserva un coche privado entre los puntos culturales.',
+        'Keep the route compact and add a private boat or wellness day.': 'Mantén la ruta compacta y añade un día con barco privado o wellness.',
+        'Beach + waterfalls + relaxed island pace.': 'Playa + cascadas + ritmo relajado de isla.',
+        'Culture, volcanoes, temples and efficient city stops.': 'Cultura, volcanes, templos y paradas urbanas eficientes.',
+        'Lombok': 'Lombok',
+        'Java': 'Java',
+        'Bali': 'Bali',
+        'Borneo': 'Borneo',
+        'Yogyakarta': 'Yogyakarta',
+        'Labuan Bajo': 'Labuan Bajo',
+        'Komodo': 'Komodo',
+        'BG': 'Bulgaria',
+        'DE': 'Alemania',
+        'FR': 'Francia',
+        'ES': 'España',
+        'UK': 'Reino Unido'
+      },
+      id: {
+        'April - October': 'April - Oktober',
+        'April - November': 'April - November',
+        'May - September': 'Mei - September',
+        'All year': 'Sepanjang tahun',
+        'Rainy period is usually from November to February.': 'Musim hujan biasanya terjadi dari November hingga Februari.',
+        'Longer transfers between cities can reduce free time if you overpack the route.': 'Transfer yang lebih lama antar kota dapat mengurangi waktu luang jika rutenya terlalu padat.',
+        'A premium Java trip works well with guided experiences and comfortable hotels in key cities.': 'Perjalanan premium ke Jawa cocok dengan pengalaman terpandu dan hotel nyaman di kota-kota utama.',
+        'Keep a slower route and book a private car between cultural highlights.': 'Pertahankan rute yang lebih santai dan sewa mobil pribadi antar titik budaya utama.',
+        'Keep the route compact and add a private boat or wellness day.': 'Jaga rutenya tetap ringkas dan tambahkan hari dengan perahu privat atau wellness.',
+        'Beach + waterfalls + relaxed island pace.': 'Pantai + air terjun + ritme pulau yang santai.',
+        'Culture, volcanoes, temples and efficient city stops.': 'Budaya, gunung berapi, candi, dan singgahan kota yang efisien.',
+        'Lombok': 'Lombok',
+        'Java': 'Jawa',
+        'Bali': 'Bali',
+        'Borneo': 'Borneo',
+        'Yogyakarta': 'Yogyakarta',
+        'Labuan Bajo': 'Labuan Bajo',
+        'Komodo': 'Komodo',
+        'BG': 'Bulgaria',
+        'DE': 'Jerman',
+        'FR': 'Prancis',
+        'ES': 'Spanyol',
+        'UK': 'Britania Raya'
+      }
+    };
+
+    if (!value || typeof value !== 'string') {
+      return value;
+    }
+
+    return (languageMap[currentLanguage] && languageMap[currentLanguage][value]) || value;
+  }
+
   function calculateTripPlannerResult(startCountry, days, budget, destinationKey) {
     const validation = validateTripPlannerInput(startCountry, days, budget, destinationKey);
 
@@ -2136,8 +2330,32 @@ function cacheContentElements() {
     const statusClass = goodFit ? 'good' : 'tight';
     const statusText = goodFit ? '✔️ ' + getTranslation('tripPlannerGoodFit') : '⚠️ ' + getTranslation('tripPlannerBudgetTight');
     const difficultyText = getTranslation('tripPlannerDifficulty' + (profile.difficulty || 'Medium'));
+    const localizedWarning = getLocalizedTripPlannerValue(profile.warning);
+    const localizedVibe = getLocalizedTripPlannerValue(profile.vibe);
+    const localizedSeason = getLocalizedTripPlannerValue(profile.season);
+    const localizedRoute = profile.route.map(function (stop) {
+      return getLocalizedTripPlannerValue(stop);
+    });
+    const destinationLabelKey = {
+      lombok: 'tripPlannerDestinationLombok',
+      bali: 'tripPlannerDestinationBali',
+      java: 'tripPlannerDestinationJava',
+      borneo: 'tripPlannerDestinationBorneo',
+      yogyakarta: 'tripPlannerDestinationYogyakarta',
+      labuanbajo: 'tripPlannerDestinationLabuanBajo',
+      komodo: 'tripPlannerDestinationKomodo'
+    }[validation.destinationKey];
+    const destinationName = getTranslation(destinationLabelKey) || profile.name;
+    const countryNameMap = {
+      BG: 'tripPlannerCountryBg',
+      DE: 'tripPlannerCountryDe',
+      FR: 'tripPlannerCountryFr',
+      ES: 'tripPlannerCountryEs',
+      UK: 'tripPlannerCountryUk'
+    };
+    const countryName = getTranslation(countryNameMap[validation.normalizedCountry]) || validation.normalizedCountry;
 
-    const summaryParts = [budgetText.summary];
+    const summaryParts = [getLocalizedTripPlannerValue(budgetText.summary) || budgetText.summary];
     if (!niceDays) {
       if (days < profile.bestDays[0]) {
         summaryParts.push(getTranslation('tripPlannerFewDays') + ' ' + profile.bestDays[0] + ' ' + getTranslation('tripPlannerDaysShort'));
@@ -2148,7 +2366,9 @@ function cacheContentElements() {
     if (!goodFit) {
       summaryParts.push(getTranslation('tripPlannerBudgetAdvice'));
     }
-    summaryParts.push('<strong>' + getTranslation('tripPlannerRecommendationLabel') + ':</strong> ' + budgetText.recommendation);
+
+    const localizedRecommendation = getLocalizedTripPlannerValue(budgetText.recommendation) || budgetText.recommendation;
+    summaryParts.push('<strong>' + getTranslation('tripPlannerRecommendationLabel') + ':</strong> ' + localizedRecommendation);
 
     return {
       valid: true,
@@ -2160,14 +2380,14 @@ function cacheContentElements() {
       budgetEnough: goodFit,
       recommendedDays: niceDays,
       difficulty: difficultyText,
-      destinationName: profile.name,
-      countryName: validation.normalizedCountry === 'OTHER' ? 'Other' : validation.normalizedCountry,
+      destinationName: destinationName,
+      countryName: validation.normalizedCountry === 'OTHER' ? 'Other' : countryName,
       breakdown: { flight: flightCost, stay: stayCost, extras: extraCost },
-      warning: profile.warning,
-      vibe: profile.vibe,
-      season: profile.season,
-      route: profile.route,
-      recommendation: budgetText.recommendation,
+      warning: localizedWarning,
+      vibe: localizedVibe,
+      season: localizedSeason,
+      route: localizedRoute,
+      recommendation: localizedRecommendation,
       summary: summaryParts.join('<br>')
     };
   }
