@@ -525,21 +525,22 @@ header p {
 }
 
 .trip-planner-form {
-    margin-top: 18px;
+    margin-top: 14px;
 }
 
 .planner-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(200px, 1fr));
-    gap: 18px;
+    gap: 14px 18px;
 }
 
 .trip-planner-estimate-note {
-    margin-top: 12px;
+    margin-top: 10px;
     color: #bfd7ff;
-    font-size: 0.86rem;
+    font-size: 0.82rem;
     opacity: 0.9;
     font-style: italic;
+    letter-spacing: 0.01em;
 }
 
 .planner-field {
@@ -590,16 +591,16 @@ header p {
 }
 
 .trip-planner-result {
-    margin-top: 22px;
-    padding: 18px 18px 12px;
+    margin-top: 18px;
+    padding: 16px 16px 10px;
     border-radius: 14px;
     background: rgba(16, 27, 43, 0.74);
     border: 1px solid rgba(118, 150, 191, 0.4);
     color: #ebf4ff;
-    line-height: 1.6;
+    line-height: 1.5;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
 .trip-planner-status {
@@ -647,8 +648,8 @@ header p {
 .trip-planner-summary {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px 14px;
-    margin-top: 6px;
+    gap: 8px 12px;
+    margin-top: 2px;
 }
 
 .trip-planner-metric,
@@ -681,7 +682,7 @@ header p {
 }
 
 .trip-planner-recommendation-block {
-    margin-top: 2px;
+    margin-top: 0;
     padding-top: 8px;
     border-top: 1px solid rgba(167, 196, 255, 0.2);
 }
