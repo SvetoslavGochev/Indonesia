@@ -54,12 +54,12 @@
     id: './assets/tekst/ламбо.id.txt?v=20260618'
   };
   const SPORTS_ARTICLE_URLS = {
-    bg: './assets/tekst/sportstot7.txt?v=20260620',
-    en: './assets/tekst/sportstot7.en.txt?v=20260620',
-    de: './assets/tekst/sportstot7.de.txt?v=20260620',
-    fr: './assets/tekst/sportstot7.fr.txt?v=20260620',
-    es: './assets/tekst/sportstot7.es.txt?v=20260620',
-    id: './assets/tekst/sportstot7.id.txt?v=20260620'
+    bg: './assets/tekst/sportstot7.txt?v=20260728',
+    en: './assets/tekst/sportstot7.en.txt?v=20260728',
+    de: './assets/tekst/sportstot7.de.txt?v=20260728',
+    fr: './assets/tekst/sportstot7.fr.txt?v=20260728',
+    es: './assets/tekst/sportstot7.es.txt?v=20260728',
+    id: './assets/tekst/sportstot7.id.txt?v=20260728'
   };
   const TOP3_FOOD_ARTICLE_URLS = {
     bg: './assets/tekst/top3hranaInd.txt?v=20260630a',
@@ -139,9 +139,84 @@
     es: './assets/tekst/football2.es.txt?v=20260712c',
     id: './assets/tekst/football2.id.txt?v=20260712c'
   };
+  const UNING_BROMO_ARTICLE_URLS = {
+    bg: './assets/tekst/UningBromo.bg.txt?v=20260727a',
+    en: './assets/tekst/UningBromo.en.txt?v=20260727a',
+    de: './assets/tekst/UningBromo.de.txt?v=20260727a',
+    fr: './assets/tekst/UningBromo.fr.txt?v=20260727a',
+    es: './assets/tekst/UningBromo.es.txt?v=20260727a',
+    id: './assets/tekst/UningBromo.id.txt?v=20260727a'
+  };
+  const SMQH_ARTICLE_URLS = {
+    bg: './assets/tekst/smqh.txt?v=20260807a'
+  };
+  const CAR_KALOQN_ARTICLE_URLS = {
+    bg: './assets/tekst/carKaloqn.txt?v=20260814a',
+    en: './assets/tekst/carKaloqn.en.txt?v=20260814a',
+    de: './assets/tekst/carKaloqn.de.txt?v=20260814a',
+    fr: './assets/tekst/carKaloqn.fr.txt?v=20260814a',
+    es: './assets/tekst/carKaloqn.es.txt?v=20260814a',
+    id: './assets/tekst/carKaloqn.id.txt?v=20260814a'
+  };
+  const TERVEL_ARTICLE_URLS = {
+    bg: './assets/tekst/ТЕРВЕЛСПАСИТЕЛЯ.TXT?v=20260814c',
+    en: './assets/tekst/tervel.en.txt?v=20260814c',
+    de: './assets/tekst/tervel.de.txt?v=20260814c',
+    fr: './assets/tekst/tervel.fr.txt?v=20260814c',
+    es: './assets/tekst/tervel.es.txt?v=20260814c',
+    id: './assets/tekst/tervel.id.txt?v=20260814c'
+  };
+  const DOIRAN_ARTICLE_URLS = {
+    bg: './assets/tekst/бИТКАТАПРИДОИРАН.txt?v=20260814b',
+    en: './assets/tekst/doiran.en.txt?v=20260814b',
+    de: './assets/tekst/doiran.de.txt?v=20260814b',
+    fr: './assets/tekst/doiran.fr.txt?v=20260814b',
+    es: './assets/tekst/doiran.es.txt?v=20260814b',
+    id: './assets/tekst/doiran.id.txt?v=20260814b'
+  };
+  const EUROPE_DRUG_POLICY_ARTICLE_URLS = {
+    bg: './assets/tekst/europaPolicy.bg.txt?v=20260814c',
+    en: './assets/tekst/europaPolicy.en.txt?v=20260814b',
+    de: './assets/tekst/europaPolicy.de.txt?v=20260814b',
+    fr: './assets/tekst/europaPolicy.fr.txt?v=20260814b',
+    es: './assets/tekst/europaPolicy.es.txt?v=20260814b',
+    id: './assets/tekst/europaPolicy.id.txt?v=20260814b'
+  };
+  const BAT_BAYAN_ARTICLE_URLS = {
+    bg: './assets/tekst/batBayan.bg.txt?v=20260814b',
+    en: './assets/tekst/batBayan.en.txt?v=20260814b',
+    de: './assets/tekst/batBayan.de.txt?v=20260814b',
+    fr: './assets/tekst/batBayan.fr.txt?v=20260814b',
+    es: './assets/tekst/batBayan.es.txt?v=20260814b',
+    id: './assets/tekst/batBayan.id.txt?v=20260814b'
+  };
+  const HIDDEN_INDONESIA_ARTICLE_URLS = {
+    bg: './assets/tekst/hidenIndonesia.txt?v=20260820a',
+    en: './assets/tekst/hidenIndonesia.en.txt?v=20260820a',
+    de: './assets/tekst/hidenIndonesia.de.txt?v=20260820a',
+    fr: './assets/tekst/hidenIndonesia.fr.txt?v=20260820a',
+    es: './assets/tekst/hidenIndonesia.es.txt?v=20260820a',
+    id: './assets/tekst/hidenIndonesia.id.txt?v=20260820a'
+  };
+  const USA_OPEN_ARTICLE_URLS = {
+    bg: './assets/tekst/UsaOpen.txt?v=20260915c',
+    en: './assets/tekst/UsaOpen.en.txt?v=20260915c',
+    de: './assets/tekst/UsaOpen.de.txt?v=20260915c',
+    fr: './assets/tekst/UsaOpen.fr.txt?v=20260915c',
+    es: './assets/tekst/UsaOpen.es.txt?v=20260915c',
+    id: './assets/tekst/UsaOpen.id.txt?v=20260915c'
+  };
+  const INDIVIDUAL_TIME_TRIAL_ARTICLE_URLS = {
+    bg: './assets/tekst/individualTimeTrial.txt?v=20260924a',
+    en: './assets/tekst/individualTimeTrial.en.txt?v=20260924a',
+    de: './assets/tekst/individualTimeTrial.de.txt?v=20260924a',
+    fr: './assets/tekst/individualTimeTrial.fr.txt?v=20260924a',
+    es: './assets/tekst/individualTimeTrial.es.txt?v=20260924a',
+    id: './assets/tekst/individualTimeTrial.id.txt?v=20260924a'
+  };
   const METAMASK_WALLET_ADDRESS = '0xfca710eC5eB0FB036157Bb1E114BADc2310efE37';
-  const PARTNER_INSTAGRAM_URL = (window.PARTNER_INSTAGRAM_URL || 'https://www.instagram.com/').trim();
-  const PARTNER_FACEBOOK_URL = (window.PARTNER_FACEBOOK_URL || 'https://www.facebook.com/').trim();
+  const PARTNER_INSTAGRAM_URL = (window.PARTNER_INSTAGRAM_URL || 'https://www.instagram.com/indo.nesiaexplorerr/').trim();
+  const PARTNER_FACEBOOK_URL = (window.PARTNER_FACEBOOK_URL || 'https://www.facebook.com/profile.php?id=61592328399672').trim();
   const PARTNER_X_URL = (window.PARTNER_X_URL || 'https://x.com/').trim();
   const FRESHWATER_ARTICLE_URLS = {
     bg: './assets/tekst/sladkowodniRibi.txt?v=20260702c'
@@ -157,6 +232,7 @@
 
   const treesArticleByLanguage = {};
   const parksArticleByLanguage = {};
+  const individualTimeTrialArticleByLanguage = {};
 
   const marineAnimals = [
     {
@@ -224,13 +300,106 @@
       name_fr: 'Requin-baleine',
       name_es: 'Tiburon ballena',
       name_id: 'Hiu paus'
+    },
+    {
+      image: './assets/images/ribaLuna.jpeg',
+      articleUrls: {
+        bg: './assets/tekst/ribaLuna.txt?v=20260806',
+        en: './assets/tekst/ribaLuna.en.txt?v=20260806'
+      },
+      name_bg: 'Риба Луна',
+      name_en: 'Mola Mola',
+      name_de: 'Mondfisch',
+      name_fr: 'Poisson-lune',
+      name_es: 'Pez luna',
+      name_id: 'Mola Mola'
+    },
+    {
+      image: './assets/images/sinOKtopod.jpeg',
+      articleUrls: {
+        bg: './assets/tekst/sinioprastenOktopod.txt?v=20260806',
+        en: './assets/tekst/sinioprastenOktopod.en.txt?v=20260806'
+      },
+      name_bg: 'Синьопръстенен октопод',
+      name_en: 'Blue-ringed Octopus',
+      name_de: 'Blaugeringelter Oktopus',
+      name_fr: 'Poulpe a anneaux bleus',
+      name_es: 'Pulpo de anillos azules',
+      name_id: 'Gurita cincin biru'
     }
   ];
+
+  const sunBearSvg = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="Sun Bear illustration">
+      <defs>
+        <linearGradient id="bg" x1="0" x2="1">
+          <stop offset="0%" stop-color="#dfead4"/>
+          <stop offset="100%" stop-color="#5b7d52"/>
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="750" fill="url(#bg)"/>
+      <ellipse cx="600" cy="610" rx="360" ry="120" fill="#3e332b" opacity="0.18"/>
+      <rect x="0" y="0" width="1200" height="750" fill="transparent"/>
+      <g transform="translate(135 35)">
+        <ellipse cx="435" cy="370" rx="270" ry="250" fill="#1d1d1f"/>
+        <ellipse cx="395" cy="565" rx="145" ry="90" fill="#1a1a1a"/>
+        <ellipse cx="580" cy="565" rx="155" ry="90" fill="#1a1a1a"/>
+        <ellipse cx="435" cy="225" rx="150" ry="120" fill="#0f1113"/>
+        <ellipse cx="390" cy="240" rx="50" ry="35" fill="#d0b287"/>
+        <ellipse cx="492" cy="240" rx="48" ry="35" fill="#d0b287"/>
+        <circle cx="402" cy="242" r="8" fill="#1d1d1f"/>
+        <circle cx="476" cy="242" r="8" fill="#1d1d1f"/>
+        <ellipse cx="440" cy="260" rx="18" ry="12" fill="#2e2a28"/>
+        <ellipse cx="443" cy="310" rx="62" ry="48" fill="#d4a46a"/>
+        <path d="M405 300c20 38 70 50 98 18" fill="none" stroke="#77552d" stroke-width="8" stroke-linecap="round"/>
+        <path d="M345 300l-115 25l-10 65l125 10z" fill="#1b1b1b"/>
+        <path d="M520 290l115 20l20 70l-125 8z" fill="#1b1b1b"/>
+        <path d="M350 280c-12-52 18-120 80-146" fill="none" stroke="#c9b78d" stroke-width="18" stroke-linecap="round"/>
+        <path d="M530 282c18-54 54-92 110-120" fill="none" stroke="#d0be95" stroke-width="18" stroke-linecap="round"/>
+        <path d="M505 326c125 26 228 86 260 199" fill="none" stroke="#1d1d1f" stroke-width="28" stroke-linecap="round"/>
+        <path d="M340 332c-116 18-181 93-203 201" fill="none" stroke="#1d1d1f" stroke-width="28" stroke-linecap="round"/>
+        <path d="M350 392c70 22 130 44 198 42" fill="none" stroke="#d4a46a" stroke-width="26" stroke-linecap="round"/>
+        <path d="M350 430c72 16 126 26 188 22" fill="none" stroke="#c58d4b" stroke-width="14" stroke-linecap="round"/>
+      </g>
+    </svg>
+  `);
+
+  const anoaSvg = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="Anoa illustration">
+      <defs>
+        <linearGradient id="g1" x1="0" x2="1">
+          <stop offset="0%" stop-color="#d2d5d9"/>
+          <stop offset="100%" stop-color="#7f8b8e"/>
+        </linearGradient>
+      </defs>
+      <rect width="1200" height="750" fill="#d8d0b4"/>
+      <ellipse cx="600" cy="620" rx="420" ry="80" fill="#8a8a7d" opacity="0.2"/>
+      <g transform="translate(95 75)">
+        <path d="M170 460c36-146 104-212 186-228c72-13 170 0 220 58c60 68 64 186 40 230c-36 65-117 126-169 136c-119 23-243-22-277-196z" fill="#111316"/>
+        <path d="M425 255l96-90l52 31l-44 88l-104 3z" fill="#13171a"/>
+        <path d="M386 260l-58-116l-55 58l70 92z" fill="#101214"/>
+        <path d="M460 270l82-118l96 18l-80 118z" fill="#111316"/>
+        <path d="M365 310c70-21 132-22 202 0" fill="none" stroke="#727b7f" stroke-width="9" stroke-linecap="round"/>
+        <path d="M325 420c56 18 90 38 110 76" fill="none" stroke="#111316" stroke-width="20" stroke-linecap="round"/>
+        <path d="M492 420c62 18 100 40 124 86" fill="none" stroke="#111316" stroke-width="22" stroke-linecap="round"/>
+        <path d="M360 520l-58 150" stroke="#111316" stroke-width="26" stroke-linecap="round"/>
+        <path d="M528 523l70 155" stroke="#111316" stroke-width="26" stroke-linecap="round"/>
+        <path d="M620 510l101 145" stroke="#111316" stroke-width="28" stroke-linecap="round"/>
+        <path d="M246 520l-36 150" stroke="#111316" stroke-width="26" stroke-linecap="round"/>
+        <path d="M463 195c12-12 28-18 46-18c20 0 42 8 57 22" fill="none" stroke="#a9b1b3" stroke-width="9" stroke-linecap="round"/>
+        <circle cx="453" cy="276" r="9" fill="#e9f0f4"/>
+        <circle cx="560" cy="276" r="9" fill="#e9f0f4"/>
+        <path d="M455 300c19 21 55 21 75 0" fill="none" stroke="#7e5f48" stroke-width="7" stroke-linecap="round"/>
+      </g>
+    </svg>
+  `);
 
   const landAnimals = [
     {
       image: './assets/images/land-rhino.jpg',
       sectionIndex: 0,
+      speedKmh: '40',
+      weightKg: '900-2300',
       name_bg: 'Явански носорог',
       name_en: 'Javan Rhino',
       name_de: 'Java-Nashorn',
@@ -241,6 +410,8 @@
     {
       image: './assets/images/land-tiger.jpg',
       sectionIndex: 1,
+      speedKmh: '65',
+      weightKg: '90-140 / 65-90',
       name_bg: 'Суматренски тигър',
       name_en: 'Sumatran Tiger',
       name_de: 'Sumatra-Tiger',
@@ -251,6 +422,8 @@
     {
       image: './assets/images/land-orangutan.jpg',
       sectionIndex: 2,
+      speedKmh: '5-10',
+      weightKg: '50-120 / 30-50',
       name_bg: 'Орангутан',
       name_en: 'Orangutan',
       name_de: 'Orang-Utan',
@@ -261,6 +434,8 @@
     {
       image: './assets/images/land-komodo.jpg',
       sectionIndex: 3,
+      speedKmh: '20',
+      weightKg: '70-90',
       name_bg: 'Комодски варан',
       name_en: 'Komodo Dragon',
       name_de: 'Komodowaran',
@@ -271,6 +446,8 @@
     {
       image: './assets/images/land-elephant.jpg',
       sectionIndex: 4,
+      speedKmh: '15-20',
+      weightKg: '2000-4000',
       name_bg: 'Суматренски слон',
       name_en: 'Sumatran Elephant',
       name_de: 'Sumatra-Elefant',
@@ -281,12 +458,46 @@
     {
       image: './assets/images/land-babirusa.jpg',
       sectionIndex: 5,
+      speedKmh: '40',
+      weightKg: '60-100',
       name_bg: 'Бабируса',
       name_en: 'Babirusa',
       name_de: 'Babirusa',
       name_fr: 'Babiroussa',
       name_es: 'Babirusa',
       name_id: 'Babirusa'
+    },
+    {
+      image: './assets/images/sumatrenskaMechka.png',
+      articleUrls: {
+        bg: './assets/tekst/sumatranskaMechka.txt?v=20260812',
+        en: './assets/tekst/zemniviwotni.en.txt?v=20260703b'
+      },
+      sectionIndex: 6,
+      speedKmh: '25-35',
+      weightKg: '25-80',
+      name_bg: 'Суматранска мечка',
+      name_en: 'Sun Bear',
+      name_de: 'Sonnenbär',
+      name_fr: 'Ours malais',
+      name_es: 'Oso solar',
+      name_id: 'Beruang madu'
+    },
+    {
+      image: './assets/images/аноа (2).png',
+      articleUrls: {
+        bg: './assets/tekst/anoa.txt?v=20260812',
+        en: './assets/tekst/zemniviwotni.en.txt?v=20260703b'
+      },
+      sectionIndex: 7,
+      speedKmh: '20-30',
+      weightKg: '150-300',
+      name_bg: 'Аноа',
+      name_en: 'Anoa',
+      name_de: 'Anoa',
+      name_fr: 'Anoa',
+      name_es: 'Anoa',
+      name_id: 'Anoa'
     }
   ];
 
@@ -661,6 +872,15 @@
   const motorsportArticleByLanguage = {};
   const palembangArticleByLanguage = {};
   const footballArticleByLanguage = {};
+  const uningBromoArticleByLanguage = {};
+  const smqhArticleByLanguage = {};
+  const carKaloqnArticleByLanguage = {};
+  const tervelArticleByLanguage = {};
+  const doiranArticleByLanguage = {};
+  const europeDrugPolicyArticleByLanguage = {};
+  const batBayanArticleByLanguage = {};
+  const hiddenIndonesiaArticleByLanguage = {};
+  const usaOpenArticleByLanguage = {};
 
   const countryInfoFields = [
     { labelKey: 'capital', value: indonesiaData.country.capital, id: 'capitalLabel' },
@@ -728,6 +948,7 @@
   const blogArticleTextByLanguage = {};
   const dolphinArticleTextByLanguage = {};
   const waterworldSectionsByLanguage = {};
+  const marineAnimalArticleTextByLanguage = {};
   const cruiseArticleTextByLanguage = {};
   const birdSectionsByLanguage = {};
   const lombokArticleTextByLanguage = {};
@@ -737,7 +958,6 @@
   const landSectionsByLanguage = {};
   const freshwaterSectionsByLanguage = {};
   const parksSectionsByLanguage = {};
-  let visitCountValue = null;
 
   function cacheDomElements() {
     dom.bgBtn = document.getElementById('bgBtn');
@@ -748,7 +968,7 @@
     dom.idBtn = document.getElementById('idBtn');
     dom.headerTitle = document.getElementById('headerTitle');
     dom.headerSubtitle = document.getElementById('headerSubtitle');
-    dom.visitCounter = document.getElementById('visitCounter');
+    dom.navLinks = Array.from(document.querySelectorAll('.nav-links a'));
     dom.adBoxLabels = Array.from(document.querySelectorAll('.ad-box-label'));
     dom.content = document.getElementById('content');
     dom.cityModal = document.getElementById('cityModal');
@@ -820,6 +1040,19 @@ function cacheContentElements() {
     dom.fruitsTitle = document.getElementById('fruitsTitle');
     dom.parksTitle = document.getElementById('parksTitle');
     dom.treesTitle = document.getElementById('treesTitle');
+    dom.tripPlannerTitle = document.getElementById('tripPlannerTitle');
+    dom.tripPlannerStartCountry = document.getElementById('tripPlannerStartCountry');
+    dom.tripPlannerStartCountryLabel = document.getElementById('tripPlannerStartCountryLabel');
+    dom.tripPlannerDays = document.getElementById('tripPlannerDays');
+    dom.tripPlannerDaysLabel = document.getElementById('tripPlannerDaysLabel');
+    dom.tripPlannerBudget = document.getElementById('tripPlannerBudget');
+    dom.tripPlannerBudgetLabel = document.getElementById('tripPlannerBudgetLabel');
+    dom.tripPlannerDestination = document.getElementById('tripPlannerDestination');
+    dom.tripPlannerDestinationLabel = document.getElementById('tripPlannerDestinationLabel');
+    dom.tripPlannerSubmitBtn = document.getElementById('tripPlannerSubmitBtn');
+    dom.tripPlannerResetBtn = document.getElementById('tripPlannerResetBtn');
+    dom.tripPlannerResultPlaceholder = document.getElementById('tripPlannerResultPlaceholder');
+    dom.tripPlannerEstimateNote = document.getElementById('tripPlannerEstimateNote');
     dom.blogSectionTitle = document.getElementById('blogSectionTitle');
     dom.blogArticleTitle = document.getElementById('blogArticleTitle');
     dom.blogArticleExcerpt = document.getElementById('blogArticleExcerpt');
@@ -866,6 +1099,36 @@ function cacheContentElements() {
     dom.blogArticle15Title = document.getElementById('blogArticle15Title');
     dom.blogArticle15Excerpt = document.getElementById('blogArticle15Excerpt');
     dom.blogReadBtn15 = document.getElementById('blogReadBtn15');
+    dom.blogArticle16Title = document.getElementById('blogArticle16Title');
+    dom.blogArticle16Excerpt = document.getElementById('blogArticle16Excerpt');
+    dom.blogReadBtn16 = document.getElementById('blogReadBtn16');
+    dom.blogArticle17Title = document.getElementById('blogArticle17Title');
+    dom.blogArticle17Excerpt = document.getElementById('blogArticle17Excerpt');
+    dom.blogReadBtn17 = document.getElementById('blogReadBtn17');
+    dom.blogArticle18Title = document.getElementById('blogArticle18Title');
+    dom.blogArticle18Excerpt = document.getElementById('blogArticle18Excerpt');
+    dom.blogReadBtn18 = document.getElementById('blogReadBtn18');
+    dom.blogArticle19Title = document.getElementById('blogArticle19Title');
+    dom.blogArticle19Excerpt = document.getElementById('blogArticle19Excerpt');
+    dom.blogReadBtn19 = document.getElementById('blogReadBtn19');
+    dom.blogArticle20Title = document.getElementById('blogArticle20Title');
+    dom.blogArticle20Excerpt = document.getElementById('blogArticle20Excerpt');
+    dom.blogReadBtn20 = document.getElementById('blogReadBtn20');
+    dom.blogArticle21Title = document.getElementById('blogArticle21Title');
+    dom.blogArticle21Excerpt = document.getElementById('blogArticle21Excerpt');
+    dom.blogReadBtn21 = document.getElementById('blogReadBtn21');
+    dom.blogArticle22Title = document.getElementById('blogArticle22Title');
+    dom.blogArticle22Excerpt = document.getElementById('blogArticle22Excerpt');
+    dom.blogReadBtn22 = document.getElementById('blogReadBtn22');
+    dom.blogArticle23Title = document.getElementById('blogArticle23Title');
+    dom.blogArticle23Excerpt = document.getElementById('blogArticle23Excerpt');
+    dom.blogReadBtn23 = document.getElementById('blogReadBtn23');
+    dom.blogArticle24Title = document.getElementById('blogArticle24Title');
+    dom.blogArticle24Excerpt = document.getElementById('blogArticle24Excerpt');
+    dom.blogReadBtn24 = document.getElementById('blogReadBtn24');
+    dom.blogArticle25Title = document.getElementById('blogArticle25Title');
+    dom.blogArticle25Excerpt = document.getElementById('blogArticle25Excerpt');
+    dom.blogReadBtn25 = document.getElementById('blogReadBtn25');
     dom.aboutSectionTitle = document.getElementById('aboutSectionTitle');
     dom.aboutSectionText = document.getElementById('aboutSectionText');
     dom.project1Title = document.getElementById('project1Title');
@@ -999,6 +1262,18 @@ function cacheContentElements() {
     return animal[key] || animal.name_en || animal.name_bg || '';
   }
 
+  function getLandSpeedText(animal) {
+    return `${getTranslation('freshwaterSpeedLabel')}: ~${animal.speedKmh} km/h`;
+  }
+
+  function getLandWeightText(animal) {
+    return `${getTranslation('freshwaterWeightLabel')}: ~${animal.weightKg} kg`;
+  }
+
+  function getLandMetaText(animal) {
+    return `${getLandSpeedText(animal)}\n${getLandWeightText(animal)}`;
+  }
+
   function getFreshwaterSpeedText(animal) {
     return `${getTranslation('freshwaterSpeedLabel')}: ~${animal.speedKmh} km/h`;
   }
@@ -1120,26 +1395,20 @@ function cacheContentElements() {
     return `https://en.wikipedia.org/wiki/Special:Search?search=${searchQuery}`;
   }
 
-  function toBulgarianTranslatedWikipediaUrl(url) {
-    if (currentLanguage !== 'bg') {
-      return url;
-    }
-
+  function normalizeEnglishWikipediaUrl(url) {
     try {
       const parsedUrl = new URL(url);
-      if (parsedUrl.hostname !== 'en.wikipedia.org') {
-        return url;
+      if (parsedUrl.hostname === 'en-wikipedia-org.translate.goog') {
+        const englishUrl = new URL(`https://en.wikipedia.org${parsedUrl.pathname}`);
+        parsedUrl.searchParams.forEach(function (value, key) {
+          if (!key.startsWith('_x_tr_')) {
+            englishUrl.searchParams.set(key, value);
+          }
+        });
+        return englishUrl.toString();
       }
 
-      const translatedUrl = new URL(`https://en-wikipedia-org.translate.goog${parsedUrl.pathname}`);
-      parsedUrl.searchParams.forEach(function (value, key) {
-        translatedUrl.searchParams.set(key, value);
-      });
-      translatedUrl.searchParams.set('_x_tr_sl', 'en');
-      translatedUrl.searchParams.set('_x_tr_tl', 'bg');
-      translatedUrl.searchParams.set('_x_tr_hl', 'bg');
-      translatedUrl.searchParams.set('_x_tr_pto', 'wapp');
-      return translatedUrl.toString();
+      return url;
     } catch (error) {
       return url;
     }
@@ -1164,15 +1433,13 @@ function cacheContentElements() {
     dom.modalTitle.textContent = city.name;
     dom.modalDescription.textContent = city[keys.description] || city.description_en || city.description_bg || '';
     dom.modalPopulation.textContent = city.population;
-    dom.modalCoordinates.textContent = `${city.latitude.toFixed(2)}°, ${city.longitude.toFixed(2)}°`;
     dom.populationLabel.textContent = getTranslation('population');
-    dom.coordinatesLabel.textContent = getTranslation('coordinates');
     dom.attractionsLabel.textContent = getTranslation('keyAttractions');
     dom.hotelsLabel.textContent = getTranslation('topHotels');
     dom.modalHighlights.innerHTML = localizedHighlights.map(function (highlight, index) {
       const queryTerm = englishHighlights[index] || highlight;
       const directUrl = directHighlightLinks[index];
-      const finalUrl = toBulgarianTranslatedWikipediaUrl(directUrl || getAttractionWikipediaUrl(city.name, queryTerm));
+      const finalUrl = normalizeEnglishWikipediaUrl(directUrl || getAttractionWikipediaUrl(city.name, queryTerm));
       return `<a class="attraction-link-badge" href="${finalUrl}" target="_blank" rel="noopener noreferrer">${highlight}</a>`;
     }).join('');
 
@@ -1187,9 +1454,43 @@ function cacheContentElements() {
     }
   }
 
+  function removeLegacyTravelTipsElements() {
+    const legacySelectors = [
+      '[data-nav-key="travelTips"]',
+      '[href="#travel-tips"]',
+      '#travel-tips',
+      '#quickLinkTravelTitle',
+      '#quickLinkTravelSubtitle',
+      '#overviewNavTravelTips',
+      '#travelTipsSectionTitle',
+      '#travelTip1Title',
+      '#travelTip1Text',
+      '#travelTip2Title',
+      '#travelTip2Text',
+      '#travelTip3Title',
+      '#travelTip3Text'
+    ];
+
+    legacySelectors.forEach(function (selector) {
+      document.querySelectorAll(selector).forEach(function (element) {
+        element.remove();
+      });
+    });
+  }
+
+  function ensureIndependentSections() {
+    const blogSection = document.getElementById('blog');
+    const projectsSection = document.getElementById('projects');
+
+    if (blogSection && projectsSection && blogSection.contains(projectsSection)) {
+      blogSection.parentNode.insertBefore(projectsSection, blogSection.nextSibling);
+    }
+  }
+
   function renderContentShell() {
+    removeLegacyTravelTipsElements();
     dom.content.innerHTML = `
-        <div class="card country-info">
+        <div class="card country-info" id="overview">
           <div class="country-title-row">
             <h2 id="countryInfoTitle"></h2>
             <div class="action-buttons">
@@ -1203,142 +1504,301 @@ function cacheContentElements() {
           </div>
         </div>
 
-        <div class="card">
+        <div class="card trip-planner-card" id="tripPlanner">
+          <div class="section-header-row">
+            <h2 id="tripPlannerTitle">Travel planner</h2>
+          </div>
+          <form id="tripPlannerForm" class="trip-planner-form" novalidate>
+            <div class="planner-grid">
+              <label class="planner-field">
+                <span id="tripPlannerStartCountryLabel">Start country</span>
+                <select id="tripPlannerStartCountry">
+                  <option value="">Select country</option>
+                  <option value="BG">Bulgaria</option>
+                  <option value="DE">Germany</option>
+                  <option value="FR">France</option>
+                  <option value="ES">Spain</option>
+                  <option value="UK">United Kingdom</option>
+                </select>
+              </label>
+
+              <label class="planner-field">
+                <span id="tripPlannerDaysLabel">Days off</span>
+                <input id="tripPlannerDays" type="number" min="2" max="30" placeholder="Choose how many days">
+              </label>
+
+              <label class="planner-field">
+                <span id="tripPlannerBudgetLabel">Budget (€)</span>
+                <input id="tripPlannerBudget" type="number" min="200" max="5000" placeholder="Enter amount">
+              </label>
+
+              <label class="planner-field">
+                <span id="tripPlannerDestinationLabel">Destination</span>
+                <select id="tripPlannerDestination">
+                  <option value="">Select destination</option>
+                  <option value="lombok">Lombok</option>
+                  <option value="bali">Bali</option>
+                  <option value="java">Java</option>
+                  <option value="borneo">Borneo</option>
+                  <option value="yogyakarta">Yogyakarta</option>
+                  <option value="labuanbajo">Labuan Bajo</option>
+                  <option value="komodo">Komodo</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="planner-actions">
+              <button id="tripPlannerSubmitBtn" type="submit" class="planner-submit-btn">Calculate trip</button>
+              <button id="tripPlannerResetBtn" type="button" class="planner-reset-btn">Reset</button>
+            </div>
+            <p id="tripPlannerEstimateNote" class="trip-planner-estimate-note">Trip estimates are approximate and based on average local prices.</p>
+          </form>
+
+          <div id="tripPlannerResult" class="trip-planner-result">
+            <p id="tripPlannerResultPlaceholder">Select your trip details to see an example plan.</p>
+          </div>
+        </div>
+
+        <div class="card" id="cities">
           <h2 id="majorCitiesTitle"></h2>
+          <div class="api-notice" id="dataNotice"></div>
           <div class="cities-grid">
             ${createCityCardsHtml()}
           </div>
         </div>
 
-        <div class="card">
-          <h2 id="marineAnimalsTitle"></h2>
-          <div class="marine-grid">
-            ${createMarineAnimalsCardsHtml()}
+        <div id="wildlife" class="section-anchor-marker"></div>
+        <div class="card" id="marine-animals">
+          <div class="section-header-row">
+            <h2 id="marineAnimalsTitle"></h2>
+            <button type="button" class="section-toggle-btn" data-target="marine-animals-body" aria-expanded="false">Покажи</button>
+          </div>
+          <div id="marine-animals-body" class="marine-section-body">
+            <div class="marine-grid">
+              ${createMarineAnimalsCardsHtml()}
+            </div>
           </div>
         </div>
 
-        <div class="card">
-          <h2 id="landAnimalsTitle"></h2>
-          <div class="fruit-grid land-grid">
-            ${createLandAnimalsCardsHtml()}
+        <div class="card" id="land-animals">
+          <div class="section-header-row">
+            <h2 id="landAnimalsTitle"></h2>
+            <button type="button" class="section-toggle-btn" data-target="land-animals-body" aria-expanded="false">Покажи</button>
+          </div>
+          <div id="land-animals-body" class="marine-section-body">
+            <div class="fruit-grid land-grid">
+              ${createLandAnimalsCardsHtml()}
+            </div>
           </div>
         </div>
 
-        <div class="card">
-          <h2 id="freshwaterAnimalsTitle"></h2>
-          <div class="fruit-grid freshwater-grid">
-            ${createFreshwaterAnimalsCardsHtml()}
+        <div class="card" id="freshwater-animals">
+          <div class="section-header-row">
+            <h2 id="freshwaterAnimalsTitle"></h2>
+            <button type="button" class="section-toggle-btn" data-target="freshwater-animals-body" aria-expanded="false">Покажи</button>
+          </div>
+          <div id="freshwater-animals-body" class="marine-section-body">
+            <div class="fruit-grid freshwater-grid">
+              ${createFreshwaterAnimalsCardsHtml()}
+            </div>
           </div>
         </div>
 
-        <div class="card">
-          <h2 id="birdsTitle"></h2>
-          <div class="bird-grid">
-            ${createBirdCardsHtml()}
+        <div class="card" id="birds">
+          <div class="section-header-row">
+            <h2 id="birdsTitle"></h2>
+            <button type="button" class="section-toggle-btn" data-target="birds-body" aria-expanded="false">Покажи</button>
+          </div>
+          <div id="birds-body" class="marine-section-body">
+            <div class="bird-grid">
+              ${createBirdCardsHtml()}
+            </div>
           </div>
         </div>
 
-        <div class="card">
-          <h2 id="fruitsTitle"></h2>
-          <div class="fruit-grid">
-            ${createFruitCardsHtml()}
+        <div class="card" id="fruits">
+          <div class="section-header-row">
+            <h2 id="fruitsTitle"></h2>
+            <button type="button" class="section-toggle-btn" data-target="fruits-body" aria-expanded="false">Покажи</button>
+          </div>
+          <div id="fruits-body" class="marine-section-body">
+            <div class="fruit-grid">
+              ${createFruitCardsHtml()}
+            </div>
           </div>
         </div>
 
-        <div class="card">
-          <h2 id="parksTitle"></h2>
-          <div class="fruit-grid parks-grid">
-            ${createParkCardsHtml()}
+        <div class="card" id="parks">
+          <div class="section-header-row">
+            <h2 id="parksTitle"></h2>
+            <button type="button" class="section-toggle-btn" data-target="parks-body" aria-expanded="false">Покажи</button>
+          </div>
+          <div id="parks-body" class="marine-section-body">
+            <div class="fruit-grid parks-grid">
+              ${createParkCardsHtml()}
+            </div>
           </div>
         </div>
 
-        <div class="card">
-          <h2 id="treesTitle"></h2>
-          <div class="fruit-grid tree-grid">
-            ${createTreeCardsHtml()}
+        <div class="card" id="trees">
+          <div class="section-header-row">
+            <h2 id="treesTitle"></h2>
+            <button type="button" class="section-toggle-btn" data-target="trees-body" aria-expanded="false">Покажи</button>
+          </div>
+          <div id="trees-body" class="marine-section-body">
+            <div class="fruit-grid tree-grid">
+              ${createTreeCardsHtml()}
+            </div>
           </div>
         </div>
 
-        <div class="card blog-card">
-          <h2 id="blogSectionTitle"></h2>
-          <div class="blog-preview">
-            <h3 id="blogArticleTitle"></h3>
-            <p id="blogArticleExcerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn" class="blog-read-btn" type="button"></button>
+        <div class="card blog-card" id="blog">
+          <div class="section-header-row">
+            <h2 id="blogSectionTitle"></h2>
+            <button type="button" class="section-toggle-btn" data-target="blog-body" aria-expanded="false">Покажи</button>
           </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle2Title"></h3>
-            <p id="blogArticle2Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn2" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle3Title"></h3>
-            <p id="blogArticle3Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn3" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle4Title"></h3>
-            <p id="blogArticle4Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn4" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle5Title"></h3>
-            <p id="blogArticle5Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn5" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle6Title"></h3>
-            <p id="blogArticle6Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn6" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle7Title"></h3>
-            <p id="blogArticle7Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn7" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle8Title"></h3>
-            <p id="blogArticle8Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn8" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle9Title"></h3>
-            <p id="blogArticle9Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn9" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle10Title"></h3>
-            <p id="blogArticle10Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn10" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle11Title"></h3>
-            <p id="blogArticle11Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn11" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle12Title"></h3>
-            <p id="blogArticle12Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn12" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle13Title"></h3>
-            <p id="blogArticle13Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn13" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle14Title"></h3>
-            <p id="blogArticle14Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn14" class="blog-read-btn" type="button"></button>
-          </div>
-          <div class="blog-preview">
-            <h3 id="blogArticle15Title"></h3>
-            <p id="blogArticle15Excerpt" class="blog-excerpt"></p>
-            <button id="blogReadBtn15" class="blog-read-btn" type="button"></button>
+          <div id="blog-body" class="marine-section-body">
+            <div class="blog-grid">
+              <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-1" aria-hidden="true">📖</div>
+              <div class="blog-content">
+                <h3 id="blogArticleTitle"></h3>
+                <p id="blogArticleExcerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-2" aria-hidden="true">🐬</div>
+              <div class="blog-content">
+                <h3 id="blogArticle2Title"></h3>
+                <p id="blogArticle2Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn2" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-3" aria-hidden="true">🚢</div>
+              <div class="blog-content">
+                <h3 id="blogArticle3Title"></h3>
+                <p id="blogArticle3Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn3" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-4" aria-hidden="true">🏝️</div>
+              <div class="blog-content">
+                <h3 id="blogArticle4Title"></h3>
+                <p id="blogArticle4Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn4" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-5" aria-hidden="true">🏅</div>
+              <div class="blog-content">
+                <h3 id="blogArticle5Title"></h3>
+                <p id="blogArticle5Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn5" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-6" aria-hidden="true">🍽️</div>
+              <div class="blog-content">
+                <h3 id="blogArticle6Title"></h3>
+                <p id="blogArticle6Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn6" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-7" aria-hidden="true">🍍</div>
+              <div class="blog-content">
+                <h3 id="blogArticle7Title"></h3>
+                <p id="blogArticle7Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn7" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-8" aria-hidden="true">🌊</div>
+              <div class="blog-content">
+                <h3 id="blogArticle8Title"></h3>
+                <p id="blogArticle8Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn8" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-9" aria-hidden="true">🌋</div>
+              <div class="blog-content">
+                <h3 id="blogArticle9Title"></h3>
+                <p id="blogArticle9Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn9" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+              <article class="blog-preview">
+                <div class="blog-thumb blog-thumb-10" aria-hidden="true">🚆</div>
+                <div class="blog-content">
+                  <h3 id="blogArticle10Title"></h3>
+                  <p id="blogArticle10Excerpt" class="blog-excerpt"></p>
+                  <button id="blogReadBtn10" class="blog-read-btn" type="button"></button>
+                </div>
+              </article>
+              <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-11" aria-hidden="true">🚂</div>
+              <div class="blog-content">
+                <h3 id="blogArticle11Title"></h3>
+                <p id="blogArticle11Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn11" class="blog-read-btn" type="button"></button>
+              </div>
+              </article>
+              <article class="blog-preview">
+                <div class="blog-thumb blog-thumb-12" aria-hidden="true">🦧</div>
+                <div class="blog-content">
+                  <h3 id="blogArticle12Title"></h3>
+                  <p id="blogArticle12Excerpt" class="blog-excerpt"></p>
+                  <button id="blogReadBtn12" class="blog-read-btn" type="button"></button>
+                </div>
+              </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-13" aria-hidden="true">🏍️</div>
+              <div class="blog-content">
+                <h3 id="blogArticle13Title"></h3>
+                <p id="blogArticle13Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn13" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-14" aria-hidden="true">🛶</div>
+              <div class="blog-content">
+                <h3 id="blogArticle14Title"></h3>
+                <p id="blogArticle14Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn14" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-15" aria-hidden="true">⚽</div>
+              <div class="blog-content">
+                <h3 id="blogArticle15Title"></h3>
+                <p id="blogArticle15Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn15" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-16" aria-hidden="true">🌋</div>
+              <div class="blog-content">
+                <h3 id="blogArticle16Title"></h3>
+                <p id="blogArticle16Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn16" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
+            <article class="blog-preview">
+              <div class="blog-thumb blog-thumb-25" aria-hidden="true">🚴‍♂️</div>
+              <div class="blog-content">
+                <h3 id="blogArticle25Title"></h3>
+                <p id="blogArticle25Excerpt" class="blog-excerpt"></p>
+                <button id="blogReadBtn25" class="blog-read-btn" type="button"></button>
+              </div>
+            </article>
           </div>
         </div>
 
-        <div class="card about-projects-card">
+        <div class="card about-projects-card" id="projects">
           <h2 id="aboutSectionTitle"></h2>
           <p id="aboutSectionText" class="about-section-text"></p>
           <div class="about-projects-grid">
@@ -1383,11 +1843,10 @@ function cacheContentElements() {
             </div>
           </section>
         </div>
-
-        <div class="api-notice" id="dataNotice"></div>
       `;
 
     cacheContentElements();
+    ensureIndependentSections();
 
     const loadingElement = document.querySelector('.loading');
     if (loadingElement) {
@@ -1399,25 +1858,36 @@ function cacheContentElements() {
       }, 600);
     }
 
+    bindSectionToggles();
+    bindTripPlannerForm();
     dom.stadiumInfoBtn.addEventListener('click', openStadiumModal);
     dom.wildlifeInfoBtn.addEventListener('click', openWildlifeModal);
     dom.ticketInfoBtn.addEventListener('click', openTicketModal);
-    dom.blogReadBtn.addEventListener('click', openBlogModal);
-    dom.blogReadBtn2.addEventListener('click', openDolphinBlogModal);
-    dom.blogReadBtn3.addEventListener('click', openCruiseBlogModal);
-    dom.blogReadBtn4.addEventListener('click', openLombokBlogModal);
-    dom.blogReadBtn5.addEventListener('click', openSportsBlogModal);
-    dom.blogReadBtn6.addEventListener('click', openTop3FoodBlogModal);
-    dom.blogReadBtn7.addEventListener('click', openFruitsBlogModal);
-    dom.blogReadBtn8.addEventListener('click', openRiversBlogModal);
-    dom.blogReadBtn9.addEventListener('click', openVolcanoBlogModal);
-    dom.blogReadBtn10.addEventListener('click', openTrainBlogModal);
-    dom.blogReadBtn11.addEventListener('click', openTrainStoryBlogModal);
-    dom.blogReadBtn12.addEventListener('click', openBorneoBlogModal);
-    dom.blogReadBtn13.addEventListener('click', openMotorsportBlogModal);
-    dom.blogReadBtn14.addEventListener('click', openPalembangBlogModal);
-    dom.blogReadBtn15.addEventListener('click', openFootballBlogModal);
-    dom.partnerWalletCopy.addEventListener('click', copyPartnerWalletAddress);
+    if (dom.blogReadBtn) dom.blogReadBtn.addEventListener('click', openBlogModal);
+    if (dom.blogReadBtn2) dom.blogReadBtn2.addEventListener('click', openDolphinBlogModal);
+    if (dom.blogReadBtn3) dom.blogReadBtn3.addEventListener('click', openCruiseBlogModal);
+    if (dom.blogReadBtn4) dom.blogReadBtn4.addEventListener('click', openLombokBlogModal);
+    if (dom.blogReadBtn5) dom.blogReadBtn5.addEventListener('click', openSportsBlogModal);
+    if (dom.blogReadBtn6) dom.blogReadBtn6.addEventListener('click', openTop3FoodBlogModal);
+    if (dom.blogReadBtn8) dom.blogReadBtn8.addEventListener('click', openRiversBlogModal);
+    if (dom.blogReadBtn9) dom.blogReadBtn9.addEventListener('click', openVolcanoBlogModal);
+    if (dom.blogReadBtn10) dom.blogReadBtn10.addEventListener('click', openTrainBlogModal);
+    if (dom.blogReadBtn11) dom.blogReadBtn11.addEventListener('click', openTrainStoryBlogModal);
+    if (dom.blogReadBtn12) dom.blogReadBtn12.addEventListener('click', openBorneoBlogModal);
+    if (dom.blogReadBtn13) dom.blogReadBtn13.addEventListener('click', openMotorsportBlogModal);
+    if (dom.blogReadBtn14) dom.blogReadBtn14.addEventListener('click', openPalembangBlogModal);
+    if (dom.blogReadBtn15) dom.blogReadBtn15.addEventListener('click', openFootballBlogModal);
+    if (dom.blogReadBtn16) dom.blogReadBtn16.addEventListener('click', openUningBromoBlogModal);
+    if (dom.blogReadBtn17) dom.blogReadBtn17.addEventListener('click', openSmqhBlogModal);
+    if (dom.blogReadBtn18) dom.blogReadBtn18.addEventListener('click', openCarKaloqnBlogModal);
+    if (dom.blogReadBtn19) dom.blogReadBtn19.addEventListener('click', openTervelBlogModal);
+    if (dom.blogReadBtn20) dom.blogReadBtn20.addEventListener('click', openDoiranBlogModal);
+    if (dom.blogReadBtn21) dom.blogReadBtn21.addEventListener('click', openEuropeDrugPolicyBlogModal);
+    if (dom.blogReadBtn22) dom.blogReadBtn22.addEventListener('click', openBatBayanBlogModal);
+    if (dom.blogReadBtn23) dom.blogReadBtn23.addEventListener('click', openHiddenIndonesiaBlogModal);
+    if (dom.blogReadBtn24) dom.blogReadBtn24.addEventListener('click', openUsaOpenBlogModal);
+    if (dom.blogReadBtn25) dom.blogReadBtn25.addEventListener('click', openIndividualTimeTrialBlogModal);
+    if (dom.partnerWalletCopy) dom.partnerWalletCopy.addEventListener('click', copyPartnerWalletAddress);
     dom.content.addEventListener('click', function (event) {
       const freshwaterReadButton = event.target.closest('.freshwater-read-text');
       if (freshwaterReadButton) {
@@ -1469,7 +1939,586 @@ function cacheContentElements() {
       openCityModal(Number(cityCard.dataset.cityIndex));
     });
 
+    hideSpecificBlogCards();
     contentRendered = true;
+  }
+
+  const TRIP_PLANNER_PROFILES = {
+    lombok: {
+      name: 'Lombok',
+      flightCost: 650,
+      dailyBudget: 45,
+      bestDays: [4, 7],
+      season: 'April - October',
+      route: ['Kuta Lombok', 'Senaru', 'Tiu Kelep', 'Gili Islands'],
+      warning: 'Rainy period is usually from November to February.',
+      vibe: 'Beach + waterfalls + relaxed island pace.',
+      difficulty: 'Medium',
+      budgetPillars: {
+        budget: { title: 'budget', summary: 'A solid low-cost island escape for beach time, simple stays, and local food.', recommendation: 'Stay in a guesthouse, use ferries, and focus on 2-3 key stops.' },
+        mid: { title: 'mid', summary: 'A balanced choice with comfortable stays, more flexibility, and a smoother trip rhythm.', recommendation: 'Mix one scenic stop with a couple of easy beaches and a guided day trip.' },
+        premium: { title: 'premium', summary: 'A very comfortable trip with private transfers, boutique stays, and fewer logistics headaches.', recommendation: 'Keep the route compact and add a private boat or wellness day.' }
+      }
+    },
+    bali: {
+      name: 'Bali',
+      flightCost: 550,
+      dailyBudget: 60,
+      bestDays: [5, 10],
+      season: 'May - September',
+      route: ['Ubud', 'Uluwatu', 'Canggu', 'Nusa Penida'],
+      warning: 'Popular season raises accommodation prices.',
+      vibe: 'Balanced mix of culture, beaches and food.',
+      difficulty: 'Easy',
+      budgetPillars: {
+        budget: { title: 'budget', summary: 'Best for a practical island trip with good value, local food, and a shorter route.', recommendation: 'Choose one cultural base and one beach base to keep the trip efficient.' },
+        mid: { title: 'mid', summary: 'This is the sweet spot for a smooth trip with nice stays and enough room for activities.', recommendation: 'Add one temple day, one surf day, and one scenic coastal route.' },
+        premium: { title: 'premium', summary: 'Great if you want comfort, private transfers, and a better pace without stress.', recommendation: 'Keep a shorter route and reserve villas or luxury stays near the coast.' }
+      }
+    },
+    java: {
+      name: 'Java',
+      flightCost: 610,
+      dailyBudget: 48,
+      bestDays: [5, 9],
+      season: 'April - November',
+      route: ['Jakarta', 'Yogyakarta', 'Borobudur', 'Prambanan'],
+      warning: 'Longer transfers between cities can reduce free time if you overpack the route.',
+      vibe: 'Culture, volcanoes, temples and efficient city stops.',
+      difficulty: 'Medium',
+      budgetPillars: {
+        budget: { title: 'budget', summary: 'A very practical route for culture and food lovers who want value without too much complexity.', recommendation: 'Stay in two bases and focus on one temple route plus one city day.' },
+        mid: { title: 'mid', summary: 'This route balances comfort, local experiences, and enough time for larger cultural sites.', recommendation: 'Include a sunrise temple visit and one relaxed evening in a heritage area.' },
+        premium: { title: 'premium', summary: 'A premium Java trip works well with guided experiences and comfortable hotels in key cities.', recommendation: 'Keep a slower route and book a private car between cultural highlights.' }
+      }
+    },
+    borneo: {
+      name: 'Borneo',
+      flightCost: 720,
+      dailyBudget: 50,
+      bestDays: [5, 9],
+      season: 'April - October',
+      route: ['Tanjung Puting', 'Jungle river trip', 'wildlife lookouts'],
+      warning: 'Remote areas need more planning and longer transfers.',
+      vibe: 'Wildlife, rainforest and stronger adventure feel.',
+      difficulty: 'Hard',
+      budgetPillars: {
+        budget: { title: 'budget', summary: 'A truly adventurous option if you like nature and are okay with simpler stays.', recommendation: 'Use one or two base towns and focus on river trips and wildlife observation.' },
+        mid: { title: 'mid', summary: 'A realistic choice for a well-paced rainforest adventure with decent comfort.', recommendation: 'Plan 2-3 nature days and leave room for travel between destinations.' },
+        premium: { title: 'premium', summary: 'This works well if you want a tailored eco trip with better logistics and comfort.', recommendation: 'Add a private guide and choose one slower, more immersive route.' }
+      }
+    },
+    yogyakarta: {
+      name: 'Yogyakarta',
+      flightCost: 480,
+      dailyBudget: 35,
+      bestDays: [3, 6],
+      season: 'All year',
+      route: ['Borobudur', 'Prambanan', 'Merapi', 'Malioboro'],
+      warning: 'Best for culture trips and short city stays.',
+      vibe: 'Perfect for a compact cultural trip.',
+      difficulty: 'Easy',
+      budgetPillars: {
+        budget: { title: 'budget', summary: 'An excellent budget-friendly cultural trip with strong value for food, stays, and access.', recommendation: 'Stay central and keep the route to 2-3 key temples and one evening market.' },
+        mid: { title: 'mid', summary: 'A very efficient city break with enough budget for good food and easy transportation.', recommendation: 'Add one sunrise trip and one comfortable cultural dinner experience.' },
+        premium: { title: 'premium', summary: 'Very comfortable for a compact design-heavy trip with themed stays and relaxed timing.', recommendation: 'Use a private car and keep the route immersive instead of rushed.' }
+      }
+    },
+    labuanbajo: {
+      name: 'Labuan Bajo',
+      flightCost: 820,
+      dailyBudget: 75,
+      bestDays: [4, 8],
+      season: 'April - November',
+      route: ['Komodo', 'Padar Island', 'Pink Beach', 'boat day'],
+      warning: 'Boat trips and lodging can quickly increase the total cost.',
+      vibe: 'Island hopping and dramatic coastal scenery.',
+      difficulty: 'Medium',
+      budgetPillars: {
+        budget: { title: 'budget', summary: 'Possible, but you need to keep the itinerary modest and limit expensive excursions.', recommendation: 'Choose one boat day and keep the rest of the trip close to town.' },
+        mid: { title: 'mid', summary: 'A strong island-hopping trip with room for a great boat route and comfortable stays.', recommendation: 'Mix a coastal stay with one or two boat-based highlights and one downtime day.' },
+        premium: { title: 'premium', summary: 'This is a premium island trip with high-value scenery, smooth logistics, and better comfort.', recommendation: 'Choose a tailored boat itinerary and book the best room with sea views.' }
+      }
+    },
+    komodo: {
+      name: 'Komodo',
+      flightCost: 900,
+      dailyBudget: 82,
+      bestDays: [4, 7],
+      season: 'May - October',
+      route: ['Komodo National Park', 'Pink Beach', 'Padar Island', 'liveaboard'],
+      warning: 'Most comfort comes from boat-based travel and a higher daily budget.',
+      vibe: 'Remote islands, dragons, and big scenic payoff.',
+      difficulty: 'Hard',
+      budgetPillars: {
+        budget: { title: 'budget', summary: 'A challenging route that still works if you keep it simple and avoid premium boat packages.', recommendation: 'Pick one or two island stops and keep long transfers to a minimum.' },
+        mid: { title: 'mid', summary: 'A realistic option for combining comfort with a memorable island-hopping trip.', recommendation: 'Book a mid-range cabin or small guesthouse and keep the route compact.' },
+        premium: { title: 'premium', summary: 'This is the best choice for a smooth, stylish island trip with guided tours and premium stays.', recommendation: 'Choose a private or luxury boat route and prioritize fewer but better experiences.' }
+      }
+    }
+  };
+
+  function validateTripPlannerInput(startCountry, days, budget, destinationKey) {
+    const validCountries = ['BG', 'DE', 'FR', 'ES', 'UK', 'OTHER'];
+    const normalizedCountry = typeof startCountry === 'string' ? startCountry.trim().toUpperCase() : null;
+
+    if (!validCountries.includes(normalizedCountry)) {
+      return {
+        valid: false,
+        errorCode: 'UNKNOWN_COUNTRY',
+        message: getTranslation('tripPlannerInvalidInput')
+      };
+    }
+
+    if (typeof days !== 'number' || Number.isNaN(days) || !Number.isInteger(days) || days < 1) {
+      return {
+        valid: false,
+        errorCode: 'INVALID_DAYS',
+        message: getTranslation('tripPlannerInvalidInput')
+      };
+    }
+
+    if (typeof budget !== 'number' || Number.isNaN(budget) || budget <= 0) {
+      return {
+        valid: false,
+        errorCode: 'INVALID_BUDGET',
+        message: getTranslation('tripPlannerInvalidInput')
+      };
+    }
+
+    if (typeof destinationKey !== 'string' || !destinationKey.trim()) {
+      return {
+        valid: false,
+        errorCode: 'INVALID_DESTINATION',
+        message: getTranslation('tripPlannerInvalidInput')
+      };
+    }
+
+    const key = destinationKey.trim().toLowerCase();
+    if (!TRIP_PLANNER_PROFILES[key]) {
+      return {
+        valid: false,
+        errorCode: 'DESTINATION_NOT_FOUND',
+        message: 'Destination is not available yet.'
+      };
+    }
+
+    return {
+      valid: true,
+      normalizedCountry,
+      destinationKey: key
+    };
+  }
+
+  function getLocalizedTripPlannerValue(value) {
+    const languageMap = {
+      bg: {
+        'April - October': 'Април - Октомври',
+        'April - November': 'Април - Ноември',
+        'May - September': 'Май - Септември',
+        'All year': 'Цяла година',
+        'Kuta Lombok': 'Кута Ломбок',
+        'Senaru': 'Сенару',
+        'Tiu Kelep': 'Тиу Келеп',
+        'Gili Islands': 'Гили острови',
+        'Ubud': 'Убуд',
+        'Uluwatu': 'Улувату',
+        'Canggu': 'Canggu',
+        'Nusa Penida': 'Nusa Penida',
+        'Jakarta': 'Джакарта',
+        'Yogyakarta': 'Йогякарта',
+        'Borobudur': 'Боробудур',
+        'Prambanan': 'Прамбанан',
+        'Tanjung Puting': 'Танджунг Путинг',
+        'Jungle river trip': 'Река в джунглата',
+        'wildlife lookouts': 'гледки за дивата природа',
+        'Komodo': 'Комодо',
+        'Padar Island': 'Остров Падар',
+        'Pink Beach': 'Розов плаж',
+        'boat day': 'ден на лодката',
+        'Beach + waterfalls + relaxed island pace.': 'Плаж + водопади + спокойна островна атмосфера.',
+        'Balanced mix of culture, beaches and food.': 'Баланс между култура, плажове и храна.',
+        'Culture, volcanoes, temples and efficient city stops.': 'Култура, вулкани, храмове и ефективни градски спирки.',
+        'Wildlife, rainforest and stronger adventure feel.': 'Диви животни, джунгла и по-силно приключенско усещане.',
+        'Perfect for a compact cultural trip.': 'Идеален за кратко културно пътуване.',
+        'Island hopping and dramatic coastal scenery.': 'Островни преходи и драматична крайбрежна красота.',
+        'Remote islands, dragons, and big scenic payoff.': 'Отдалечени острови, дракони и впечатляващи гледки.',
+        'Rainy period is usually from November to February.': 'Дъждовният период обикновено е от ноември до февруари.',
+        'Popular season raises accommodation prices.': 'Популярният сезон повишава цените на местата за настаняване.',
+        'Longer transfers between cities can reduce free time if you overpack the route.': 'По-дългите пътувания между градовете могат да намалят свободното време, ако маршрута е твърде натоварен.',
+        'Remote areas need more planning and longer transfers.': 'Отдалечените райони изискват повече планиране и по-дълги трансфери.',
+        'Best for culture trips and short city stays.': 'Най-подходящо за културни пътувания и кратки престои в градовете.',
+        'Boat trips and lodging can quickly increase the total cost.': 'Лодковите екскурзии и настаняването могат бързо да повишат общата цена.',
+        'Most comfort comes from boat-based travel and a higher daily budget.': 'По-голямата част от комфорт идва от пътуване с лодка и по-висок дневен бюджет.',
+        'A very comfortable trip with private transfers, boutique stays, and fewer logistics headaches.': 'Много комфортно пътуване с частни трансфери, бутикови места за настаняване и по-малко логистични проблеми.',
+        'A premium Java trip works well with guided experiences and comfortable hotels in key cities.': 'Премиум пътуване за Ява работи отлично с водени преживявания и комфортни хотели в ключови градове.',
+        'Keep a slower route and book a private car between cultural highlights.': 'Задръж по-бавен маршрут и резервирай частен автомобил между културните атракции.',
+        'A solid low-cost island escape for beach time, simple stays, and local food.': 'Добър и достъпен островен избор за плаж, прости места за настаняване и местна храна.',
+        'A balanced choice with comfortable stays, more flexibility, and a smoother trip rhythm.': 'Добър баланс между комфорт, гъвкавост и по-плавен ритъм на пътуването.',
+        'Keep the route compact and add a private boat or wellness day.': 'Задържи маршрута компактен и добави частна лодка или ден за wellness.',
+        'A very comfortable trip with private transfers, boutique stays, and fewer logistics headaches.': 'Много комфортно пътуване с частни трансфери, бутикови места за настаняване и по-малко логистични проблеми.',
+        'Lombok': 'Ломбок',
+        'Java': 'Ява',
+        'Bali': 'Бали',
+        'Borneo': 'Борнео',
+        'Yogyakarta': 'Йогякарта',
+        'Labuan Bajo': 'Лабуан Баджо',
+        'Komodo': 'Комодо',
+        'BG': 'България',
+        'DE': 'Германия',
+        'FR': 'Франция',
+        'ES': 'Испания',
+        'UK': 'Великобритания'
+      },
+      en: {
+        'April - October': 'April - October',
+        'April - November': 'April - November',
+        'May - September': 'May - September',
+        'All year': 'All year',
+        'Rainy period is usually from November to February.': 'Rainy period is usually from November to February.',
+        'Longer transfers between cities can reduce free time if you overpack the route.': 'Longer transfers between cities can reduce free time if you overpack the route.',
+        'A premium Java trip works well with guided experiences and comfortable hotels in key cities.': 'A premium Java trip works well with guided experiences and comfortable hotels in key cities.',
+        'Keep a slower route and book a private car between cultural highlights.': 'Keep a slower route and book a private car between cultural highlights.',
+        'Keep the route compact and add a private boat or wellness day.': 'Keep the route compact and add a private boat or wellness day.',
+        'Beach + waterfalls + relaxed island pace.': 'Beach + waterfalls + relaxed island pace.',
+        'Culture, volcanoes, temples and efficient city stops.': 'Culture, volcanoes, temples and efficient city stops.',
+        'Lombok': 'Lombok',
+        'Java': 'Java',
+        'Bali': 'Bali',
+        'Borneo': 'Borneo',
+        'Yogyakarta': 'Yogyakarta',
+        'Labuan Bajo': 'Labuan Bajo',
+        'Komodo': 'Komodo',
+        'BG': 'Bulgaria',
+        'DE': 'Germany',
+        'FR': 'France',
+        'ES': 'Spain',
+        'UK': 'United Kingdom'
+      },
+      de: {
+        'April - October': 'April - Oktober',
+        'April - November': 'April - November',
+        'May - September': 'Mai - September',
+        'All year': 'Ganzes Jahr',
+        'Rainy period is usually from November to February.': 'Die Regenzeit liegt meist zwischen November und Februar.',
+        'Longer transfers between cities can reduce free time if you overpack the route.': 'Längere Transfers zwischen Städten können die freie Zeit verkürzen, wenn die Route zu voll ist.',
+        'A premium Java trip works well with guided experiences and comfortable hotels in key cities.': 'Eine Premium-Reise auf Java funktioniert gut mit geführten Erlebnissen und komfortablen Hotels in wichtigen Städten.',
+        'Keep a slower route and book a private car between cultural highlights.': 'Wähle eine ruhigere Route und buche ein privates Auto zwischen den Kulturhighlights.',
+        'Keep the route compact and add a private boat or wellness day.': 'Halte die Route kompakt und füge einen privaten Bootstag oder Wellness-Tag hinzu.',
+        'Beach + waterfalls + relaxed island pace.': 'Strand + Wasserfälle + entspannter Inselrhythmus.',
+        'Culture, volcanoes, temples and efficient city stops.': 'Kultur, Vulkane, Tempel und effiziente Stadtstopps.',
+        'Lombok': 'Lombok',
+        'Java': 'Java',
+        'Bali': 'Bali',
+        'Borneo': 'Borneo',
+        'Yogyakarta': 'Yogyakarta',
+        'Labuan Bajo': 'Labuan Bajo',
+        'Komodo': 'Komodo',
+        'BG': 'Bulgarien',
+        'DE': 'Deutschland',
+        'FR': 'Frankreich',
+        'ES': 'Spanien',
+        'UK': 'Vereinigtes Königreich'
+      },
+      fr: {
+        'April - October': 'Avril - Octobre',
+        'April - November': 'Avril - Novembre',
+        'May - September': 'Mai - Septembre',
+        'All year': 'Toute l’année',
+        'Rainy period is usually from November to February.': 'La saison des pluies est généralement de novembre à février.',
+        'Longer transfers between cities can reduce free time if you overpack the route.': 'Des transferts plus longs entre villes peuvent réduire le temps libre si le parcours est trop chargé.',
+        'A premium Java trip works well with guided experiences and comfortable hotels in key cities.': 'Un voyage premium à Java fonctionne bien avec des expériences guidées et des hôtels confortables dans les villes clés.',
+        'Keep a slower route and book a private car between cultural highlights.': 'Gardez un itinéraire plus lent et réservez une voiture privée entre les points forts culturels.',
+        'Keep the route compact and add a private boat or wellness day.': 'Gardez l’itinéraire compact et ajoutez une journée en bateau privé ou bien-être.',
+        'Beach + waterfalls + relaxed island pace.': 'Plage + cascades + rythme paisible de l’île.',
+        'Culture, volcanoes, temples and efficient city stops.': 'Culture, volcans, temples et arrêts urbains efficaces.',
+        'Lombok': 'Lombok',
+        'Java': 'Java',
+        'Bali': 'Bali',
+        'Borneo': 'Bornéo',
+        'Yogyakarta': 'Yogyakarta',
+        'Labuan Bajo': 'Labuan Bajo',
+        'Komodo': 'Komodo',
+        'BG': 'Bulgarie',
+        'DE': 'Allemagne',
+        'FR': 'France',
+        'ES': 'Espagne',
+        'UK': 'Royaume-Uni'
+      },
+      es: {
+        'April - October': 'Abril - Octubre',
+        'April - November': 'Abril - Noviembre',
+        'May - September': 'Mayo - Septiembre',
+        'All year': 'Todo el año',
+        'Rainy period is usually from November to February.': 'La temporada de lluvias suele ir de noviembre a febrero.',
+        'Longer transfers between cities can reduce free time if you overpack the route.': 'Los traslados más largos pueden reducir el tiempo libre si el recorrido está demasiado cargado.',
+        'A premium Java trip works well with guided experiences and comfortable hotels in key cities.': 'Un viaje premium por Java funciona bien con experiencias guiadas y hoteles cómodos en ciudades clave.',
+        'Keep a slower route and book a private car between cultural highlights.': 'Mantén un recorrido más tranquilo y reserva un coche privado entre los puntos culturales.',
+        'Keep the route compact and add a private boat or wellness day.': 'Mantén la ruta compacta y añade un día con barco privado o wellness.',
+        'Beach + waterfalls + relaxed island pace.': 'Playa + cascadas + ritmo relajado de isla.',
+        'Culture, volcanoes, temples and efficient city stops.': 'Cultura, volcanes, templos y paradas urbanas eficientes.',
+        'Lombok': 'Lombok',
+        'Java': 'Java',
+        'Bali': 'Bali',
+        'Borneo': 'Borneo',
+        'Yogyakarta': 'Yogyakarta',
+        'Labuan Bajo': 'Labuan Bajo',
+        'Komodo': 'Komodo',
+        'BG': 'Bulgaria',
+        'DE': 'Alemania',
+        'FR': 'Francia',
+        'ES': 'España',
+        'UK': 'Reino Unido'
+      },
+      id: {
+        'April - October': 'April - Oktober',
+        'April - November': 'April - November',
+        'May - September': 'Mei - September',
+        'All year': 'Sepanjang tahun',
+        'Rainy period is usually from November to February.': 'Musim hujan biasanya terjadi dari November hingga Februari.',
+        'Longer transfers between cities can reduce free time if you overpack the route.': 'Transfer yang lebih lama antar kota dapat mengurangi waktu luang jika rutenya terlalu padat.',
+        'A premium Java trip works well with guided experiences and comfortable hotels in key cities.': 'Perjalanan premium ke Jawa cocok dengan pengalaman terpandu dan hotel nyaman di kota-kota utama.',
+        'Keep a slower route and book a private car between cultural highlights.': 'Pertahankan rute yang lebih santai dan sewa mobil pribadi antar titik budaya utama.',
+        'Keep the route compact and add a private boat or wellness day.': 'Jaga rutenya tetap ringkas dan tambahkan hari dengan perahu privat atau wellness.',
+        'Beach + waterfalls + relaxed island pace.': 'Pantai + air terjun + ritme pulau yang santai.',
+        'Culture, volcanoes, temples and efficient city stops.': 'Budaya, gunung berapi, candi, dan singgahan kota yang efisien.',
+        'Lombok': 'Lombok',
+        'Java': 'Jawa',
+        'Bali': 'Bali',
+        'Borneo': 'Borneo',
+        'Yogyakarta': 'Yogyakarta',
+        'Labuan Bajo': 'Labuan Bajo',
+        'Komodo': 'Komodo',
+        'BG': 'Bulgaria',
+        'DE': 'Jerman',
+        'FR': 'Prancis',
+        'ES': 'Spanyol',
+        'UK': 'Britania Raya'
+      }
+    };
+
+    if (!value || typeof value !== 'string') {
+      return value;
+    }
+
+    return (languageMap[currentLanguage] && languageMap[currentLanguage][value]) || value;
+  }
+
+  function calculateTripPlannerResult(startCountry, days, budget, destinationKey) {
+    const validation = validateTripPlannerInput(startCountry, days, budget, destinationKey);
+
+    if (!validation.valid) {
+      return {
+        valid: false,
+        status: 'error',
+        errorCode: validation.errorCode,
+        message: validation.message,
+        totalEstimated: 0,
+        budgetEnough: false,
+        recommendedDays: false,
+        difficulty: null,
+        destinationName: null,
+        countryName: startCountry || null,
+        breakdown: { flight: 0, stay: 0, extras: 0 },
+        warning: null,
+        summary: '',
+        recommendation: ''
+      };
+    }
+
+    const profile = TRIP_PLANNER_PROFILES[validation.destinationKey];
+    const flightCost = profile.flightCost;
+    const stayCost = days * profile.dailyBudget;
+    const extraCost = days * 18;
+    const totalEstimated = flightCost + stayCost + extraCost;
+    const goodFit = totalEstimated <= budget;
+    const niceDays = days >= profile.bestDays[0] && days <= profile.bestDays[1];
+    const budgetBand = budget < (profile.flightCost + profile.dailyBudget * 3) ? 'budget' : budget < (profile.flightCost + profile.dailyBudget * 6) ? 'mid' : 'premium';
+    const budgetText = profile.budgetPillars[budgetBand] || profile.budgetPillars.mid;
+    const statusClass = goodFit ? 'good' : 'tight';
+    const statusText = goodFit ? '✔️ ' + getTranslation('tripPlannerGoodFit') : '⚠️ ' + getTranslation('tripPlannerBudgetTight');
+    const difficultyText = getTranslation('tripPlannerDifficulty' + (profile.difficulty || 'Medium'));
+    const localizedWarning = getLocalizedTripPlannerValue(profile.warning);
+    const localizedVibe = getLocalizedTripPlannerValue(profile.vibe);
+    const localizedSeason = getLocalizedTripPlannerValue(profile.season);
+    const localizedRoute = profile.route.map(function (stop) {
+      return getLocalizedTripPlannerValue(stop);
+    });
+    const destinationLabelKey = {
+      lombok: 'tripPlannerDestinationLombok',
+      bali: 'tripPlannerDestinationBali',
+      java: 'tripPlannerDestinationJava',
+      borneo: 'tripPlannerDestinationBorneo',
+      yogyakarta: 'tripPlannerDestinationYogyakarta',
+      labuanbajo: 'tripPlannerDestinationLabuanBajo',
+      komodo: 'tripPlannerDestinationKomodo'
+    }[validation.destinationKey];
+    const destinationName = getTranslation(destinationLabelKey) || profile.name;
+    const countryNameMap = {
+      BG: 'tripPlannerCountryBg',
+      DE: 'tripPlannerCountryDe',
+      FR: 'tripPlannerCountryFr',
+      ES: 'tripPlannerCountryEs',
+      UK: 'tripPlannerCountryUk'
+    };
+    const countryName = getTranslation(countryNameMap[validation.normalizedCountry]) || validation.normalizedCountry;
+
+    const summaryParts = [getLocalizedTripPlannerValue(budgetText.summary) || budgetText.summary];
+    if (!niceDays) {
+      if (days < profile.bestDays[0]) {
+        summaryParts.push(getTranslation('tripPlannerFewDays') + ' ' + profile.bestDays[0] + ' ' + getTranslation('tripPlannerDaysShort'));
+      } else {
+        summaryParts.push(getTranslation('tripPlannerMoreDays'));
+      }
+    }
+    if (!goodFit) {
+      summaryParts.push(getTranslation('tripPlannerBudgetAdvice'));
+    }
+
+    const localizedRecommendation = getLocalizedTripPlannerValue(budgetText.recommendation) || budgetText.recommendation;
+    summaryParts.push('<strong>' + getTranslation('tripPlannerRecommendationLabel') + ':</strong> ' + localizedRecommendation);
+
+    return {
+      valid: true,
+      status: statusClass,
+      statusText: statusText,
+      errorCode: null,
+      message: statusText,
+      totalEstimated: totalEstimated,
+      budgetEnough: goodFit,
+      recommendedDays: niceDays,
+      difficulty: difficultyText,
+      destinationName: destinationName,
+      countryName: validation.normalizedCountry === 'OTHER' ? 'Other' : countryName,
+      breakdown: { flight: flightCost, stay: stayCost, extras: extraCost },
+      warning: localizedWarning,
+      vibe: localizedVibe,
+      season: localizedSeason,
+      route: localizedRoute,
+      recommendation: localizedRecommendation,
+      summary: summaryParts.join('<br>')
+    };
+  }
+
+  function renderTripPlannerResult(result) {
+    if (!result.valid) {
+      return '<p>' + result.message + '</p>';
+    }
+
+    return `
+      <div class="trip-planner-status ${result.status}">${result.statusText}</div>
+      <div class="trip-planner-cost-box">
+        <div class="trip-planner-cost-header">💶 ${getTranslation('tripPlannerTotalCost')}: €${result.totalEstimated}</div>
+        <div class="trip-planner-cost-breakdown">${getTranslation('tripPlannerFlight')}: €${result.breakdown.flight} + ${getTranslation('tripPlannerStay')}: €${result.breakdown.stay} + ${getTranslation('tripPlannerExtras')}: €${result.breakdown.extras}</div>
+      </div>
+      <div class="trip-planner-summary">
+        <div class="trip-planner-metric"><span>📍</span><strong>${getTranslation('tripPlannerDestinationLabel')}:</strong> ${result.destinationName}</div>
+        <div class="trip-planner-metric"><span>🧳</span><strong>${getTranslation('tripPlannerStartCountryLabel')}:</strong> ${result.countryName}</div>
+        <div class="trip-planner-metric"><span>💰</span><strong>${getTranslation('tripPlannerEstimatedTotal')}:</strong> €${result.totalEstimated}</div>
+        <div class="trip-planner-metric"><span>🌤️</span><strong>${getTranslation('tripPlannerBestSeason')}:</strong> ${result.season}</div>
+        <div class="trip-planner-metric"><span>🧭</span><strong>${getTranslation('tripPlannerDifficultyLabel')}:</strong> ${result.difficulty}</div>
+      </div>
+      <div class="trip-planner-route"><span>🗺️</span><strong>${getTranslation('tripPlannerSuggestedRoute')}:</strong> ${result.route.join(' • ')}</div>
+      <div class="trip-planner-note"><span>💡</span><strong>${getTranslation('tripPlannerExperience')}:</strong> ${result.vibe}</div>
+      <div class="trip-planner-warning"><span>⚠️</span><strong>${getTranslation('tripPlannerWarning')}:</strong> ${result.warning}</div>
+      <div class="trip-planner-recommendation-block">${result.summary}</div>
+    `;
+  }
+
+  function updateTripPlannerOptions() {
+    const startCountrySelect = document.getElementById('tripPlannerStartCountry');
+    const destinationSelect = document.getElementById('tripPlannerDestination');
+
+    if (startCountrySelect) {
+      const placeholder = getTranslation('tripPlannerStartCountryPlaceholder');
+      const countries = {
+        BG: getTranslation('tripPlannerCountryBg'),
+        DE: getTranslation('tripPlannerCountryDe'),
+        FR: getTranslation('tripPlannerCountryFr'),
+        ES: getTranslation('tripPlannerCountryEs'),
+        UK: getTranslation('tripPlannerCountryUk')
+      };
+      const placeholderOption = Array.from(startCountrySelect.options).find((option) => option.value === '');
+      if (placeholderOption) {
+        placeholderOption.textContent = placeholder;
+      }
+      Array.from(startCountrySelect.options).forEach((option) => {
+        if (countries[option.value]) option.textContent = countries[option.value];
+      });
+      if (!startCountrySelect.value) {
+        startCountrySelect.value = '';
+      }
+    }
+
+    if (destinationSelect) {
+      const placeholder = getTranslation('tripPlannerDestinationPlaceholder');
+      const destinationNames = {
+        lombok: getTranslation('tripPlannerDestinationLombok'),
+        bali: getTranslation('tripPlannerDestinationBali'),
+        java: getTranslation('tripPlannerDestinationJava'),
+        borneo: getTranslation('tripPlannerDestinationBorneo'),
+        yogyakarta: getTranslation('tripPlannerDestinationYogyakarta'),
+        labuanbajo: getTranslation('tripPlannerDestinationLabuanBajo'),
+        komodo: getTranslation('tripPlannerDestinationKomodo')
+      };
+      const placeholderOption = Array.from(destinationSelect.options).find((option) => option.value === '');
+      if (placeholderOption) {
+        placeholderOption.textContent = placeholder;
+      }
+      Array.from(destinationSelect.options).forEach((option) => {
+        if (destinationNames[option.value]) option.textContent = destinationNames[option.value];
+      });
+      if (!destinationSelect.value) {
+        destinationSelect.value = '';
+      }
+    }
+  }
+
+  function bindTripPlannerForm() {
+    const form = document.getElementById('tripPlannerForm');
+    const resetBtn = document.getElementById('tripPlannerResetBtn');
+    const result = document.getElementById('tripPlannerResult');
+    const startCountrySelect = document.getElementById('tripPlannerStartCountry');
+    const daysInput = document.getElementById('tripPlannerDays');
+    const budgetInput = document.getElementById('tripPlannerBudget');
+    const destinationSelect = document.getElementById('tripPlannerDestination');
+
+    if (!form) return;
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const startCountry = startCountrySelect.value;
+      const days = Number(daysInput.value || 0);
+      const budget = Number(budgetInput.value || 0);
+      const destination = destinationSelect.value;
+
+      const plannerResult = calculateTripPlannerResult(startCountry, days, budget, destination);
+      result.innerHTML = renderTripPlannerResult(plannerResult);
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function () {
+        startCountrySelect.value = '';
+        daysInput.value = '';
+        budgetInput.value = '';
+        destinationSelect.value = '';
+        result.innerHTML = '<p id="tripPlannerResultPlaceholder">' + getTranslation('tripPlannerResultPlaceholder') + '</p>';
+      });
+    }
+  }
+
+  function hideSpecificBlogCards() {
+    const hiddenCardIds = ['blogArticle18Title', 'blogArticle20Title', 'blogArticle21Title', 'blogArticle22Title'];
+
+    hiddenCardIds.forEach(function (cardId) {
+      const cardTitle = document.getElementById(cardId);
+      const cardPreview = cardTitle && cardTitle.closest('.blog-preview');
+
+      if (cardPreview) {
+        cardPreview.style.display = 'none';
+      }
+    });
   }
 
   function updateContentTranslations() {
@@ -1498,52 +2547,99 @@ function cacheContentElements() {
     dom.fruitsTitle.textContent = getTranslation('fruitsTitle');
     dom.parksTitle.textContent = getTranslation('parksTitle');
     dom.treesTitle.textContent = getTranslation('treesTitle');
+    dom.tripPlannerTitle.textContent = getTranslation('tripPlannerTitle');
+    dom.tripPlannerStartCountryLabel.textContent = getTranslation('tripPlannerStartCountryLabel');
+    dom.tripPlannerDaysLabel.textContent = getTranslation('tripPlannerDaysLabel');
+    dom.tripPlannerBudgetLabel.textContent = getTranslation('tripPlannerBudgetLabel');
+    dom.tripPlannerDestinationLabel.textContent = getTranslation('tripPlannerDestinationLabel');
+    dom.tripPlannerSubmitBtn.textContent = getTranslation('tripPlannerSubmitBtn');
+    if (dom.tripPlannerResetBtn) dom.tripPlannerResetBtn.textContent = getTranslation('tripPlannerResetBtn');
+    if (dom.tripPlannerEstimateNote) dom.tripPlannerEstimateNote.textContent = getTranslation('tripPlannerEstimateNote');
+    if (dom.tripPlannerResultPlaceholder) dom.tripPlannerResultPlaceholder.textContent = getTranslation('tripPlannerResultPlaceholder');
+    if (dom.tripPlannerStartCountry) {
+      const startPlaceholder = Array.from(dom.tripPlannerStartCountry.options).find((option) => option.value === '');
+      if (startPlaceholder) startPlaceholder.textContent = getTranslation('tripPlannerStartCountryPlaceholder');
+    }
+    if (dom.tripPlannerDays) dom.tripPlannerDays.placeholder = getTranslation('tripPlannerDaysPlaceholder');
+    if (dom.tripPlannerBudget) dom.tripPlannerBudget.placeholder = getTranslation('tripPlannerBudgetPlaceholder');
+    if (dom.tripPlannerDestination) {
+      const destinationPlaceholder = Array.from(dom.tripPlannerDestination.options).find((option) => option.value === '');
+      if (destinationPlaceholder) destinationPlaceholder.textContent = getTranslation('tripPlannerDestinationPlaceholder');
+    }
+    updateTripPlannerOptions();
     dom.blogSectionTitle.textContent = getTranslation('blogSectionTitle');
-    dom.blogArticleTitle.textContent = getTranslation('blogArticleTitle');
-    dom.blogArticleExcerpt.textContent = getTranslation('blogArticleExcerpt');
-    dom.blogReadBtn.textContent = getTranslation('blogReadBtn');
-    dom.blogArticle2Title.textContent = getTranslation('blogArticle2Title');
-    dom.blogArticle2Excerpt.textContent = getTranslation('blogArticle2Excerpt');
-    dom.blogReadBtn2.textContent = getTranslation('blogReadBtn2');
-    dom.blogArticle3Title.textContent = getTranslation('blogArticle3Title');
-    dom.blogArticle3Excerpt.textContent = getTranslation('blogArticle3Excerpt');
-    dom.blogReadBtn3.textContent = getTranslation('blogReadBtn3');
-    dom.blogArticle4Title.textContent = getTranslation('blogArticle4Title');
-    dom.blogArticle4Excerpt.textContent = getTranslation('blogArticle4Excerpt');
-    dom.blogReadBtn4.textContent = getTranslation('blogReadBtn4');
-    dom.blogArticle5Title.textContent = getTranslation('blogArticle5Title');
-    dom.blogArticle5Excerpt.textContent = getTranslation('blogArticle5Excerpt');
-    dom.blogReadBtn5.textContent = getTranslation('blogReadBtn5');
-    dom.blogArticle6Title.textContent = getTranslation('blogArticle6Title');
-    dom.blogArticle6Excerpt.textContent = getTranslation('blogArticle6Excerpt');
-    dom.blogReadBtn6.textContent = getTranslation('blogReadBtn6');
-    dom.blogArticle7Title.textContent = getTranslation('blogArticle7Title');
-    dom.blogArticle7Excerpt.textContent = getTranslation('blogArticle7Excerpt');
-    dom.blogReadBtn7.textContent = getTranslation('blogReadBtn7');
-    dom.blogArticle8Title.textContent = getTranslation('blogArticle8Title');
-    dom.blogArticle8Excerpt.textContent = getTranslation('blogArticle8Excerpt');
-    dom.blogReadBtn8.textContent = getTranslation('blogReadBtn8');
-    dom.blogArticle9Title.textContent = getTranslation('blogArticle9Title');
-    dom.blogArticle9Excerpt.textContent = getTranslation('blogArticle9Excerpt');
-    dom.blogReadBtn9.textContent = getTranslation('blogReadBtn9');
-    dom.blogArticle10Title.textContent = getTranslation('blogArticle10Title');
-    dom.blogArticle10Excerpt.textContent = getTranslation('blogArticle10Excerpt');
-    dom.blogReadBtn10.textContent = getTranslation('blogReadBtn10');
-    dom.blogArticle11Title.textContent = getTranslation('blogArticle11Title');
-    dom.blogArticle11Excerpt.textContent = getTranslation('blogArticle11Excerpt');
-    dom.blogReadBtn11.textContent = getTranslation('blogReadBtn11');
-    dom.blogArticle12Title.textContent = getTranslation('blogArticle12Title');
-    dom.blogArticle12Excerpt.textContent = getTranslation('blogArticle12Excerpt');
-    dom.blogReadBtn12.textContent = getTranslation('blogReadBtn12');
-    dom.blogArticle13Title.textContent = getTranslation('blogArticle13Title');
-    dom.blogArticle13Excerpt.textContent = getTranslation('blogArticle13Excerpt');
-    dom.blogReadBtn13.textContent = getTranslation('blogReadBtn13');
-    dom.blogArticle14Title.textContent = getTranslation('blogArticle14Title');
-    dom.blogArticle14Excerpt.textContent = getTranslation('blogArticle14Excerpt');
-    dom.blogReadBtn14.textContent = getTranslation('blogReadBtn14');
-    dom.blogArticle15Title.textContent = getTranslation('blogArticle15Title');
-    dom.blogArticle15Excerpt.textContent = getTranslation('blogArticle15Excerpt');
-    dom.blogReadBtn15.textContent = getTranslation('blogReadBtn15');
+    if (dom.blogArticleTitle) dom.blogArticleTitle.textContent = getTranslation('blogArticleTitle');
+    if (dom.blogArticleExcerpt) dom.blogArticleExcerpt.textContent = getTranslation('blogArticleExcerpt');
+    if (dom.blogReadBtn) dom.blogReadBtn.textContent = getTranslation('blogReadBtn');
+    if (dom.blogArticle2Title) dom.blogArticle2Title.textContent = getTranslation('blogArticle2Title');
+    if (dom.blogArticle2Excerpt) dom.blogArticle2Excerpt.textContent = getTranslation('blogArticle2Excerpt');
+    if (dom.blogReadBtn2) dom.blogReadBtn2.textContent = getTranslation('blogReadBtn2');
+    if (dom.blogArticle3Title) dom.blogArticle3Title.textContent = getTranslation('blogArticle3Title');
+    if (dom.blogArticle3Excerpt) dom.blogArticle3Excerpt.textContent = getTranslation('blogArticle3Excerpt');
+    if (dom.blogReadBtn3) dom.blogReadBtn3.textContent = getTranslation('blogReadBtn3');
+    if (dom.blogArticle4Title) dom.blogArticle4Title.textContent = getTranslation('blogArticle4Title');
+    if (dom.blogArticle4Excerpt) dom.blogArticle4Excerpt.textContent = getTranslation('blogArticle4Excerpt');
+    if (dom.blogReadBtn4) dom.blogReadBtn4.textContent = getTranslation('blogReadBtn4');
+    if (dom.blogArticle5Title) dom.blogArticle5Title.textContent = getTranslation('blogArticle5Title');
+    if (dom.blogArticle5Excerpt) dom.blogArticle5Excerpt.textContent = getTranslation('blogArticle5Excerpt');
+    if (dom.blogReadBtn5) dom.blogReadBtn5.textContent = getTranslation('blogReadBtn5');
+    if (dom.blogArticle6Title) dom.blogArticle6Title.textContent = getTranslation('blogArticle6Title');
+    if (dom.blogArticle6Excerpt) dom.blogArticle6Excerpt.textContent = getTranslation('blogArticle6Excerpt');
+    if (dom.blogReadBtn6) dom.blogReadBtn6.textContent = getTranslation('blogReadBtn6');
+    if (dom.blogArticle8Title) dom.blogArticle8Title.textContent = getTranslation('blogArticle8Title');
+    if (dom.blogArticle8Excerpt) dom.blogArticle8Excerpt.textContent = getTranslation('blogArticle8Excerpt');
+    if (dom.blogReadBtn8) dom.blogReadBtn8.textContent = getTranslation('blogReadBtn8');
+    if (dom.blogArticle9Title) dom.blogArticle9Title.textContent = getTranslation('blogArticle9Title');
+    if (dom.blogArticle9Excerpt) dom.blogArticle9Excerpt.textContent = getTranslation('blogArticle9Excerpt');
+    if (dom.blogReadBtn9) dom.blogReadBtn9.textContent = getTranslation('blogReadBtn9');
+    if (dom.blogArticle10Title) dom.blogArticle10Title.textContent = getTranslation('blogArticle10Title');
+    if (dom.blogArticle10Excerpt) dom.blogArticle10Excerpt.textContent = getTranslation('blogArticle10Excerpt');
+    if (dom.blogReadBtn10) dom.blogReadBtn10.textContent = getTranslation('blogReadBtn10');
+    if (dom.blogArticle11Title) dom.blogArticle11Title.textContent = getTranslation('blogArticle11Title');
+    if (dom.blogArticle11Excerpt) dom.blogArticle11Excerpt.textContent = getTranslation('blogArticle11Excerpt');
+    if (dom.blogReadBtn11) dom.blogReadBtn11.textContent = getTranslation('blogReadBtn11');
+    if (dom.blogArticle12Title) dom.blogArticle12Title.textContent = getTranslation('blogArticle12Title');
+    if (dom.blogArticle12Excerpt) dom.blogArticle12Excerpt.textContent = getTranslation('blogArticle12Excerpt');
+    if (dom.blogReadBtn12) dom.blogReadBtn12.textContent = getTranslation('blogReadBtn12');
+    if (dom.blogArticle13Title) dom.blogArticle13Title.textContent = getTranslation('blogArticle13Title');
+    if (dom.blogArticle13Excerpt) dom.blogArticle13Excerpt.textContent = getTranslation('blogArticle13Excerpt');
+    if (dom.blogReadBtn13) dom.blogReadBtn13.textContent = getTranslation('blogReadBtn13');
+    if (dom.blogArticle14Title) dom.blogArticle14Title.textContent = getTranslation('blogArticle14Title');
+    if (dom.blogArticle14Excerpt) dom.blogArticle14Excerpt.textContent = getTranslation('blogArticle14Excerpt');
+    if (dom.blogReadBtn14) dom.blogReadBtn14.textContent = getTranslation('blogReadBtn14');
+    if (dom.blogArticle15Title) dom.blogArticle15Title.textContent = getTranslation('blogArticle15Title');
+    if (dom.blogArticle15Excerpt) dom.blogArticle15Excerpt.textContent = getTranslation('blogArticle15Excerpt');
+    if (dom.blogReadBtn15) dom.blogReadBtn15.textContent = getTranslation('blogReadBtn15');
+    if (dom.blogArticle16Title) dom.blogArticle16Title.textContent = getTranslation('blogArticle16Title');
+    if (dom.blogArticle16Excerpt) dom.blogArticle16Excerpt.textContent = getTranslation('blogArticle16Excerpt');
+    if (dom.blogReadBtn16) dom.blogReadBtn16.textContent = getTranslation('blogReadBtn16');
+    if (dom.blogArticle17Title) dom.blogArticle17Title.textContent = getTranslation('blogArticle17Title');
+    if (dom.blogArticle17Excerpt) dom.blogArticle17Excerpt.textContent = getTranslation('blogArticle17Excerpt');
+    if (dom.blogReadBtn17) dom.blogReadBtn17.textContent = getTranslation('blogReadBtn17');
+    if (dom.blogArticle18Title) dom.blogArticle18Title.textContent = getTranslation('blogArticle18Title');
+    if (dom.blogArticle18Excerpt) dom.blogArticle18Excerpt.textContent = getTranslation('blogArticle18Excerpt');
+    if (dom.blogReadBtn18) dom.blogReadBtn18.textContent = getTranslation('blogReadBtn18');
+    if (dom.blogArticle19Title) dom.blogArticle19Title.textContent = getTranslation('blogArticle19Title');
+    if (dom.blogArticle19Excerpt) dom.blogArticle19Excerpt.textContent = getTranslation('blogArticle19Excerpt');
+    if (dom.blogReadBtn19) dom.blogReadBtn19.textContent = getTranslation('blogReadBtn19');
+    if (dom.blogArticle20Title) dom.blogArticle20Title.textContent = getTranslation('blogArticle20Title');
+    if (dom.blogArticle20Excerpt) dom.blogArticle20Excerpt.textContent = getTranslation('blogArticle20Excerpt');
+    if (dom.blogReadBtn20) dom.blogReadBtn20.textContent = getTranslation('blogReadBtn20');
+    if (dom.blogArticle21Title) dom.blogArticle21Title.textContent = getTranslation('blogArticle21Title');
+    if (dom.blogArticle21Excerpt) dom.blogArticle21Excerpt.textContent = getTranslation('blogArticle21Excerpt');
+    if (dom.blogReadBtn21) dom.blogReadBtn21.textContent = getTranslation('blogReadBtn21');
+    if (dom.blogArticle22Title) dom.blogArticle22Title.textContent = getTranslation('blogArticle22Title');
+    if (dom.blogArticle22Excerpt) dom.blogArticle22Excerpt.textContent = getTranslation('blogArticle22Excerpt');
+    if (dom.blogReadBtn22) dom.blogReadBtn22.textContent = getTranslation('blogReadBtn22');
+    if (dom.blogArticle23Title) dom.blogArticle23Title.textContent = getTranslation('blogArticle23Title');
+    if (dom.blogArticle23Excerpt) dom.blogArticle23Excerpt.textContent = getTranslation('blogArticle23Excerpt');
+    if (dom.blogReadBtn23) dom.blogReadBtn23.textContent = getTranslation('blogReadBtn23');
+    if (dom.blogArticle24Title) dom.blogArticle24Title.textContent = getTranslation('blogArticle24Title');
+    if (dom.blogArticle24Excerpt) dom.blogArticle24Excerpt.textContent = getTranslation('blogArticle24Excerpt');
+    if (dom.blogReadBtn24) dom.blogReadBtn24.textContent = getTranslation('blogReadBtn24');
+    if (dom.blogArticle25Title) dom.blogArticle25Title.textContent = getTranslation('blogArticle25Title');
+    if (dom.blogArticle25Excerpt) dom.blogArticle25Excerpt.textContent = getTranslation('blogArticle25Excerpt');
+    if (dom.blogReadBtn25) dom.blogReadBtn25.textContent = getTranslation('blogReadBtn25');
     dom.aboutSectionTitle.textContent = getTranslation('aboutSectionTitle');
     dom.aboutSectionText.textContent = getTranslation('aboutSectionText');
     dom.project1Title.textContent = getTranslation('project1Title');
@@ -1797,7 +2893,85 @@ function cacheContentElements() {
       .join('<br>');
   }
 
+  function syncSectionToggleLabels() {
+    const toggleButtons = document.querySelectorAll('.section-toggle-btn[data-target]');
+    toggleButtons.forEach(function (toggleBtn) {
+      const sectionBody = document.getElementById(toggleBtn.dataset.target);
+      if (!sectionBody) {
+        return;
+      }
+
+      const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      toggleBtn.textContent = isExpanded ? getTranslation('marineToggleHide') : getTranslation('marineToggleShow');
+    });
+  }
+
+  function bindSectionToggles() {
+    const toggleButtons = document.querySelectorAll('.section-toggle-btn[data-target]');
+    if (!toggleButtons.length) {
+      return;
+    }
+
+    const applyState = function (toggleBtn, isExpanded) {
+      const sectionBody = document.getElementById(toggleBtn.dataset.target);
+      if (!sectionBody) {
+        return;
+      }
+
+      if (isExpanded) {
+        sectionBody.hidden = false;
+        requestAnimationFrame(function () {
+          sectionBody.style.maxHeight = sectionBody.scrollHeight + 'px';
+          sectionBody.style.opacity = '1';
+        });
+      } else {
+        sectionBody.style.maxHeight = '0px';
+        sectionBody.style.opacity = '0';
+        setTimeout(function () {
+          sectionBody.hidden = true;
+        }, 220);
+      }
+
+      toggleBtn.setAttribute('aria-expanded', String(isExpanded));
+      toggleBtn.textContent = isExpanded ? getTranslation('marineToggleHide') : getTranslation('marineToggleShow');
+    };
+
+    toggleButtons.forEach(function (toggleBtn) {
+      const sectionBody = document.getElementById(toggleBtn.dataset.target);
+      if (sectionBody) {
+        sectionBody.hidden = true;
+        sectionBody.style.maxHeight = '0px';
+        sectionBody.style.opacity = '0';
+        sectionBody.style.overflow = 'hidden';
+        sectionBody.style.transition = 'max-height 0.28s ease, opacity 0.25s ease';
+      }
+      applyState(toggleBtn, false);
+
+      toggleBtn.addEventListener('click', function () {
+        const nextState = toggleBtn.getAttribute('aria-expanded') !== 'true';
+        applyState(toggleBtn, nextState);
+      });
+    });
+  }
+
   function updateLanguageUI() {
+    const navLabels = {
+      home: getTranslation('navHome'),
+      cities: getTranslation('navCities'),
+      wildlife: getTranslation('navWildlife'),
+      blog: getTranslation('navBlog'),
+      projects: getTranslation('navProjects')
+    };
+
+    if (Array.isArray(dom.navLinks)) {
+      dom.navLinks.forEach(function (link) {
+        const key = link.dataset.navKey;
+        if (key && navLabels[key]) {
+          link.textContent = navLabels[key];
+        }
+      });
+    }
+
     dom.bgBtn.classList.toggle('active', currentLanguage === 'bg');
     dom.enBtn.classList.toggle('active', currentLanguage === 'en');
     if (dom.deBtn) {
@@ -1812,7 +2986,6 @@ function cacheContentElements() {
     dom.idBtn.classList.toggle('active', currentLanguage === 'id');
     dom.headerTitle.textContent = getTranslation('headerTitle');
     dom.headerSubtitle.textContent = getTranslation('headerSubtitle');
-    updateVisitCounterUI();
     if (Array.isArray(dom.adBoxLabels) && dom.adBoxLabels.length > 0) {
       const adPlaceholderText = getTranslation('adPlaceholder');
       dom.adBoxLabels.forEach(function (label) {
@@ -1825,95 +2998,8 @@ function cacheContentElements() {
       dom.wildlifeInfoBtn.setAttribute('aria-label', wildlifeLabel);
       dom.wildlifeInfoBtn.title = wildlifeLabel;
     }
-  }
 
-
-
-  function updateVisitCounterUI() {
-    if (!dom.visitCounter) {
-      return;
-    }
-
-    const label = getTranslation('visitCounterLabel');
-    if (visitCountValue === null) {
-      dom.visitCounter.textContent = `${label}: ${getTranslation('visitCounterLoading')}`;
-      return;
-    }
-
-    dom.visitCounter.textContent = `${label}: ${visitCountValue}`;
-  }
-
-  function incrementLocalVisitCounter() {
-    const STORAGE_KEY = 'indonesia_explorer_visits';
-    const storedCount = localStorage.getItem(STORAGE_KEY);
-    const parsedCount = storedCount ? parseInt(storedCount, 10) : 0;
-    const nextCount = Number.isFinite(parsedCount) ? parsedCount + 1 : 1;
-    localStorage.setItem(STORAGE_KEY, String(nextCount));
-    return nextCount;
-  }
-
-  function getFirebaseCounterConfig() {
-    const config = window.INDO_FIREBASE_CONFIG;
-    if (!config) {
-      return null;
-    }
-
-    if (!config.apiKey || !config.projectId || !config.appId || !config.databaseURL) {
-      return null;
-    }
-
-    return config;
-  }
-
-  function getFirebaseDatabase() {
-    const config = getFirebaseCounterConfig();
-    if (!config || !window.firebase || !window.firebase.database) {
-      return null;
-    }
-
-    if (!window.firebase.apps.length) {
-      window.firebase.initializeApp(config);
-    }
-
-    return window.firebase.database();
-  }
-
-  async function incrementFirebaseVisitCounter() {
-    const database = getFirebaseDatabase();
-    if (!database) {
-      return null;
-    }
-
-    const counterPath = window.INDO_FIREBASE_COUNTER_PATH || 'siteCounters/indonesiaExplorer/visits';
-    const counterRef = database.ref(counterPath);
-    const result = await counterRef.transaction(function (currentValue) {
-      const safeValue = typeof currentValue === 'number' && Number.isFinite(currentValue) ? currentValue : 0;
-      return safeValue + 1;
-    });
-
-    if (!result.committed || !result.snapshot) {
-      throw new Error('Firebase counter transaction failed.');
-    }
-
-    return result.snapshot.val();
-  }
-
-  async function loadVisitCounter() {
-    updateVisitCounterUI();
-
-    try {
-      const firebaseCount = await incrementFirebaseVisitCounter();
-      if (typeof firebaseCount === 'number' && Number.isFinite(firebaseCount)) {
-        visitCountValue = firebaseCount;
-        updateVisitCounterUI();
-        return;
-      }
-    } catch (error) {
-      console.warn('Firebase visit counter unavailable, falling back to local counter.', error);
-    }
-
-    visitCountValue = incrementLocalVisitCounter();
-    updateVisitCounterUI();
+    syncSectionToggleLabels();
   }
 
   function buildImageCandidates(src) {
@@ -2386,23 +3472,6 @@ function cacheContentElements() {
     }
   }
 
-  async function openFruitsBlogModal() {
-    const languageAtOpen = currentLanguage;
-    dom.blogModalTitle.textContent = getTranslation('blogArticle7Title');
-    dom.blogModalContent.textContent = getTranslation('blogLoading');
-    toggleModal(dom.blogModal, true);
-
-    try {
-      const sections = await loadFruitSections(languageAtOpen);
-      const text = sections.map(function (section, index) {
-        return `${index + 1}. ${section.title}\n\n${section.content}`;
-      }).join('\n\n');
-      dom.blogModalContent.textContent = text || getTranslation('blogLoadError');
-    } catch (error) {
-      dom.blogModalContent.textContent = getTranslation('blogLoadError');
-    }
-  }
-
   async function openTreeInfoModal(index) {
     const tree = trees[index];
     if (!tree) {
@@ -2733,6 +3802,386 @@ function cacheContentElements() {
     }
   }
 
+  async function loadUningBromoArticle() {
+    const requestedLang = UNING_BROMO_ARTICLE_URLS[currentLanguage] ? currentLanguage : 'bg';
+    if (typeof uningBromoArticleByLanguage[requestedLang] === 'string' && uningBromoArticleByLanguage[requestedLang].length > 0) {
+      return uningBromoArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(UNING_BROMO_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('uning_bromo_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      uningBromoArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      uningBromoArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openUningBromoBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle16Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadUningBromoArticle();
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadSmqhArticle() {
+    const requestedLang = SMQH_ARTICLE_URLS[currentLanguage] ? currentLanguage : 'bg';
+    if (typeof smqhArticleByLanguage[requestedLang] === 'string' && smqhArticleByLanguage[requestedLang].length > 0) {
+      return smqhArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(SMQH_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('smqh_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      smqhArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      smqhArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openSmqhBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle17Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadSmqhArticle();
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadCarKaloqnArticle() {
+    const requestedLang = CAR_KALOQN_ARTICLE_URLS[currentLanguage] ? currentLanguage : 'bg';
+    if (typeof carKaloqnArticleByLanguage[requestedLang] === 'string' && carKaloqnArticleByLanguage[requestedLang].length > 0) {
+      return carKaloqnArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(CAR_KALOQN_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('car_kaloqn_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      carKaloqnArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      carKaloqnArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openCarKaloqnBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle18Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadCarKaloqnArticle();
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadTervelArticle() {
+    const requestedLang = TERVEL_ARTICLE_URLS[currentLanguage] ? currentLanguage : 'bg';
+    if (typeof tervelArticleByLanguage[requestedLang] === 'string' && tervelArticleByLanguage[requestedLang].length > 0) {
+      return tervelArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(TERVEL_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('tervel_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      tervelArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      tervelArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openTervelBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle19Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadTervelArticle();
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadDoiranArticle() {
+    const requestedLang = DOIRAN_ARTICLE_URLS[currentLanguage] ? currentLanguage : 'bg';
+    if (typeof doiranArticleByLanguage[requestedLang] === 'string' && doiranArticleByLanguage[requestedLang].length > 0) {
+      return doiranArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(DOIRAN_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('doiran_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      doiranArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      doiranArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openDoiranBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle20Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadDoiranArticle();
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadEuropeDrugPolicyArticle() {
+    const requestedLang = EUROPE_DRUG_POLICY_ARTICLE_URLS[currentLanguage] ? currentLanguage : 'bg';
+    if (typeof europeDrugPolicyArticleByLanguage[requestedLang] === 'string' && europeDrugPolicyArticleByLanguage[requestedLang].length > 0) {
+      return europeDrugPolicyArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(EUROPE_DRUG_POLICY_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('europe_drug_policy_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      europeDrugPolicyArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      europeDrugPolicyArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openEuropeDrugPolicyBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle21Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadEuropeDrugPolicyArticle();
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadBatBayanArticle() {
+    const requestedLang = BAT_BAYAN_ARTICLE_URLS[currentLanguage] ? currentLanguage : 'bg';
+    if (typeof batBayanArticleByLanguage[requestedLang] === 'string' && batBayanArticleByLanguage[requestedLang].length > 0) {
+      return batBayanArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(BAT_BAYAN_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('bat_bayan_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      batBayanArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      batBayanArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openBatBayanBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle22Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadBatBayanArticle();
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadHiddenIndonesiaArticle(lang) {
+    const requestedLang = HIDDEN_INDONESIA_ARTICLE_URLS[lang] ? lang : 'bg';
+    if (typeof hiddenIndonesiaArticleByLanguage[requestedLang] === 'string' && hiddenIndonesiaArticleByLanguage[requestedLang].length > 0) {
+      return hiddenIndonesiaArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(HIDDEN_INDONESIA_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('hidden_indonesia_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      hiddenIndonesiaArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      hiddenIndonesiaArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openHiddenIndonesiaBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle23Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadHiddenIndonesiaArticle(currentLanguage);
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadUsaOpenArticle() {
+    const requestedLang = USA_OPEN_ARTICLE_URLS[currentLanguage] ? currentLanguage : 'bg';
+    if (typeof usaOpenArticleByLanguage[requestedLang] === 'string' && usaOpenArticleByLanguage[requestedLang].length > 0) {
+      return usaOpenArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(USA_OPEN_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('usa_open_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      usaOpenArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      usaOpenArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openUsaOpenBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle24Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadUsaOpenArticle();
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
+  async function loadIndividualTimeTrialArticle(lang) {
+    const requestedLang = INDIVIDUAL_TIME_TRIAL_ARTICLE_URLS[lang] ? lang : 'bg';
+    if (typeof individualTimeTrialArticleByLanguage[requestedLang] === 'string' && individualTimeTrialArticleByLanguage[requestedLang].length > 0) {
+      return individualTimeTrialArticleByLanguage[requestedLang];
+    }
+
+    async function fetchArticle(languageCode) {
+      const response = await fetch(INDIVIDUAL_TIME_TRIAL_ARTICLE_URLS[languageCode]);
+      if (!response.ok) {
+        throw new Error('individual_time_trial_load_failed');
+      }
+      return response.text();
+    }
+
+    try {
+      const articleText = await fetchArticle(requestedLang);
+      individualTimeTrialArticleByLanguage[requestedLang] = articleText;
+      return articleText;
+    } catch (error) {
+      const bulgarianArticle = await fetchArticle('bg');
+      individualTimeTrialArticleByLanguage.bg = bulgarianArticle;
+      return bulgarianArticle;
+    }
+  }
+
+  async function openIndividualTimeTrialBlogModal() {
+    dom.blogModalTitle.textContent = getTranslation('blogArticle25Title');
+    dom.blogModalContent.textContent = getTranslation('blogLoading');
+    toggleModal(dom.blogModal, true);
+
+    try {
+      const articleText = await loadIndividualTimeTrialArticle(currentLanguage);
+      dom.blogModalContent.innerHTML = renderBlogArticleText(articleText);
+    } catch (error) {
+      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+    }
+  }
+
   function parseWaterworldSections(articleText) {
     const normalized = articleText.replace(/\r\n/g, '\n').trim();
     const chunks = normalized.split(/\n(?=\d+\.\s)/);
@@ -2754,6 +4203,52 @@ function cacheContentElements() {
           searchable: `${title}\n${content}`.toLowerCase()
         };
       });
+  }
+
+  async function loadLocalizedArticleText(articleUrls, language, cachePrefix, fallbackLanguageOrder) {
+    if (!articleUrls) {
+      return null;
+    }
+
+    const fallbackOrder = Array.isArray(fallbackLanguageOrder) && fallbackLanguageOrder.length > 0
+      ? fallbackLanguageOrder
+      : ['en', 'bg'];
+    const requestedLanguage = articleUrls[language] ? language : (articleUrls.en ? 'en' : (articleUrls.bg ? 'bg' : null));
+    if (!requestedLanguage) {
+      return null;
+    }
+
+    const cacheKey = `${cachePrefix}:${requestedLanguage}`;
+    if (marineAnimalArticleTextByLanguage[cacheKey]) {
+      return marineAnimalArticleTextByLanguage[cacheKey];
+    }
+
+    async function fetchArticleText(languageCode) {
+      const response = await fetch(articleUrls[languageCode]);
+      if (!response.ok) {
+        throw new Error('localized_article_load_failed');
+      }
+      return response.text();
+    }
+
+    const orderedLanguages = [requestedLanguage].concat(fallbackOrder.filter(function (languageCode) {
+      return languageCode !== requestedLanguage;
+    }));
+
+    for (const languageCode of orderedLanguages) {
+      if (!articleUrls[languageCode]) {
+        continue;
+      }
+
+      try {
+        const articleText = await fetchArticleText(languageCode);
+        marineAnimalArticleTextByLanguage[cacheKey] = articleText;
+        return articleText;
+      } catch (error) {
+      }
+    }
+
+    return null;
   }
 
   function getWaterworldSectionForAnimal(sections, animal, index) {
@@ -2813,12 +4308,17 @@ function cacheContentElements() {
     toggleModal(dom.blogModal, true);
 
     try {
-      const sections = await loadWaterworldSections(languageAtOpen);
-      const selected = getWaterworldSectionForAnimal(sections, animal, index);
-      if (selected) {
-        dom.blogModalContent.textContent = `${selected.title}\n\n${selected.content}`;
+      const localizedArticleText = await loadLocalizedArticleText(animal.articleUrls, languageAtOpen, animal.name_en || animal.name_bg || `marine-${index}`);
+      if (localizedArticleText) {
+        dom.blogModalContent.textContent = localizedArticleText;
       } else {
-        dom.blogModalContent.textContent = getTranslation('blogLoadError');
+        const sections = await loadWaterworldSections(languageAtOpen);
+        const selected = getWaterworldSectionForAnimal(sections, animal, index);
+        if (selected) {
+          dom.blogModalContent.textContent = `${selected.title}\n\n${selected.content}`;
+        } else {
+          dom.blogModalContent.textContent = getTranslation('blogLoadError');
+        }
       }
     } catch (error) {
       dom.blogModalContent.textContent = getTranslation('blogLoadError');
@@ -2864,15 +4364,24 @@ function cacheContentElements() {
     toggleModal(dom.blogModal, true);
 
     try {
+      if (animal.articleUrls) {
+        const localizedText = await loadLocalizedArticleText(animal.articleUrls, languageAtOpen, animal.name_en || animal.name_bg || `land-${index}`, ['bg', 'en']);
+        if (localizedText) {
+          dom.blogModalContent.textContent = `${getLandMetaText(animal)}\n\n${localizedText}`;
+          return;
+        }
+      }
+
       const sections = await loadLandSections(languageAtOpen);
-      const selected = sections[animal.sectionIndex] || sections[index] || null;
+      const fallbackSections = languageAtOpen !== 'bg' ? await loadLandSections('bg') : null;
+      const selected = sections[animal.sectionIndex] || sections[index] || (fallbackSections && (fallbackSections[animal.sectionIndex] || fallbackSections[index])) || null;
       if (selected) {
-        dom.blogModalContent.textContent = `${selected.title}\n\n${selected.content}`;
+        dom.blogModalContent.textContent = `${getLandMetaText(animal)}\n\n${selected.title}\n\n${selected.content}`;
       } else {
-        dom.blogModalContent.textContent = getTranslation('blogLoadError');
+        dom.blogModalContent.textContent = `${getLandMetaText(animal)}\n\n${getLandAnimalName(animal)}`;
       }
     } catch (error) {
-      dom.blogModalContent.textContent = getTranslation('blogLoadError');
+      dom.blogModalContent.textContent = `${getLandMetaText(animal)}\n\n${getLandAnimalName(animal)}`;
     }
   }
 
@@ -3153,7 +4662,6 @@ function cacheContentElements() {
     });
 
     loadData();
-    loadVisitCounter();
     scheduleCriticalImageWarmup();
     registerServiceWorker();
   });

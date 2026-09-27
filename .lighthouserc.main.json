@@ -1,12 +1,10 @@
 {
   "ci": {
     "collect": {
-      "startServerCommand": "npm run serve",
-      "startServerReadyPattern": "Available on",
       "url": [
-        "http://127.0.0.1:4173/",
-        "http://127.0.0.1:4173/?lang=en",
-        "http://127.0.0.1:4173/?lang=de"
+        "https://indonesia-five.vercel.app/",
+        "https://indonesia-five.vercel.app/?lang=en",
+        "https://indonesia-five.vercel.app/?lang=de"
       ],
       "numberOfRuns": 2
     },
