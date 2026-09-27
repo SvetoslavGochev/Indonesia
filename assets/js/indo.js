@@ -1041,9 +1041,13 @@ function cacheContentElements() {
     dom.parksTitle = document.getElementById('parksTitle');
     dom.treesTitle = document.getElementById('treesTitle');
     dom.tripPlannerTitle = document.getElementById('tripPlannerTitle');
+    dom.tripPlannerStartCountry = document.getElementById('tripPlannerStartCountry');
     dom.tripPlannerStartCountryLabel = document.getElementById('tripPlannerStartCountryLabel');
+    dom.tripPlannerDays = document.getElementById('tripPlannerDays');
     dom.tripPlannerDaysLabel = document.getElementById('tripPlannerDaysLabel');
+    dom.tripPlannerBudget = document.getElementById('tripPlannerBudget');
     dom.tripPlannerBudgetLabel = document.getElementById('tripPlannerBudgetLabel');
+    dom.tripPlannerDestination = document.getElementById('tripPlannerDestination');
     dom.tripPlannerDestinationLabel = document.getElementById('tripPlannerDestinationLabel');
     dom.tripPlannerSubmitBtn = document.getElementById('tripPlannerSubmitBtn');
     dom.tripPlannerResetBtn = document.getElementById('tripPlannerResetBtn');
@@ -1509,6 +1513,7 @@ function cacheContentElements() {
               <label class="planner-field">
                 <span id="tripPlannerStartCountryLabel">Start country</span>
                 <select id="tripPlannerStartCountry">
+                  <option value="">Select country</option>
                   <option value="BG">Bulgaria</option>
                   <option value="DE">Germany</option>
                   <option value="FR">France</option>
@@ -1519,17 +1524,18 @@ function cacheContentElements() {
 
               <label class="planner-field">
                 <span id="tripPlannerDaysLabel">Days off</span>
-                <input id="tripPlannerDays" type="number" min="2" max="30" value="7">
+                <input id="tripPlannerDays" type="number" min="2" max="30" placeholder="Choose how many days">
               </label>
 
               <label class="planner-field">
                 <span id="tripPlannerBudgetLabel">Budget (€)</span>
-                <input id="tripPlannerBudget" type="number" min="200" max="5000" value="1200">
+                <input id="tripPlannerBudget" type="number" min="200" max="5000" placeholder="Enter amount">
               </label>
 
               <label class="planner-field">
                 <span id="tripPlannerDestinationLabel">Destination</span>
                 <select id="tripPlannerDestination">
+                  <option value="">Select destination</option>
                   <option value="lombok">Lombok</option>
                   <option value="bali">Bali</option>
                   <option value="java">Java</option>
@@ -2424,6 +2430,7 @@ function cacheContentElements() {
     const destinationSelect = document.getElementById('tripPlannerDestination');
 
     if (startCountrySelect) {
+      const placeholder = getTranslation('tripPlannerStartCountryPlaceholder');
       const countries = {
         BG: getTranslation('tripPlannerCountryBg'),
         DE: getTranslation('tripPlannerCountryDe'),
@@ -2431,12 +2438,20 @@ function cacheContentElements() {
         ES: getTranslation('tripPlannerCountryEs'),
         UK: getTranslation('tripPlannerCountryUk')
       };
+      const placeholderOption = Array.from(startCountrySelect.options).find((option) => option.value === '');
+      if (placeholderOption) {
+        placeholderOption.textContent = placeholder;
+      }
       Array.from(startCountrySelect.options).forEach((option) => {
         if (countries[option.value]) option.textContent = countries[option.value];
       });
+      if (!startCountrySelect.value) {
+        startCountrySelect.value = '';
+      }
     }
 
     if (destinationSelect) {
+      const placeholder = getTranslation('tripPlannerDestinationPlaceholder');
       const destinationNames = {
         lombok: getTranslation('tripPlannerDestinationLombok'),
         bali: getTranslation('tripPlannerDestinationBali'),
@@ -2446,9 +2461,16 @@ function cacheContentElements() {
         labuanbajo: getTranslation('tripPlannerDestinationLabuanBajo'),
         komodo: getTranslation('tripPlannerDestinationKomodo')
       };
+      const placeholderOption = Array.from(destinationSelect.options).find((option) => option.value === '');
+      if (placeholderOption) {
+        placeholderOption.textContent = placeholder;
+      }
       Array.from(destinationSelect.options).forEach((option) => {
         if (destinationNames[option.value]) option.textContent = destinationNames[option.value];
       });
+      if (!destinationSelect.value) {
+        destinationSelect.value = '';
+      }
     }
   }
 
@@ -2477,10 +2499,10 @@ function cacheContentElements() {
 
     if (resetBtn) {
       resetBtn.addEventListener('click', function () {
-        startCountrySelect.value = 'BG';
-        daysInput.value = '7';
-        budgetInput.value = '1200';
-        destinationSelect.value = 'lombok';
+        startCountrySelect.value = '';
+        daysInput.value = '';
+        budgetInput.value = '';
+        destinationSelect.value = '';
         result.innerHTML = '<p id="tripPlannerResultPlaceholder">' + getTranslation('tripPlannerResultPlaceholder') + '</p>';
       });
     }
@@ -2534,6 +2556,16 @@ function cacheContentElements() {
     if (dom.tripPlannerResetBtn) dom.tripPlannerResetBtn.textContent = getTranslation('tripPlannerResetBtn');
     if (dom.tripPlannerEstimateNote) dom.tripPlannerEstimateNote.textContent = getTranslation('tripPlannerEstimateNote');
     if (dom.tripPlannerResultPlaceholder) dom.tripPlannerResultPlaceholder.textContent = getTranslation('tripPlannerResultPlaceholder');
+    if (dom.tripPlannerStartCountry) {
+      const startPlaceholder = Array.from(dom.tripPlannerStartCountry.options).find((option) => option.value === '');
+      if (startPlaceholder) startPlaceholder.textContent = getTranslation('tripPlannerStartCountryPlaceholder');
+    }
+    if (dom.tripPlannerDays) dom.tripPlannerDays.placeholder = getTranslation('tripPlannerDaysPlaceholder');
+    if (dom.tripPlannerBudget) dom.tripPlannerBudget.placeholder = getTranslation('tripPlannerBudgetPlaceholder');
+    if (dom.tripPlannerDestination) {
+      const destinationPlaceholder = Array.from(dom.tripPlannerDestination.options).find((option) => option.value === '');
+      if (destinationPlaceholder) destinationPlaceholder.textContent = getTranslation('tripPlannerDestinationPlaceholder');
+    }
     updateTripPlannerOptions();
     dom.blogSectionTitle.textContent = getTranslation('blogSectionTitle');
     if (dom.blogArticleTitle) dom.blogArticleTitle.textContent = getTranslation('blogArticleTitle');
