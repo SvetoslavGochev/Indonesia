@@ -1040,6 +1040,14 @@ function cacheContentElements() {
     dom.fruitsTitle = document.getElementById('fruitsTitle');
     dom.parksTitle = document.getElementById('parksTitle');
     dom.treesTitle = document.getElementById('treesTitle');
+    dom.tripPlannerTitle = document.getElementById('tripPlannerTitle');
+    dom.tripPlannerStartCountryLabel = document.getElementById('tripPlannerStartCountryLabel');
+    dom.tripPlannerDaysLabel = document.getElementById('tripPlannerDaysLabel');
+    dom.tripPlannerBudgetLabel = document.getElementById('tripPlannerBudgetLabel');
+    dom.tripPlannerDestinationLabel = document.getElementById('tripPlannerDestinationLabel');
+    dom.tripPlannerSubmitBtn = document.getElementById('tripPlannerSubmitBtn');
+    dom.tripPlannerResultPlaceholder = document.getElementById('tripPlannerResultPlaceholder');
+    dom.tripPlannerEstimateNote = document.getElementById('tripPlannerEstimateNote');
     dom.blogSectionTitle = document.getElementById('blogSectionTitle');
     dom.blogArticleTitle = document.getElementById('blogArticleTitle');
     dom.blogArticleExcerpt = document.getElementById('blogArticleExcerpt');
@@ -1491,6 +1499,58 @@ function cacheContentElements() {
           </div>
         </div>
 
+        <div class="card trip-planner-card" id="tripPlanner">
+          <div class="section-header-row">
+            <h2 id="tripPlannerTitle">Travel planner</h2>
+          </div>
+          <form id="tripPlannerForm" class="trip-planner-form" novalidate>
+            <div class="planner-grid">
+              <label class="planner-field">
+                <span id="tripPlannerStartCountryLabel">Start country</span>
+                <select id="tripPlannerStartCountry">
+                  <option value="BG">Bulgaria</option>
+                  <option value="DE">Germany</option>
+                  <option value="FR">France</option>
+                  <option value="ES">Spain</option>
+                  <option value="UK">United Kingdom</option>
+                </select>
+              </label>
+
+              <label class="planner-field">
+                <span id="tripPlannerDaysLabel">Days off</span>
+                <input id="tripPlannerDays" type="number" min="2" max="30" value="7">
+              </label>
+
+              <label class="planner-field">
+                <span id="tripPlannerBudgetLabel">Budget (€)</span>
+                <input id="tripPlannerBudget" type="number" min="200" max="5000" value="1200">
+              </label>
+
+              <label class="planner-field">
+                <span id="tripPlannerDestinationLabel">Destination</span>
+                <select id="tripPlannerDestination">
+                  <option value="lombok">Lombok</option>
+                  <option value="bali">Bali</option>
+                  <option value="java">Java</option>
+                  <option value="borneo">Borneo</option>
+                  <option value="yogyakarta">Yogyakarta</option>
+                  <option value="labuanbajo">Labuan Bajo</option>
+                  <option value="komodo">Komodo</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="planner-actions">
+              <button id="tripPlannerSubmitBtn" type="submit" class="planner-submit-btn">Calculate trip</button>
+            </div>
+            <p id="tripPlannerEstimateNote" class="trip-planner-estimate-note">Trip estimates are approximate and based on average local prices.</p>
+          </form>
+
+          <div id="tripPlannerResult" class="trip-planner-result">
+            <p id="tripPlannerResultPlaceholder">Select your trip details to see an example plan.</p>
+          </div>
+        </div>
+
         <div class="card" id="cities">
           <h2 id="majorCitiesTitle"></h2>
           <div class="api-notice" id="dataNotice"></div>
@@ -1791,6 +1851,7 @@ function cacheContentElements() {
     }
 
     bindSectionToggles();
+    bindTripPlannerForm();
     dom.stadiumInfoBtn.addEventListener('click', openStadiumModal);
     dom.wildlifeInfoBtn.addEventListener('click', openWildlifeModal);
     dom.ticketInfoBtn.addEventListener('click', openTicketModal);
@@ -1874,6 +1935,230 @@ function cacheContentElements() {
     contentRendered = true;
   }
 
+  function calculateTripPlannerResult(startCountry, days, budget, destinationKey) {
+    const profiles = {
+      lombok: {
+        name: 'Lombok',
+        flightCost: 650,
+        dailyBudget: 45,
+        bestDays: [4, 7],
+        season: 'April - October',
+        route: ['Kuta Lombok', 'Senaru', 'Tiu Kelep', 'Gili Islands'],
+        warning: 'Rainy period is usually from November to February.',
+        vibe: 'Beach + waterfalls + relaxed island pace.',
+        difficulty: 'Medium',
+        budgetPillars: {
+          budget: { title: 'budget', summary: 'A solid low-cost island escape for beach time, simple stays, and local food.', recommendation: 'Stay in a guesthouse, use ferries, and focus on 2-3 key stops.' },
+          mid: { title: 'mid', summary: 'A balanced choice with comfortable stays, more flexibility, and a smoother trip rhythm.', recommendation: 'Mix one scenic stop with a couple of easy beaches and a guided day trip.' },
+          premium: { title: 'premium', summary: 'A very comfortable trip with private transfers, boutique stays, and fewer logistics headaches.', recommendation: 'Keep the route compact and add a private boat or wellness day.' }
+        }
+      },
+      bali: {
+        name: 'Bali',
+        flightCost: 550,
+        dailyBudget: 60,
+        bestDays: [5, 10],
+        season: 'May - September',
+        route: ['Ubud', 'Uluwatu', 'Canggu', 'Nusa Penida'],
+        warning: 'Popular season raises accommodation prices.',
+        vibe: 'Balanced mix of culture, beaches and food.',
+        difficulty: 'Easy',
+        budgetPillars: {
+          budget: { title: 'budget', summary: 'Best for a practical island trip with good value, local food, and a shorter route.', recommendation: 'Choose one cultural base and one beach base to keep the trip efficient.' },
+          mid: { title: 'mid', summary: 'This is the sweet spot for a smooth trip with nice stays and enough room for activities.', recommendation: 'Add one temple day, one surf day, and one scenic coastal route.' },
+          premium: { title: 'premium', summary: 'Great if you want comfort, private transfers, and a better pace without stress.', recommendation: 'Keep a shorter route and reserve villas or luxury stays near the coast.' }
+        }
+      },
+      java: {
+        name: 'Java',
+        flightCost: 610,
+        dailyBudget: 48,
+        bestDays: [5, 9],
+        season: 'April - November',
+        route: ['Jakarta', 'Yogyakarta', 'Borobudur', 'Prambanan'],
+        warning: 'Longer transfers between cities can reduce free time if you overpack the route.',
+        vibe: 'Culture, volcanoes, temples and efficient city stops.',
+        difficulty: 'Medium',
+        budgetPillars: {
+          budget: { title: 'budget', summary: 'A very practical route for culture and food lovers who want value without too much complexity.', recommendation: 'Stay in two bases and focus on one temple route plus one city day.' },
+          mid: { title: 'mid', summary: 'This route balances comfort, local experiences, and enough time for larger cultural sites.', recommendation: 'Include a sunrise temple visit and one relaxed evening in a heritage area.' },
+          premium: { title: 'premium', summary: 'A premium Java trip works well with guided experiences and comfortable hotels in key cities.', recommendation: 'Keep a slower route and book a private car between cultural highlights.' }
+        }
+      },
+      borneo: {
+        name: 'Borneo',
+        flightCost: 720,
+        dailyBudget: 50,
+        bestDays: [5, 9],
+        season: 'April - October',
+        route: ['Tanjung Puting', 'Jungle river trip', 'wildlife lookouts'],
+        warning: 'Remote areas need more planning and longer transfers.',
+        vibe: 'Wildlife, rainforest and stronger adventure feel.',
+        difficulty: 'Hard',
+        budgetPillars: {
+          budget: { title: 'budget', summary: 'A truly adventurous option if you like nature and are okay with simpler stays.', recommendation: 'Use one or two base towns and focus on river trips and wildlife observation.' },
+          mid: { title: 'mid', summary: 'A realistic choice for a well-paced rainforest adventure with decent comfort.', recommendation: 'Plan 2-3 nature days and leave room for travel between destinations.' },
+          premium: { title: 'premium', summary: 'This works well if you want a tailored eco trip with better logistics and comfort.', recommendation: 'Add a private guide and choose one slower, more immersive route.' }
+        }
+      },
+      yogyakarta: {
+        name: 'Yogyakarta',
+        flightCost: 480,
+        dailyBudget: 35,
+        bestDays: [3, 6],
+        season: 'All year',
+        route: ['Borobudur', 'Prambanan', 'Merapi', 'Malioboro'],
+        warning: 'Best for culture trips and short city stays.',
+        vibe: 'Perfect for a compact cultural trip.',
+        difficulty: 'Easy',
+        budgetPillars: {
+          budget: { title: 'budget', summary: 'An excellent budget-friendly cultural trip with strong value for food, stays, and access.', recommendation: 'Stay central and keep the route to 2-3 key temples and one evening market.' },
+          mid: { title: 'mid', summary: 'A very efficient city break with enough budget for good food and easy transportation.', recommendation: 'Add one sunrise trip and one comfortable cultural dinner experience.' },
+          premium: { title: 'premium', summary: 'Very comfortable for a compact design-heavy trip with themed stays and relaxed timing.', recommendation: 'Use a private car and keep the route immersive instead of rushed.' }
+        }
+      },
+      labuanbajo: {
+        name: 'Labuan Bajo',
+        flightCost: 820,
+        dailyBudget: 75,
+        bestDays: [4, 8],
+        season: 'April - November',
+        route: ['Komodo', 'Padar Island', 'Pink Beach', 'boat day'],
+        warning: 'Boat trips and lodging can quickly increase the total cost.',
+        vibe: 'Island hopping and dramatic coastal scenery.',
+        difficulty: 'Medium',
+        budgetPillars: {
+          budget: { title: 'budget', summary: 'Possible, but you need to keep the itinerary modest and limit expensive excursions.', recommendation: 'Choose one boat day and keep the rest of the trip close to town.' },
+          mid: { title: 'mid', summary: 'A strong island-hopping trip with room for a great boat route and comfortable stays.', recommendation: 'Mix a coastal stay with one or two boat-based highlights and one downtime day.' },
+          premium: { title: 'premium', summary: 'This is a premium island trip with high-value scenery, smooth logistics, and better comfort.', recommendation: 'Choose a tailored boat itinerary and book the best room with sea views.' }
+        }
+      },
+      komodo: {
+        name: 'Komodo',
+        flightCost: 900,
+        dailyBudget: 82,
+        bestDays: [4, 7],
+        season: 'May - October',
+        route: ['Komodo National Park', 'Pink Beach', 'Padar Island', 'liveaboard'],
+        warning: 'Most comfort comes from boat-based travel and a higher daily budget.',
+        vibe: 'Remote islands, dragons, and big scenic payoff.',
+        difficulty: 'Hard',
+        budgetPillars: {
+          budget: { title: 'budget', summary: 'A challenging route that still works if you keep it simple and avoid premium boat packages.', recommendation: 'Pick one or two island stops and keep long transfers to a minimum.' },
+          mid: { title: 'mid', summary: 'A realistic option for combining comfort with a memorable island-hopping trip.', recommendation: 'Book a mid-range cabin or small guesthouse and keep the route compact.' },
+          premium: { title: 'premium', summary: 'This is the best choice for a smooth, stylish island trip with guided tours and premium stays.', recommendation: 'Choose a private or luxury boat route and prioritize fewer but better experiences.' }
+        }
+      }
+    };
+
+    const profile = profiles[destinationKey];
+    if (!profile) {
+      return '<p>Destination is not available yet.</p>';
+    }
+
+    const flightCost = profile.flightCost;
+    const stayCost = days * profile.dailyBudget;
+    const extraCost = days * 18;
+    const totalEstimated = flightCost + stayCost + extraCost;
+    const goodFit = totalEstimated <= budget;
+    const niceDays = days >= profile.bestDays[0] && days <= profile.bestDays[1];
+    const budgetBand = budget < (profile.flightCost + profile.dailyBudget * 3) ? 'budget' : budget < (profile.flightCost + profile.dailyBudget * 6) ? 'mid' : 'premium';
+    const budgetText = profile.budgetPillars[budgetBand] || profile.budgetPillars.mid;
+    const statusClass = goodFit ? 'good' : 'tight';
+    const statusText = goodFit ? '✔️ ' + getTranslation('tripPlannerGoodFit') : '⚠️ ' + getTranslation('tripPlannerBudgetTight');
+    const difficultyText = getTranslation('tripPlannerDifficulty' + (profile.difficulty || 'Medium'));
+
+    let extraMessage = '<div class="trip-planner-recommendation-block"><p>' + budgetText.summary + '</p>';
+
+    if (!niceDays) {
+      if (days < profile.bestDays[0]) {
+        extraMessage += '<p>' + getTranslation('tripPlannerFewDays') + ' ' + profile.bestDays[0] + ' ' + getTranslation('tripPlannerDaysShort') + '</p>';
+      } else {
+        extraMessage += '<p>' + getTranslation('tripPlannerMoreDays') + '</p>';
+      }
+    }
+
+    if (!goodFit) {
+      extraMessage += '<p>' + getTranslation('tripPlannerBudgetAdvice') + '</p>';
+    }
+
+    extraMessage += '<p><strong>' + getTranslation('tripPlannerRecommendationLabel') + ':</strong> ' + budgetText.recommendation + '</p></div>';
+
+    return `
+      <div class="trip-planner-status ${statusClass}">${statusText}</div>
+      <div class="trip-planner-cost-box">
+        <div class="trip-planner-cost-header">💶 ${getTranslation('tripPlannerTotalCost')}: €${totalEstimated}</div>
+        <div class="trip-planner-cost-breakdown">${getTranslation('tripPlannerFlight')}: €${flightCost} + ${getTranslation('tripPlannerStay')}: €${stayCost} + ${getTranslation('tripPlannerExtras')}: €${extraCost}</div>
+      </div>
+      <div class="trip-planner-summary">
+        <div class="trip-planner-metric"><span>📍</span><strong>${getTranslation('tripPlannerDestinationLabel')}:</strong> ${profile.name}</div>
+        <div class="trip-planner-metric"><span>🧳</span><strong>${getTranslation('tripPlannerStartCountryLabel')}:</strong> ${startCountry}</div>
+        <div class="trip-planner-metric"><span>💰</span><strong>${getTranslation('tripPlannerEstimatedTotal')}:</strong> €${totalEstimated}</div>
+        <div class="trip-planner-metric"><span>🌤️</span><strong>${getTranslation('tripPlannerBestSeason')}:</strong> ${profile.season}</div>
+        <div class="trip-planner-metric"><span>🧭</span><strong>${getTranslation('tripPlannerDifficultyLabel')}:</strong> ${difficultyText}</div>
+      </div>
+      <div class="trip-planner-route"><span>🗺️</span><strong>${getTranslation('tripPlannerSuggestedRoute')}:</strong> ${profile.route.join(' • ')}</div>
+      <div class="trip-planner-note"><span>💡</span><strong>${getTranslation('tripPlannerExperience')}:</strong> ${profile.vibe}</div>
+      <div class="trip-planner-warning"><span>⚠️</span><strong>${getTranslation('tripPlannerWarning')}:</strong> ${profile.warning}</div>
+      ${extraMessage}
+    `;
+  }
+
+  function updateTripPlannerOptions() {
+    const startCountrySelect = document.getElementById('tripPlannerStartCountry');
+    const destinationSelect = document.getElementById('tripPlannerDestination');
+
+    if (startCountrySelect) {
+      const countries = {
+        BG: getTranslation('tripPlannerCountryBg'),
+        DE: getTranslation('tripPlannerCountryDe'),
+        FR: getTranslation('tripPlannerCountryFr'),
+        ES: getTranslation('tripPlannerCountryEs'),
+        UK: getTranslation('tripPlannerCountryUk')
+      };
+      Array.from(startCountrySelect.options).forEach((option) => {
+        if (countries[option.value]) option.textContent = countries[option.value];
+      });
+    }
+
+    if (destinationSelect) {
+      const destinationNames = {
+        lombok: getTranslation('tripPlannerDestinationLombok'),
+        bali: getTranslation('tripPlannerDestinationBali'),
+        java: getTranslation('tripPlannerDestinationJava'),
+        borneo: getTranslation('tripPlannerDestinationBorneo'),
+        yogyakarta: getTranslation('tripPlannerDestinationYogyakarta'),
+        labuanbajo: getTranslation('tripPlannerDestinationLabuanBajo'),
+        komodo: getTranslation('tripPlannerDestinationKomodo')
+      };
+      Array.from(destinationSelect.options).forEach((option) => {
+        if (destinationNames[option.value]) option.textContent = destinationNames[option.value];
+      });
+    }
+  }
+
+  function bindTripPlannerForm() {
+    const form = document.getElementById('tripPlannerForm');
+    if (!form) return;
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const startCountry = document.getElementById('tripPlannerStartCountry').value;
+      const days = Number(document.getElementById('tripPlannerDays').value || 0);
+      const budget = Number(document.getElementById('tripPlannerBudget').value || 0);
+      const destination = document.getElementById('tripPlannerDestination').value;
+      const result = document.getElementById('tripPlannerResult');
+
+      if (!days || !budget || budget <= 0) {
+        result.innerHTML = '<p>' + getTranslation('tripPlannerInvalidInput') + '</p>';
+        return;
+      }
+
+      result.innerHTML = calculateTripPlannerResult(startCountry, days, budget, destination);
+    });
+  }
+
   function hideSpecificBlogCards() {
     const hiddenCardIds = ['blogArticle18Title', 'blogArticle20Title', 'blogArticle21Title', 'blogArticle22Title'];
 
@@ -1913,6 +2198,15 @@ function cacheContentElements() {
     dom.fruitsTitle.textContent = getTranslation('fruitsTitle');
     dom.parksTitle.textContent = getTranslation('parksTitle');
     dom.treesTitle.textContent = getTranslation('treesTitle');
+    dom.tripPlannerTitle.textContent = getTranslation('tripPlannerTitle');
+    dom.tripPlannerStartCountryLabel.textContent = getTranslation('tripPlannerStartCountryLabel');
+    dom.tripPlannerDaysLabel.textContent = getTranslation('tripPlannerDaysLabel');
+    dom.tripPlannerBudgetLabel.textContent = getTranslation('tripPlannerBudgetLabel');
+    dom.tripPlannerDestinationLabel.textContent = getTranslation('tripPlannerDestinationLabel');
+    dom.tripPlannerSubmitBtn.textContent = getTranslation('tripPlannerSubmitBtn');
+    if (dom.tripPlannerEstimateNote) dom.tripPlannerEstimateNote.textContent = getTranslation('tripPlannerEstimateNote');
+    if (dom.tripPlannerResultPlaceholder) dom.tripPlannerResultPlaceholder.textContent = getTranslation('tripPlannerResultPlaceholder');
+    updateTripPlannerOptions();
     dom.blogSectionTitle.textContent = getTranslation('blogSectionTitle');
     if (dom.blogArticleTitle) dom.blogArticleTitle.textContent = getTranslation('blogArticleTitle');
     if (dom.blogArticleExcerpt) dom.blogArticleExcerpt.textContent = getTranslation('blogArticleExcerpt');
