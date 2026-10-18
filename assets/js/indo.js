@@ -737,7 +737,6 @@
   const landSectionsByLanguage = {};
   const freshwaterSectionsByLanguage = {};
   const parksSectionsByLanguage = {};
-  let visitCountValue = null;
 
   function runWhenIdle(callback, timeout) {
     if ('requestIdleCallback' in window) {
@@ -757,7 +756,6 @@
     dom.idBtn = document.getElementById('idBtn');
     dom.headerTitle = document.getElementById('headerTitle');
     dom.headerSubtitle = document.getElementById('headerSubtitle');
-    dom.visitCounter = document.getElementById('visitCounter');
     dom.adBoxLabels = Array.from(document.querySelectorAll('.ad-box-label'));
     dom.content = document.getElementById('content');
     dom.cityModal = document.getElementById('cityModal');
@@ -1821,7 +1819,6 @@ function cacheContentElements() {
     dom.idBtn.classList.toggle('active', currentLanguage === 'id');
     dom.headerTitle.textContent = getTranslation('headerTitle');
     dom.headerSubtitle.textContent = getTranslation('headerSubtitle');
-    updateVisitCounterUI();
     if (Array.isArray(dom.adBoxLabels) && dom.adBoxLabels.length > 0) {
       const adPlaceholderText = getTranslation('adPlaceholder');
       dom.adBoxLabels.forEach(function (label) {
@@ -1834,96 +1831,13 @@ function cacheContentElements() {
       dom.wildlifeInfoBtn.setAttribute('aria-label', wildlifeLabel);
       dom.wildlifeInfoBtn.title = wildlifeLabel;
     }
+
+    if (typeof window.updateAiChatText === 'function') {
+      window.updateAiChatText();
+    }
   }
 
 
-
-  function updateVisitCounterUI() {
-    if (!dom.visitCounter) {
-      return;
-    }
-
-    const label = getTranslation('visitCounterLabel');
-    if (visitCountValue === null) {
-      dom.visitCounter.textContent = `${label}: ${getTranslation('visitCounterLoading')}`;
-      return;
-    }
-
-    dom.visitCounter.textContent = `${label}: ${visitCountValue}`;
-  }
-
-  function incrementLocalVisitCounter() {
-    const STORAGE_KEY = 'indonesia_explorer_visits';
-    const storedCount = localStorage.getItem(STORAGE_KEY);
-    const parsedCount = storedCount ? parseInt(storedCount, 10) : 0;
-    const nextCount = Number.isFinite(parsedCount) ? parsedCount + 1 : 1;
-    localStorage.setItem(STORAGE_KEY, String(nextCount));
-    return nextCount;
-  }
-
-  function getFirebaseCounterConfig() {
-    const config = window.INDO_FIREBASE_CONFIG;
-    if (!config) {
-      return null;
-    }
-
-    if (!config.apiKey || !config.projectId || !config.appId || !config.databaseURL) {
-      return null;
-    }
-
-    return config;
-  }
-
-  function getFirebaseDatabase() {
-    const config = getFirebaseCounterConfig();
-    if (!config || !window.firebase || !window.firebase.database) {
-      return null;
-    }
-
-    if (!window.firebase.apps.length) {
-      window.firebase.initializeApp(config);
-    }
-
-    return window.firebase.database();
-  }
-
-  async function incrementFirebaseVisitCounter() {
-    const database = getFirebaseDatabase();
-    if (!database) {
-      return null;
-    }
-
-    const counterPath = window.INDO_FIREBASE_COUNTER_PATH || 'siteCounters/indonesiaExplorer/visits';
-    const counterRef = database.ref(counterPath);
-    const result = await counterRef.transaction(function (currentValue) {
-      const safeValue = typeof currentValue === 'number' && Number.isFinite(currentValue) ? currentValue : 0;
-      return safeValue + 1;
-    });
-
-    if (!result.committed || !result.snapshot) {
-      throw new Error('Firebase counter transaction failed.');
-    }
-
-    return result.snapshot.val();
-  }
-
-  async function loadVisitCounter() {
-    updateVisitCounterUI();
-
-    try {
-      const firebaseCount = await incrementFirebaseVisitCounter();
-      if (typeof firebaseCount === 'number' && Number.isFinite(firebaseCount)) {
-        visitCountValue = firebaseCount;
-        updateVisitCounterUI();
-        return;
-      }
-    } catch (error) {
-      console.warn('Firebase visit counter unavailable, falling back to local counter.', error);
-    }
-
-    visitCountValue = incrementLocalVisitCounter();
-    updateVisitCounterUI();
-  }
 
   function buildImageCandidates(src) {
     const match = src.match(/\.(avif|webp|jpe?g|png)(\?.*)?$/i);
@@ -2026,39 +1940,8 @@ function cacheContentElements() {
     runWhenIdle(warmCriticalImages, 2500);
   }
 
-  function scheduleVisitCounterLoad() {
-    function startVisitCounter() {
-      void loadVisitCounter();
-    }
-
-    if (window.APP_RUNTIME_FLAGS && window.APP_RUNTIME_FLAGS.isLocalPreview) {
-      startVisitCounter();
-      return;
-    }
-
-    if (window.firebase && window.firebase.database) {
-      startVisitCounter();
-      return;
-    }
-
-    let hasStarted = false;
-
-    function startOnce() {
-      if (hasStarted) {
-        return;
-      }
-      hasStarted = true;
-      window.removeEventListener('indonesia:firebase-ready', startOnce);
-      startVisitCounter();
-    }
-
-    window.addEventListener('indonesia:firebase-ready', startOnce, { once: true });
-    window.setTimeout(startOnce, 2500);
-  }
-
   function scheduleNonCriticalStartup() {
     window.addEventListener('load', function () {
-      runWhenIdle(scheduleVisitCounterLoad, 2000);
       scheduleCriticalImageWarmup();
     }, { once: true });
   }

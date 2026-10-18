@@ -88,17 +88,10 @@
 </head>
 <body>
     <div class="page-layout">
-        <aside class="ad-sidebar ad-sidebar-left" aria-label="Left advertisement">
-            <div class="ad-box">
-                <span class="ad-box-label">Място за реклама</span>
-            </div>
-        </aside>
-
         <div class="container">
             <header>
                 <h1 id="headerTitle">🇮🇩 Indonesia Explorer</h1>
                 <p id="headerSubtitle">Explore detailed information about Indonesia</p>
-                <p id="visitCounter" class="visit-counter">Посещения: ...</p>
                 <div class="language-selector" role="group" aria-label="Language selector">
                     <button class="lang-btn active" onclick="changeLanguage('bg')" id="bgBtn">BG</button>
                     <button class="lang-btn" onclick="changeLanguage('en')" id="enBtn">EN</button>
@@ -117,11 +110,6 @@
             </div>
         </div>
 
-        <aside class="ad-sidebar ad-sidebar-right" aria-label="Right advertisement">
-            <div class="ad-box">
-                <span class="ad-box-label">Място за реклама</span>
-            </div>
-        </aside>
     </div>
 
     <!-- City Modal -->
@@ -265,30 +253,30 @@
                 <div class="ai-chat-brand">
                     <span class="ai-chat-brand-icon">✦</span>
                     <div>
-                        <strong>Indonesia AI Guide</strong>
-                        <p>Попитай за дестинации, маршрути и идеи.</p>
+                        <strong id="aiChatTitle">Indonesia AI Guide</strong>
+                        <p id="aiChatSubtitle">Попитай за дестинации, маршрути и идеи.</p>
                     </div>
                 </div>
-                <button class="ai-chat-close" id="aiChatClose" type="button" aria-label="Затвори AI чата">&times;</button>
+                <button class="ai-chat-close" id="aiChatClose" type="button" aria-label="Close AI chat">&times;</button>
             </div>
             <div class="ai-chat-messages" id="aiChatMessages" aria-live="polite">
                 <div class="ai-chat-message ai-chat-message-assistant">
-                    <div class="ai-chat-bubble">Здравей! Мога да помогна с идеи за Бали, Джакарта, Ломбок, природа и пътуване в Индонезия.</div>
+                    <div class="ai-chat-bubble" id="aiChatWelcomeMessage">Здравей! Мога да помогна с идеи за Бали, Джакарта, Ломбок, природа и пътуване в Индонезия.</div>
                 </div>
             </div>
             <form class="ai-chat-form" id="aiChatForm">
                 <label class="ai-chat-field">
-                    <span class="ai-chat-label">Съобщение</span>
-                    <input id="aiChatInput" class="ai-chat-input" type="text" name="message" maxlength="500" placeholder="Напиши въпроса си..." autocomplete="off" required>
+                    <span class="ai-chat-label" id="aiChatLabel">Съобщение</span>
+                    <input id="aiChatInput" class="ai-chat-input" type="text" name="message" maxlength="500" placeholder="" autocomplete="off" required>
                 </label>
                 <button class="ai-chat-submit" id="aiChatSubmit" type="submit">
-                    <span>Изпрати</span>
+                    <span id="aiChatSubmitText">Изпрати</span>
                 </button>
             </form>
         </div>
-        <button class="ai-chat-toggle" id="aiChatToggle" type="button" aria-controls="aiChatWindow" aria-expanded="false" aria-label="Отвори AI чат">
+        <button class="ai-chat-toggle" id="aiChatToggle" type="button" aria-controls="aiChatWindow" aria-expanded="false" aria-label="Open AI chat">
             <span class="ai-chat-toggle-icon">✦</span>
-            <span class="ai-chat-toggle-text">AI чат</span>
+            <span class="ai-chat-toggle-text" id="aiChatToggleText">AI чат</span>
         </button>
     </div>
 
@@ -337,8 +325,125 @@
             const input = document.getElementById('aiChatInput');
             const submitButton = document.getElementById('aiChatSubmit');
             const messages = document.getElementById('aiChatMessages');
+            const title = document.getElementById('aiChatTitle');
+            const subtitle = document.getElementById('aiChatSubtitle');
+            const welcomeMessage = document.getElementById('aiChatWelcomeMessage');
+            const label = document.getElementById('aiChatLabel');
+            const submitText = document.getElementById('aiChatSubmitText');
+            const toggleText = document.getElementById('aiChatToggleText');
             const history = [];
             let isPending = false;
+
+            const aiChatLocaleMap = {
+                bg: {
+                    title: 'Indonesia AI Guide',
+                    subtitle: 'Попитай за дестинации, маршрути и идеи.',
+                    welcome: 'Здравей! Мога да помогна с идеи за Бали, Джакарта, Ломбок, природа и пътуване в Индонезия.',
+                    label: 'Съобщение',
+                    placeholder: 'Напиши въпроса си...',
+                    send: 'Изпрати',
+                    toggle: 'AI чат',
+                    open: 'Отвори AI чат',
+                    close: 'Затвори AI чата'
+                },
+                en: {
+                    title: 'Indonesia AI Guide',
+                    subtitle: 'Ask about destinations, routes, and ideas.',
+                    welcome: 'Hello! I can help with ideas for Bali, Jakarta, Lombok, nature, and travel in Indonesia.',
+                    label: 'Message',
+                    placeholder: 'Write your question...',
+                    send: 'Send',
+                    toggle: 'AI chat',
+                    open: 'Open AI chat',
+                    close: 'Close AI chat'
+                },
+                de: {
+                    title: 'Indonesia AI Guide',
+                    subtitle: 'Fragen Sie nach Zielen, Routen und Ideen.',
+                    welcome: 'Hallo! Ich kann Ihnen Ideen zu Bali, Jakarta, Lombok, Natur und Reisen in Indonesien geben.',
+                    label: 'Nachricht',
+                    placeholder: 'Schreiben Sie Ihre Frage...',
+                    send: 'Senden',
+                    toggle: 'KI-Chat',
+                    open: 'KI-Chat öffnen',
+                    close: 'KI-Chat schließen'
+                },
+                fr: {
+                    title: 'Indonesia AI Guide',
+                    subtitle: 'Demandez des destinations, itinéraires et idées.',
+                    welcome: 'Bonjour! Je peux vous aider avec des idées pour Bali, Jakarta, Lombok, la nature et les voyages en Indonésie.',
+                    label: 'Message',
+                    placeholder: 'Écrivez votre question...',
+                    send: 'Envoyer',
+                    toggle: 'Chat IA',
+                    open: 'Ouvrir le chat IA',
+                    close: 'Fermer le chat IA'
+                },
+                es: {
+                    title: 'Indonesia AI Guide',
+                    subtitle: 'Pregunta por destinos, rutas e ideas.',
+                    welcome: '¡Hola! Puedo ayudarte con ideas para Bali, Yakarta, Lombok, naturaleza y viajes por Indonesia.',
+                    label: 'Mensaje',
+                    placeholder: 'Escribe tu pregunta...',
+                    send: 'Enviar',
+                    toggle: 'Chat IA',
+                    open: 'Abrir chat IA',
+                    close: 'Cerrar chat IA'
+                },
+                id: {
+                    title: 'Indonesia AI Guide',
+                    subtitle: 'Tanya destinasi, rute, dan ide perjalanan.',
+                    welcome: 'Halo! Saya bisa membantu dengan ide untuk Bali, Jakarta, Lombok, alam, dan perjalanan di Indonesia.',
+                    label: 'Pesan',
+                    placeholder: 'Tulis pertanyaan Anda...',
+                    send: 'Kirim',
+                    toggle: 'Chat AI',
+                    open: 'Buka chat AI',
+                    close: 'Tutup chat AI'
+                }
+            };
+
+            function getCurrentChatLanguage() {
+                const savedLanguage = window.localStorage ? window.localStorage.getItem('preferredLanguage') : null;
+                const preferred = (savedLanguage || document.documentElement.lang || 'bg').toLowerCase();
+                return ['bg', 'en', 'de', 'fr', 'es', 'id'].includes(preferred) ? preferred : 'bg';
+            }
+
+            function translateAiChat(key) {
+                const language = getCurrentChatLanguage();
+                const pack = aiChatLocaleMap[language] || aiChatLocaleMap.bg;
+                return pack[key] || aiChatLocaleMap.bg[key] || key;
+            }
+
+            function updateAiChatText() {
+                if (title) {
+                    title.textContent = translateAiChat('title');
+                }
+                if (subtitle) {
+                    subtitle.textContent = translateAiChat('subtitle');
+                }
+                if (welcomeMessage) {
+                    welcomeMessage.textContent = translateAiChat('welcome');
+                }
+                if (label) {
+                    label.textContent = translateAiChat('label');
+                }
+                if (input) {
+                    input.placeholder = translateAiChat('placeholder');
+                }
+                if (submitText) {
+                    submitText.textContent = translateAiChat('send');
+                }
+                if (toggleText) {
+                    toggleText.textContent = translateAiChat('toggle');
+                }
+                closeButton.setAttribute('aria-label', translateAiChat('close'));
+                toggle.setAttribute('aria-label', panel.hidden ? translateAiChat('open') : translateAiChat('close'));
+            }
+
+            window.updateAiChatText = updateAiChatText;
+            window.getCurrentChatLanguage = getCurrentChatLanguage;
+            updateAiChatText();
 
             function scrollToLatest() {
                 messages.scrollTop = messages.scrollHeight;
@@ -348,7 +453,8 @@
                 widget.classList.toggle('is-open', isOpen);
                 panel.hidden = !isOpen;
                 toggle.setAttribute('aria-expanded', String(isOpen));
-                toggle.setAttribute('aria-label', isOpen ? 'Затвори AI чат' : 'Отвори AI чат');
+                toggle.setAttribute('aria-label', isOpen ? translateAiChat('close') : translateAiChat('open'));
+                closeButton.setAttribute('aria-label', translateAiChat('close'));
 
                 if (isOpen) {
                     window.setTimeout(function () {
@@ -393,7 +499,76 @@
 
             function buildFallbackReply(message) {
                 const lowerMessage = message.toLowerCase();
+                const language = getCurrentChatLanguage();
                 const isBulgarian = /[а-я]/i.test(message);
+                const isGerman = /[äöüß]/i.test(message) || /deutsch|dein|du bist|berlin|bali|jakarta|lombok/i.test(lowerMessage);
+                const isFrench = /[éèàçùêîôûëïüÿœ]/i.test(message) || /bonjour|merci|france|bali|jakarta|lombok/i.test(lowerMessage);
+                const isSpanish = /[áéíóúñü]/i.test(message) || /hola|gracias|bali|jakarta|lombok/i.test(lowerMessage);
+                const isIndonesian = /[aiueo]/i.test(message) && /bali|jakarta|lombok|liburan|wisata|indonesia/i.test(lowerMessage);
+
+                if (language === 'de' || isGerman) {
+                    if (lowerMessage.includes('bali') || lowerMessage.includes('бали')) {
+                        return 'Für Bali empfehle ich Ubud für Kultur und Natur, Seminyak für eine lebendigere Atmosphäre und Nusa Dua für einen ruhigeren Urlaub.';
+                    }
+                    if (lowerMessage.includes('jakarta') || lowerMessage.includes('джакарта')) {
+                        return 'In Jakarta kombinierst du am besten Gelora Bung Karno, Kota Tua und die modernen Viertel rund um Sudirman für einen gelungenen Stadttag.';
+                    }
+                    if (lowerMessage.includes('lombok') || lowerMessage.includes('ломбок')) {
+                        return 'Lombok ist eine gute Wahl für ruhigere Strände, Aussichten auf den Mount Rinjani und eine entspanntere Atmosphäre als Bali.';
+                    }
+                    if (lowerMessage.includes('wildlife') || lowerMessage.includes('animal') || lowerMessage.includes('живот') || lowerMessage.includes('природ')) {
+                        return 'Wenn du Natur und Tiere suchst, beginne mit Orang-Utans, Meeresschildkröten, Korallenriffen und den Nationalparks bei Komodo und Raja Ampat.';
+                    }
+                    return 'Ich kann dir bei Routen, Städten, Stränden, Natur, Unterkunft und der besten Reisezeit in Indonesien helfen. Stelle mir eine konkretere Frage.';
+                }
+
+                if (language === 'fr' || isFrench) {
+                    if (lowerMessage.includes('bali') || lowerMessage.includes('бали')) {
+                        return 'Pour Bali, je recommande Ubud pour la culture et la nature, Seminyak pour une ambiance plus animée et Nusa Dua pour un séjour plus calme.';
+                    }
+                    if (lowerMessage.includes('jakarta') || lowerMessage.includes('джакарта')) {
+                        return 'À Jakarta, tu peux combiner Gelora Bung Karno, Kota Tua et les quartiers modernes autour de Sudirman pour une bonne journée en ville.';
+                    }
+                    if (lowerMessage.includes('lombok') || lowerMessage.includes('ломбок')) {
+                        return 'Lombok est un excellent choix pour des plages plus calmes, des vues sur le mont Rinjani et une ambiance plus détendue que Bali.';
+                    }
+                    if (lowerMessage.includes('wildlife') || lowerMessage.includes('animal') || lowerMessage.includes('живот') || lowerMessage.includes('природ')) {
+                        return 'Pour la nature, commence par les orangs-outans, les tortues de mer, les récifs coralliens et les parcs nationaux autour de Komodo et Raja Ampat.';
+                    }
+                    return 'Je peux t’aider avec des idées de routes, villes, plages, nature, hébergement et la meilleure période pour voyager en Indonésie.';
+                }
+
+                if (language === 'es' || isSpanish) {
+                    if (lowerMessage.includes('bali') || lowerMessage.includes('бали')) {
+                        return 'Para Bali, recomiendo Ubud por la cultura y la naturaleza, Seminyak para un ambiente más animado y Nusa Dua para una estancia más tranquila.';
+                    }
+                    if (lowerMessage.includes('jakarta') || lowerMessage.includes('джакарта')) {
+                        return 'En Yakarta, puedes combinar Gelora Bung Karno, Kota Tua y los barrios modernos alrededor de Sudirman para un gran día en la ciudad.';
+                    }
+                    if (lowerMessage.includes('lombok') || lowerMessage.includes('ломбок')) {
+                        return 'Lombok es una excelente opción para playas más tranquilas, vistas al monte Rinjani y un ambiente más relajado que Bali.';
+                    }
+                    if (lowerMessage.includes('wildlife') || lowerMessage.includes('animal') || lowerMessage.includes('живот') || lowerMessage.includes('природ')) {
+                        return 'Si te interesa la naturaleza, empieza con orangutanes, tortugas marinas, arrecifes de coral y parques nacionales cerca de Komodo y Raja Ampat.';
+                    }
+                    return 'Puedo ayudarte con rutas, ciudades, playas, naturaleza, alojamiento y la mejor temporada para viajar a Indonesia.';
+                }
+
+                if (language === 'id' || isIndonesian) {
+                    if (lowerMessage.includes('bali') || lowerMessage.includes('бали')) {
+                        return 'Untuk Bali, saya sarankan Ubud untuk budaya dan alam, Seminyak untuk suasana yang lebih aktif, dan Nusa Dua untuk liburan yang lebih tenang.';
+                    }
+                    if (lowerMessage.includes('jakarta') || lowerMessage.includes('джакарта')) {
+                        return 'Di Jakarta, kamu bisa kombinasikan Gelora Bung Karno, Kota Tua, dan area modern sekitar Sudirman untuk satu hari menjelajah kota.';
+                    }
+                    if (lowerMessage.includes('lombok') || lowerMessage.includes('ломбок')) {
+                        return 'Lombok adalah pilihan bagus untuk pantai yang lebih tenang, pemandangan Gunung Rinjani, dan suasana yang lebih santai daripada Bali.';
+                    }
+                    if (lowerMessage.includes('wildlife') || lowerMessage.includes('animal') || lowerMessage.includes('живот') || lowerMessage.includes('природ')) {
+                        return 'Kalau kamu tertarik alam dan satwa, mulai dari orangutan, penyu laut, terumbu karang, dan taman nasional di Komodo serta Raja Ampat.';
+                    }
+                    return 'Saya bisa bantu dengan ide rute, kota, pantai, alam, akomodasi, dan waktu terbaik untuk liburan ke Indonesia.';
+                }
 
                 if (lowerMessage.includes('bali') || lowerMessage.includes('бали')) {
                     return isBulgarian
@@ -459,7 +634,8 @@
                         },
                         body: JSON.stringify({
                             message: message,
-                            history: history.slice(-6)
+                            history: history.slice(-6),
+                            language: getCurrentChatLanguage()
                         })
                     });
 
