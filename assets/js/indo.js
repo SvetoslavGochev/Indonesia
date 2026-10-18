@@ -725,6 +725,7 @@
 
   const dom = {};
   let contentRendered = false;
+  let lastTripPlannerInput = null;
   const blogArticleTextByLanguage = {};
   const dolphinArticleTextByLanguage = {};
   const waterworldSectionsByLanguage = {};
@@ -737,6 +738,64 @@
   const landSectionsByLanguage = {};
   const freshwaterSectionsByLanguage = {};
   const parksSectionsByLanguage = {};
+
+  const tripPlannerDestinations = {
+    lombok: { name: 'Lombok', flight: 650, daily: 42, bestDays: [4, 8], season: [4, 10], route: 'Kuta Lombok · Senaru · Tiu Kelep · Gili Islands' },
+    bali: { name: 'Bali', flight: 520, daily: 55, bestDays: [5, 9], season: [4, 10], route: 'Ubud · Canggu · Uluwatu · Nusa Penida' },
+    java: { name: 'Java', flight: 610, daily: 48, bestDays: [5, 9], season: [4, 11], route: 'Jakarta · Yogyakarta · Borobudur · Prambanan' },
+    borneo: { name: 'Borneo', flight: 720, daily: 50, bestDays: [5, 9], season: [4, 10], route: 'Tanjung Puting · Jungle river trip · wildlife lookouts' },
+    yogyakarta: { name: 'Yogyakarta', flight: 480, daily: 35, bestDays: [3, 6], season: 'year-round', route: 'Borobudur · Prambanan · Merapi · Malioboro' },
+    labuanbajo: { name: 'Labuan Bajo', flight: 820, daily: 75, bestDays: [4, 8], season: [4, 11], route: 'Komodo · Padar Island · Pink Beach · boat day' },
+    komodo: { name: 'Komodo', flight: 900, daily: 82, bestDays: [4, 7], season: [5, 10], route: 'Komodo National Park · Pink Beach · Padar Island · liveaboard' }
+  };
+
+  const tripPlannerTranslations = {
+    bg: {
+      title: '📍 Калкулатор за пътуване', origin: 'Държава на тръгване', chooseOrigin: 'Избери държава', days: 'Дни', daysHint: 'От 1 до 30 дни', budget: 'Общ бюджет (€)', budgetHint: 'Бюджет за един пътник', destination: 'Дестинация', chooseDestination: 'Избери дестинация', calculate: 'Изчисли пътуването', reset: 'Изчисти', note: 'Ориентировъчна оценка за един пътник; цените са примерни и зависят от сезона.', placeholder: 'Избери данните за пътуването, за да видиш примерен план.', invalid: 'Моля, попълни валидни данни за пътуването.', fit: 'Планът се побира в бюджета', tight: 'Бюджетът е под ориентировъчната сума', flight: 'Самолетен билет', stay: 'Престой и дневни разходи', extras: 'Местен транспорт и дейности', total: 'Обща ориентировъчна сума', period: 'Подходящ сезон', yearRound: 'Целогодишно', route: 'Предложен маршрут', advice: 'Провери актуалните цени на полети, настаняване и екскурзии преди резервация.', countries: { BG: 'България', DE: 'Германия', FR: 'Франция', ES: 'Испания', UK: 'Великобритания', OTHER: 'Друга държава' }, destinations: { lombok: 'Ломбок', bali: 'Бали', java: 'Ява', borneo: 'Борнео', yogyakarta: 'Джокякарта', labuanbajo: 'Лабуан Баджо', komodo: 'Комодо' }
+    },
+    en: {
+      title: '📍 Travel cost calculator', origin: 'Departure country', chooseOrigin: 'Select a country', days: 'Days', daysHint: '1 to 30 days', budget: 'Total budget (€)', budgetHint: 'Budget for one traveler', destination: 'Destination', chooseDestination: 'Select a destination', calculate: 'Calculate trip', reset: 'Reset', note: 'An approximate estimate for one traveler; actual prices vary by season.', placeholder: 'Choose your trip details to see an example plan.', invalid: 'Please enter valid trip details.', fit: 'The plan fits your budget', tight: 'The budget is below the estimated cost', flight: 'Flight estimate', stay: 'Stay and daily costs', extras: 'Local transport and activities', total: 'Estimated total', period: 'Best season', yearRound: 'All year', route: 'Suggested route', advice: 'Check current flight, accommodation, and tour prices before booking.', countries: { BG: 'Bulgaria', DE: 'Germany', FR: 'France', ES: 'Spain', UK: 'United Kingdom', OTHER: 'Other country' }, destinations: { lombok: 'Lombok', bali: 'Bali', java: 'Java', borneo: 'Borneo', yogyakarta: 'Yogyakarta', labuanbajo: 'Labuan Bajo', komodo: 'Komodo' }
+    },
+    de: {
+      title: '📍 Reisekostenrechner', origin: 'Abreiseland', chooseOrigin: 'Land auswählen', days: 'Tage', daysHint: '1 bis 30 Tage', budget: 'Gesamtbudget (€)', budgetHint: 'Budget für eine Person', destination: 'Reiseziel', chooseDestination: 'Reiseziel auswählen', calculate: 'Reise berechnen', reset: 'Zurücksetzen', note: 'Ungefähre Schätzung für eine Person; die tatsächlichen Preise variieren je nach Saison.', placeholder: 'Wähle deine Reisedaten für einen Beispielplan.', invalid: 'Bitte gültige Reisedaten eingeben.', fit: 'Die Reise passt ins Budget', tight: 'Das Budget liegt unter den geschätzten Kosten', flight: 'Flugschätzung', stay: 'Unterkunft und tägliche Kosten', extras: 'Nahverkehr und Aktivitäten', total: 'Geschätzte Gesamtkosten', period: 'Beste Reisezeit', yearRound: 'Ganzjährig', route: 'Vorgeschlagene Route', advice: 'Prüfe vor der Buchung die aktuellen Flug-, Unterkunfts- und Tourpreise.', countries: { BG: 'Bulgarien', DE: 'Deutschland', FR: 'Frankreich', ES: 'Spanien', UK: 'Vereinigtes Königreich', OTHER: 'Anderes Land' }, destinations: { lombok: 'Lombok', bali: 'Bali', java: 'Java', borneo: 'Borneo', yogyakarta: 'Yogyakarta', labuanbajo: 'Labuan Bajo', komodo: 'Komodo' }
+    },
+    fr: {
+      title: '📍 Calculateur de voyage', origin: 'Pays de départ', chooseOrigin: 'Choisir un pays', days: 'Jours', daysHint: 'De 1 à 30 jours', budget: 'Budget total (€)', budgetHint: 'Budget pour une personne', destination: 'Destination', chooseDestination: 'Choisir une destination', calculate: 'Calculer le voyage', reset: 'Réinitialiser', note: 'Estimation approximative pour une personne ; les prix réels varient selon la saison.', placeholder: 'Choisissez les détails du voyage pour voir un exemple de programme.', invalid: 'Veuillez saisir des informations de voyage valides.', fit: 'Le voyage respecte votre budget', tight: 'Le budget est inférieur au coût estimé', flight: 'Estimation du vol', stay: 'Hébergement et dépenses quotidiennes', extras: 'Transports locaux et activités', total: 'Coût total estimé', period: 'Meilleure saison', yearRound: 'Toute l’année', route: 'Itinéraire suggéré', advice: 'Vérifiez les prix actuels des vols, hébergements et excursions avant de réserver.', countries: { BG: 'Bulgarie', DE: 'Allemagne', FR: 'France', ES: 'Espagne', UK: 'Royaume-Uni', OTHER: 'Autre pays' }, destinations: { lombok: 'Lombok', bali: 'Bali', java: 'Java', borneo: 'Bornéo', yogyakarta: 'Yogyakarta', labuanbajo: 'Labuan Bajo', komodo: 'Komodo' }
+    },
+    es: {
+      title: '📍 Calculadora de viaje', origin: 'País de salida', chooseOrigin: 'Elige un país', days: 'Días', daysHint: 'De 1 a 30 días', budget: 'Presupuesto total (€)', budgetHint: 'Presupuesto para una persona', destination: 'Destino', chooseDestination: 'Elige un destino', calculate: 'Calcular viaje', reset: 'Restablecer', note: 'Estimación aproximada para una persona; los precios reales varían según la temporada.', placeholder: 'Elige los detalles del viaje para ver un plan de ejemplo.', invalid: 'Introduce datos de viaje válidos.', fit: 'El viaje se ajusta al presupuesto', tight: 'El presupuesto es inferior al coste estimado', flight: 'Estimación del vuelo', stay: 'Alojamiento y gastos diarios', extras: 'Transporte local y actividades', total: 'Coste total estimado', period: 'Mejor temporada', yearRound: 'Todo el año', route: 'Ruta sugerida', advice: 'Comprueba los precios actuales de vuelos, alojamiento y excursiones antes de reservar.', countries: { BG: 'Bulgaria', DE: 'Alemania', FR: 'Francia', ES: 'España', UK: 'Reino Unido', OTHER: 'Otro país' }, destinations: { lombok: 'Lombok', bali: 'Bali', java: 'Java', borneo: 'Borneo', yogyakarta: 'Yogyakarta', labuanbajo: 'Labuan Bajo', komodo: 'Komodo' }
+    },
+    id: {
+      title: '📍 Kalkulator biaya perjalanan', origin: 'Negara keberangkatan', chooseOrigin: 'Pilih negara', days: 'Hari', daysHint: '1 hingga 30 hari', budget: 'Total anggaran (€)', budgetHint: 'Anggaran untuk satu orang', destination: 'Destinasi', chooseDestination: 'Pilih destinasi', calculate: 'Hitung perjalanan', reset: 'Atur ulang', note: 'Perkiraan untuk satu orang; harga sebenarnya dapat berubah sesuai musim.', placeholder: 'Pilih detail perjalanan untuk melihat contoh rencana.', invalid: 'Masukkan detail perjalanan yang valid.', fit: 'Perjalanan sesuai anggaran', tight: 'Anggaran di bawah perkiraan biaya', flight: 'Perkiraan penerbangan', stay: 'Penginapan dan biaya harian', extras: 'Transportasi lokal dan aktivitas', total: 'Perkiraan total', period: 'Musim terbaik', yearRound: 'Sepanjang tahun', route: 'Rute yang disarankan', advice: 'Periksa harga penerbangan, penginapan, dan tur terbaru sebelum memesan.', countries: { BG: 'Bulgaria', DE: 'Jerman', FR: 'Prancis', ES: 'Spanyol', UK: 'Britania Raya', OTHER: 'Negara lain' }, destinations: { lombok: 'Lombok', bali: 'Bali', java: 'Jawa', borneo: 'Borneo', yogyakarta: 'Yogyakarta', labuanbajo: 'Labuan Bajo', komodo: 'Komodo' }
+    }
+  };
+
+  const tripPlannerDurationLabels = {
+    bg: { label: 'Препоръчителен престой', days: 'дни' },
+    en: { label: 'Recommended stay', days: 'days' },
+    de: { label: 'Empfohlene Dauer', days: 'Tage' },
+    fr: { label: 'Durée conseillée', days: 'jours' },
+    es: { label: 'Duración recomendada', days: 'días' },
+    id: { label: 'Durasi yang disarankan', days: 'hari' }
+  };
+
+  const tripPlannerMonthNames = {
+    bg: ['яну', 'фев', 'мар', 'апр', 'май', 'юни', 'юли', 'авг', 'сеп', 'окт', 'ное', 'дек'],
+    en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    de: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+    fr: ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'],
+    es: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'],
+    id: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des']
+  };
+
+  const sectionUiTranslations = {
+    bg: { home: 'Начало', cities: 'Градове', wildlife: 'Животни', planner: 'Калкулатор', blog: 'Блог', projects: 'Проекти', show: 'Покажи', hide: 'Скрий', navLabel: 'Навигация по секции' },
+    en: { home: 'Home', cities: 'Cities', wildlife: 'Wildlife', planner: 'Planner', blog: 'Blog', projects: 'Projects', show: 'Show', hide: 'Hide', navLabel: 'Section navigation' },
+    de: { home: 'Start', cities: 'Städte', wildlife: 'Tierwelt', planner: 'Reiseplaner', blog: 'Blog', projects: 'Projekte', show: 'Anzeigen', hide: 'Ausblenden', navLabel: 'Abschnittsnavigation' },
+    fr: { home: 'Accueil', cities: 'Villes', wildlife: 'Faune', planner: 'Calculateur', blog: 'Blog', projects: 'Projets', show: 'Afficher', hide: 'Masquer', navLabel: 'Navigation des sections' },
+    es: { home: 'Inicio', cities: 'Ciudades', wildlife: 'Fauna', planner: 'Planificador', blog: 'Blog', projects: 'Proyectos', show: 'Mostrar', hide: 'Ocultar', navLabel: 'Navegación por secciones' },
+    id: { home: 'Beranda', cities: 'Kota', wildlife: 'Satwa', planner: 'Perencana', blog: 'Blog', projects: 'Proyek', show: 'Tampilkan', hide: 'Sembunyikan', navLabel: 'Navigasi bagian' }
+  };
 
   function runWhenIdle(callback, timeout) {
     if ('requestIdleCallback' in window) {
@@ -1194,9 +1253,74 @@ function cacheContentElements() {
     }
   }
 
+  function updateSectionUiTranslations() {
+    const copy = sectionUiTranslations[currentLanguage] || sectionUiTranslations.en;
+    document.querySelectorAll('[data-section-nav]').forEach(function (link) {
+      const key = link.dataset.sectionNav;
+      if (copy[key]) {
+        link.textContent = copy[key];
+      }
+    });
+    const navigation = document.querySelector('.sticky-nav');
+    if (navigation) {
+      navigation.setAttribute('aria-label', copy.navLabel);
+    }
+    document.querySelectorAll('.section-toggle-btn[data-target]').forEach(function (button) {
+      button.textContent = button.getAttribute('aria-expanded') === 'true' ? copy.hide : copy.show;
+    });
+  }
+
+  function bindSectionToggles() {
+    document.querySelectorAll('.section-toggle-btn[data-target]').forEach(function (button) {
+      let hideTimer;
+      button.addEventListener('click', function () {
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        const target = document.getElementById(button.dataset.target);
+        if (!target) {
+          return;
+        }
+        window.clearTimeout(hideTimer);
+
+        if (expanded) {
+          target.style.maxHeight = target.scrollHeight + 'px';
+          requestAnimationFrame(function () {
+            target.style.maxHeight = '0px';
+            target.style.opacity = '0';
+          });
+          hideTimer = window.setTimeout(function () {
+            target.hidden = true;
+          }, 280);
+        } else {
+          target.hidden = false;
+          target.style.maxHeight = '0px';
+          target.style.opacity = '0';
+          requestAnimationFrame(function () {
+            target.style.maxHeight = target.scrollHeight + 'px';
+            target.style.opacity = '1';
+          });
+        }
+
+        button.setAttribute('aria-expanded', String(!expanded));
+        updateSectionUiTranslations();
+      });
+    });
+    updateSectionUiTranslations();
+  }
+
   function renderContentShell() {
     dom.content.innerHTML = `
-        <div class="card country-info">
+        <nav class="sticky-nav" aria-label="Section navigation">
+          <span class="nav-brand">🇮🇩 Indonesia</span>
+          <div class="nav-links">
+            <a href="#overview" data-section-nav="home"></a>
+            <a href="#cities" data-section-nav="cities"></a>
+            <a href="#marine-animals" data-section-nav="wildlife"></a>
+            <a href="#tripPlanner" data-section-nav="planner"></a>
+            <a href="#blog" data-section-nav="blog"></a>
+            <a href="#projects" data-section-nav="projects"></a>
+          </div>
+        </nav>
+        <div class="card country-info" id="overview">
           <div class="country-title-row">
             <h2 id="countryInfoTitle"></h2>
             <div class="action-buttons">
@@ -1210,64 +1334,115 @@ function cacheContentElements() {
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" id="cities">
           <h2 id="majorCitiesTitle"></h2>
+          <div class="api-notice cities-notice" id="dataNotice"></div>
           <div class="cities-grid">
             ${createCityCardsHtml()}
           </div>
         </div>
 
-        <div class="card">
-          <h2 id="marineAnimalsTitle"></h2>
-          <div class="marine-grid">
-            ${createMarineAnimalsCardsHtml()}
+        <div class="card collapsible-section" id="marine-animals">
+          <div class="section-header-row"><h2 id="marineAnimalsTitle"></h2><button type="button" class="section-toggle-btn" data-target="marine-animals-body" aria-controls="marine-animals-body" aria-expanded="false"></button></div>
+          <div id="marine-animals-body" class="marine-section-body" hidden>
+            <div class="marine-grid">${createMarineAnimalsCardsHtml()}</div>
           </div>
         </div>
 
-        <div class="card">
-          <h2 id="landAnimalsTitle"></h2>
-          <div class="fruit-grid land-grid">
-            ${createLandAnimalsCardsHtml()}
+        <div class="card collapsible-section" id="land-animals">
+          <div class="section-header-row"><h2 id="landAnimalsTitle"></h2><button type="button" class="section-toggle-btn" data-target="land-animals-body" aria-controls="land-animals-body" aria-expanded="false"></button></div>
+          <div id="land-animals-body" class="marine-section-body" hidden>
+            <div class="fruit-grid land-grid">${createLandAnimalsCardsHtml()}</div>
           </div>
         </div>
 
-        <div class="card">
-          <h2 id="freshwaterAnimalsTitle"></h2>
-          <div class="fruit-grid freshwater-grid">
-            ${createFreshwaterAnimalsCardsHtml()}
+        <div class="card collapsible-section" id="freshwater-animals">
+          <div class="section-header-row"><h2 id="freshwaterAnimalsTitle"></h2><button type="button" class="section-toggle-btn" data-target="freshwater-animals-body" aria-controls="freshwater-animals-body" aria-expanded="false"></button></div>
+          <div id="freshwater-animals-body" class="marine-section-body" hidden>
+            <div class="fruit-grid freshwater-grid">${createFreshwaterAnimalsCardsHtml()}</div>
           </div>
         </div>
 
-        <div class="card">
-          <h2 id="birdsTitle"></h2>
-          <div class="bird-grid">
-            ${createBirdCardsHtml()}
+        <div class="card collapsible-section" id="birds">
+          <div class="section-header-row"><h2 id="birdsTitle"></h2><button type="button" class="section-toggle-btn" data-target="birds-body" aria-controls="birds-body" aria-expanded="false"></button></div>
+          <div id="birds-body" class="marine-section-body" hidden>
+            <div class="bird-grid">${createBirdCardsHtml()}</div>
           </div>
         </div>
 
-        <div class="card">
-          <h2 id="fruitsTitle"></h2>
-          <div class="fruit-grid">
-            ${createFruitCardsHtml()}
+        <div class="card collapsible-section" id="fruits">
+          <div class="section-header-row"><h2 id="fruitsTitle"></h2><button type="button" class="section-toggle-btn" data-target="fruits-body" aria-controls="fruits-body" aria-expanded="false"></button></div>
+          <div id="fruits-body" class="marine-section-body" hidden>
+            <div class="fruit-grid">${createFruitCardsHtml()}</div>
           </div>
         </div>
 
-        <div class="card">
-          <h2 id="parksTitle"></h2>
-          <div class="fruit-grid parks-grid">
-            ${createParkCardsHtml()}
+        <div class="card collapsible-section" id="parks">
+          <div class="section-header-row"><h2 id="parksTitle"></h2><button type="button" class="section-toggle-btn" data-target="parks-body" aria-controls="parks-body" aria-expanded="false"></button></div>
+          <div id="parks-body" class="marine-section-body" hidden>
+            <div class="fruit-grid parks-grid">${createParkCardsHtml()}</div>
           </div>
         </div>
 
-        <div class="card">
-          <h2 id="treesTitle"></h2>
-          <div class="fruit-grid tree-grid">
-            ${createTreeCardsHtml()}
+        <div class="card collapsible-section" id="trees">
+          <div class="section-header-row"><h2 id="treesTitle"></h2><button type="button" class="section-toggle-btn" data-target="trees-body" aria-controls="trees-body" aria-expanded="false"></button></div>
+          <div id="trees-body" class="marine-section-body" hidden>
+            <div class="fruit-grid tree-grid">${createTreeCardsHtml()}</div>
           </div>
         </div>
 
-        <div class="card blog-card">
-          <h2 id="blogSectionTitle"></h2>
+        <section class="card trip-planner-card" id="tripPlanner" aria-labelledby="tripPlannerTitle">
+          <h2 id="tripPlannerTitle"></h2>
+          <form id="tripPlannerForm" class="trip-planner-form">
+            <div class="planner-grid">
+              <label class="planner-field">
+                <span id="tripPlannerOriginLabel"></span>
+                <select id="tripPlannerOrigin" name="origin" required>
+                  <option value="" id="tripPlannerOriginPlaceholder"></option>
+                  <option value="BG" data-country="BG"></option>
+                  <option value="DE" data-country="DE"></option>
+                  <option value="FR" data-country="FR"></option>
+                  <option value="ES" data-country="ES"></option>
+                  <option value="UK" data-country="UK"></option>
+                  <option value="OTHER" data-country="OTHER"></option>
+                </select>
+              </label>
+              <label class="planner-field">
+                <span id="tripPlannerDaysLabel"></span>
+                <input id="tripPlannerDays" name="days" type="number" min="1" max="30" step="1" placeholder="1–30" required>
+              </label>
+              <label class="planner-field">
+                <span id="tripPlannerBudgetLabel"></span>
+                <input id="tripPlannerBudget" name="budget" type="number" min="200" max="50000" step="50" placeholder="€" required>
+              </label>
+              <label class="planner-field">
+                <span id="tripPlannerDestinationLabel"></span>
+                <select id="tripPlannerDestination" name="destination" required>
+                  <option value="" id="tripPlannerDestinationPlaceholder"></option>
+                  <option value="lombok" data-destination="lombok"></option>
+                  <option value="bali" data-destination="bali"></option>
+                  <option value="java" data-destination="java"></option>
+                  <option value="borneo" data-destination="borneo"></option>
+                  <option value="yogyakarta" data-destination="yogyakarta"></option>
+                  <option value="labuanbajo" data-destination="labuanbajo"></option>
+                  <option value="komodo" data-destination="komodo"></option>
+                </select>
+              </label>
+            </div>
+            <div class="planner-actions">
+              <button id="tripPlannerSubmitBtn" type="submit" class="planner-submit-btn"></button>
+              <button id="tripPlannerResetBtn" type="reset" class="planner-reset-btn"></button>
+            </div>
+            <p id="tripPlannerEstimateNote" class="trip-planner-estimate-note"></p>
+          </form>
+          <div id="tripPlannerResult" class="trip-planner-result" role="status" aria-live="polite">
+            <p id="tripPlannerResultPlaceholder"></p>
+          </div>
+        </section>
+
+        <div class="card blog-card" id="blog">
+          <div class="section-header-row"><h2 id="blogSectionTitle"></h2><button type="button" class="section-toggle-btn" data-target="blog-body" aria-controls="blog-body" aria-expanded="false"></button></div>
+          <div class="marine-section-body" id="blog-body" hidden>
           <div class="blog-preview">
             <h3 id="blogArticleTitle"></h3>
             <p id="blogArticleExcerpt" class="blog-excerpt"></p>
@@ -1343,9 +1518,10 @@ function cacheContentElements() {
             <p id="blogArticle15Excerpt" class="blog-excerpt"></p>
             <button id="blogReadBtn15" class="blog-read-btn" type="button"></button>
           </div>
+          </div>
         </div>
 
-        <div class="card about-projects-card">
+        <div class="card about-projects-card" id="projects">
           <h2 id="aboutSectionTitle"></h2>
           <p id="aboutSectionText" class="about-section-text"></p>
           <div class="about-projects-grid">
@@ -1391,10 +1567,11 @@ function cacheContentElements() {
           </section>
         </div>
 
-        <div class="api-notice" id="dataNotice"></div>
       `;
 
     cacheContentElements();
+    bindTripPlannerForm();
+    bindSectionToggles();
 
     const loadingElement = document.querySelector('.loading');
     if (loadingElement) {
@@ -1480,6 +1657,7 @@ function cacheContentElements() {
   }
 
   function updateContentTranslations() {
+    updateSectionUiTranslations();
     dom.countryInfoTitle.textContent = getTranslation('countryInfo');
     dom.stadiumInfoBtn.textContent = getTranslation('stadiumInfoBtn');
     dom.wildlifeInfoBtn.textContent = getTranslation('wildlifeInfoBtn');
@@ -1505,6 +1683,7 @@ function cacheContentElements() {
     dom.fruitsTitle.textContent = getTranslation('fruitsTitle');
     dom.parksTitle.textContent = getTranslation('parksTitle');
     dom.treesTitle.textContent = getTranslation('treesTitle');
+    updateTripPlannerTranslations();
     dom.blogSectionTitle.textContent = getTranslation('blogSectionTitle');
     dom.blogArticleTitle.textContent = getTranslation('blogArticleTitle');
     dom.blogArticleExcerpt.textContent = getTranslation('blogArticleExcerpt');
@@ -1681,6 +1860,160 @@ function cacheContentElements() {
     const currentLangPack = translations[currentLanguage] || {};
     const englishPack = translations.en || {};
     return currentLangPack[key] || englishPack[key] || key;
+  }
+
+  function updateTripPlannerTranslations() {
+    const copy = tripPlannerTranslations[currentLanguage] || tripPlannerTranslations.en;
+    const textById = {
+      tripPlannerTitle: copy.title,
+      tripPlannerOriginLabel: copy.origin,
+      tripPlannerOriginPlaceholder: copy.chooseOrigin,
+      tripPlannerDaysLabel: copy.days,
+      tripPlannerBudgetLabel: copy.budget,
+      tripPlannerDestinationLabel: copy.destination,
+      tripPlannerDestinationPlaceholder: copy.chooseDestination,
+      tripPlannerSubmitBtn: copy.calculate,
+      tripPlannerResetBtn: copy.reset,
+      tripPlannerEstimateNote: copy.note,
+      tripPlannerResultPlaceholder: copy.placeholder
+    };
+
+    Object.keys(textById).forEach(function (id) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.textContent = textById[id];
+      }
+    });
+
+    const daysInput = document.getElementById('tripPlannerDays');
+    const budgetInput = document.getElementById('tripPlannerBudget');
+    if (daysInput) {
+      daysInput.placeholder = copy.daysHint;
+    }
+    if (budgetInput) {
+      budgetInput.placeholder = copy.budgetHint;
+    }
+
+    document.querySelectorAll('#tripPlannerOrigin [data-country]').forEach(function (option) {
+      option.textContent = copy.countries[option.dataset.country];
+    });
+    document.querySelectorAll('#tripPlannerDestination [data-destination]').forEach(function (option) {
+      option.textContent = copy.destinations[option.dataset.destination];
+    });
+
+    if (lastTripPlannerInput) {
+      renderTripPlannerResult(lastTripPlannerInput.destination, lastTripPlannerInput.origin, lastTripPlannerInput.days, lastTripPlannerInput.budget);
+    }
+  }
+
+  function formatTripPlannerCurrency(amount) {
+    const localeByLanguage = { bg: 'bg-BG', en: 'en-GB', de: 'de-DE', fr: 'fr-FR', es: 'es-ES', id: 'id-ID' };
+    return new Intl.NumberFormat(localeByLanguage[currentLanguage] || 'en-GB', {
+      style: 'currency',
+      currency: 'EUR',
+      maximumFractionDigits: 0
+    }).format(amount);
+  }
+
+  function formatTripPlannerSeason(season) {
+    const copy = tripPlannerTranslations[currentLanguage] || tripPlannerTranslations.en;
+    if (season === 'year-round') {
+      return copy.yearRound;
+    }
+
+    const months = tripPlannerMonthNames[currentLanguage] || tripPlannerMonthNames.en;
+    const startMonth = months[season[0] - 1];
+    const endMonth = months[season[1] - 1];
+    return `${startMonth}–${endMonth}`;
+  }
+
+  function appendTripPlannerRow(container, label, value, className) {
+    const row = document.createElement('p');
+    row.className = className || 'trip-planner-metric';
+    if (label) {
+      const heading = document.createElement('strong');
+      heading.textContent = `${label}: `;
+      row.append(heading, document.createTextNode(value));
+    } else {
+      row.textContent = value;
+    }
+    container.appendChild(row);
+  }
+
+  function renderTripPlannerResult(destinationKey, originCode, days, budget) {
+    const copy = tripPlannerTranslations[currentLanguage] || tripPlannerTranslations.en;
+    const profile = tripPlannerDestinations[destinationKey];
+    const result = document.getElementById('tripPlannerResult');
+    const flight = Math.round(profile.flight * ({ BG: 1, DE: 1.08, FR: 1.12, ES: 1.18, UK: 1.05, OTHER: 1.2 }[originCode] || 1));
+    const stay = days * profile.daily;
+    const extras = days * 18;
+    const total = flight + stay + extras;
+    const fitsBudget = total <= budget;
+
+    result.replaceChildren();
+
+    const status = document.createElement('div');
+    status.className = `trip-planner-status ${fitsBudget ? 'good' : 'tight'}`;
+    status.textContent = fitsBudget ? copy.fit : copy.tight;
+    result.appendChild(status);
+
+    const costBox = document.createElement('div');
+    costBox.className = 'trip-planner-cost-box';
+    const totalLine = document.createElement('p');
+    totalLine.className = 'trip-planner-cost-header';
+    totalLine.textContent = `${copy.total}: ${formatTripPlannerCurrency(total)}`;
+    costBox.appendChild(totalLine);
+    appendTripPlannerRow(costBox, copy.flight, formatTripPlannerCurrency(flight), 'trip-planner-cost-breakdown');
+    appendTripPlannerRow(costBox, copy.stay, formatTripPlannerCurrency(stay), 'trip-planner-cost-breakdown');
+    appendTripPlannerRow(costBox, copy.extras, formatTripPlannerCurrency(extras), 'trip-planner-cost-breakdown');
+    result.appendChild(costBox);
+
+    const summary = document.createElement('div');
+    summary.className = 'trip-planner-summary';
+    appendTripPlannerRow(summary, copy.origin, copy.countries[originCode]);
+    const durationLabels = tripPlannerDurationLabels[currentLanguage] || tripPlannerDurationLabels.en;
+    appendTripPlannerRow(summary, durationLabels.label, `${profile.bestDays[0]}–${profile.bestDays[1]} ${durationLabels.days}`);
+    appendTripPlannerRow(summary, copy.period, formatTripPlannerSeason(profile.season));
+    appendTripPlannerRow(summary, copy.route, profile.route, 'trip-planner-route');
+    appendTripPlannerRow(summary, '', copy.advice, 'trip-planner-note');
+    result.appendChild(summary);
+  }
+
+  function bindTripPlannerForm() {
+    const form = document.getElementById('tripPlannerForm');
+    const resetButton = document.getElementById('tripPlannerResetBtn');
+    if (!form || !resetButton) {
+      return;
+    }
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (!form.reportValidity()) {
+        return;
+      }
+
+      const origin = document.getElementById('tripPlannerOrigin').value;
+      const days = Number(document.getElementById('tripPlannerDays').value);
+      const budget = Number(document.getElementById('tripPlannerBudget').value);
+      const destination = document.getElementById('tripPlannerDestination').value;
+      if (!tripPlannerDestinations[destination] || !tripPlannerTranslations[currentLanguage].countries[origin]) {
+        document.getElementById('tripPlannerResult').textContent = tripPlannerTranslations[currentLanguage].invalid;
+        return;
+      }
+      lastTripPlannerInput = { destination, origin, days, budget };
+      renderTripPlannerResult(destination, origin, days, budget);
+    });
+
+    form.addEventListener('reset', function () {
+      lastTripPlannerInput = null;
+      window.setTimeout(function () {
+        const result = document.getElementById('tripPlannerResult');
+        const placeholder = document.createElement('p');
+        const copy = tripPlannerTranslations[currentLanguage] || tripPlannerTranslations.en;
+        placeholder.textContent = copy.placeholder;
+        result.replaceChildren(placeholder);
+      }, 0);
+    });
   }
 
   function copyPartnerWalletAddress() {
