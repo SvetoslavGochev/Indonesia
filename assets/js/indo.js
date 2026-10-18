@@ -739,6 +739,15 @@
   const parksSectionsByLanguage = {};
   let visitCountValue = null;
 
+  function runWhenIdle(callback, timeout) {
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(callback, { timeout: timeout || 1500 });
+      return;
+    }
+
+    window.setTimeout(callback, 0);
+  }
+
   function cacheDomElements() {
     dom.bgBtn = document.getElementById('bgBtn');
     dom.enBtn = document.getElementById('enBtn');
@@ -2014,12 +2023,44 @@ function cacheContentElements() {
   }
 
   function scheduleCriticalImageWarmup() {
-    if ('requestIdleCallback' in window) {
-      window.requestIdleCallback(warmCriticalImages, { timeout: 1500 });
+    runWhenIdle(warmCriticalImages, 2500);
+  }
+
+  function scheduleVisitCounterLoad() {
+    function startVisitCounter() {
+      void loadVisitCounter();
+    }
+
+    if (window.APP_RUNTIME_FLAGS && window.APP_RUNTIME_FLAGS.isLocalPreview) {
+      startVisitCounter();
       return;
     }
 
-    window.setTimeout(warmCriticalImages, 300);
+    if (window.firebase && window.firebase.database) {
+      startVisitCounter();
+      return;
+    }
+
+    let hasStarted = false;
+
+    function startOnce() {
+      if (hasStarted) {
+        return;
+      }
+      hasStarted = true;
+      window.removeEventListener('indonesia:firebase-ready', startOnce);
+      startVisitCounter();
+    }
+
+    window.addEventListener('indonesia:firebase-ready', startOnce, { once: true });
+    window.setTimeout(startOnce, 2500);
+  }
+
+  function scheduleNonCriticalStartup() {
+    window.addEventListener('load', function () {
+      runWhenIdle(scheduleVisitCounterLoad, 2000);
+      scheduleCriticalImageWarmup();
+    }, { once: true });
   }
 
   function changeLanguage(lang) {
@@ -3152,9 +3193,10 @@ function cacheContentElements() {
       }
     });
 
-    loadData();
-    loadVisitCounter();
-    scheduleCriticalImageWarmup();
+    window.requestAnimationFrame(function () {
+      loadData();
+    });
+    scheduleNonCriticalStartup();
     registerServiceWorker();
   });
 

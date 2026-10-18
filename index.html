@@ -22,14 +22,11 @@
     <meta name="twitter:image" content="https://indonesia-five.vercel.app/assets/images/social-preview.svg">
     <meta name="theme-color" content="#0f1f3a">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: blob: https://static.flashscore.com https://svetoslavgochev.github.io; font-src 'self' https://fonts.gstatic.com data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://plausible.io; connect-src 'self' https://plausible.io https://formspree.io https://*.googleapis.com https://*.firebaseio.com https://*.firebasedatabase.app; form-action 'self' https://formspree.io; upgrade-insecure-requests; block-all-mixed-content;">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="./assets/favicons/favicon.svg">
     <link rel="shortcut icon" href="./assets/favicons/favicon.svg">
     <link rel="apple-touch-icon" href="./assets/favicons/favicon.svg">
     <link rel="preload" as="image" href="./assets/images/jakarta-stadium.avif" type="image/avif" fetchpriority="high">
-    <link rel='stylesheet' href='style.css?v=20260725d'>
+    <link rel='stylesheet' href='style.css?v=20261018a'>
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -44,18 +41,50 @@
             }
         }
     </script>
-        <script>
+    <script>
+        (function () {
+            const isLocalPreview = ['127.0.0.1', 'localhost'].includes(window.location.hostname);
+
+            function appendHeadLink(rel, href, options) {
+                const link = document.createElement('link');
+                link.rel = rel;
+                link.href = href;
+                if (options && options.crossOrigin) {
+                    link.crossOrigin = options.crossOrigin;
+                }
+                document.head.appendChild(link);
+            }
+
+            function appendDeferredScript(src, isAsync) {
+                const script = document.createElement('script');
+                script.src = src;
+                if (isAsync) {
+                    script.async = true;
+                } else {
+                    script.defer = true;
+                }
+                document.head.appendChild(script);
+            }
+
+            window.APP_RUNTIME_FLAGS = {
+                isLocalPreview: isLocalPreview
+            };
+
+            if (!isLocalPreview) {
+                appendHeadLink('preconnect', 'https://fonts.googleapis.com');
+                appendHeadLink('preconnect', 'https://fonts.gstatic.com', { crossOrigin: 'anonymous' });
+                appendHeadLink('stylesheet', 'https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+                appendDeferredScript('/_vercel/insights/script.js', false);
+                appendDeferredScript('https://plausible.io/js/pa-OirWEDKGqBKTySIyRIuFm.js', true);
+            }
+
             window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-        </script>
-        <script defer src="/_vercel/insights/script.js"></script>
-        <!-- Privacy-friendly analytics by Plausible -->
-        <script async src="https://plausible.io/js/pa-OirWEDKGqBKTySIyRIuFm.js"></script>
-        <script>
             window.plausible = window.plausible || function () { (plausible.q = plausible.q || []).push(arguments); };
             plausible.init = plausible.init || function (i) { plausible.o = i || {}; };
             plausible.init();
             window.PAYPAL_PARTNER_URL = 'https://paypal.me/SvetoslavGochev';
-        </script>
+        })();
+    </script>
 </head>
 <body>
     <div class="page-layout">
@@ -230,11 +259,269 @@
         </div>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js" defer></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js" defer></script>
+    <div class="ai-chat-widget" id="aiChatWidget" hidden>
+        <div class="ai-chat-window" id="aiChatWindow" hidden>
+            <div class="ai-chat-header">
+                <div class="ai-chat-brand">
+                    <span class="ai-chat-brand-icon">✦</span>
+                    <div>
+                        <strong>Indonesia AI Guide</strong>
+                        <p>Попитай за дестинации, маршрути и идеи.</p>
+                    </div>
+                </div>
+                <button class="ai-chat-close" id="aiChatClose" type="button" aria-label="Затвори AI чата">&times;</button>
+            </div>
+            <div class="ai-chat-messages" id="aiChatMessages" aria-live="polite">
+                <div class="ai-chat-message ai-chat-message-assistant">
+                    <div class="ai-chat-bubble">Здравей! Мога да помогна с идеи за Бали, Джакарта, Ломбок, природа и пътуване в Индонезия.</div>
+                </div>
+            </div>
+            <form class="ai-chat-form" id="aiChatForm">
+                <label class="ai-chat-field">
+                    <span class="ai-chat-label">Съобщение</span>
+                    <input id="aiChatInput" class="ai-chat-input" type="text" name="message" maxlength="500" placeholder="Напиши въпроса си..." autocomplete="off" required>
+                </label>
+                <button class="ai-chat-submit" id="aiChatSubmit" type="submit">
+                    <span>Изпрати</span>
+                </button>
+            </form>
+        </div>
+        <button class="ai-chat-toggle" id="aiChatToggle" type="button" aria-controls="aiChatWindow" aria-expanded="false" aria-label="Отвори AI чат">
+            <span class="ai-chat-toggle-icon">✦</span>
+            <span class="ai-chat-toggle-text">AI чат</span>
+        </button>
+    </div>
+
+    <script>
+        (function () {
+            if (window.APP_RUNTIME_FLAGS && window.APP_RUNTIME_FLAGS.isLocalPreview) {
+                return;
+            }
+
+            function appendFirebaseScript(src, onload) {
+                const script = document.createElement('script');
+                script.src = src;
+                script.defer = true;
+                script.onload = onload || null;
+                document.body.appendChild(script);
+            }
+
+            appendFirebaseScript('https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js', function () {
+                appendFirebaseScript('https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js', function () {
+                    window.dispatchEvent(new Event('indonesia:firebase-ready'));
+                });
+            });
+        })();
+    </script>
     <script src="./assets/js/firebase-config.js?v=20260628" defer></script>
     <script>
         window.PARTNER_FORM_ENDPOINT = "https://formspree.io/f/yourFormId";
+    </script>
+    <script>
+        (function () {
+            const widget = document.getElementById('aiChatWidget');
+            if (!widget) {
+                return;
+            }
+
+            if (window.APP_RUNTIME_FLAGS && window.APP_RUNTIME_FLAGS.isLocalPreview) {
+                return;
+            }
+
+            widget.hidden = false;
+
+            const toggle = document.getElementById('aiChatToggle');
+            const panel = document.getElementById('aiChatWindow');
+            const closeButton = document.getElementById('aiChatClose');
+            const form = document.getElementById('aiChatForm');
+            const input = document.getElementById('aiChatInput');
+            const submitButton = document.getElementById('aiChatSubmit');
+            const messages = document.getElementById('aiChatMessages');
+            const history = [];
+            let isPending = false;
+
+            function scrollToLatest() {
+                messages.scrollTop = messages.scrollHeight;
+            }
+
+            function setOpen(isOpen) {
+                widget.classList.toggle('is-open', isOpen);
+                panel.hidden = !isOpen;
+                toggle.setAttribute('aria-expanded', String(isOpen));
+                toggle.setAttribute('aria-label', isOpen ? 'Затвори AI чат' : 'Отвори AI чат');
+
+                if (isOpen) {
+                    window.setTimeout(function () {
+                        input.focus();
+                        scrollToLatest();
+                    }, 120);
+                }
+            }
+
+            function createMessage(role, text) {
+                const message = document.createElement('div');
+                message.className = 'ai-chat-message ' + (role === 'user' ? 'ai-chat-message-user' : 'ai-chat-message-assistant');
+
+                const bubble = document.createElement('div');
+                bubble.className = 'ai-chat-bubble';
+                bubble.textContent = text;
+                message.appendChild(bubble);
+                messages.appendChild(message);
+                scrollToLatest();
+                return bubble;
+            }
+
+            function createLoader() {
+                const message = document.createElement('div');
+                message.className = 'ai-chat-message ai-chat-message-assistant';
+
+                const bubble = document.createElement('div');
+                bubble.className = 'ai-chat-bubble ai-chat-bubble-loading';
+                bubble.innerHTML = '<span class="ai-chat-dot"></span><span class="ai-chat-dot"></span><span class="ai-chat-dot"></span>';
+                message.appendChild(bubble);
+                messages.appendChild(message);
+                scrollToLatest();
+                return message;
+            }
+
+            function setPending(pending) {
+                isPending = pending;
+                input.disabled = pending;
+                submitButton.disabled = pending;
+                widget.classList.toggle('is-loading', pending);
+            }
+
+            function buildFallbackReply(message) {
+                const lowerMessage = message.toLowerCase();
+                const isBulgarian = /[а-я]/i.test(message);
+
+                if (lowerMessage.includes('bali') || lowerMessage.includes('бали')) {
+                    return isBulgarian
+                        ? 'За Бали бих препоръчал Убуд за природа и култура, Семиняк за по-луксозна атмосфера и Нуса Дуа за по-спокойна почивка.'
+                        : 'For Bali, I recommend Ubud for culture and nature, Seminyak for a stylish stay, and Nusa Dua for a calmer beach experience.';
+                }
+
+                if (lowerMessage.includes('jakarta') || lowerMessage.includes('джакарта')) {
+                    return isBulgarian
+                        ? 'В Джакарта можеш да комбинираш Gelora Bung Karno, Kota Tua и модерните квартали около Sudirman за цял ден градска разходка.'
+                        : 'In Jakarta, a solid plan is Gelora Bung Karno, Kota Tua, and the modern Sudirman area for a full city day.';
+                }
+
+                if (lowerMessage.includes('lombok') || lowerMessage.includes('ломбок')) {
+                    return isBulgarian
+                        ? 'Ломбок е много добър избор за по-спокойни плажове, гледки към вулкана Ринджани и по-малко натоварена атмосфера от Бали.'
+                        : 'Lombok is a great choice for quieter beaches, Mount Rinjani views, and a more relaxed atmosphere than Bali.';
+                }
+
+                if (lowerMessage.includes('wildlife') || lowerMessage.includes('animal') || lowerMessage.includes('живот') || lowerMessage.includes('природ')) {
+                    return isBulgarian
+                        ? 'Ако те интересува природата, започни с орангутани, явански носорог, морски костенурки и коралови зони около Комодо и Раджа Ампат.'
+                        : 'If you are exploring wildlife, start with orangutans, the Javan rhino, sea turtles, and coral areas around Komodo and Raja Ampat.';
+                }
+
+                return isBulgarian
+                    ? 'Мога да помогна с идеи за маршрути, градове, плажове, природа, настаняване и сезон за пътуване в Индонезия. Задай ми по-конкретен въпрос.'
+                    : 'I can help with routes, cities, beaches, wildlife, stays, and the best season to visit Indonesia. Ask me a more specific question.';
+            }
+
+            function streamAssistantReply(text) {
+                const bubble = createMessage('assistant', '');
+                const chunks = text.split(/(\s+)/);
+
+                return new Promise(function (resolve) {
+                    let index = 0;
+
+                    function step() {
+                        bubble.textContent += chunks[index] || '';
+                        index += 1;
+                        scrollToLatest();
+
+                        if (index < chunks.length) {
+                            window.setTimeout(step, 18);
+                            return;
+                        }
+
+                        resolve();
+                    }
+
+                    step();
+                });
+            }
+
+            async function sendMessage(message) {
+                const loader = createLoader();
+
+                try {
+                    const response = await fetch('/api/chat', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            message: message,
+                            history: history.slice(-6)
+                        })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Chat request failed');
+                    }
+
+                    const data = await response.json();
+                    const reply = typeof data.reply === 'string' && data.reply.trim()
+                        ? data.reply.trim()
+                        : buildFallbackReply(message);
+
+                    loader.remove();
+                    await streamAssistantReply(reply);
+                    history.push({ role: 'assistant', content: reply });
+                } catch (error) {
+                    loader.remove();
+                    const reply = buildFallbackReply(message);
+                    await streamAssistantReply(reply);
+                    history.push({ role: 'assistant', content: reply });
+                }
+            }
+
+            toggle.addEventListener('click', function () {
+                setOpen(panel.hidden);
+            });
+
+            closeButton.addEventListener('click', function () {
+                setOpen(false);
+            });
+
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape' && !panel.hidden) {
+                    setOpen(false);
+                }
+            });
+
+            form.addEventListener('submit', async function (event) {
+                event.preventDefault();
+
+                if (isPending) {
+                    return;
+                }
+
+                const message = input.value.trim();
+                if (!message) {
+                    return;
+                }
+
+                history.push({ role: 'user', content: message });
+                createMessage('user', message);
+                input.value = '';
+                setPending(true);
+
+                try {
+                    await sendMessage(message);
+                } finally {
+                    setPending(false);
+                    input.focus();
+                }
+            });
+        })();
     </script>
     <script src="./assets/js/indo.translations.js?v=20260725f" defer></script>
     <script src="./assets/js/indo.data.js?v=20260628" defer></script>
@@ -243,4 +530,3 @@
     <script src="./assets/js/indo.js?v=20260725d" defer></script>
 </body>
 </html>
-
