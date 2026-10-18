@@ -34,14 +34,16 @@ body::before {
 }
 
 .container {
-    max-width: 980px;
+    width: 100%;
+    max-width: 1100px;
     margin: 0 auto;
     position: relative;
     z-index: 1;
 }
 
 #content {
-    max-width: 900px;
+    width: 100%;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -203,13 +205,10 @@ body::before {
 }
 
 .page-layout {
-    max-width: 1380px;
+    max-width: 1100px;
     width: 100%;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: minmax(150px, 190px) minmax(0, 1fr) minmax(150px, 190px);
-    gap: 22px;
-    align-items: stretch;
+    display: block;
     position: relative;
     z-index: 1;
 }
@@ -2255,8 +2254,6 @@ header p {
     .page-layout {
         width: 100%;
         max-width: 100%;
-        grid-template-columns: 1fr;
-        gap: 14px;
     }
 
     .page-layout > *,
